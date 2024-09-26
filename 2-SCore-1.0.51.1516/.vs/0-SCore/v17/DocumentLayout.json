@@ -1,0 +1,225 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|e:\\program files (x86)\\steam\\steamapps\\common\\7 days to die\\mods\\2-score-1.0.51.1516\\scripts\\eai\\eaimaslowlevel1sdx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|solutionrelative:scripts\\eai\\eaimaslowlevel1sdx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|e:\\program files (x86)\\steam\\steamapps\\common\\7 days to die\\mods\\2-score-1.0.51.1516\\scripts\\eai\\eaiapproachandattacksdx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|solutionrelative:scripts\\eai\\eaiapproachandattacksdx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\scripts\\blocks\\blockutilitiessdx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|solutionrelative:scripts\\blocks\\blockutilitiessdx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|e:\\program files (x86)\\steam\\steamapps\\common\\7 days to die\\mods\\2-score-1.0.51.1516\\scripts\\utilityai\\uaitasklearn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|solutionrelative:scripts\\utilityai\\uaitasklearn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|e:\\program files (x86)\\steam\\steamapps\\common\\7 days to die\\mods\\2-score-1.0.51.1516\\scripts\\entities\\entitynpcbandit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|solutionrelative:scripts\\entities\\entitynpcbandit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|e:\\program files (x86)\\steam\\steamapps\\common\\7 days to die\\mods\\2-score-1.0.51.1516\\scripts\\eai\\eaiapproachandfollowtargetsdx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|solutionrelative:scripts\\eai\\eaiapproachandfollowtargetsdx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|e:\\program files (x86)\\steam\\steamapps\\common\\7 days to die\\mods\\2-score-1.0.51.1516\\scripts\\musicboxes\\musicbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|solutionrelative:scripts\\musicboxes\\musicbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\scripts\\musicboxes\\musicboxscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|solutionrelative:scripts\\musicboxes\\musicboxscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\features\\farming\\scripts\\waterpipemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|solutionrelative:features\\farming\\scripts\\waterpipemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\scripts\\blocks\\blockprefabplacer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|solutionrelative:scripts\\blocks\\blockprefabplacer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\scripts\\blocks\\blockclockscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5717E58E-D52D-46B1-AF8D-EA06BF410286}|0-SCore.csproj|solutionrelative:scripts\\blocks\\blockclockscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EAIMaslowLevel1SDX.cs",
+              "DocumentMoniker": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Scripts\\EAI\\EAIMaslowLevel1SDX.cs",
+              "RelativeDocumentMoniker": "Scripts\\EAI\\EAIMaslowLevel1SDX.cs",
+              "ToolTip": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Scripts\\EAI\\EAIMaslowLevel1SDX.cs",
+              "RelativeToolTip": "Scripts\\EAI\\EAIMaslowLevel1SDX.cs",
+              "ViewState": "AQIAADYAAAAAAAAAAAAYwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T01:42:00.285Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UAITaskLearn.cs",
+              "DocumentMoniker": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Scripts\\UtilityAI\\UAITaskLearn.cs",
+              "RelativeDocumentMoniker": "Scripts\\UtilityAI\\UAITaskLearn.cs",
+              "ToolTip": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Scripts\\UtilityAI\\UAITaskLearn.cs",
+              "RelativeToolTip": "Scripts\\UtilityAI\\UAITaskLearn.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T01:38:58.247Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EntityNPCBandit.cs",
+              "DocumentMoniker": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Scripts\\Entities\\EntityNPCBandit.cs",
+              "RelativeDocumentMoniker": "Scripts\\Entities\\EntityNPCBandit.cs",
+              "ToolTip": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Scripts\\Entities\\EntityNPCBandit.cs",
+              "RelativeToolTip": "Scripts\\Entities\\EntityNPCBandit.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-14T22:57:43.223Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EAIApproachAndFollowTargetSDX.cs",
+              "DocumentMoniker": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Scripts\\EAI\\EAIApproachAndFollowTargetSDX.cs",
+              "RelativeDocumentMoniker": "Scripts\\EAI\\EAIApproachAndFollowTargetSDX.cs",
+              "ToolTip": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Scripts\\EAI\\EAIApproachAndFollowTargetSDX.cs",
+              "RelativeToolTip": "Scripts\\EAI\\EAIApproachAndFollowTargetSDX.cs",
+              "ViewState": "AQIAADcAAAAAAAAAAAAkwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-14T22:48:20.211Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EAIApproachAndAttackSDX.cs",
+              "DocumentMoniker": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Scripts\\EAI\\EAIApproachAndAttackSDX.cs",
+              "RelativeDocumentMoniker": "Scripts\\EAI\\EAIApproachAndAttackSDX.cs",
+              "ToolTip": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Scripts\\EAI\\EAIApproachAndAttackSDX.cs",
+              "RelativeToolTip": "Scripts\\EAI\\EAIApproachAndAttackSDX.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-11T18:13:09.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "WaterPipeManager.cs",
+              "DocumentMoniker": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Features\\Farming\\Scripts\\WaterPipeManager.cs",
+              "RelativeDocumentMoniker": "Features\\Farming\\Scripts\\WaterPipeManager.cs",
+              "ToolTip": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Features\\Farming\\Scripts\\WaterPipeManager.cs",
+              "RelativeToolTip": "Features\\Farming\\Scripts\\WaterPipeManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T05:42:14.88Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BlockUtilitiesSDX.cs",
+              "DocumentMoniker": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Scripts\\Blocks\\BlockUtilitiesSDX.cs",
+              "RelativeDocumentMoniker": "Scripts\\Blocks\\BlockUtilitiesSDX.cs",
+              "ToolTip": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Scripts\\Blocks\\BlockUtilitiesSDX.cs",
+              "RelativeToolTip": "Scripts\\Blocks\\BlockUtilitiesSDX.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGsAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T05:41:50.519Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BlockPrefabPlacer.cs",
+              "DocumentMoniker": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Scripts\\Blocks\\BlockPrefabPlacer.cs",
+              "RelativeDocumentMoniker": "Scripts\\Blocks\\BlockPrefabPlacer.cs",
+              "ToolTip": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Scripts\\Blocks\\BlockPrefabPlacer.cs",
+              "RelativeToolTip": "Scripts\\Blocks\\BlockPrefabPlacer.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T05:41:15.077Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "BlockClockScript.cs",
+              "DocumentMoniker": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Scripts\\Blocks\\BlockClockScript.cs",
+              "RelativeDocumentMoniker": "Scripts\\Blocks\\BlockClockScript.cs",
+              "ToolTip": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Scripts\\Blocks\\BlockClockScript.cs",
+              "RelativeToolTip": "Scripts\\Blocks\\BlockClockScript.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T05:41:01.35Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MusicBox.cs",
+              "DocumentMoniker": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Scripts\\MusicBoxes\\MusicBox.cs",
+              "RelativeDocumentMoniker": "Scripts\\MusicBoxes\\MusicBox.cs",
+              "ToolTip": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Scripts\\MusicBoxes\\MusicBox.cs",
+              "RelativeToolTip": "Scripts\\MusicBoxes\\MusicBox.cs",
+              "ViewState": "AQIAAGYAAAAAAAAAAAAAwNYAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T05:34:40.504Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MusicBoxScript.cs",
+              "DocumentMoniker": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Scripts\\MusicBoxes\\MusicBoxScript.cs",
+              "RelativeDocumentMoniker": "Scripts\\MusicBoxes\\MusicBoxScript.cs",
+              "ToolTip": "E:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\2-SCore-1.0.51.1516\\Scripts\\MusicBoxes\\MusicBoxScript.cs",
+              "RelativeToolTip": "Scripts\\MusicBoxes\\MusicBoxScript.cs",
+              "ViewState": "AQIAADYAAAAAAAAAAAAYwDgAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-27T23:02:17.301Z"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

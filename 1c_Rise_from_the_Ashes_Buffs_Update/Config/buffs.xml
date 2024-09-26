@@ -1,0 +1,257 @@
+<configs>
+	<!-- Change the progression requirements to use the new progression names being used -->	
+	<set xpath="//buffs/buff[@name='buffStatusCheck02']/effect_group/triggered_effect/requirement[@name='ProgressionLevel' and @progression_name='perkHealingFactor']/@progression_name">statFortitude</set>
+
+	<!-- *********** DRUGS *****************-->
+	<!-- Update buffDrugRecog -->
+	<set xpath="/buffs/buff[@name='buffDrugRecog']/effect_group/passive_effect[@name='EntityDamage' and @value='.5']/@tags">rangedBows,rangedMachineguns,rangedPistols,rangedRifles,rangedShotguns,admin</set>
+	
+	<!-- Update buffDrugRecog -->
+	<set xpath="/buffs/buff[@name='buffDrugSkullCrushers']/effect_group/passive_effect[@name='EntityDamage' and @value='.5']/@tags">meleeBlades,meleeClubs,meleeFists,meleeImprovised,meleeSpears,admin</set>	
+
+	<!-- Update buffDrugHackers -->
+	<set xpath="/buffs/buff[@name='buffDrugHackers']/effect_group/requirement[@name='HoldingItemHasTags' and @tags='perkSalvageOperations']/@tags">skillAutomotive,skillElectricalEngineer,skillMechanicalEngineer</set>	
+
+	<!-- *********** DEBUFFS ***************-->
+	<!-- Update weapon handling for sprains -->
+	<set xpath="/buffs/buff[@name='buffArmSprained']/effect_group/passive_effect[@name='WeaponHandling']/@tags">rangedBows,rangedMachineguns,rangedPistols,rangedRifles,rangedShotguns,admin</set>
+	<set xpath="/buffs/buff[@name='buffArmSprained']/effect_group/passive_effect[@name='ReloadSpeedMultiplier']/@tags">rangedBows,rangedMachineguns,rangedPistols,rangedRifles,rangedShotguns,admin</set>
+	<set xpath="/buffs/buff[@name='buffArmSprained']/effect_group/passive_effect[@name='AttacksPerMinute']/@tags">meleeBlades,meleeClubs,meleeFists,meleeImprovised,meleeSpears,admin</set>
+
+	<!-- Update weapon handling for broken arms -->
+	<set xpath="/buffs/buff[@name='buffArmBroken']/effect_group/passive_effect[@name='WeaponHandling']/@tags">rangedBows,rangedMachineguns,rangedPistols,rangedRifles,rangedShotguns,admin</set>
+	<set xpath="/buffs/buff[@name='buffArmBroken']/effect_group/passive_effect[@name='ReloadSpeedMultiplier']/@tags">rangedBows,rangedMachineguns,rangedPistols,rangedRifles,rangedShotguns,admin</set>
+	<set xpath="/buffs/buff[@name='buffArmBroken']/effect_group/passive_effect[@name='AttacksPerMinute']/@tags">meleeBlades,meleeClubs,meleeFists,meleeImprovised,meleeSpears,admin</set>
+
+	<!-- Update weapon handling for buffArmCast -->
+	<set xpath="/buffs/buff[@name='buffArmCast']/effect_group/passive_effect[@name='WeaponHandling']/@tags">rangedBows,rangedMachineguns,rangedPistols,rangedRifles,rangedShotguns,admin</set>
+	<set xpath="/buffs/buff[@name='buffArmCast']/effect_group/passive_effect[@name='ReloadSpeedMultiplier']/@tags">rangedBows,rangedMachineguns,rangedPistols,rangedRifles,rangedShotguns,admin</set>
+	<set xpath="/buffs/buff[@name='buffArmCast']/effect_group/passive_effect[@name='AttacksPerMinute']/@tags">meleeBlades,meleeClubs,meleeFists,meleeImprovised,meleeSpears,admin</set>
+
+	<!-- Update weapon handling for buffArmSplinted -->
+	<set xpath="/buffs/buff[@name='buffArmSplinted']/effect_group/passive_effect[@name='WeaponHandling']/@tags">rangedBows,rangedMachineguns,rangedPistols,rangedRifles,rangedShotguns,admin</set>
+	<set xpath="/buffs/buff[@name='buffArmSplinted']/effect_group/passive_effect[@name='ReloadSpeedMultiplier']/@tags">rangedBows,rangedMachineguns,rangedPistols,rangedRifles,rangedShotguns,admin</set>
+	<set xpath="/buffs/buff[@name='buffArmSplinted']/effect_group/passive_effect[@name='AttacksPerMinute']/@tags">meleeBlades,meleeClubs,meleeFists,meleeImprovised,meleeSpears,admin</set>
+
+	<!-- Update buffWatchYourAim -->
+	<set xpath="/buffs/buff[@name='buffWatchYourAim']/effect_group/passive_effect[@name='BlockDamage' and @value='700']/@tags">rangedBows,rangedMachineguns,rangedPistols,rangedRifles,rangedShotguns,admin</set>
+	<set xpath="/buffs/buff[@name='buffWatchYourAim']/effect_group/passive_effect[@name='BlockDamage' and @value='100']/@tags">rangedShotguns</set>
+	
+	<!-- Update buffMeleePreferred -->
+	<set xpath="/buffs/buff[@name='buffMeleePreferred']/effect_group/passive_effect[@name='EntityDamage' and @value='1.5']/@tags">meleeBlades,meleeClubs,meleeFists,meleeImprovised,meleeSpears,admin</set>
+	<set xpath="/buffs/buff[@name='buffMeleePreferred']/effect_group/passive_effect[@name='EntityDamage' and @value='-10']/@tags">rangedBows,rangedMachineguns,rangedPistols,rangedRifles,rangedShotguns,admin</set>
+
+	<!-- Update buffReloadMovementPenalty -->
+	<remove xpath="/buffs/buff[@name='buffReloadMovementPenalty']"/>
+	<append xpath="/buffs">
+		<!-- TRIGGERED_BY: Buffs = buffStatusCheck01 -->
+		<!-- Decreases movement speed while reloading -->
+		<buff name="buffReloadMovementPenalty" name_key="Reloading" icon="ui_game_symbol_pack_mule" icon_color="255,128,0" hidden="false">
+			<stack_type value="ignore"/>
+			<damage_type value="stun"/>
+			<duration value="7"/>
+
+			<effect_group>
+				<triggered_effect trigger="onReloadStop" action="RemoveBuff" buff="buffReloadMovementPenalty"/>
+				<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="buffReloadMovementPenalty"/>
+			</effect_group>
+
+			<effect_group>
+				<requirement name="ProgressionLevel" progression_name="statDexterity" operation="Equals" value="1"/>
+					<passive_effect name="WalkSpeed" operation="perc_subtract" value=".90"/>
+					<passive_effect name="RunSpeed" operation="perc_subtract" value=".90"/>
+					<passive_effect name="JumpStrength" operation="perc_subtract" value=".90"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="ProgressionLevel" progression_name="statDexterity" operation="Equals" value="2"/>
+					<passive_effect name="WalkSpeed" operation="perc_subtract" value=".85"/>
+					<passive_effect name="RunSpeed" operation="perc_subtract" value=".85"/>
+					<passive_effect name="JumpStrength" operation="perc_subtract" value=".85"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="ProgressionLevel" progression_name="statDexterity" operation="Equals" value="3"/>
+					<passive_effect name="WalkSpeed" operation="perc_subtract" value=".80"/>
+					<passive_effect name="RunSpeed" operation="perc_subtract" value=".80"/>
+					<passive_effect name="JumpStrength" operation="perc_subtract" value=".80"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="ProgressionLevel" progression_name="statDexterity" operation="Equals" value="4"/>
+					<passive_effect name="WalkSpeed" operation="perc_subtract" value=".75"/>
+					<passive_effect name="RunSpeed" operation="perc_subtract" value=".75"/>
+					<passive_effect name="JumpStrength" operation="perc_subtract" value=".75"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="ProgressionLevel" progression_name="statDexterity" operation="Equals" value="5"/>
+					<passive_effect name="WalkSpeed" operation="perc_subtract" value=".70"/>
+					<passive_effect name="RunSpeed" operation="perc_subtract" value=".70"/>
+					<passive_effect name="JumpStrength" operation="perc_subtract" value=".70"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="ProgressionLevel" progression_name="statDexterity" operation="Equals" value="6"/>
+					<passive_effect name="WalkSpeed" operation="perc_subtract" value=".65"/>
+					<passive_effect name="RunSpeed" operation="perc_subtract" value=".65"/>
+					<passive_effect name="JumpStrength" operation="perc_subtract" value=".65"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="ProgressionLevel" progression_name="statDexterity" operation="Equals" value="7"/>
+					<passive_effect name="WalkSpeed" operation="perc_subtract" value=".60"/>
+					<passive_effect name="RunSpeed" operation="perc_subtract" value=".60"/>
+					<passive_effect name="JumpStrength" operation="perc_subtract" value=".60"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="ProgressionLevel" progression_name="statDexterity" operation="Equals" value="8"/>
+					<passive_effect name="WalkSpeed" operation="perc_subtract" value=".55"/>
+					<passive_effect name="RunSpeed" operation="perc_subtract" value=".55"/>
+					<passive_effect name="JumpStrength" operation="perc_subtract" value=".55"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="ProgressionLevel" progression_name="statDexterity" operation="Equals" value="9"/>
+					<passive_effect name="WalkSpeed" operation="perc_subtract" value=".50"/>
+					<passive_effect name="RunSpeed" operation="perc_subtract" value=".50"/>
+					<passive_effect name="JumpStrength" operation="perc_subtract" value=".50"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="ProgressionLevel" progression_name="statDexterity" operation="Equals" value="10"/>
+					<passive_effect name="WalkSpeed" operation="perc_subtract" value=".45"/>
+					<passive_effect name="RunSpeed" operation="perc_subtract" value=".45"/>
+					<passive_effect name="JumpStrength" operation="perc_subtract" value=".45"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="ProgressionLevel" progression_name="statDexterity" operation="Equals" value="11"/>
+					<passive_effect name="WalkSpeed" operation="perc_subtract" value=".40"/>
+					<passive_effect name="RunSpeed" operation="perc_subtract" value=".40"/>
+					<passive_effect name="JumpStrength" operation="perc_subtract" value=".40"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="ProgressionLevel" progression_name="statDexterity" operation="Equals" value="12"/>
+					<passive_effect name="WalkSpeed" operation="perc_subtract" value=".35"/>
+					<passive_effect name="RunSpeed" operation="perc_subtract" value=".35"/>
+					<passive_effect name="JumpStrength" operation="perc_subtract" value=".35"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="ProgressionLevel" progression_name="statDexterity" operation="Equals" value="13"/>
+					<passive_effect name="WalkSpeed" operation="perc_subtract" value=".30"/>
+					<passive_effect name="RunSpeed" operation="perc_subtract" value=".30"/>
+					<passive_effect name="JumpStrength" operation="perc_subtract" value=".30"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="ProgressionLevel" progression_name="statDexterity" operation="Equals" value="14"/>
+					<passive_effect name="WalkSpeed" operation="perc_subtract" value=".25"/>
+					<passive_effect name="RunSpeed" operation="perc_subtract" value=".25"/>
+					<passive_effect name="JumpStrength" operation="perc_subtract" value=".25"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="ProgressionLevel" progression_name="statDexterity" operation="Equals" value="15"/>
+					<passive_effect name="WalkSpeed" operation="perc_subtract" value=".20"/>
+					<passive_effect name="RunSpeed" operation="perc_subtract" value=".20"/>
+					<passive_effect name="JumpStrength" operation="perc_subtract" value=".20"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="ProgressionLevel" progression_name="statDexterity" operation="Equals" value="16"/>
+					<passive_effect name="WalkSpeed" operation="perc_subtract" value=".15"/>
+					<passive_effect name="RunSpeed" operation="perc_subtract" value=".15"/>
+					<passive_effect name="JumpStrength" operation="perc_subtract" value=".15"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="ProgressionLevel" progression_name="statDexterity" operation="Equals" value="17"/>
+					<passive_effect name="WalkSpeed" operation="perc_subtract" value=".10"/>
+					<passive_effect name="RunSpeed" operation="perc_subtract" value=".10"/>
+					<passive_effect name="JumpStrength" operation="perc_subtract" value=".10"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="ProgressionLevel" progression_name="statDexterity" operation="Equals" value="18"/>
+					<passive_effect name="WalkSpeed" operation="perc_subtract" value=".5"/>
+					<passive_effect name="RunSpeed" operation="perc_subtract" value=".5"/>
+					<passive_effect name="JumpStrength" operation="perc_subtract" value=".5"/>
+			</effect_group>		
+		</buff>
+	</append>
+
+
+	<!-- ************** BOWS **************-->
+	<set xpath="/buffs/buff[@name='buffHoldBreathAiming01']/effect_group/passive_effect[@name='WeaponHandling' and @tags='perkArchery' and @value='1.1,0']/@tags">rangedBows</set>
+	<set xpath="/buffs/buff[@name='twitch_weapon_bows']/effect_group/passive_effect[@name='InternalDamageModifier']/@tags">rangedBows</set>
+
+	<!-- ************** MACHINE GUNS **************-->
+	<set xpath="/buffs/buff[@name='twitch_weapon_machinegunner']/effect_group/passive_effect[@name='InternalDamageModifier' and @tags='perkMachineGunner']/@tags">rangedMachineguns</set>
+
+	<!-- ************** PISTOL **************-->
+	<set xpath="/buffs/buff[@name='buffPerkGunslinger']/effect_group/requirement[@name='ProgressionLevel' and @progression_name='perkGunslinger']/@progression_name">rangedPistols</set> 
+	<set xpath="/buffs/buff[@name='buffPerkGunslingerBonus']/effect_group/requirement[@name='ItemHasTags' and @tags='perkGunslinger']/@tags">rangedPistols</set> 
+	<set xpath="/buffs/buff[@name='twitch_weapon_pistols']/effect_group/passive_effect[@name='InternalDamageModifier']/@tags">rangedPistols</set>
+
+	<!-- ************** RIFLES **************-->
+	<!-- Rifles skill replacement for Deadeye-->
+	<set xpath="/buffs/buff[@name='buffDeadEye']/effect_group/triggered_effect/requirement[@name='ProgressionLevel' and @progression_name='perkDeadEye']/@progression_name">rangedRifles</set>
+	<set xpath="/buffs/buff[@name='buffDeadEye']/effect_group/passive_effect/requirement[@name='ItemHasTags' and @tags='perkDeadEye']/@tags">rangedRifles</set>
+	<set xpath="/buffs/buff[@name='twitch_weapon_rifles']/effect_group/passive_effect[@name='InternalDamageModifier' and @tags='perkDeadEye']/@tags">rangedRifles</set>
+
+	<!-- Update buffHoldBreathAiming01 -->
+	<set xpath="/buffs/buff[@name='buffHoldBreathAiming01']/effect_group/requirement[@name='HoldingItemHasTags']/@tags">rangedRifles</set>
+	<set xpath="//buffs/buff[@name='buffHoldBreathAiming01']/effect_group/passive_effect/requirement[@name='ProgressionLevel' and @progression_name='perkDeadEye']/@progression_name">rangedRifles</set>
+	<set xpath="/buffs/buff[@name='buffHoldBreathAiming01']/effect_group/passive_effect[@name='WeaponHandling' and @tags='perkDeadEye' and @value='1,0']/@tags">rangedRifles</set>
+	
+	<!-- ************** SHOTGUN **************-->
+	<set xpath="/buffs/buff[@name='twitch_weapon_shotguns']/effect_group/passive_effect[@name='InternalDamageModifier']/@tags">rangedShotguns</set>
+	
+	<!-- ************** BLADES **************-->
+	<set xpath="/buffs/buff[@name='buffStatusCheck01']/effect_group/triggered_effect/requirement[@name='ProgressionLevel' and @progression_name='perkDeepCuts']/@progression_name">meleeBlades</set>
+
+	<!-- ************** CLUBS **************-->
+	<set xpath="/buffs/buff[@name='buffPerkPummelPete']/effect_group/requirement[@name='ProgressionLevel' and @progression_name='perkPummelPete']/@progression_name">meleeClubs</set>
+	<set xpath="/buffs/buff[@name='buffPerkPummelPeteBonus']/effect_group/passive_effect[@name='EntityDamage' and @tags='perkPummelPete']/@tags">meleeClubs</set>
+
+	<!-- ************** FISTS **************-->
+	<set xpath="/buffs/buff[@name='buffBarBrawling3KillerInstinct']/effect_group/passive_effect/requirement[@name='ItemHasTags' and @tags='perkBrawler']/@tags">meleeFists</set>
+	<set xpath="/buffs/buff[@name='buffPerkBarBrawling8CompleteBonus']/effect_group/requirement[@name='ItemHasTags' and @tags='perkBrawler']/@tags">meleeFists</set>
+	<set xpath="/buffs/buff[@name='buffPerkBarBrawling8CompleteBonus']/effect_group/passive_effect/requirement[@name='ItemHasTags' and @tags='perkBrawler']/@tags">meleeFists</set>
+	<set xpath="/buffs/buff[@name='buffBeer']/effect_group/passive_effect/requirement[@name='HoldingItemHasTags' and @tags='perkBrawler']/@tags">meleeFists</set>
+
+	<!-- ************** IMPROVISED WEAPON **************-->
+	
+	<!-- ************** SPEAR WEAPON **************-->
+	<set xpath="/buffs/buff[@name='buffSpearHunter7QuickStrike']/effect_group/passive_effect[@name='EntityDamage' and @tags='perkJavelinMaster']/@tags">meleeSpears</set>
+	
+	<!-- ************** SKILLS *******************-->
+	<!-- PARKOUR -->
+	<set xpath="/buffs/buff[@name='buffLegSprainedFallTrigger']/effect_group/requirement[@name='ProgressionLevel' and @progression_name='perkParkour']/@value">50</set>
+	<set xpath="/buffs/buff[@name='buffLegSprainedFallTrigger']/effect_group/requirement[@name='ProgressionLevel' and @progression_name='perkParkour']/@progression_name">skillParkour</set>
+	<set xpath="/buffs/buff[@name='twitch_buffWeakJump']/effect_group/passive_effect[@name='PerkLevel' and @tags='perkParkour']/@tags">skillParkour</set>
+	<remove xpath="/buffs/buff[@name='buffLegSprainedCHTrigger']"/>
+	<append xpath="/buffs">
+		<!-- *** buffLegSprainedCHTrigger -->
+		<!-- TRIGGERED_BY: Items = Various entity hands -->
+		<!-- Resets hurt leg counter or starts a sprained leg -->
+		<buff name="buffLegSprainedCHTrigger" name_key="buffLegSprainedFallTrigger"  icon="ui_game_symbol_critical" icon_color="255,0,0" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0.1"/>
+
+			<effect_group>
+				<!-- Add buffOnAnyCrit to roll for other critical buffs -->
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffOnAnyCrit"/>
+			</effect_group>
+
+			<effect_group>
+				<!-- If any leg buffs, set counter -->
+				<requirements compare_type="or">
+					<requirement name="HasBuff" buff="buffLegBroken"/>
+					<requirement name="HasBuff" buff="buffLegSplinted"/>
+					<requirement name="HasBuff" buff="buffLegCast"/>
+				</requirements>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$legHurtCounter" operation="set" value="7208"/>
+			</effect_group>
+
+			<effect_group>
+				<!-- If no leg buffs, add sprained leg buff -->
+				<requirement name="!HasBuff" buff="buffLegBroken"/>
+				<requirement name="!HasBuff" buff="buffLegSplinted"/>
+				<requirement name="!HasBuff" buff="buffLegCast"/>
+				<requirement name="ProgressionLevel" progression_name="skillParkour" operation="LT" value="50"/>
+					<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffLegSprained"/>
+			</effect_group>
+		</buff>
+	</append>
+	<set xpath="/buffs/buff[@name='buffPlayerFallingDamage']/effect_group/requirement[@name='ProgressionLevel' and @progression_name='perkParkour' and @value='3']/@value">25</set>
+	<set xpath="/buffs/buff[@name='buffPlayerFallingDamage']/effect_group/requirement[@name='ProgressionLevel' and @progression_name='perkParkour' and @value='25']/@progression_name">skillParkour</set>
+	
+</configs>

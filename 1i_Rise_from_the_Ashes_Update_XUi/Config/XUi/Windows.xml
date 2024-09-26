@@ -1,0 +1,77 @@
+<configs>
+
+	<set xpath ="/windows/window[@name='HUDLeftStatBars']/rect[@name='hud' and @pos='9,156']/@rows">4</set>
+	<set xpath ="/windows/window[@name='HUDLeftStatBars']/rect[@name='hud' and @pos='9,156']/@pos">9,256</set>	
+
+	<set xpath ="/windows/window[@name='HUDLeftStatBars']/rect[@name='hud' and @pos='90,132']/@pos">90,233</set>	
+
+	<set xpath ="/windows/window[@name='windowTargetBar']/@visibility">always</set>	
+
+	<insertAfter xpath="/windows/window[@name='HUDLeftStatBars']/rect[1]/rect[@stat_type='Health']">
+
+		<rect width="171" height="46" pos="0,-150" controller="HUDStatBar" stat_type="Food" visible="{statvisible}">
+			<sprite depth="1" name="border" color="0,0,0,128" type="sliced"/>
+
+			<sprite depth="2" name="background" color="0,0,0,140" type="sliced" />
+			<filledsprite depth="3" name="background" color="110,110,110,128" width="169" type="filled" fill="{statmodifiedmax}" />
+
+			<filledsprite depth="5" name="BarContent" color="66,233,67,128" width="169" type="filled" fill="0" />
+			<sprite depth="6" name="Icon" atlas="{staticonatlas|once}" sprite="{staticon|once}" size="35,35" pos="26,-24" pivot="center" foregroundlayer="true"/>
+			<label depth="7" name="TextContent" pos="44,-23" font_size="32" color="[white]" justify="center" pivot="left" text="{statcurrentwithmax}" width="125" height="35"/>
+
+			<sprite depth="8" name="border" color="0,0,0,255" type="sliced" fillcenter="false"/>
+			<filledsprite depth="8" name="background" color="0,0,0,255" width="171" fillcenter="false" type="filled" fill="{statmodifiedmax}" />
+			<filledsprite depth="3" name="background" color="0,0,0,255" width="170" fillcenter="false" type="filled" fill="{statmodifiedmax}" />
+		</rect>
+
+		<rect width="171" height="46" pos="0,-200" controller="HUDStatBar" stat_type="Water" visible="{statvisible}">
+			<sprite depth="1" name="border" color="0,0,0,128" type="sliced"/>
+
+			<sprite depth="2" name="background" color="0,0,0,140" type="sliced" />
+			<filledsprite depth="3" name="background" color="110,110,110,128" width="169" type="filled" fill="{statmodifiedmax}" />
+
+			<filledsprite depth="5" name="BarContent" color="36,197,230,128" width="169" type="filled" fill="0" />
+			<sprite depth="6" name="Icon" atlas="{staticonatlas|once}" sprite="{staticon|once}" size="35,35" pos="26,-24" pivot="center" foregroundlayer="true"/>
+			<label depth="7" name="TextContent" pos="44,-23" font_size="32" color="[white]" justify="center" pivot="left" text="{statcurrentwithmax}" width="125" height="35"/>
+
+			<sprite depth="8" name="border" color="0,0,0,255" type="sliced" fillcenter="false"/>
+			<filledsprite depth="8" name="background" color="0,0,0,255" width="171" fillcenter="false" type="filled" fill="{statmodifiedmax}" />
+			<filledsprite depth="3" name="background" color="0,0,0,255" width="170" fillcenter="false" type="filled" fill="{statmodifiedmax}" />
+		</rect>
+	</insertAfter >
+<!--
+	<insertAfter xpath="/windows/window[@name='windowBackpack']/panel[@name='header']/label[@text='INVENTORY']">
+		<scrollbar	name="scrollbar3"
+					depth="12"
+					pos="612,-210"
+					width="15"
+					height="350"
+					padding="10"
+					foregroundname="handler"
+					foregroundsprite="ui_game_panel_header"
+					foregroundcolor="255,255,255"
+					backgroundname="background"
+					backgroundsprite="ui_game_panel_header"
+					backgroundcolor="0,0,0"
+					pivot="center"
+					globalopacitymod="0">
+
+			<button name="handler" sprite="ui_game_panel_header" pivot="center" hovercolor="128,128,128" color="255,255,255" defaultcolor="255,255,255" hoverscale="1" />
+			<button name="background" sprite="ui_game_panel_header" pivot="center" hovercolor="0,0,0" color="0,0,0" defaultcolor="0,0,0" hoverscale="1" sound_play_on_press_down="[paging_click]" />
+		</scrollbar>
+	</insertAfter >
+
+	-->
+	<remove xpath="/windows/window[@name='windowBackpack']/panel[@name='header']/label[@text='{currencyamount}']"/>
+	<remove xpath="/windows/window[@name='windowBackpack']/panel[@name='header']/sprite[@sprite='ui_game_symbol_coin']"/>
+
+	<insertAfter xpath="/windows/window[@name='windowBackpack']/panel[@name='header']/rect[@controller='ContainerStandardControls']">
+		<!-- Currency and Encumberance Display -->					
+		<sprite depth="4" pos="410,-10" name="costIcon" sprite="ui_game_symbol_coin" size="24,24"  color="[white]" foregroundlayer="true" />
+		<label depth="2" pos="410,-8" width="100" height="28" text="{currencyamount}" justify="right" />										
+		<sprite depth="4" pos="520,-10"  ame="muleIcon" sprite="ui_game_symbol_pack_mule" size="24,24" color="[white]" foregroundlayer="true" />
+		<label depth="2" pos="480,-8" width="100" height="28" text="{cvar(.encumbrancePercent:0)}" justify="right" />
+		<label depth="2" pos="575,-8" width="25" height="28" text="%" justify="right" />	
+	</insertAfter>
+
+</configs>

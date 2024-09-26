@@ -1,0 +1,6 @@
+<config>
+	<remove xpath="/progression/attributes" />
+	<remove xpath="/progression/skills" />
+	<remove xpath="/progression/crafting_skills" />
+	<remove xpath="/progression/perks" />
+</config>

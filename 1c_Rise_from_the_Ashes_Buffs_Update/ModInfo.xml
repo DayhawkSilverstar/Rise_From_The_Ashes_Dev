@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+	<Name value="Rise_From_The_Ashes_Buffs_Update" />
+	<DisplayName value="Updates existing Buffs" />
+	<Description value="This modlet updates the vanilla buffs for use with Rise from the Ashes" />
+	<Author value="Dayhawk" />
+	<Version value="1.0.0" />
+</xml>

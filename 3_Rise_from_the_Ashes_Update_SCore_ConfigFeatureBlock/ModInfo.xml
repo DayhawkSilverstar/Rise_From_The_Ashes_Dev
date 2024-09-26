@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+	<Name value="2c_Rise_from_the_Ashes_Update_SCore_ConfigFeatureBlock" />
+	<DisplayName value="Rise Update" />
+	<Description value="Updates the SCore configfeature block so that it uses the SCore features I want in rise." />
+	<Author value="Dayhawk" />
+	<Website value=""/>
+	<Version value="1.0.0" />
+</xml>

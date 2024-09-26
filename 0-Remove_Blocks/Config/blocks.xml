@@ -1,0 +1,5 @@
+<config>    
+    <remove xpath="/blocks/block[@name='cntBirdnest']" />
+    <remove xpath="/blocks/block[@name='cntBirdnestCorner']" />
+    <remove xpath="/blocks/block[@name='torchWallHolder']" />
+</config>

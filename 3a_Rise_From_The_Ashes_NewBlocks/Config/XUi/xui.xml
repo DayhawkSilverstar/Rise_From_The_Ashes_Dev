@@ -1,0 +1,20 @@
+<RiseFromTheAshes>
+		<insertAfter xpath="/xui/ruleset/window_group[@name='messageBox']">
+			<window_group name="workstation_ComputerStation" controller="XUiC_WorkstationWindowGroup" open_backpack_on_open="true" close_compass_on_open="true">
+				<window name="windowCraftingList"/>
+				<window name="craftingInfoPanel"/>
+				<window name="windowCraftingQueue"/>
+				<window name="windowToolscomputerStation"/>
+				<window name="windowOutput"/>
+				<window name="windowNonPagingHeader"/>
+			</window_group>
+			<window_group name="workstation_TailorWorkstation" controller="XUiC_WorkstationWindowGroup" open_backpack_on_open="true" close_compass_on_open="true">
+				<window name="windowCraftingList"/>
+				<window name="craftingInfoPanel"/>
+				<window name="windowCraftingQueue"/>
+				<window name="windowToolsTailorWorkstation"/>
+				<window name="windowOutput"/>
+				<window name="windowNonPagingHeader"/>
+			</window_group>
+		</insertAfter>
+</RiseFromTheAshes>

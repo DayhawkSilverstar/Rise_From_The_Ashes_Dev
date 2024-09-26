@@ -1,0 +1,11 @@
+Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate Text,german,spanish,french,italian,japanese,koreana,polish,brazilian,russian,turkish,scJobhinese,tchinese
+quest_StartingQuest,Quest,Quest Info,,,"Rise From The Ashes",,,,,,,,,,,,
+quest_StartingQuestTip1_title,Quest,Quest Info,,,"Prepared",,,,,,,,,,,,
+quest_StartingQuestTip1,Quest,Quest Info,,,"Make a bedroll, find food and shelter. We trained you in tracking small animals so get close to the ground and find their tracks. In your pack you will find your survival gear. Open it up and put on the armor and ready your weapon.",,,,,,,,,,,,
+quest_StartingQuest_description,Quest,Quest Info,,,"Line 1",,,,,,,,,,,,
+quest_GoToTrader_description,Quest,Quest Info,,,"Line 2",,,,,,,,,,,,
+quest_GoToTrader_description3,Quest,Quest Info,,,"We've taken measures to assist you in your mission. Traders have been contacted and are willing to engage in trade with you. They possess resources within their compound that they're reluctantly willing to donate to aid in your survival.\n\nShould you encounter any other survivors during your journey, please ensure their safety and bring them to the trader's compound. They will be provided with shelter, provisions, and, most importantly, a safe passage out of the infested area.",,,,,,,,,,,,
+quest_GoToTrader_description4,Quest,Quest Info,,,"Line 5",,,,,,,,,,,,
+quest_StartingQuestTip1_title,Journal Tip,,,,Message from the Safe Zone,,,,,,,,,,,,
+quest_GoToTrader_description3_title,Quest,Quest Info,,,"Head to the trader",,,,,,,,,,,,
+

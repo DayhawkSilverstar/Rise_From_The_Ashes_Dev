@@ -1,0 +1,6 @@
+<configs>
+	<!-- Add buffs to player when they enter the world -->
+	<append xpath="//entity_class[@name='playerMale']/effect_group/triggered_effect[@trigger='onSelfEnteredGame']/@buff">,riseFromTheAshes-StatsMonitor,riseFromTheAshes2-Give_EXP,riseFromTheAshes-Level_Skills,riseFromTheAshes-StateUpdate,riseFromTheAshes-LearnByHarvesting,flagLearnByDoingChecks</append>
+
+	
+</configs>

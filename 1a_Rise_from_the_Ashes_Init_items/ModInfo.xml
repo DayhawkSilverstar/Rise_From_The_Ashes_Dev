@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+	<Name value="2_Rise_From_The_Ashes_Init_Items" />
+	<DisplayName value="Init Items" />
+	<Description value="This modlet replaces the vanilla items." />
+	<Author value="Dayhawk" />
+	<Website value=""/>
+	<Version value="1.0.0" />
+</xml>

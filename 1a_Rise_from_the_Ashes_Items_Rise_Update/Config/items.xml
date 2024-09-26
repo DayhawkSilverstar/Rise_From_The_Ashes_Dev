@@ -1,0 +1,1551 @@
+<configs>
+    <!-- Remove magazine group related to vanilla crafting system -->
+    <remove xpath="/items/item[@name='harvestingToolsSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='repairToolsSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='salvageToolsSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='knucklesSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='bladesSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='clubsSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='sledgehammersSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='spearsSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='bowsSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='handgunsSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='shotgunsSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='riflesSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='machineGunsSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='explosivesSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='roboticsSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='armorSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='medicalSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='foodSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='seedSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='electricianSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='trapsSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='workstationSkillMagazine']/effect_group[@tiered='false']"/>
+    <remove xpath="/items/item[@name='vehiclesSkillMagazine']/effect_group[@tiered='false']"/>
+
+
+    <!-- Add Exp groups to the magazines -->
+    <insertAfter xpath="/items/item[@name='armorSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">				
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$leatherworkingExpTotal" operation="add" value="@.Leatherworking_addResearchT2"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$tailoringExpTotal" operation="add" value="@.Tailoring_addResearchT2"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$blacksmithingExpTotal" operation="add" value="@.Blacksmithing_addResearchT2"/>                        
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Blacksmithing, Leatherworking, and Tailoring ({cvar(.Blacksmithing_addResearchT2:0)},{cvar(.Leatherworking_addResearchT2:0)},{cvar(.Tailoring_addResearchT2:0)})"/>            
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>                        
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='harvestingToolsSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">				
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$constructionExpTotal" operation="add" value="@.Construction_addResearchT3"/>				
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Construction ({cvar(.Construction_addResearchT3:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='repairToolsSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$civilengineerExpTotal" operation="add" value="@.CivilEngineer_addResearchT3"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Civil Engineering ({cvar(.CivilEngineer_addResearchT3:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='salvageToolsSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$mechanicalengineerExpTotal" operation="add" value="@.MechanicalEngineer_addResearchT3"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Mechanical Engineering ({cvar(.MechanicalEngineer_addResearchT3:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='knucklesSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$fistExpTotal" operation="add" value="@.Fist_addResearchT3"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Fists ({cvar(.Fist_addResearchT3:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='bladesSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$bladeExpTotal" operation="add" value="@.Blade_addResearchT3"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Blades ({cvar(.Blade_addResearchT3:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='clubsSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$clubExpTotal" operation="add" value="@.Club_addResearchT3"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Clubs ({cvar(.Club_addResearchT3:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='sledgehammersSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$improvisedExpTotal" operation="add" value="@.Improvised_addResearchT3"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Improvised Weapons ({cvar(.Improvised_addResearchT3:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='spearsSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$spearExpTotal" operation="add" value="@.Spear_addResearchT3"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Spears ({cvar(.Spear_addResearchT3:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='bowsSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$bowExpTotal" operation="add" value="@.Bow_addResearchT3"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Bows ({cvar(.Bow_addResearchT3:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='handgunsSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$pistolExpTotal" operation="add" value="@.Pistol_addResearchT3"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Pistols ({cvar(.Pistol_addResearchT3:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='shotgunsSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$shotgunExpTotal" operation="add" value="@.Shotgun_addResearchT3"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Shotguns ({cvar(.Shotgun_addResearchT3:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='riflesSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$rifleExpTotal" operation="add" value="@.Rifle_addResearchT3"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Rifles ({cvar(.Rifle_addResearchT3:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='machineGunsSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$machinegunExpTotal" operation="add" value="@.Machinegun_addResearchT3"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Machineguns ({cvar(.Machinegun_addResearchT3:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='explosivesSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$demolitionsExpTotal" operation="add" value="@.Demolitions_addResearchT3"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Demolitions ({cvar(.Demolitions_addResearchT3:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='roboticsSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">				
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$softwareengineerExpTotal" operation="add" value="@.SoftwareEngineer_addResearchT3"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Software Engineering ({cvar(.SoftwareEngineer_addResearchT3:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='medicalSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$medicalExpTotal" operation="add" value="@.Medical_addResearchT3"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Medical ({cvar(.Medical_addResearchT3:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='foodSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$cookingExpTotal" operation="add" value="@.Cooking_addResearchT3"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Cooking ({cvar(.Cooking_addResearchT3:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='seedSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$farmingExpTotal" operation="add" value="@.Farming_addResearchT3"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Farming ({cvar(.Farming_addResearchT3:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='electricianSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$electricalengineerExpTotal" operation="add" value="@.ElectricalEngineer_addResearchT3"/>				
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Electrical Engineering ({cvar(.ElectricalEngineer_addResearchT3:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='trapsSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">				
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$electricalengineerExpTotal" operation="add" value="@.ElectricalEngineer_addResearchT2"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$mechanicalengineerExpTotal" operation="add" value="@.MechanicalEngineer_addResearchT2"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$softwareengineerExpTotal" operation="add" value="@.SoftwareEngineer_addResearchT2"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Electrical, Mechanical, and Software Engineering ({cvar(.ElectricalEngineer_addResearchT2:0)},{cvar(.MechanicalEngineer_addResearchT2:0)},{cvar(.SoftwareEngineer_addResearchT2:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='workstationSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$blacksmithingExpTotal" operation="add" value="@.Blacksmithing_addResearchT3"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Blacksmithing ({cvar(.Blacksmithing_addResearchT3:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <insertAfter xpath="/items/item[@name='vehiclesSkillMagazine']/property[@name='Unlocks']">			
+        <effect_group tiered="false">
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$automotiveExpTotal" operation="add" value="@.Automotive_addResearchT3"/>				
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
+            <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Automotive ({cvar(.Automotive_addResearchT3:0)})"/>
+        </effect_group>
+    </insertAfter>
+
+    <append xpath="/items/item[@name='meleeToolRepairT0StoneAxe']"><property name="UnlockedBy" value="skillCarpentry"/></append>
+    <append xpath="/items/item[@name='meleeToolRepairT0StoneAxe']"><property name="ItemWeight" value="1.25"/></append>
+    <set xpath="/items/item[@name='meleeToolRepairT0StoneAxe']/property[@name='EconomicValue']/@value">175</set>
+    <set xpath="/items/item[@name='meleeToolRepairT0StoneAxe']/property[@name='Tags']/@value">axe,melee,light,tool,longShaft,repairTool,miningTool,attStrength,miningPerk,skillMining,woodCuttingPerk,skillWoodCutting,perkMotherLode,perkTheHuntsman,canHaveCosmetic,harvestingSkill,corpseRemoval,improvised</set>
+    <append xpath="/items/item[@name='meleeToolRepairT0TazasStoneAxe']"><property name="ItemWeight" value="1.25"/></append>
+    <set xpath="/items/item[@name='meleeToolRepairT0TazasStoneAxe']/property[@name='EconomicValue']/@value">1000</set>
+    <set xpath="/items/item[@name='meleeToolRepairT0TazasStoneAxe']/property[@name='Tags']/@value">axe,melee,light,tool,longShaft,tazas,repairTool,miningTool,attStrength,miningPerk,woodCuttingPerk,perkMotherLode,perkTheHuntsman,canHaveCosmetic,harvestingSkill,corpseRemoval,improvised</set>
+    <set xpath="/items/item[@name='meleeToolRepairT1ClawHammer']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='meleeToolRepairT1ClawHammer']"><property name="ItemWeight" value="1.5"/></append>
+    <set xpath="/items/item[@name='meleeToolRepairT1ClawHammer']/property[@name='EconomicValue']/@value">500</set>
+    <set xpath="/items/item[@name='meleeToolRepairT1ClawHammer']/property[@name='Tags']/@value">melee,light,tool,repairTool,repairToolInspect,longshaft,attStrength,miningPerk,perkMotherLode,canHaveCosmetic,repairingTools,improvised</set>
+    <set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='meleeToolRepairT3Nailgun']"><property name="ItemWeight" value="3"/></append>
+    <set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/property[@name='EconomicValue']/@value">1000</set>
+    <set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/property[@name='Tags']/@value">tool,nailgun,sideAttachments,repairTool,repairToolInspect,attStrength,miningPerk,canHaveCosmetic,noMods,repairingSkill,improvised</set>
+    <set xpath="/items/item[@name='meleeToolAxeT1IronFireaxe']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='meleeToolAxeT1IronFireaxe']"><property name="ItemWeight" value="6"/></append>
+    <set xpath="/items/item[@name='meleeToolAxeT1IronFireaxe']/property[@name='EconomicValue']/@value">350</set>
+    <set xpath="/items/item[@name='meleeToolAxeT1IronFireaxe']/property[@name='Tags']/@value">axe,melee,grunting,medium,tool,longShaft,attStrength,woodCuttingPerk,skillWoodCutting,canHaveCosmetic,harvestingSkill,corpseRemoval,improvised</set>
+    <set xpath="/items/item[@name='meleeToolAxeT2SteelAxe']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='meleeToolAxeT2SteelAxe']"><property name="ItemWeight" value="10"/></append>
+    <set xpath="/items/item[@name='meleeToolAxeT2SteelAxe']/property[@name='EconomicValue']/@value">700</set>
+    <set xpath="/items/item[@name='meleeToolPickT1IronPickaxe']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='meleeToolPickT1IronPickaxe']"><property name="ItemWeight" value="5"/></append>
+    <set xpath="/items/item[@name='meleeToolPickT1IronPickaxe']/property[@name='EconomicValue']/@value">350</set>
+    <set xpath="/items/item[@name='meleeToolPickT1IronPickaxe']/property[@name='Tags']/@value">melee,grunting,medium,tool,longShaft,attStrength,miningPerk,skillMining,perkMotherLode,miningTool,canHaveCosmetic,harvestingSkill,improvised</set>
+    <set xpath="/items/item[@name='meleeToolPickT2SteelPickaxe']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='meleeToolPickT2SteelPickaxe']"><property name="ItemWeight" value="12"/></append>
+    <set xpath="/items/item[@name='meleeToolPickT2SteelPickaxe']/property[@name='EconomicValue']/@value">700</set>
+    <append xpath="/items/item[@name='meleeToolShovelT0StoneShovel']"><property name="UnlockedBy" value="skillCarpentry"/></append>
+    <append xpath="/items/item[@name='meleeToolShovelT0StoneShovel']"><property name="ItemWeight" value="5"/></append>
+    <set xpath="/items/item[@name='meleeToolShovelT0StoneShovel']/property[@name='EconomicValue']/@value">175</set>
+    <set xpath="/items/item[@name='meleeToolShovelT0StoneShovel']/property[@name='Tags']/@value">melee,grunting,medium,tool,longShaft,shovel,attStrength,miningPerk,skillMining,perkMotherLode,canHaveCosmetic,harvestingSkill,improvised</set>
+    <set xpath="/items/item[@name='meleeToolShovelT1IronShovel']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='meleeToolShovelT1IronShovel']"><property name="ItemWeight" value="6"/></append>
+    <set xpath="/items/item[@name='meleeToolShovelT1IronShovel']/property[@name='EconomicValue']/@value">350</set>
+    <set xpath="/items/item[@name='meleeToolShovelT1IronShovel']/property[@name='Tags']/@value">melee,grunting,medium,tool,longShaft,shovel,attStrength,miningPerk,skillMining,perkMotherLode,canHaveCosmetic,harvestingSkill,improvised</set>
+    <set xpath="/items/item[@name='meleeToolShovelT2SteelShovel']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='meleeToolShovelT2SteelShovel']"><property name="ItemWeight" value="8"/></append>
+    <set xpath="/items/item[@name='meleeToolShovelT2SteelShovel']/property[@name='EconomicValue']/@value">1000</set>
+    <set xpath="/items/item[@name='meleeToolShovelT2SteelShovel']/property[@name='Tags']/@value">melee,grunting,medium,tool,longShaft,shovel,attStrength,miningPerk,skillMining,perkMotherLode,canHaveCosmetic,harvestingSkill,improvised</set>
+    <set xpath="/items/item[@name='meleeToolAxeT3Chainsaw']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='meleeToolAxeT3Chainsaw']"><property name="ItemWeight" value="15"/></append>
+    <set xpath="/items/item[@name='meleeToolAxeT3Chainsaw']/property[@name='EconomicValue']/@value">1500</set>
+    <set xpath="/items/item[@name='meleeToolAxeT3Chainsaw']/property[@name='Tags']/@value">melee,heavy,tool,motorTool,attStrength,miningPerk,perkMotherLode,chainsaw,canHaveCosmetic,harvestingSkill,corpseRemoval,improvised</set>
+    <set xpath="/items/item[@name='meleeToolPickT3Auger']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='meleeToolPickT3Auger']"><property name="ItemWeight" value="35"/></append>
+    <set xpath="/items/item[@name='meleeToolPickT3Auger']/property[@name='EconomicValue']/@value">1500</set>
+    <set xpath="/items/item[@name='meleeToolPickT3Auger']/property[@name='Tags']/@value">melee,heavy,tool,motorTool,attStrength,miningPerk,skillMining,perkMotherLode,miningTool,canHaveCosmetic,harvestingSkill,improvised</set>
+    <set xpath="/items/item[@name='meleeToolSalvageT1Wrench']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='meleeToolSalvageT1Wrench']"><property name="ItemWeight" value="1.25"/></append>
+    <set xpath="/items/item[@name='meleeToolSalvageT1Wrench']/property[@name='EconomicValue']/@value">350</set>
+    <set xpath="/items/item[@name='meleeToolSalvageT1Wrench']/property[@name='Tags']/@value">blunt,melee,grunting,light,tool,longShaft,attPerception,skillAutomotive,skillElectricalEngineer,skillMechanicalEngineer,canHaveCosmetic,salvageTool,salvagingSkill,improvised</set>
+    <set xpath="/items/item[@name='meleeToolSalvageT2Ratchet']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='meleeToolSalvageT2Ratchet']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='meleeToolSalvageT2Ratchet']/property[@name='EconomicValue']/@value">700</set>
+    <set xpath="/items/item[@name='meleeToolSalvageT2Ratchet']/property[@name='Tags']/@value">blunt,melee,grunting,light,tool,attPerception,skillAutomotive,skillElectricalEngineer,skillMechanicalEngineer,canHaveCosmetic,salvagingSkill,improvised</set>
+    <set xpath="/items/item[@name='meleeToolSalvageT3ImpactDriver']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='meleeToolSalvageT3ImpactDriver']"><property name="ItemWeight" value="6"/></append>
+    <set xpath="/items/item[@name='meleeToolSalvageT3ImpactDriver']/property[@name='EconomicValue']/@value">1500</set>
+    <set xpath="/items/item[@name='meleeToolSalvageT3ImpactDriver']/property[@name='Tags']/@value">blunt,melee,grunting,light,tool,attPerception,skillAutomotive,skillElectricalEngineer,skillMechanicalEngineer,canHaveCosmetic,salvagingSkill,improvised</set>
+    <append xpath="/items/item[@name='meleeWpnBladeT0BoneKnife']"><property name="UnlockedBy" value="skillCooking"/></append>
+    <append xpath="/items/item[@name='meleeWpnBladeT0BoneKnife']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='meleeWpnBladeT0BoneKnife']/property[@name='EconomicValue']/@value">175</set>
+    <set xpath="/items/item[@name='meleeWpnBladeT0BoneKnife']/property[@name='Tags']/@value">knife,melee,grunting,light,perkFlurryOfAgility,weapon,meleeWeapon,attAgility,perkDeepCuts,perkTheHuntsman,canHaveCosmetic,bladeSkill,corpseRemoval</set>
+    <set xpath="/items/item[@name='meleeWpnBladeT1HuntingKnife']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='meleeWpnBladeT1HuntingKnife']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='meleeWpnBladeT1HuntingKnife']/property[@name='EconomicValue']/@value">350</set>
+    <set xpath="/items/item[@name='meleeWpnBladeT1HuntingKnife']/property[@name='Tags']/@value">knife,melee,grunting,light,perkFlurryOfAgility,weapon,meleeWeapon,attAgility,perkDeepCuts,perkTheHuntsman,canHaveCosmetic,bladeSkill,corpseRemoval</set>
+    <append xpath="/items/item[@name='meleeWpnBladeT1CandyKnife']"><property name="ItemWeight" value="1.5"/></append>
+    <set xpath="/items/item[@name='meleeWpnBladeT1CandyKnife']/property[@name='EconomicValue']/@value">350</set>
+    <set xpath="/items/item[@name='meleeWpnBladeT1CandyKnife']/property[@name='Tags']/@value">knife,melee,grunting,light,perkFlurryOfAgility,weapon,meleeWeapon,attAgility,perkDeepCuts,perkTheHuntsman,canHaveCosmetic,bladeSkill,corpseRemoval</set>
+    <set xpath="/items/item[@name='meleeWpnBladeT3Machete']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='meleeWpnBladeT3Machete']"><property name="ItemWeight" value="1.5"/></append>
+    <set xpath="/items/item[@name='meleeWpnBladeT3Machete']/property[@name='EconomicValue']/@value">700</set>
+    <set xpath="/items/item[@name='meleeWpnBladeT3Machete']/property[@name='Tags']/@value">machete,melee,grunting,light,longShaft,perkFlurryOfAgility,weapon,meleeWeapon,attAgility,perkDeepCuts,perkTheHuntsman,canHaveCosmetic,bladeSkill,corpseRemoval</set>
+    <append xpath="/items/item[@name='meleeWpnClubT0WoodenClub']"><property name="UnlockedBy" value="skillCarpentry"/></append>
+    <append xpath="/items/item[@name='meleeWpnClubT0WoodenClub']"><property name="ItemWeight" value="4"/></append>
+    <set xpath="/items/item[@name='meleeWpnClubT0WoodenClub']/property[@name='EconomicValue']/@value">175</set>
+    <set xpath="/items/item[@name='meleeWpnClubT0WoodenClub']/property[@name='Tags']/@value">blunt,club,melee,grunting,light,longShaft,perkFlurryOfStrength,weapon,meleeWeapon,attStrength,meleeClubs,canHaveCosmetic,clubSkill</set>
+    <set xpath="/items/item[@name='meleeWpnClubT1BaseballBat']/property[@name='UnlockedBy']/@value">skillCarpentry</set>
+    <append xpath="/items/item[@name='meleeWpnClubT1BaseballBat']"><property name="ItemWeight" value="3"/></append>
+    <set xpath="/items/item[@name='meleeWpnClubT1BaseballBat']/property[@name='EconomicValue']/@value">350</set>
+    <set xpath="/items/item[@name='meleeWpnClubT1BaseballBat']/property[@name='Tags']/@value">blunt,club,melee,grunting,light,longShaft,perkFlurryOfStrength,weapon,meleeWeapon,attStrength,meleeClubs,canHaveCosmetic,clubSkill</set>
+    <append xpath="/items/item[@name='meleeWpnClubT1CandyClub']"><property name="ItemWeight" value="5"/></append>
+    <set xpath="/items/item[@name='meleeWpnClubT1CandyClub']/property[@name='EconomicValue']/@value">350</set>
+    <set xpath="/items/item[@name='meleeWpnClubT1CandyClub']/property[@name='Tags']/@value">blunt,club,melee,grunting,light,longShaft,perkFlurryOfStrength,weapon,meleeWeapon,attStrength,meleeClubs,canHaveCosmetic,clubSkill</set>
+    <set xpath="/items/item[@name='meleeWpnClubT3SteelClub']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='meleeWpnClubT3SteelClub']"><property name="ItemWeight" value="10"/></append>
+    <set xpath="/items/item[@name='meleeWpnClubT3SteelClub']/property[@name='EconomicValue']/@value">700</set>
+    <set xpath="/items/item[@name='meleeWpnClubT3SteelClub']/property[@name='Tags']/@value">blunt,club,melee,grunting,light,longShaft,perkFlurryOfStrength,weapon,meleeWeapon,attStrength,meleeClubs,canHaveCosmetic,clubSkill</set>
+    <append xpath="/items/item[@name='meleeWpnBatonT0PipeBaton']"><property name="UnlockedBy" value="skillMechanicalEngineer"/></append>
+    <append xpath="/items/item[@name='meleeWpnBatonT0PipeBaton']"><property name="ItemWeight" value="2.5"/></append>
+    <set xpath="/items/item[@name='meleeWpnBatonT0PipeBaton']/property[@name='EconomicValue']/@value">100</set>
+    <set xpath="/items/item[@name='meleeWpnBatonT0PipeBaton']/property[@name='Tags']/@value">melee,grunting,light,perkFlurryOfIntellect,weapon,meleeWeapon,noStunEffect,attIntellect,perkElectrocutioner,canHaveCosmetic,roboticsSkill,club</set>
+    <set xpath="/items/item[@name='meleeWpnBatonT2StunBaton']/property[@name='UnlockedBy']/@value">skillElectricalEngineer</set>
+    <append xpath="/items/item[@name='meleeWpnBatonT2StunBaton']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='meleeWpnBatonT2StunBaton']/property[@name='EconomicValue']/@value">350</set>
+    <set xpath="/items/item[@name='meleeWpnBatonT2StunBaton']/property[@name='Tags']/@value">melee,grunting,light,perkFlurryOfIntellect,weapon,meleeWeapon,attIntellect,perkElectrocutioner,canHaveCosmetic,roboticsSkill,stunBaton,club</set>
+    <append xpath="/items/item[@name='meleeWpnSpearT0StoneSpear']"><property name="UnlockedBy" value="skillCarpentry"/></append>
+    <append xpath="/items/item[@name='meleeWpnSpearT0StoneSpear']"><property name="ItemWeight" value="6"/></append>
+    <set xpath="/items/item[@name='meleeWpnSpearT0StoneSpear']/property[@name='EconomicValue']/@value">175</set>
+    <set xpath="/items/item[@name='meleeWpnSpearT0StoneSpear']/property[@name='Tags']/@value">melee,grunting,medium,weapon,meleeWeapon,longShaft,attPerception,perkJavelinMaster,perkFlurryOfPerception,canHaveCosmetic,spearSkill</set>
+    <set xpath="/items/item[@name='meleeWpnSpearT1IronSpear']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='meleeWpnSpearT1IronSpear']"><property name="ItemWeight" value="6"/></append>
+    <set xpath="/items/item[@name='meleeWpnSpearT1IronSpear']/property[@name='EconomicValue']/@value">350</set>
+    <set xpath="/items/item[@name='meleeWpnSpearT3SteelSpear']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='meleeWpnSpearT3SteelSpear']"><property name="ItemWeight" value="6"/></append>
+    <set xpath="/items/item[@name='meleeWpnSpearT3SteelSpear']/property[@name='EconomicValue']/@value">700</set>
+    <append xpath="/items/item[@name='meleeWpnSledgeT0StoneSledgehammer']"><property name="UnlockedBy" value="skillCarpentry"/></append>
+    <append xpath="/items/item[@name='meleeWpnSledgeT0StoneSledgehammer']"><property name="ItemWeight" value="10"/></append>
+    <set xpath="/items/item[@name='meleeWpnSledgeT0StoneSledgehammer']/property[@name='EconomicValue']/@value">175</set>
+    <set xpath="/items/item[@name='meleeWpnSledgeT0StoneSledgehammer']/property[@name='Tags']/@value">blunt,melee,grunting,heavy,sledge,weapon,meleeWeapon,longShaft,attStrength,perkSkullCrusher,perkFlurryOfStrength,canHaveCosmetic,sledgeSkill,improvised</set>
+    <set xpath="/items/item[@name='meleeWpnSledgeT1IronSledgehammer']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='meleeWpnSledgeT1IronSledgehammer']"><property name="ItemWeight" value="15"/></append>
+    <set xpath="/items/item[@name='meleeWpnSledgeT1IronSledgehammer']/property[@name='EconomicValue']/@value">350</set>
+    <set xpath="/items/item[@name='meleeWpnSledgeT1IronSledgehammer']/property[@name='Tags']/@value">blunt,melee,grunting,heavy,sledge,weapon,meleeWeapon,longShaft,attStrength,perkSkullCrusher,perkFlurryOfStrength,canHaveCosmetic,sledgeSkill,improvised</set>
+    <set xpath="/items/item[@name='meleeWpnSledgeT3SteelSledgehammer']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='meleeWpnSledgeT3SteelSledgehammer']"><property name="ItemWeight" value="20"/></append>
+    <set xpath="/items/item[@name='meleeWpnSledgeT3SteelSledgehammer']/property[@name='EconomicValue']/@value">700</set>
+    <set xpath="/items/item[@name='meleeWpnSledgeT3SteelSledgehammer']/property[@name='Tags']/@value">blunt,melee,grunting,heavy,sledge,weapon,meleeWeapon,longShaft,attStrength,perkSkullCrusher,perkFlurryOfStrength,canHaveCosmetic,sledgeSkill,improvised</set>
+    <append xpath="/items/item[@name='meleeWpnKnucklesT0LeatherKnuckles']"><property name="UnlockedBy" value="skillLeatherworking"/></append>
+    <append xpath="/items/item[@name='meleeWpnKnucklesT0LeatherKnuckles']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='meleeWpnKnucklesT0LeatherKnuckles']/property[@name='EconomicValue']/@value">45</set>
+    <set xpath="/items/item[@name='meleeWpnKnucklesT0LeatherKnuckles']/property[@name='Tags']/@value">blunt,melee,grunting,light,perkFlurryOfFortitude,weapon,attFortitude,perkBrawler,noBlades,canHaveCosmetic,knuckleSkill</set>
+    <set xpath="/items/item[@name='meleeWpnKnucklesT1IronKnuckles']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='meleeWpnKnucklesT1IronKnuckles']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='meleeWpnKnucklesT1IronKnuckles']/property[@name='EconomicValue']/@value">350</set>
+    <set xpath="/items/item[@name='meleeWpnKnucklesT1IronKnuckles']/property[@name='Tags']/@value">blunt,melee,grunting,light,perkFlurryOfFortitude,weapon,attFortitude,perkBrawler,noBlades,canHaveCosmetic,knuckleSkill</set>
+    <set xpath="/items/item[@name='meleeWpnKnucklesT3SteelKnuckles']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='meleeWpnKnucklesT3SteelKnuckles']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='meleeWpnKnucklesT3SteelKnuckles']/property[@name='Tags']/@value">blunt,melee,grunting,light,perkFlurryOfFortitude,weapon,attFortitude,perkBrawler,canHaveCosmetic,knuckleSkill,corpseRemoval</set>
+    <append xpath="/items/item[@name='meleeToolFlashlight02']"><property name="UnlockedBy" value="skillElectricalEngineer"/></append>
+    <append xpath="/items/item[@name='meleeToolFlashlight02']"><property name="ItemWeight" value="2"/></append>
+    <set xpath="/items/item[@name='meleeToolFlashlight02']/property[@name='EconomicValue']/@value">200</set>
+    <set xpath="/items/item[@name='meleeToolFlashlight02']/property[@name='Tags']/@value">blunt,melee,grunting,light,tool,noMods,improvised</set>
+    <append xpath="/items/item[@name='meleeToolTorch']"><property name="ItemWeight" value="3"/></append>
+    <set xpath="/items/item[@name='meleeToolTorch']/property[@name='EconomicValue']/@value">10</set>
+    <set xpath="/items/item[@name='meleeToolTorch']/property[@name='Tags']/@value">blunt,melee,tool,weapon,meleeWeapon,heldTorch,noMods,improvised</set>
+    <append xpath="/items/item[@name='meleeToolWireTool']"><property name="UnlockedBy" value="skillMechanicalEngineer"/></append>
+    <append xpath="/items/item[@name='meleeToolWireTool']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='meleeToolWireTool']/property[@name='EconomicValue']/@value">200</set>
+    <set xpath="/items/item[@name='meleeToolWireTool']/property[@name='Tags']/@value">tool,noMods,electricianSkill</set>
+    <append xpath="/items/item[@name='meleeToolPaintTool']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='meleeToolPaintTool']/property[@name='EconomicValue']/@value">200</set>
+    <set xpath="/items/item[@name='meleeToolPaintTool']/property[@name='Tags']/@value">tool,noMods</set>
+
+    <!-- PIPE PISTOL -->
+    <set xpath="//item[@name='gunHandgunT0PipePistol']/effect_group/passive_effect[@tags='perkGunslinger']/@tags">rangedPistols</set>
+    <append xpath="/items/item[@name='gunHandgunT0PipePistol']"><property name="UnlockedBy" value="skillMechanicalEngineer"/></append>
+    <append xpath="/items/item[@name='gunHandgunT0PipePistol']"><property name="ItemWeight" value="2"/></append>
+    <set xpath="/items/item[@name='gunHandgunT0PipePistol']/property[@name='EconomicValue']/@value">100</set>
+    <set xpath="/items/item[@name='gunHandgunT0PipePistol']/property[@name='Tags']/@value">weapon,ranged,holdBreathAiming,reloadPenalty,gun,shortRange,revolver,barrelAttachments,sideAttachments,smallTopAttachments,attAgility,rangedPistols,9mmGun,attachmentsIncluded,canHaveCosmetic,handgunSkill</set>
+
+    <!-- HANDGUN -->
+    <set xpath="//item[@name='gunHandgunT1Pistol']/effect_group/passive_effect[@tags='perkGunslinger,9mmGun']/@tags">rangedPistols,9mmGun</set>
+    <set xpath="//item[@name='gunHandgunT1Pistol']/effect_group/passive_effect[@tags='perkGunslinger']/@tags">rangedPistols</set>
+    <set xpath="/items/item[@name='gunHandgunT1Pistol']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='gunHandgunT1Pistol']"><property name="ItemWeight" value="1.5"/></append>
+    <set xpath="/items/item[@name='gunHandgunT1Pistol']/property[@name='EconomicValue']/@value">500</set>
+    <set xpath="/items/item[@name='gunHandgunT1Pistol']/property[@name='Tags']/@value">weapon,ranged,holdBreathAiming,reloadPenalty,gun,shortRange,pistol,barrelAttachments,sideAttachments,smallTopAttachments,magazine,firingMode,attAgility,rangedPistols,9mmGun,attachmentsIncluded,canHaveCosmetic,handgunSkill,rangedPistols</set>
+
+    <!-- SMG5 -->
+    <set xpath="//item[@name='gunHandgunT3SMG5']/effect_group/passive_effect[@tags='perkGunslinger']/@tags">rangedPistols</set>
+    <set xpath="/items/item[@name='gunHandgunT3SMG5']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='gunHandgunT3SMG5']"><property name="ItemWeight" value="8"/></append>
+    <set xpath="/items/item[@name='gunHandgunT3SMG5']/property[@name='EconomicValue']/@value">1500</set>
+    <set xpath="/items/item[@name='gunHandgunT3SMG5']/property[@name='Tags']/@value">weapon,ranged,holdBreathAiming,reloadPenalty,gun,shortRange,barrelAttachments,sideAttachments,smallTopAttachments,magazine,drumMagazine,firingMode,bottomAttachments,attAgility,rangedPistols,9mmGun,attachmentsIncluded,canHaveCosmetic,handgunSkill</set>
+
+    <!-- MAGNUM 44 -->
+    <set xpath="//item[@name='gunHandgunT2Magnum44']/effect_group/passive_effect[@tags='perkGunslinger']/@tags">rangedPistols</set>
+    <set xpath="/items/item[@name='gunHandgunT2Magnum44']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='gunHandgunT2Magnum44']"><property name="ItemWeight" value="3.5"/></append>
+    <set xpath="/items/item[@name='gunHandgunT2Magnum44']/property[@name='EconomicValue']/@value">1000</set>
+    <set xpath="/items/item[@name='gunHandgunT2Magnum44']/property[@name='Tags']/@value">weapon,ranged,holdBreathAiming,reloadPenalty,gun,shortRange,revolver,barrelAttachments,sideAttachments,smallTopAttachments,attAgility,rangedPistols,attachmentsIncluded,canHaveCosmetic,handgunSkill,rangedPistols</set>
+
+    <!-- DESERT VULTURE -->
+    <set xpath="//item[@name='gunHandgunT3DesertVulture']/effect_group/passive_effect[@tags='perkGunslinger']/@tags">rangedPistols</set>
+    <set xpath="/items/item[@name='gunHandgunT3DesertVulture']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='gunHandgunT3DesertVulture']"><property name="ItemWeight" value="4"/></append>
+    <set xpath="/items/item[@name='gunHandgunT3DesertVulture']/property[@name='EconomicValue']/@value">1500</set>
+    <set xpath="/items/item[@name='gunHandgunT3DesertVulture']/property[@name='Tags']/@value">weapon,ranged,revolver,holdBreathAiming,reloadPenalty,gun,shortRange,pistol,barrelAttachments,sideAttachments,smallTopAttachments,magazine,firingMode,attAgility,rangedPistols,attachmentsIncluded,canHaveCosmetic,handgunSkill,rangedPistols</set>
+
+    <!-- PIPE SHOTGUN -->
+    <set xpath="//item[@name='gunShotgunT0PipeShotgun']/effect_group/passive_effect[@tags='perkBoomstick']/@tags">rangedShotguns</set>
+    <append xpath="/items/item[@name='gunShotgunT0PipeShotgun']"><property name="UnlockedBy" value="skillMechanicalEngineer"/></append>
+    <append xpath="/items/item[@name='gunShotgunT0PipeShotgun']"><property name="ItemWeight" value="10"/></append>
+    <set xpath="/items/item[@name='gunShotgunT0PipeShotgun']/property[@name='EconomicValue']/@value">100</set>
+    <set xpath="/items/item[@name='gunShotgunT0PipeShotgun']/property[@name='Tags']/@value">weapon,ranged,holdBreathAiming,reloadPenalty,gun,shotgun,shortRange,barrelAttachments,sideAttachments,stock,smallTopAttachments,noScopes,bottomAttachments,attStrength,attachmentsIncluded,canHaveCosmetic,shotgunSkill,rangedShotguns</set>
+
+    <!-- DOUBLE BARREL -->
+    <set xpath="//item[@name='gunShotgunT1DoubleBarrel']/effect_group/passive_effect[@tags='perkBoomstick']/@tags">rangedShotguns</set>
+    <set xpath="/items/item[@name='gunShotgunT1DoubleBarrel']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='gunShotgunT1DoubleBarrel']"><property name="ItemWeight" value="6"/></append>
+    <set xpath="/items/item[@name='gunShotgunT1DoubleBarrel']/property[@name='EconomicValue']/@value">500</set>
+    <set xpath="/items/item[@name='gunShotgunT1DoubleBarrel']/property[@name='Tags']/@value">weapon,ranged,holdBreathAiming,reloadPenalty,gun,shotgun,shortRange,dBarrel,barrelAttachments,sideAttachments,stock,bottomAttachments,attStrength,rangedShotguns,canHaveCosmetic,attachmentsIncluded,shotgunSkill</set>
+
+    <!-- PUMP SHOTGUN -->
+    <set xpath="//item[@name='gunShotgunT2PumpShotgun']/effect_group/passive_effect[@tags='perkBoomstick']/@tags">rangedShotguns</set>
+    <set xpath="/items/item[@name='gunShotgunT2PumpShotgun']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='gunShotgunT2PumpShotgun']"><property name="ItemWeight" value="7"/></append>
+    <set xpath="/items/item[@name='gunShotgunT2PumpShotgun']/property[@name='EconomicValue']/@value">1000</set>
+    <set xpath="/items/item[@name='gunShotgunT2PumpShotgun']/property[@name='Tags']/@value">weapon,ranged,holdBreathAiming,reloadPenalty,gun,shotgun,shortRange,barrelAttachments,sideAttachments,smallTopAttachments,noScopes,stock,bottomAttachments,attStrength,rangedShotguns,modGunShotgunTubeExtenderMagazine,attachmentsIncluded,canHaveCosmetic,shotgunSkill</set>
+
+    <!-- AUTO SHOTGUN -->
+    <set xpath="//item[@name='gunShotgunT3AutoShotgun']/effect_group/passive_effect[@tags='perkBoomstick']/@tags">rangedShotguns</set>
+    <set xpath="/items/item[@name='gunShotgunT3AutoShotgun']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='gunShotgunT3AutoShotgun']"><property name="ItemWeight" value="10"/></append>
+    <set xpath="/items/item[@name='gunShotgunT3AutoShotgun']/property[@name='EconomicValue']/@value">1500</set>
+    <set xpath="/items/item[@name='gunShotgunT3AutoShotgun']/property[@name='Tags']/@value">weapon,ranged,holdBreathAiming,reloadPenalty,gun,shotgun,shortRange,barrelAttachments,sideAttachments,smallTopAttachments,noScopes,stock,magazine,drumMagazine,firingMode,bottomAttachments,attStrength,rangedShotguns,attachmentsIncluded,canHaveCosmetic,shotgunSkill</set>
+
+    <!-- PIPE RIFLE -->
+    <set xpath="//item[@name='gunRifleT0PipeRifle']/effect_group/passive_effect[@tags='perkDeadEye']/@tags">rangedRifles</set>
+    <append xpath="/items/item[@name='gunRifleT0PipeRifle']"><property name="UnlockedBy" value="skillMechanicalEngineer"/></append>
+    <append xpath="/items/item[@name='gunRifleT0PipeRifle']"><property name="ItemWeight" value="10"/></append>
+    <set xpath="/items/item[@name='gunRifleT0PipeRifle']/property[@name='EconomicValue']/@value">100</set>
+    <set xpath="/items/item[@name='gunRifleT0PipeRifle']/property[@name='Tags']/@value">weapon,ranged,holdBreathAiming,reloadPenalty,gun,barrelAttachments,sideAttachments,smallTopAttachments,mediumTopAttachments,largeTopAttachments,stock,attachmentsIncluded,bottomAttachments,attPerception,canHaveCosmetic,rifleSkill,rangedRifles</set>
+
+    <!-- HUNTING RIFLE -->
+    <set xpath="//item[@name='gunRifleT1HuntingRifle']/effect_group/passive_effect[@tags='perkDeadEye']/@tags">rangedRifles</set>
+    <set xpath="/items/item[@name='gunRifleT1HuntingRifle']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='gunRifleT1HuntingRifle']"><property name="ItemWeight" value="7"/></append>
+    <set xpath="/items/item[@name='gunRifleT1HuntingRifle']/property[@name='EconomicValue']/@value">500</set>
+    <set xpath="/items/item[@name='gunRifleT1HuntingRifle']/property[@name='Tags']/@value">weapon,ranged,holdBreathAiming,reloadPenalty,gun,barrelAttachments,sideAttachments,smallTopAttachments,mediumTopAttachments,largeTopAttachments,stock,bottomAttachments,attPerception,attachmentsIncluded,canHaveCosmetic,rifleSkill,rangedRifles</set>
+
+    <!-- LEVER ACTION RIFLE -->
+    <set xpath="//item[@name='gunRifleT2LeverActionRifle']/effect_group/passive_effect[@tags='perkDeadEye']/@tags">rangedRifles</set>
+    <set xpath="/items/item[@name='gunRifleT2LeverActionRifle']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='gunRifleT2LeverActionRifle']"><property name="ItemWeight" value="7"/></append>
+    <set xpath="/items/item[@name='gunRifleT2LeverActionRifle']/property[@name='EconomicValue']/@value">1000</set>
+    <set xpath="/items/item[@name='gunRifleT2LeverActionRifle']/property[@name='Tags']/@value">weapon,ranged,holdBreathAiming,reloadPenalty,gun,barrelAttachments,sideAttachments,smallTopAttachments,mediumTopAttachments,largeTopAttachments,stock,bottomAttachments,attPerception,attachmentsIncluded,canHaveCosmetic,rifleSkill,rangedRifles</set>
+
+    <!-- SNIPER RIFLE -->
+    <set xpath="//item[@name='gunRifleT3SniperRifle']/effect_group/passive_effect[@tags='perkDeadEye']/@tags">rangedRifles</set>
+    <set xpath="/items/item[@name='gunRifleT3SniperRifle']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='gunRifleT3SniperRifle']"><property name="ItemWeight" value="8"/></append>
+    <set xpath="/items/item[@name='gunRifleT3SniperRifle']/property[@name='EconomicValue']/@value">1500</set>
+    <set xpath="/items/item[@name='gunRifleT3SniperRifle']/property[@name='Tags']/@value">weapon,ranged,holdBreathAiming,reloadPenalty,gun,barrelAttachments,sideAttachments,smallTopAttachments,mediumTopAttachments,largeTopAttachments,stock,magazine,firingMode,bottomAttachments,attPerception,attachmentsIncluded,canHaveCosmetic,rifleSkill,rangedRifles</set>
+
+    <!-- PIPE MACHINEGUN -->
+    <set xpath="//item[@name='gunMGT0PipeMachineGun']/effect_group/passive_effect[@tags='perkMachineGunner']/@tags">rangedMachineguns</set>
+    <append xpath="/items/item[@name='gunMGT0PipeMachineGun']"><property name="UnlockedBy" value="skillMechanicalEngineer"/></append>
+    <append xpath="/items/item[@name='gunMGT0PipeMachineGun']"><property name="ItemWeight" value="30"/></append>
+    <set xpath="/items/item[@name='gunMGT0PipeMachineGun']/property[@name='EconomicValue']/@value">100</set>
+    <set xpath="/items/item[@name='gunMGT0PipeMachineGun']/property[@name='Tags']/@value">weapon,ranged,holdBreathAiming,reloadPenalty,gun,barrelAttachments,sideAttachments,smallTopAttachments,mediumTopAttachments,stock,magazine,drumMagazine,firingMode,bottomAttachments,attFortitude,rangedMachineguns,perkBookAutoWeapons,attachmentsIncluded,canHaveCosmetic,machinegunSkill</set>
+
+    <!-- AK47 -->
+    <set xpath="//item[@name='gunMGT1AK47']/effect_group/passive_effect[@tags='perkMachineGunner']/@tags">rangedMachineguns</set>
+    <set xpath="/items/item[@name='gunMGT1AK47']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='gunMGT1AK47']"><property name="ItemWeight" value="20"/></append>
+    <set xpath="/items/item[@name='gunMGT1AK47']/property[@name='EconomicValue']/@value">500</set>
+    <set xpath="/items/item[@name='gunMGT1AK47']/property[@name='Tags']/@value">weapon,ranged,holdBreathAiming,reloadPenalty,gun,barrelAttachments,sideAttachments,smallTopAttachments,mediumTopAttachments,stock,magazine,drumMagazine,firingMode,bottomAttachments,attFortitude,rangedMachineguns,perkBookAutoWeapons,attachmentsIncluded,canHaveCosmetic,machinegunSkill</set>
+
+    <!-- TACTICAL AR -->
+    <set xpath="//item[@name='gunMGT2TacticalAR']/effect_group/passive_effect[@tags='perkMachineGunner']/@tags">rangedMachineguns</set>
+    <set xpath="/items/item[@name='gunMGT2TacticalAR']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='gunMGT2TacticalAR']"><property name="ItemWeight" value="25"/></append>
+    <set xpath="/items/item[@name='gunMGT2TacticalAR']/property[@name='EconomicValue']/@value">1000</set>
+    <set xpath="/items/item[@name='gunMGT2TacticalAR']/property[@name='Tags']/@value">weapon,ranged,holdBreathAiming,reloadPenalty,gun,barrelAttachments,sideAttachments,smallTopAttachments,mediumTopAttachments,stock,magazine,drumMagazine,firingMode,bottomAttachments,attFortitude,rangedMachineguns,perkBookAutoWeapons,canHaveCosmetic,attachmentsIncluded,machinegunSkill</set>
+
+    <!-- M60 -->
+    <set xpath="//item[@name='gunMGT3M60']/effect_group/passive_effect[@tags='perkMachineGunner']/@tags">rangedMachineguns</set>
+    <set xpath="/items/item[@name='gunMGT3M60']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='gunMGT3M60']"><property name="ItemWeight" value="23"/></append>
+    <set xpath="/items/item[@name='gunMGT3M60']/property[@name='EconomicValue']/@value">1500</set>
+    <set xpath="/items/item[@name='gunMGT3M60']/property[@name='Tags']/@value">weapon,ranged,holdBreathAiming,reloadPenalty,gun,barrelAttachments,sideAttachments,smallTopAttachments,magazine,drumMagazine,bottomAttachments,mediumTopAttachments,attFortitude,rangedMachineguns,perkBookAutoWeapons,attachmentsIncluded,canHaveCosmetic,machinegunSkill</set>
+
+    <!-- ROCKET LAUNCHER -->
+    <set xpath="/items/item[@name='gunExplosivesT3RocketLauncher']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='gunExplosivesT3RocketLauncher']"><property name="ItemWeight" value="6"/></append>
+    <set xpath="/items/item[@name='gunExplosivesT3RocketLauncher']/property[@name='EconomicValue']/@value">1000</set>
+    <set xpath="/items/item[@name='gunExplosivesT3RocketLauncher']/property[@name='Tags']/@value">weapon,ranged,holdBreathAiming,reloadPenalty,launcher,attPerception,skillDemolitions,canHaveCosmetic,barrelAttachments,noSilencer,sideAttachments,smallTopAttachments,explosivesSkill</set>
+
+    <!-- PRIMIATIVE BOW -->
+    <set xpath="//item[@name='gunBowT0PrimitiveBow']/effect_group/passive_effect[@tags='perkArchery']/@tags">rangedBows</set>
+    <set xpath="/items/item[@name='gunBowT0PrimitiveBow']/property[@name='Tags']/@value">weapon,ranged,bowDrawPenalty,archery,bow,attAgility,rangedBows,canHaveCosmetic,bowSkill</set>
+    <append xpath="/items/item[@name='gunBowT0PrimitiveBow']"><property name="ItemWeight" value="4"/></append>
+    <set xpath="/items/item[@name='gunBowT0PrimitiveBow']/property[@name='EconomicValue']/@value">250</set>
+
+    <!-- WOODEN BOW -->
+    <set xpath="//item[@name='gunBowT1WoodenBow']/effect_group/passive_effect[@tags='perkArchery']/@tags">rangedBows</set>
+    <set xpath="/items/item[@name='gunBowT1WoodenBow']/property[@name='Tags']/@value">weapon,ranged,bowDrawPenalty,archery,bow,attAgility,rangedBows,canHaveCosmetic,bowSkill</set>
+    <set xpath="/items/item[@name='gunBowT1WoodenBow']/property[@name='UnlockedBy']/@value">skillCarpentry</set>
+    <append xpath="/items/item[@name='gunBowT1WoodenBow']"><property name="ItemWeight" value="3.5"/></append>
+    <set xpath="/items/item[@name='gunBowT1WoodenBow']/property[@name='EconomicValue']/@value">500</set>
+
+    <!-- COMPOUND BOW -->
+    <set xpath="//item[@name='gunBowT3CompoundBow']/effect_group/passive_effect[@tags='perkArchery']/@tags">rangedBows</set>
+    <set xpath="/items/item[@name='gunBowT3CompoundBow']/property[@name='Tags']/@value">weapon,ranged,bowDrawPenalty,archery,bow,attAgility,rangedBows,canHaveCosmetic,bowSkill</set>
+    <set xpath="/items/item[@name='gunBowT3CompoundBow']/property[@name='UnlockedBy']/@value">skillCarpentry</set>
+    <append xpath="/items/item[@name='gunBowT3CompoundBow']"><property name="ItemWeight" value="6"/></append>
+    <set xpath="/items/item[@name='gunBowT3CompoundBow']/property[@name='EconomicValue']/@value">1000</set>
+
+    <!-- IRON CROSSBOW -->
+    <set xpath="//item[@name='gunBowT1IronCrossbow']/effect_group/passive_effect[@tags='perkArchery']/@tags">rangedBows</set>
+    <set xpath="/items/item[@name='gunBowT1IronCrossbow']/property[@name='Tags']/@value">weapon,ranged,bowDrawPenalty,archery,bow,attAgility,rangedBows,canHaveCosmetic,bowSkill</set>
+    <set xpath="/items/item[@name='gunBowT1IronCrossbow']/property[@name='UnlockedBy']/@value">skillCarpentry</set>
+    <append xpath="/items/item[@name='gunBowT1IronCrossbow']"><property name="ItemWeight" value="7"/></append>
+    <set xpath="/items/item[@name='gunBowT1IronCrossbow']/property[@name='EconomicValue']/@value">500</set>
+
+    <!-- COMPOUND CROSSBOW -->
+    <set xpath="//item[@name='gunBowT3CompoundCrossbow']/effect_group/passive_effect[@tags='perkArchery']/@tags">rangedBows</set>
+    <set xpath="/items/item[@name='gunBowT3CompoundCrossbow']/property[@name='Tags']/@value">weapon,ranged,holdBreathAiming,reloadPenalty,sideAttachments,smallTopAttachments,mediumTopAttachments,bottomAttachments,attAgility,rangedBows,crossbow,attachmentsIncluded,canHaveCosmetic,bowSkill</set>
+    <set xpath="/items/item[@name='gunBowT3CompoundCrossbow']/property[@name='UnlockedBy']/@value">skillCarpentry</set>
+    <append xpath="/items/item[@name='gunBowT3CompoundCrossbow']"><property name="ItemWeight" value="9"/></append>
+    <set xpath="/items/item[@name='gunBowT3CompoundCrossbow']/property[@name='EconomicValue']/@value">1000</set>
+
+    <set xpath="/items/item[@name='gunBotT1JunkSledge']/property[@name='Tags']/@value">turretMelee,melee,weapon,blunt,longShaft,attIntellect,perkTurrets,canHaveCosmetic,roboticsSkill</set>
+    <set xpath="/items/item[@name='gunBotT1JunkSledge']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='gunBotT1JunkSledge']"><property name="ItemWeight" value="35"/></append>
+    <set xpath="/items/item[@name='gunBotT1JunkSledge']/property[@name='EconomicValue']/@value">700</set>
+
+    <set xpath="/items/item[@name='gunBotT2JunkTurret']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='gunBotT2JunkTurret']"><property name="ItemWeight" value="25"/></append>
+    <set xpath="/items/item[@name='gunBotT2JunkTurret']/property[@name='EconomicValue']/@value">500</set>
+    <set xpath="/items/item[@name='gunBotT2JunkTurret']/property[@name='Tags']/@value">turretRanged,weapon,ranged,reloadPenalty,drumMagazine,attIntellect,perkTurrets,canHaveCosmetic,roboticsSkill</set>
+    <set xpath="/items/item[@name='gunBotT3JunkDrone']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='gunBotT3JunkDrone']"><property name="ItemWeight" value="10"/></append>
+    <set xpath="/items/item[@name='gunBotT3JunkDrone']/property[@name='EconomicValue']/@value">700</set>
+    <set xpath="/items/item[@name='gunBotT3JunkDrone']/property[@name='Tags']/@value">drone,attIntellect,perkTurrets,canHaveCosmetic,roboticsSkill</set>
+    <set xpath="/items/item[@name='meleeHandMaster']/property[@name='Tags']/@value">blunt,melee,light,perkFlurryOfFortitude,fists</set>
+    <set xpath="/items/item[@name='meleeHandPlayer']/property[@name='Tags']/@value">blunt,melee,grunting,light,perkFlurryOfFortitude,attFortitude,perkBrawler,fists</set>
+
+    <!-- 9mm -->
+    <set xpath="//item[@name='ammo9mmBulletBall']/effect_group/passive_effect[@tags='perkGunslinger']/@tags">rangedPistols</set>
+    <append xpath="/items/item[@name='ammo9mmBulletBall']"><property name="ItemWeight" value="0.025"/></append>
+    <set xpath="/items/item[@name='ammo9mmBulletBall']/property[@name='EconomicValue']/@value">9</set>
+    <set xpath="/items/item[@name='ammo9mmBulletBall']/property[@name='Tags']/@value">ammo,ammo9mm,rangedPistols</set>
+
+    <!-- 9mm HP -->
+    <set xpath="//item[@name='ammo9mmBulletHP']/effect_group/passive_effect[@tags='perkGunslinger']/@tags">rangedPistols</set>
+    <set xpath="/items/item[@name='ammo9mmBulletHP']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='ammo9mmBulletHP']"><property name="ItemWeight" value="0.025"/></append>
+    <set xpath="/items/item[@name='ammo9mmBulletHP']/property[@name='EconomicValue']/@value">14</set>
+    <set xpath="/items/item[@name='ammo9mmBulletHP']/property[@name='Tags']/@value">ammo9mm,rangedPistols</set>
+
+    <!-- 9mm AP -->
+    <set xpath="//item[@name='ammo9mmBulletAP']/effect_group/passive_effect[@tags='perkGunslinger']/@tags">rangedPistols</set>
+    <set xpath="/items/item[@name='ammo9mmBulletAP']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='ammo9mmBulletAP']"><property name="ItemWeight" value="0.025"/></append>
+    <set xpath="/items/item[@name='ammo9mmBulletAP']/property[@name='EconomicValue']/@value">14</set>
+    <set xpath="/items/item[@name='ammo9mmBulletAP']/property[@name='Tags']/@value">ammo9mm,rangedPistols</set>
+
+    <!-- 44 CAL -->
+    <set xpath="//item[@name='ammo44MagnumBulletBall']/effect_group/passive_effect[@tags='perkGunslinger']/@tags">rangedPistols</set>
+    <append xpath="/items/item[@name='ammo44MagnumBulletBall']"><property name="ItemWeight" value="0.038"/></append>
+    <set xpath="/items/item[@name='ammo44MagnumBulletBall']/property[@name='EconomicValue']/@value">10</set>
+    <set xpath="/items/item[@name='ammo44MagnumBulletBall']/property[@name='Tags']/@value">ammo44Mag,rangedPistols</set>
+
+    <!-- 44 CAL HP-->
+    <set xpath="//item[@name='ammo44MagnumBulletHP']/effect_group/passive_effect[@tags='perkGunslinger']/@tags">rangedPistols</set>
+    <set xpath="/items/item[@name='ammo44MagnumBulletHP']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='ammo44MagnumBulletHP']"><property name="ItemWeight" value="0.038"/></append>
+    <set xpath="/items/item[@name='ammo44MagnumBulletHP']/property[@name='EconomicValue']/@value">15</set>
+    <set xpath="/items/item[@name='ammo44MagnumBulletHP']/property[@name='Tags']/@value">ammo44Mag,rangedPistols</set>
+
+    <!-- 44 CAL AP -->
+    <set xpath="//item[@name='ammo44MagnumBulletAP']/effect_group/passive_effect[@tags='perkGunslinger']/@tags">rangedPistols</set>
+    <set xpath="/items/item[@name='ammo44MagnumBulletAP']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='ammo44MagnumBulletAP']"><property name="ItemWeight" value="0.038"/></append>
+    <set xpath="/items/item[@name='ammo44MagnumBulletAP']/property[@name='EconomicValue']/@value">15</set>
+    <set xpath="/items/item[@name='ammo44MagnumBulletAP']/property[@name='Tags']/@value">ammo44Mag,rangedPistols</set>
+
+    <!-- 7.62mm -->
+    <set xpath="//item[@name='ammo762mmBulletBall']/effect_group/passive_effect[@tags='perkDeadEye,perkMachineGunner']/@tags">rangedRifles,rangedMachineguns</set>
+    <append xpath="/items/item[@name='ammo762mmBulletBall']"><property name="ItemWeight" value="0.057"/></append>
+    <set xpath="/items/item[@name='ammo762mmBulletBall']/property[@name='EconomicValue']/@value">11</set>
+    <set xpath="/items/item[@name='ammo762mmBulletBall']/property[@name='Tags']/@value">ammo762mm,rangedRifles,rangedMachineguns</set>
+
+    <!-- 7.62mm HP -->
+    <set xpath="//item[@name='ammo762mmBulletHP']/effect_group/passive_effect[@tags='perkDeadEye,perkMachineGunner']/@tags">rangedRifles,rangedMachineguns</set>
+    <set xpath="/items/item[@name='ammo762mmBulletHP']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='ammo762mmBulletHP']"><property name="ItemWeight" value="0.057"/></append>
+    <set xpath="/items/item[@name='ammo762mmBulletHP']/property[@name='EconomicValue']/@value">16</set>
+    <set xpath="/items/item[@name='ammo762mmBulletHP']/property[@name='Tags']/@value">ammo762mm,rangedRifles,rangedMachineguns</set>
+
+    <!-- 7.62mm AP -->
+    <set xpath="//item[@name='ammo762mmBulletAP']/effect_group/passive_effect[@tags='perkDeadEye,perkMachineGunner']/@tags">rangedRifles,rangedMachineguns</set>
+    <set xpath="/items/item[@name='ammo762mmBulletAP']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='ammo762mmBulletAP']"><property name="ItemWeight" value="0.057"/></append>
+    <set xpath="/items/item[@name='ammo762mmBulletAP']/property[@name='EconomicValue']/@value">16</set>
+    <set xpath="/items/item[@name='ammo762mmBulletAP']/property[@name='Tags']/@value">ammo762mm,rangedRifles,rangedMachineguns</set>
+
+    <!-- SHOTGUN SHELL -->
+    <set xpath="//item[@name='ammoShotgunShell']/effect_group/passive_effect[@tags='perkBoomstick']/@tags">rangedShotguns</set>
+    <append xpath="/items/item[@name='ammoShotgunShell']"><property name="ItemWeight" value="0.125"/></append>
+    <set xpath="/items/item[@name='ammoShotgunShell']/property[@name='EconomicValue']/@value">11</set>
+    <set xpath="/items/item[@name='ammoShotgunShell']/property[@name='Tags']/@value">ammo,shotgun,ammoShells,rangedShotguns</set>
+
+    <!-- SHOTGUN SLUG -->
+    <set xpath="//item[@name='ammoShotgunSlug']/effect_group/passive_effect[@tags='perkBoomstick']/@tags">rangedShotguns</set>
+    <set xpath="/items/item[@name='ammoShotgunSlug']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='ammoShotgunSlug']"><property name="ItemWeight" value="0.125"/></append>
+    <set xpath="/items/item[@name='ammoShotgunSlug']/property[@name='EconomicValue']/@value">20</set>
+    <set xpath="/items/item[@name='ammoShotgunSlug']/property[@name='Tags']/@value">ammo,shotgun,ammoShells,rangedShotguns</set>
+
+    <!-- SHOTGUN BREACHING SLUG-->
+    <set xpath="//item[@name='ammoShotgunBreachingSlug']/effect_group/passive_effect[@tags='perkBoomstick']/@tags">rangedShotguns</set>
+    <set xpath="/items/item[@name='ammoShotgunBreachingSlug']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='ammoShotgunBreachingSlug']"><property name="ItemWeight" value="0.125"/></append>
+    <set xpath="/items/item[@name='ammoShotgunBreachingSlug']/property[@name='EconomicValue']/@value">20</set>
+    <set xpath="/items/item[@name='ammoShotgunBreachingSlug']/property[@name='Tags']/@value">ammo,shotgun,ammoShells,rangedShotguns</set>
+
+    <append xpath="/items/item[@name='ammoJunkTurretRegular']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='ammoJunkTurretRegular']"><property name="ItemWeight" value="0.125"/></append>
+    <set xpath="/items/item[@name='ammoJunkTurretRegular']/property[@name='EconomicValue']/@value">3</set>
+    <set xpath="/items/item[@name='ammoJunkTurretRegular']/property[@name='Tags']/@value">ammo</set>
+    <set xpath="/items/item[@name='ammoJunkTurretShell']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='ammoJunkTurretShell']"><property name="ItemWeight" value="0.125"/></append>
+    <set xpath="/items/item[@name='ammoJunkTurretShell']/property[@name='EconomicValue']/@value">2</set>
+    <set xpath="/items/item[@name='ammoJunkTurretAP']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='ammoJunkTurretAP']"><property name="ItemWeight" value="0.125"/></append>
+    <set xpath="/items/item[@name='ammoJunkTurretAP']/property[@name='EconomicValue']/@value">6</set>
+    <set xpath="/items/item[@name='ammoRocketHE']/property[@name='UnlockedBy']/@value">skillChemistry</set>
+    <append xpath="/items/item[@name='ammoRocketHE']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='ammoRocketHE']/property[@name='EconomicValue']/@value">250</set>
+    <set xpath="/items/item[@name='ammoRocketHE']/property[@name='Tags']/@value">ammo,skillDemolitions</set>
+    <append xpath="/items/item[@name='ammoRocketFrag']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='ammoGasCan']/property[@name='UnlockedBy']/@value">skillChemistry</set>
+    <append xpath="/items/item[@name='ammoGasCan']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='ammoGasCan']/property[@name='EconomicValue']/@value">30</set>
+    <set xpath="/items/item[@name='ammoGasCan']/property[@name='Tags']/@value">gasoline</set>
+
+    <!-- STONE ARROWS -->
+    <set xpath="//item[@name='ammoArrowStone']/effect_group/passive_effect[@tags='perkArchery']/@tags">rangedBows</set>
+    <append xpath="/items/item[@name='ammoArrowStone']"><property name="ItemWeight" value="0.12"/></append>
+    <set xpath="/items/item[@name='ammoArrowStone']/property[@name='EconomicValue']/@value">12</set>
+    <set xpath="/items/item[@name='ammoArrowStone']/property[@name='Tags']/@value">ammo,ranged,attAgility,rangedBows</set>
+
+    <!-- IRON ARROWS -->
+    <set xpath="//item[@name='ammoArrowIron']/effect_group/passive_effect[@tags='perkArchery']/@tags">rangedBows</set>
+    <append xpath="/items/item[@name='ammoArrowIron']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='ammoArrowIron']/property[@name='EconomicValue']/@value">25</set>
+
+    <!-- STEEL ARROWS -->
+    <set xpath="//item[@name='ammoArrowSteelAP']/effect_group/passive_effect[@tags='perkArchery']/@tags">rangedBows</set>
+    <set xpath="/items/item[@name='ammoArrowSteelAP']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='ammoArrowSteelAP']"><property name="ItemWeight" value="0.2"/></append>
+    <set xpath="/items/item[@name='ammoArrowSteelAP']/property[@name='EconomicValue']/@value">57</set>
+
+    <!-- FLAMING ARROWS -->
+    <set xpath="//item[@name='ammoArrowFlaming']/effect_group/passive_effect[@tags='perkArchery']/@tags">rangedBows</set>
+    <append xpath="/items/item[@name='ammoArrowFlaming']"><property name="ItemWeight" value="0.2"/></append>
+    <set xpath="/items/item[@name='ammoArrowFlaming']/property[@name='EconomicValue']/@value">44</set>
+
+    <!-- EXPLODING ARROWS -->
+    <set xpath="//item[@name='ammoArrowExploding']/effect_group/passive_effect[@tags='perkArchery']/@tags">rangedBows</set>
+    <set xpath="/items/item[@name='ammoArrowExploding']/property[@name='Tags']/@value">ammo,ranged,attAgility,rangedBows,perkPenetrator,skillDemolitions</set>
+    <append xpath="/items/item[@name='ammoArrowExploding']"><property name="ItemWeight" value="0.25"/></append>
+    <set xpath="/items/item[@name='ammoArrowExploding']/property[@name='EconomicValue']/@value">65</set>
+
+    <!-- STONE CROSSBOW BOLTS -->
+    <set xpath="//item[@name='ammoCrossbowBoltStone']/effect_group/passive_effect[@tags='perkArchery']/@tags">rangedBows</set>
+    <set xpath="/items/item[@name='ammoCrossbowBoltStone']/property[@name='Tags']/@value">ammo,ranged,attAgility,rangedBows,perkPenetrator</set>
+    <append xpath="/items/item[@name='ammoCrossbowBoltStone']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='ammoCrossbowBoltStone']/property[@name='EconomicValue']/@value">12</set>
+
+
+    <!-- IRON CROSSBOW BOLTS -->
+    <set xpath="//item[@name='ammoCrossbowBoltIron']/effect_group/passive_effect[@tags='perkArchery']/@tags">rangedBows</set>
+    <append xpath="/items/item[@name='ammoCrossbowBoltIron']"><property name="ItemWeight" value="0.04"/></append>
+    <set xpath="/items/item[@name='ammoCrossbowBoltIron']/property[@name='EconomicValue']/@value">25</set>
+    <set xpath="/items/item[@name='ammoCrossbowBoltIron']/property[@name='Tags']/@value">ammo,ranged,attAgility,rangedBows,perkPenetrator</set>
+
+    <!-- STEEL CROSSBOW BOLTS -->
+    <set xpath="//item[@name='ammoCrossbowBoltSteelAP']/effect_group/passive_effect[@tags='perkArchery']/@tags">rangedBows</set>
+    <append xpath="/items/item[@name='ammoCrossbowBoltSteelAP']"><property name="ItemWeight" value="0.04"/></append>
+    <set xpath="/items/item[@name='ammoCrossbowBoltSteelAP']/property[@name='EconomicValue']/@value">57</set>
+
+    <!-- FLAMING CROSSBOW BOLTS -->
+    <set xpath="//item[@name='ammoCrossbowBoltFlaming']/effect_group/passive_effect[@tags='perkArchery']/@tags">rangedBows</set>
+    <append xpath="/items/item[@name='ammoCrossbowBoltFlaming']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='ammoCrossbowBoltFlaming']/property[@name='EconomicValue']/@value">44</set>
+
+    <!-- EXPLODING CROSSBOW BOLTS -->
+    <set xpath="//item[@name='ammoCrossbowBoltExploding']/effect_group/passive_effect[@tags='perkArchery']/@tags">rangedBows</set>
+    <append xpath="/items/item[@name='ammoCrossbowBoltExploding']"><property name="ItemWeight" value="0.75"/></append>
+    <set xpath="/items/item[@name='ammoCrossbowBoltExploding']/property[@name='EconomicValue']/@value">80</set>
+    <set xpath="/items/item[@name='ammoCrossbowBoltExploding']/property[@name='Tags']/@value">ammo,ranged,attAgility,rangedBows</set>
+
+    <set xpath="/items/item[@name='ammoBundleMaster']/property[@name='UnlockedBy']/@value">perkPistolPeteComplete</set>
+    <set xpath="/items/item[@name='ammoBundleMaster']/property[@name='EconomicValue']/@value">900</set>
+    <set xpath="/items/item[@name='ammoBundle9mmBulletBall']/property[@name='EconomicValue']/@value">900</set>
+    <set xpath="/items/item[@name='ammoBundle9mmBulletHP']/property[@name='EconomicValue']/@value">1400</set>
+    <set xpath="/items/item[@name='ammoBundle9mmBulletAP']/property[@name='EconomicValue']/@value">1400</set>
+    <set xpath="/items/item[@name='ammoBundle44MagnumBulletBall']/property[@name='UnlockedBy']/@value">perkEnforcerComplete</set>
+    <set xpath="/items/item[@name='ammoBundle44MagnumBulletBall']/property[@name='EconomicValue']/@value">1000</set>
+    <set xpath="/items/item[@name='ammoBundle44MagnumBulletHP']/property[@name='EconomicValue']/@value">1500</set>
+    <set xpath="/items/item[@name='ammoBundle44MagnumBulletAP']/property[@name='EconomicValue']/@value">1500</set>
+    <set xpath="/items/item[@name='ammoBundle762mmBulletBall']/property[@name='UnlockedBy']/@value">perkSniperComplete</set>
+    <set xpath="/items/item[@name='ammoBundle762mmBulletBall']/property[@name='EconomicValue']/@value">1100</set>
+    <set xpath="/items/item[@name='ammoBundle762mmBulletHP']/property[@name='UnlockedBy']/@value">perkSniperComplete</set>
+    <set xpath="/items/item[@name='ammoBundle762mmBulletHP']/property[@name='EconomicValue']/@value">1600</set>
+    <set xpath="/items/item[@name='ammoBundle762mmBulletAP']/property[@name='UnlockedBy']/@value">perkSniperComplete</set>
+    <set xpath="/items/item[@name='ammoBundle762mmBulletAP']/property[@name='EconomicValue']/@value">1600</set>
+    <set xpath="/items/item[@name='ammoBundleShotgunShell']/property[@name='UnlockedBy']/@value">perkShotgunMessiahComplete</set>
+    <set xpath="/items/item[@name='ammoBundleShotgunShell']/property[@name='EconomicValue']/@value">1100</set>
+    <set xpath="/items/item[@name='ammoBundleShotgunSlug']/property[@name='EconomicValue']/@value">2000</set>
+    <set xpath="/items/item[@name='ammoBundleShotgunBreachingSlug']/property[@name='EconomicValue']/@value">2000</set>
+    <set xpath="/items/item[@name='ammoBundleJunkTurretRegular']/property[@name='UnlockedBy']/@value">perkTechJunkie8Complete</set>
+    <set xpath="/items/item[@name='ammoBundleJunkTurretRegular']/property[@name='EconomicValue']/@value">1000</set>
+    <set xpath="/items/item[@name='ammoBundleArrowStone']/property[@name='UnlockedBy']/@value">perkRangersComplete</set>
+    <set xpath="/items/item[@name='ammoBundleArrowStone']/property[@name='EconomicValue']/@value">240</set>
+    <set xpath="/items/item[@name='ammoBundleArrowIron']/property[@name='EconomicValue']/@value">500</set>
+    <set xpath="/items/item[@name='ammoBundleArrowSteelAP']/property[@name='EconomicValue']/@value">1140</set>
+    <set xpath="/items/item[@name='ammoBundleArrowFlaming']/property[@name='EconomicValue']/@value">4400</set>
+    <set xpath="/items/item[@name='ammoBundleArrowExploding']/property[@name='EconomicValue']/@value">4125</set>
+    <set xpath="/items/item[@name='ammoBundleCrossbowBoltStone']/property[@name='EconomicValue']/@value">240</set>
+    <set xpath="/items/item[@name='ammoBundleCrossbowBoltIron']/property[@name='EconomicValue']/@value">500</set>
+    <set xpath="/items/item[@name='ammoBundleCrossbowBoltSteelAP']/property[@name='EconomicValue']/@value">1140</set>
+    <set xpath="/items/item[@name='ammoBundleCrossbowBoltFlaming']/property[@name='EconomicValue']/@value">4400</set>
+    <set xpath="/items/item[@name='ammoBundleCrossbowBoltExploding']/property[@name='EconomicValue']/@value">6000</set>
+    <set xpath="/items/item[@name='thrownAmmoPipeBomb']/property[@name='UnlockedBy']/@value">skillChemistry</set>
+    <append xpath="/items/item[@name='thrownAmmoPipeBomb']"><property name="ItemWeight" value="2"/></append>
+    <set xpath="/items/item[@name='thrownAmmoPipeBomb']/property[@name='EconomicValue']/@value">41</set>
+    <set xpath="/items/item[@name='thrownAmmoPipeBomb']/property[@name='Tags']/@value">ammo,weapon,attPerception,skillDemolitions,explosivesSkill</set>
+    <set xpath="/items/item[@name='thrownGrenadeContact']/property[@name='UnlockedBy']/@value">skillChemistry</set>
+    <append xpath="/items/item[@name='thrownGrenadeContact']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='thrownGrenadeContact']/property[@name='EconomicValue']/@value">41</set>
+    <set xpath="/items/item[@name='thrownGrenadeContact']/property[@name='Tags']/@value">ammo,weapon,attPerception,skillDemolitions,explosivesSkill</set>
+    <set xpath="/items/item[@name='thrownGrenade']/property[@name='UnlockedBy']/@value">skillChemistry</set>
+    <append xpath="/items/item[@name='thrownGrenade']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='thrownTimedCharge']/property[@name='UnlockedBy']/@value">skillElectricalEngineer</set>
+    <append xpath="/items/item[@name='thrownTimedCharge']"><property name="ItemWeight" value="3"/></append>
+    <set xpath="/items/item[@name='thrownTimedCharge']/property[@name='EconomicValue']/@value">41</set>
+    <set xpath="/items/item[@name='thrownTimedCharge']/property[@name='Tags']/@value">ammo,weapon,attPerception,skillDemolitions,explosivesSkill,perkGreatHeistSafes</set>
+    <set xpath="/items/item[@name='thrownDynamite']/property[@name='UnlockedBy']/@value">skillChemistry</set>
+    <append xpath="/items/item[@name='thrownDynamite']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='thrownDynamite']/property[@name='EconomicValue']/@value">100</set>
+    <set xpath="/items/item[@name='thrownDynamite']/property[@name='Tags']/@value">ammo,weapon,attPerception,skillDemolitions,explosivesSkill</set>
+    <append xpath="/items/item[@name='thrownAmmoMolotovCocktail']"><property name="ItemWeight" value="1.5"/></append>
+    <set xpath="/items/item[@name='thrownAmmoMolotovCocktail']/property[@name='EconomicValue']/@value">41</set>
+    <set xpath="/items/item[@name='thrownAmmoMolotovCocktail']/property[@name='Tags']/@value">ammo,weapon,attPerception,skillDemolitions,explosivesSkill</set>
+    <append xpath="/items/item[@name='ammoDartIron']"><property name="ItemWeight" value="0.1"/></append>
+    <set xpath="/items/item[@name='ammoDartIron']/property[@name='EconomicValue']/@value">34</set>
+    <set xpath="/items/item[@name='partsMaster']/property[@name='EconomicValue']/@value">750</set>
+    <append xpath="/items/item[@name='gunMGT1AK47Parts']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='gunMGT1AK47Parts']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='gunMGT1AK47Parts']/property[@name='EconomicValue']/@value">150</set>
+    <set xpath="/items/item[@name='gunMGT1AK47Parts']/property[@name='Tags']/@value">parts,machinegunSkill</set>
+    <append xpath="/items/item[@name='gunHandgunT1PistolParts']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='gunHandgunT1PistolParts']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='gunHandgunT1PistolParts']/property[@name='Tags']/@value">parts,handgunSkill</set>
+    <append xpath="/items/item[@name='gunRifleT1HuntingRifleParts']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='gunRifleT1HuntingRifleParts']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='gunRifleT1HuntingRifleParts']/property[@name='Tags']/@value">parts,rifleSkill</set>
+    <append xpath="/items/item[@name='gunShotgunT1DoubleBarrelParts']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='gunShotgunT1DoubleBarrelParts']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='gunShotgunT1DoubleBarrelParts']/property[@name='Tags']/@value">parts,shotgunSkill</set>
+    <append xpath="/items/item[@name='gunBowT1WoodenBowParts']"><property name="UnlockedBy" value="skillCarpentry"/></append>
+    <append xpath="/items/item[@name='gunBowT1WoodenBowParts']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='gunBowT1WoodenBowParts']/property[@name='Tags']/@value">parts,bowSkill</set>
+    <append xpath="/items/item[@name='gunExplosivesT3RocketLauncherParts']"><property name="UnlockedBy" value="skillMechanicalEngineer"/></append>
+    <append xpath="/items/item[@name='gunExplosivesT3RocketLauncherParts']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='gunExplosivesT3RocketLauncherParts']/property[@name='EconomicValue']/@value">200</set>
+    <set xpath="/items/item[@name='gunExplosivesT3RocketLauncherParts']/property[@name='Tags']/@value">parts,explosivesSkill</set>
+    <append xpath="/items/item[@name='meleeWpnBatonT2StunBatonParts']"><property name="UnlockedBy" value="skillElectricalEngineer"/></append>
+    <append xpath="/items/item[@name='meleeWpnBatonT2StunBatonParts']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='meleeWpnBatonT2StunBatonParts']/property[@name='Tags']/@value">parts,roboticsSkill</set>
+    <append xpath="/items/item[@name='meleeWpnKnucklesT3SteelKnucklesParts']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='meleeWpnKnucklesT3SteelKnucklesParts']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='meleeWpnKnucklesT3SteelKnucklesParts']/property[@name='EconomicValue']/@value">200</set>
+    <set xpath="/items/item[@name='meleeWpnKnucklesT3SteelKnucklesParts']/property[@name='Tags']/@value">parts,knuckleSkill,craftingKnuckles</set>
+    <append xpath="/items/item[@name='meleeWpnBladeT3MacheteParts']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='meleeWpnBladeT3MacheteParts']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='meleeWpnBladeT3MacheteParts']/property[@name='EconomicValue']/@value">200</set>
+    <set xpath="/items/item[@name='meleeWpnBladeT3MacheteParts']/property[@name='Tags']/@value">parts,bladeSkill</set>
+    <append xpath="/items/item[@name='meleeWpnSpearT3SteelSpearParts']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='meleeWpnSpearT3SteelSpearParts']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='meleeWpnSpearT3SteelSpearParts']/property[@name='EconomicValue']/@value">200</set>
+    <set xpath="/items/item[@name='meleeWpnSpearT3SteelSpearParts']/property[@name='Tags']/@value">parts,spearSkill</set>
+    <append xpath="/items/item[@name='meleeWpnClubT3SteelClubParts']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='meleeWpnClubT3SteelClubParts']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='meleeWpnClubT3SteelClubParts']/property[@name='EconomicValue']/@value">200</set>
+    <set xpath="/items/item[@name='meleeWpnClubT3SteelClubParts']/property[@name='Tags']/@value">parts,clubSkill</set>
+    <append xpath="/items/item[@name='meleeWpnSledgeT3SteelSledgehammerParts']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='meleeWpnSledgeT3SteelSledgehammerParts']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='meleeWpnSledgeT3SteelSledgehammerParts']/property[@name='EconomicValue']/@value">200</set>
+    <set xpath="/items/item[@name='meleeWpnSledgeT3SteelSledgehammerParts']/property[@name='Tags']/@value">parts,sledgeSkill</set>
+    <append xpath="/items/item[@name='meleeToolAllSteelParts']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='meleeToolAllSteelParts']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='meleeToolAllSteelParts']/property[@name='EconomicValue']/@value">200</set>
+    <set xpath="/items/item[@name='meleeToolAllSteelParts']/property[@name='Tags']/@value">parts,harvestingSkill,repairingSkill,salvagingSkill</set>
+    <append xpath="/items/item[@name='meleeToolAxeT3ChainsawParts']"><property name="UnlockedBy" value="skillMechanicalEngineer"/></append>
+    <append xpath="/items/item[@name='meleeToolAxeT3ChainsawParts']"><property name="ItemWeight" value="2"/></append>
+    <set xpath="/items/item[@name='meleeToolAxeT3ChainsawParts']/property[@name='EconomicValue']/@value">200</set>
+    <set xpath="/items/item[@name='meleeToolAxeT3ChainsawParts']/property[@name='Tags']/@value">parts,harvestingSkill,repairingSkill,salvagingSkill</set>
+    <set xpath="/items/item[@name='vehicleWheels']/property[@name='UnlockedBy']/@value">skillAutomotive</set>
+    <append xpath="/items/item[@name='vehicleWheels']"><property name="ItemWeight" value="40"/></append>
+    <set xpath="/items/item[@name='vehicleWheels']/property[@name='EconomicValue']/@value">300</set>
+    <set xpath="/items/item[@name='vehicleWheels']/property[@name='Tags']/@value">vehiclesSkill</set>
+    <set xpath="/items/item[@name='vehicleMinibikeChassis']/property[@name='UnlockedBy']/@value">skillAutomotive</set>
+    <append xpath="/items/item[@name='vehicleMinibikeChassis']"><property name="ItemWeight" value="15"/></append>
+    <set xpath="/items/item[@name='vehicleMinibikeChassis']/property[@name='EconomicValue']/@value">1800</set>
+    <set xpath="/items/item[@name='vehicleMinibikeChassis']/property[@name='Tags']/@value">vehiclesSkill</set>
+    <set xpath="/items/item[@name='vehicleMinibikeHandlebars']/property[@name='UnlockedBy']/@value">skillAutomotive</set>
+    <append xpath="/items/item[@name='vehicleMinibikeHandlebars']"><property name="ItemWeight" value="3"/></append>
+    <set xpath="/items/item[@name='vehicleMinibikeHandlebars']/property[@name='EconomicValue']/@value">1800</set>
+    <set xpath="/items/item[@name='vehicleMinibikeHandlebars']/property[@name='Tags']/@value">vehiclesSkill</set>
+    <append xpath="/items/item[@name='vehicleMinibikePlaceable']"><property name="UnlockedBy" value="skillAutomotive"/></append>
+    <append xpath="/items/item[@name='vehicleMinibikePlaceable']"><property name="ItemWeight" value="135"/></append>
+    <set xpath="/items/item[@name='vehicleMinibikePlaceable']/property[@name='EconomicValue']/@value">6000</set>
+    <set xpath="/items/item[@name='vehicleMinibikePlaceable']/property[@name='Tags']/@value">vehicle,vengine,vfuel,vlight,vseat,canHaveCosmetic</set>
+    <set xpath="/items/item[@name='vehicleBicycleChassis']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='vehicleBicycleChassis']"><property name="ItemWeight" value="3"/></append>
+    <set xpath="/items/item[@name='vehicleBicycleChassis']/property[@name='EconomicValue']/@value">750</set>
+    <set xpath="/items/item[@name='vehicleBicycleChassis']/property[@name='Tags']/@value">vehiclesSkill</set>
+    <set xpath="/items/item[@name='vehicleBicycleHandlebars']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='vehicleBicycleHandlebars']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='vehicleBicycleHandlebars']/property[@name='EconomicValue']/@value">750</set>
+    <set xpath="/items/item[@name='vehicleBicycleHandlebars']/property[@name='Tags']/@value">vehiclesSkill</set>
+    <append xpath="/items/item[@name='vehicleBicyclePlaceable']"><property name="UnlockedBy" value="skillMechanicalEngineer"/></append>
+    <append xpath="/items/item[@name='vehicleBicyclePlaceable']"><property name="ItemWeight" value="20"/></append>
+    <set xpath="/items/item[@name='vehicleBicyclePlaceable']/property[@name='EconomicValue']/@value">2500</set>
+    <set xpath="/items/item[@name='vehicleBicyclePlaceable']/property[@name='Tags']/@value">vehicle,canHaveCosmetic</set>
+    <set xpath="/items/item[@name='vehicleMotorcycleChassis']/property[@name='UnlockedBy']/@value">skillAutomotive</set>
+    <append xpath="/items/item[@name='vehicleMotorcycleChassis']"><property name="ItemWeight" value="50"/></append>
+    <set xpath="/items/item[@name='vehicleMotorcycleChassis']/property[@name='EconomicValue']/@value">3000</set>
+    <set xpath="/items/item[@name='vehicleMotorcycleChassis']/property[@name='Tags']/@value">vehiclesSkill</set>
+    <set xpath="/items/item[@name='vehicleMotorcycleHandlebars']/property[@name='UnlockedBy']/@value">skillAutomotive</set>
+    <append xpath="/items/item[@name='vehicleMotorcycleHandlebars']"><property name="ItemWeight" value="20"/></append>
+    <set xpath="/items/item[@name='vehicleMotorcycleHandlebars']/property[@name='EconomicValue']/@value">3000</set>
+    <set xpath="/items/item[@name='vehicleMotorcycleHandlebars']/property[@name='Tags']/@value">vehiclesSkill</set>
+    <append xpath="/items/item[@name='vehicleMotorcyclePlaceable']"><property name="UnlockedBy" value="skillAutomotive"/></append>
+    <append xpath="/items/item[@name='vehicleMotorcyclePlaceable']"><property name="ItemWeight" value="400"/></append>
+    <set xpath="/items/item[@name='vehicleMotorcyclePlaceable']/property[@name='EconomicValue']/@value">10000</set>
+    <set xpath="/items/item[@name='vehicleMotorcyclePlaceable']/property[@name='Tags']/@value">vehicle,vengine,vfuel,vlight,vseat,canHaveCosmetic</set>
+    <set xpath="/items/item[@name='vehicleGyroCopterChassis']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='vehicleGyroCopterChassis']"><property name="ItemWeight" value="250"/></append>
+    <set xpath="/items/item[@name='vehicleGyroCopterChassis']/property[@name='EconomicValue']/@value">15000</set>
+    <set xpath="/items/item[@name='vehicleGyroCopterChassis']/property[@name='Tags']/@value">vehiclesSkill</set>
+    <set xpath="/items/item[@name='vehicleGyroCopterAccessories']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='vehicleGyroCopterAccessories']"><property name="ItemWeight" value="150"/></append>
+    <set xpath="/items/item[@name='vehicleGyroCopterAccessories']/property[@name='EconomicValue']/@value">15000</set>
+    <set xpath="/items/item[@name='vehicleGyroCopterAccessories']/property[@name='Tags']/@value">vehiclesSkill</set>
+    <append xpath="/items/item[@name='vehicleGyrocopterPlaceable']"><property name="UnlockedBy" value="skillMechanicalEngineer"/></append>
+    <append xpath="/items/item[@name='vehicleGyrocopterPlaceable']"><property name="ItemWeight" value="400"/></append>
+    <set xpath="/items/item[@name='vehicleGyrocopterPlaceable']/property[@name='EconomicValue']/@value">50000</set>
+    <set xpath="/items/item[@name='vehicleGyrocopterPlaceable']/property[@name='Tags']/@value">vehicle,vengine,vfuel,canHaveCosmetic</set>
+    <append xpath="/items/item[@name='medicalAloeCream']"><property name="ItemWeight" value="0.0625"/></append>
+    <set xpath="/items/item[@name='medicalAloeCream']/property[@name='EconomicValue']/@value">10</set>
+    <set xpath="/items/item[@name='medicalAloeCream']/property[@name='Tags']/@value">medical,medicalSkill</set>
+    <append xpath="/items/item[@name='medicalBandage']"><property name="ItemWeight" value="0.0001"/></append>
+    <set xpath="/items/item[@name='medicalBandage']/property[@name='EconomicValue']/@value">5</set>
+    <set xpath="/items/item[@name='medicalBandage']/property[@name='Tags']/@value">medical,medicalSkill,stopsBleeding</set>
+    <set xpath="/items/item[@name='medicalFirstAidBandage']/property[@name='UnlockedBy']/@value">skillChemistry</set>
+    <append xpath="/items/item[@name='medicalFirstAidBandage']"><property name="ItemWeight" value="0.0001"/></append>
+    <set xpath="/items/item[@name='medicalFirstAidBandage']/property[@name='EconomicValue']/@value">15</set>
+    <set xpath="/items/item[@name='medicalFirstAidKit']/property[@name='UnlockedBy']/@value">skillChemistry</set>
+    <append xpath="/items/item[@name='medicalFirstAidKit']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='medicalFirstAidKit']/property[@name='EconomicValue']/@value">200</set>
+    <append xpath="/items/item[@name='medicalSplint']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='medicalSplint']/property[@name='EconomicValue']/@value">10</set>
+    <set xpath="/items/item[@name='medicalSplint']/property[@name='Tags']/@value">medical</set>
+    <set xpath="/items/item[@name='medicalPlasterCast']/property[@name='UnlockedBy']/@value">skillChemistry</set>
+    <append xpath="/items/item[@name='medicalPlasterCast']"><property name="ItemWeight" value="1"/></append>
+    <append xpath="/items/item[@name='medicalBloodBag']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='medicalBloodBag']/property[@name='EconomicValue']/@value">25</set>
+    <set xpath="/items/item[@name='medicalBloodBag']/property[@name='Tags']/@value">medical,medicalSkill</set>
+    <append xpath="/items/item[@name='drugVitamins']"><property name="ItemWeight" value="0.0011"/></append>
+    <set xpath="/items/item[@name='drugVitamins']/property[@name='EconomicValue']/@value">80</set>
+    <set xpath="/items/item[@name='drugVitamins']/property[@name='Tags']/@value">medical,medicalSkill</set>
+    <append xpath="/items/item[@name='drugPainkillers']"><property name="ItemWeight" value="0.0011"/></append>
+    <set xpath="/items/item[@name='drugPainkillers']/property[@name='EconomicValue']/@value">80</set>
+    <set xpath="/items/item[@name='drugPainkillers']/property[@name='Tags']/@value">medical,medicalSkill</set>
+    <set xpath="/items/item[@name='drugHerbalAntibiotics']/property[@name='UnlockedBy']/@value">skillChemistry</set>
+    <append xpath="/items/item[@name='drugHerbalAntibiotics']"><property name="ItemWeight" value="0.0011"/></append>
+    <set xpath="/items/item[@name='drugHerbalAntibiotics']/property[@name='EconomicValue']/@value">120</set>
+    <set xpath="/items/item[@name='drugHerbalAntibiotics']/property[@name='Tags']/@value">medical,medicalSkill</set>
+    <set xpath="/items/item[@name='drugAntibiotics']/property[@name='UnlockedBy']/@value">skillChemistry</set>
+    <append xpath="/items/item[@name='drugAntibiotics']"><property name="ItemWeight" value="0.0011"/></append>
+    <set xpath="/items/item[@name='drugAntibiotics']/property[@name='EconomicValue']/@value">240</set>
+    <set xpath="/items/item[@name='drugAntibiotics']/property[@name='Tags']/@value">medical,medicalSkill</set>
+    <set xpath="/items/item[@name='drugSteroids']/property[@name='UnlockedBy']/@value">skillChemistry</set>
+    <append xpath="/items/item[@name='drugSteroids']"><property name="ItemWeight" value="0.0011"/></append>
+    <set xpath="/items/item[@name='drugSteroids']/property[@name='EconomicValue']/@value">250</set>
+    <set xpath="/items/item[@name='drugRecog']/property[@name='UnlockedBy']/@value">skillChemistry</set>
+    <append xpath="/items/item[@name='drugRecog']"><property name="ItemWeight" value="0.0625"/></append>
+    <set xpath="/items/item[@name='drugRecog']/property[@name='EconomicValue']/@value">250</set>
+    <set xpath="/items/item[@name='drugRecog']/property[@name='Tags']/@value">medical,medicalSkill</set>
+    <append xpath="/items/item[@name='drugFortBites']"><property name="ItemWeight" value="0.0011"/></append>
+    <append xpath="/items/item[@name='drugAtomJunkies']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='drugAtomJunkies']/property[@name='EconomicValue']/@value">100</set>
+    <set xpath="/items/item[@name='drugAtomJunkies']/property[@name='Tags']/@value">medical</set>
+    <append xpath="/items/item[@name='drugCovertCats']"><property name="ItemWeight" value="0.5"/></append>
+    <append xpath="/items/item[@name='drugEyeKandy']"><property name="ItemWeight" value="0.5"/></append>
+    <append xpath="/items/item[@name='drugHackers']"><property name="ItemWeight" value="0.5"/></append>
+    <append xpath="/items/item[@name='drugHealthBar']"><property name="ItemWeight" value="0.5"/></append>
+    <append xpath="/items/item[@name='drugJailBreakers']"><property name="ItemWeight" value="0.5"/></append>
+    <append xpath="/items/item[@name='drugNerdTats']"><property name="ItemWeight" value="0.5"/></append>
+    <append xpath="/items/item[@name='drugOhShitzDrops']"><property name="ItemWeight" value="0.5"/></append>
+    <append xpath="/items/item[@name='drugRockBusters']"><property name="ItemWeight" value="0.5"/></append>
+    <append xpath="/items/item[@name='drugSkullCrushers']"><property name="ItemWeight" value="0.5"/></append>
+    <append xpath="/items/item[@name='drugSugarButts']"><property name="ItemWeight" value="0.5"/></append>
+    <append xpath="/items/item[@name='foodHoney']"><property name="ItemWeight" value="0.0625"/></append>
+    <set xpath="/items/item[@name='foodHoney']/property[@name='EconomicValue']/@value">80</set>
+    <set xpath="/items/item[@name='foodHoney']/property[@name='Tags']/@value">food,medical,medicalSkill</set>
+    <append xpath="/items/item[@name='foodCanBeef']"><property name="ItemWeight" value="0.44"/></append>
+    <set xpath="/items/item[@name='foodCanBeef']/property[@name='EconomicValue']/@value">60</set>
+    <set xpath="/items/item[@name='foodCanBeef']/property[@name='Tags']/@value">food,foodSkill</set>
+    <append xpath="/items/item[@name='foodCanChicken']"><property name="ItemWeight" value="0.44"/></append>
+    <append xpath="/items/item[@name='foodCanLamb']"><property name="ItemWeight" value="0.44"/></append>
+    <append xpath="/items/item[@name='foodCanCatfood']"><property name="ItemWeight" value="0.44"/></append>
+    <set xpath="/items/item[@name='foodCanCatfood']/property[@name='EconomicValue']/@value">20</set>
+    <append xpath="/items/item[@name='foodCanDogfood']"><property name="ItemWeight" value="0.44"/></append>
+    <set xpath="/items/item[@name='foodCanDogfood']/property[@name='EconomicValue']/@value">40</set>
+    <append xpath="/items/item[@name='foodCanChili']"><property name="ItemWeight" value="0.44"/></append>
+    <append xpath="/items/item[@name='foodCanTuna']"><property name="ItemWeight" value="0.44"/></append>
+    <set xpath="/items/item[@name='foodCanTuna']/property[@name='EconomicValue']/@value">20</set>
+    <set xpath="/items/item[@name='foodCanSham']/property[@name='UnlockedBy']/@value">foodCanShamSchematic</set>
+    <append xpath="/items/item[@name='foodCanSham']"><property name="ItemWeight" value="0.44"/></append>
+    <append xpath="/items/item[@name='foodCanPasta']"><property name="ItemWeight" value="0.44"/></append>
+    <append xpath="/items/item[@name='foodCanSalmon']"><property name="ItemWeight" value="0.44"/></append>
+    <append xpath="/items/item[@name='foodCanMiso']"><property name="ItemWeight" value="0.44"/></append>
+    <append xpath="/items/item[@name='foodCanPeas']"><property name="ItemWeight" value="0.44"/></append>
+    <set xpath="/items/item[@name='foodCanPeas']/property[@name='EconomicValue']/@value">20</set>
+    <append xpath="/items/item[@name='foodCanPears']"><property name="ItemWeight" value="0.44"/></append>
+    <append xpath="/items/item[@name='foodCanSoup']"><property name="ItemWeight" value="0.44"/></append>
+    <set xpath="/items/item[@name='foodCanSoup']/property[@name='EconomicValue']/@value">40</set>
+    <append xpath="/items/item[@name='foodCanStock']"><property name="ItemWeight" value="0.44"/></append>
+    <set xpath="/items/item[@name='foodCanStock']/property[@name='EconomicValue']/@value">40</set>
+    <set xpath="/items/item[@name='foodCornOnTheCob']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='foodCornOnTheCob']"><property name="ItemWeight" value="0.44"/></append>
+    <set xpath="/items/item[@name='foodCornOnTheCob']/property[@name='EconomicValue']/@value">30</set>
+    <set xpath="/items/item[@name='foodCornOnTheCob']/property[@name='Tags']/@value">food,foodSkill</set>
+    <set xpath="/items/item[@name='foodCornBread']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='foodCornBread']"><property name="ItemWeight" value="0.13"/></append>
+    <set xpath="/items/item[@name='foodCornBread']/property[@name='EconomicValue']/@value">16</set>
+    <set xpath="/items/item[@name='foodCornBread']/property[@name='Tags']/@value">food,foodSkill</set>
+    <append xpath="/items/item[@name='foodShamSandwich']"><property name="ItemWeight" value="0.555"/></append>
+    <set xpath="/items/item[@name='foodShamSandwich']/property[@name='EconomicValue']/@value">5</set>
+    <set xpath="/items/item[@name='foodShamSandwich']/property[@name='Tags']/@value">food,foodSkill</set>
+    <append xpath="/items/item[@name='foodCharredMeat']"><property name="ItemWeight" value="0.35"/></append>
+    <set xpath="/items/item[@name='foodCharredMeat']/property[@name='EconomicValue']/@value">20</set>
+    <set xpath="/items/item[@name='foodCharredMeat']/property[@name='Tags']/@value">food,foodSkill</set>
+    <set xpath="/items/item[@name='foodGrilledMeat']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='foodGrilledMeat']"><property name="ItemWeight" value="0.45"/></append>
+    <set xpath="/items/item[@name='foodGrilledMeat']/property[@name='EconomicValue']/@value">24</set>
+    <set xpath="/items/item[@name='foodGrilledMeat']/property[@name='Tags']/@value">food,foodSkill</set>
+    <set xpath="/items/item[@name='foodBoiledMeat']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='foodBoiledMeat']"><property name="ItemWeight" value="0.65"/></append>
+    <set xpath="/items/item[@name='foodBoiledMeat']/property[@name='EconomicValue']/@value">52</set>
+    <set xpath="/items/item[@name='foodBoiledMeat']/property[@name='Tags']/@value">food,foodSkill</set>
+    <set xpath="/items/item[@name='foodMeatStew']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='foodMeatStew']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='foodMeatStew']/property[@name='EconomicValue']/@value">134</set>
+    <set xpath="/items/item[@name='foodMeatStew']/property[@name='Tags']/@value">food,foodSkill</set>
+    <set xpath="/items/item[@name='foodSteakAndPotato']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='foodSteakAndPotato']"><property name="ItemWeight" value="1.5"/></append>
+    <set xpath="/items/item[@name='foodSteakAndPotato']/property[@name='EconomicValue']/@value">100</set>
+    <set xpath="/items/item[@name='foodSteakAndPotato']/property[@name='Tags']/@value">food,foodSkill</set>
+    <set xpath="/items/item[@name='foodShamChowder']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='foodShamChowder']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='foodShamChowder']/property[@name='EconomicValue']/@value">126</set>
+    <set xpath="/items/item[@name='foodHoboStew']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='foodHoboStew']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='foodHoboStew']/property[@name='EconomicValue']/@value">134</set>
+    <set xpath="/items/item[@name='foodHoboStew']/property[@name='Tags']/@value">food,foodSkill</set>
+    <set xpath="/items/item[@name='foodFishTacos']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='foodFishTacos']"><property name="ItemWeight" value=".75"/></append>
+    <set xpath="/items/item[@name='foodFishTacos']/property[@name='EconomicValue']/@value">100</set>
+    <set xpath="/items/item[@name='foodFishTacos']/property[@name='Tags']/@value">food,foodSkill</set>
+    <set xpath="/items/item[@name='foodChiliDog']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='foodChiliDog']"><property name="ItemWeight" value="0.4"/></append>
+    <set xpath="/items/item[@name='foodChiliDog']/property[@name='EconomicValue']/@value">106</set>
+    <set xpath="/items/item[@name='foodBakedPotato']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='foodBakedPotato']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='foodBakedPotato']/property[@name='EconomicValue']/@value">16</set>
+    <set xpath="/items/item[@name='foodBakedPotato']/property[@name='Tags']/@value">food,foodSkill</set>
+    <set xpath="/items/item[@name='foodBlueberryPie']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='foodBlueberryPie']"><property name="ItemWeight" value="2"/></append>
+    <set xpath="/items/item[@name='foodBlueberryPie']/property[@name='EconomicValue']/@value">124</set>
+    <set xpath="/items/item[@name='foodBlueberryPie']/property[@name='Tags']/@value">food,foodSkill</set>
+    <set xpath="/items/item[@name='foodPumpkinPie']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='foodPumpkinPie']"><property name="ItemWeight" value="1.35"/></append>
+    <set xpath="/items/item[@name='foodPumpkinPie']/property[@name='EconomicValue']/@value">124</set>
+    <set xpath="/items/item[@name='foodPumpkinPie']/property[@name='Tags']/@value">food,foodSkill</set>
+    <set xpath="/items/item[@name='foodPumpkinCheesecake']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='foodPumpkinCheesecake']"><property name="ItemWeight" value="1.375"/></append>
+    <set xpath="/items/item[@name='foodPumpkinCheesecake']/property[@name='EconomicValue']/@value">124</set>
+    <set xpath="/items/item[@name='foodPumpkinCheesecake']/property[@name='Tags']/@value">food,foodSkill</set>
+    <set xpath="/items/item[@name='foodPumpkinBread']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='foodPumpkinBread']"><property name="ItemWeight" value="0.15"/></append>
+    <set xpath="/items/item[@name='foodPumpkinBread']/property[@name='EconomicValue']/@value">124</set>
+    <set xpath="/items/item[@name='foodPumpkinBread']/property[@name='Tags']/@value">food,foodSkill</set>
+    <set xpath="/items/item[@name='foodGumboStew']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='foodGumboStew']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='foodGumboStew']/property[@name='EconomicValue']/@value">250</set>
+    <set xpath="/items/item[@name='foodGumboStew']/property[@name='Tags']/@value">food,foodSkill</set>
+    <set xpath="/items/item[@name='foodShepardsPie']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='foodShepardsPie']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='foodShepardsPie']/property[@name='EconomicValue']/@value">250</set>
+    <set xpath="/items/item[@name='foodShepardsPie']/property[@name='Tags']/@value">food,foodSkill</set>
+    <set xpath="/items/item[@name='foodSpaghetti']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='foodSpaghetti']"><property name="ItemWeight" value="0.75"/></append>
+    <set xpath="/items/item[@name='foodSpaghetti']/property[@name='EconomicValue']/@value">250</set>
+    <set xpath="/items/item[@name='foodSpaghetti']/property[@name='Tags']/@value">food,foodSkill</set>
+    <set xpath="/items/item[@name='foodTunaFishGravyToast']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='foodTunaFishGravyToast']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='foodTunaFishGravyToast']/property[@name='EconomicValue']/@value">250</set>
+    <set xpath="/items/item[@name='foodTunaFishGravyToast']/property[@name='Tags']/@value">food,foodSkill</set>
+    <append xpath="/items/item[@name='foodEggBoiled']"><property name="UnlockedBy" value="skillCooking"/></append>
+    <append xpath="/items/item[@name='foodEggBoiled']"><property name="ItemWeight" value="0.15"/></append>
+    <set xpath="/items/item[@name='foodEggBoiled']/property[@name='EconomicValue']/@value">25</set>
+    <set xpath="/items/item[@name='foodEggBoiled']/property[@name='Tags']/@value">food,foodSkill</set>
+    <set xpath="/items/item[@name='foodBaconAndEggs']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='foodBaconAndEggs']"><property name="ItemWeight" value="0.4"/></append>
+    <set xpath="/items/item[@name='foodBaconAndEggs']/property[@name='EconomicValue']/@value">72</set>
+    <set xpath="/items/item[@name='foodBaconAndEggs']/property[@name='Tags']/@value">food,foodSkill</set>
+    <set xpath="/items/item[@name='foodVegetableStew']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='foodVegetableStew']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='foodVegetableStew']/property[@name='EconomicValue']/@value">102</set>
+    <set xpath="/items/item[@name='foodVegetableStew']/property[@name='Tags']/@value">food,foodSkill</set>
+    <append xpath="/items/item[@name='foodRawMeat']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='foodRawMeat']/property[@name='EconomicValue']/@value">10</set>
+    <set xpath="/items/item[@name='foodRawMeat']/property[@name='Tags']/@value">food,foodSkill</set>
+    <append xpath="/items/item[@name='foodRottingFlesh']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='foodRottingFlesh']/property[@name='EconomicValue']/@value">5</set>
+    <set xpath="/items/item[@name='foodRottingFlesh']/property[@name='Tags']/@value">food,foodSkill</set>
+    <append xpath="/items/item[@name='foodEgg']"><property name="ItemWeight" value="0.15"/></append>
+    <set xpath="/items/item[@name='foodEgg']/property[@name='EconomicValue']/@value">8</set>
+    <set xpath="/items/item[@name='foodEgg']/property[@name='Tags']/@value">food,foodSkill,repairTool</set>
+    <append xpath="/items/item[@name='foodCornMeal']"><property name="UnlockedBy" value="skillCooking"/></append>
+    <append xpath="/items/item[@name='foodCornMeal']"><property name="ItemWeight" value="0.4"/></append>
+    <set xpath="/items/item[@name='foodCornMeal']/property[@name='EconomicValue']/@value">10</set>
+    <set xpath="/items/item[@name='foodCornMeal']/property[@name='Tags']/@value">food,foodSkill</set>
+    <append xpath="/items/item[@name='foodCropBlueberries']"><property name="ItemWeight" value="0.0006"/></append>
+    <set xpath="/items/item[@name='foodCropBlueberries']/property[@name='EconomicValue']/@value">10</set>
+    <set xpath="/items/item[@name='foodCropBlueberries']/property[@name='Tags']/@value">food,foodSkill</set>
+    <append xpath="/items/item[@name='foodCropCorn']"><property name="ItemWeight" value="0.44"/></append>
+    <set xpath="/items/item[@name='foodCropCorn']/property[@name='EconomicValue']/@value">10</set>
+    <set xpath="/items/item[@name='foodCropCorn']/property[@name='Tags']/@value">food,foodSkill</set>
+    <append xpath="/items/item[@name='foodCropGraceCorn']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='foodCropGraceCorn']/property[@name='EconomicValue']/@value">200</set>
+    <set xpath="/items/item[@name='foodCropGraceCorn']/property[@name='Tags']/@value">food,foodSkill</set>
+    <append xpath="/items/item[@name='foodCropPotato']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='foodCropPotato']/property[@name='EconomicValue']/@value">10</set>
+    <set xpath="/items/item[@name='foodCropPotato']/property[@name='Tags']/@value">food,foodSkill</set>
+    <append xpath="/items/item[@name='foodCropMushrooms']"><property name="ItemWeight" value="0.15"/></append>
+    <set xpath="/items/item[@name='foodCropMushrooms']/property[@name='EconomicValue']/@value">10</set>
+    <set xpath="/items/item[@name='foodCropMushrooms']/property[@name='Tags']/@value">food,foodSkill</set>
+    <append xpath="/items/item[@name='foodCropYuccaFruit']"><property name="ItemWeight" value="1.5"/></append>
+    <set xpath="/items/item[@name='foodCropYuccaFruit']/property[@name='EconomicValue']/@value">10</set>
+    <set xpath="/items/item[@name='foodCropYuccaFruit']/property[@name='Tags']/@value">food,foodSkill</set>
+    <append xpath="/items/item[@name='foodCropPumpkin']"><property name="ItemWeight" value="6"/></append>
+    <set xpath="/items/item[@name='foodCropPumpkin']/property[@name='EconomicValue']/@value">10</set>
+    <set xpath="/items/item[@name='foodCropPumpkin']/property[@name='Tags']/@value">food,foodSkill</set>
+    <append xpath="/items/item[@name='drinkJarRiverWater']"><property name="ItemWeight" value=".5"/></append>
+    <set xpath="/items/item[@name='drinkJarRiverWater']/property[@name='EconomicValue']/@value">20</set>
+    <set xpath="/items/item[@name='drinkJarRiverWater']/property[@name='Tags']/@value">drinks</set>
+    <append xpath="/items/item[@name='drinkJarBoiledWater']"><property name="ItemWeight" value=".5"/></append>
+    <set xpath="/items/item[@name='drinkJarBoiledWater']/property[@name='EconomicValue']/@value">40</set>
+    <set xpath="/items/item[@name='drinkJarBoiledWater']/property[@name='Tags']/@value">drinks</set>
+    <set xpath="/items/item[@name='drinkJarPureMineralWater']/property[@name='UnlockedBy']/@value">skillChemistry</set>
+    <append xpath="/items/item[@name='drinkJarPureMineralWater']"><property name="ItemWeight" value=".5"/></append>
+    <set xpath="/items/item[@name='drinkJarPureMineralWater']/property[@name='EconomicValue']/@value">100</set>
+    <set xpath="/items/item[@name='drinkJarPureMineralWater']/property[@name='Tags']/@value">drinks</set>
+    <set xpath="/items/item[@name='drinkJarYuccaJuice']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='drinkJarYuccaJuice']"><property name="ItemWeight" value=".5"/></append>
+    <set xpath="/items/item[@name='drinkJarYuccaJuice']/property[@name='EconomicValue']/@value">68</set>
+    <set xpath="/items/item[@name='drinkJarYuccaJuice']/property[@name='Tags']/@value">drinks,foodSkill</set>
+    <set xpath="/items/item[@name='drinkJarGoldenRodTea']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='drinkJarGoldenRodTea']"><property name="ItemWeight" value=".5"/></append>
+    <set xpath="/items/item[@name='drinkJarGoldenRodTea']/property[@name='EconomicValue']/@value">48</set>
+    <set xpath="/items/item[@name='drinkJarGoldenRodTea']/property[@name='Tags']/@value">drinks,foodSkill</set>
+    <set xpath="/items/item[@name='drinkJarRedTea']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='drinkJarRedTea']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='drinkJarRedTea']/property[@name='EconomicValue']/@value">48</set>
+    <set xpath="/items/item[@name='drinkJarRedTea']/property[@name='Tags']/@value">drinks,foodSkill</set>
+    <set xpath="/items/item[@name='drinkYuccaJuiceSmoothie']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='drinkYuccaJuiceSmoothie']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='drinkYuccaJuiceSmoothie']/property[@name='EconomicValue']/@value">156</set>
+    <set xpath="/items/item[@name='drinkYuccaJuiceSmoothie']/property[@name='Tags']/@value">drinks,foodSkill</set>
+    <append xpath="/items/item[@name='drinkCanMegaCrush']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='drinkCanMegaCrush']/property[@name='EconomicValue']/@value">240</set>
+    <set xpath="/items/item[@name='drinkJarCoffee']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='drinkJarCoffee']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='drinkJarCoffee']/property[@name='EconomicValue']/@value">96</set>
+    <set xpath="/items/item[@name='drinkJarCoffee']/property[@name='Tags']/@value">drinks,foodSkill</set>
+    <set xpath="/items/item[@name='drinkJarBlackStrapCoffee']/property[@name='UnlockedBy']/@value">skillCooking</set>
+    <append xpath="/items/item[@name='drinkJarBlackStrapCoffee']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='drinkJarBlackStrapCoffee']/property[@name='EconomicValue']/@value">200</set>
+    <set xpath="/items/item[@name='drinkJarBeer']/property[@name='UnlockedBy']/@value">skillChemistry</set>
+    <append xpath="/items/item[@name='drinkJarBeer']"><property name="ItemWeight" value="0.75"/></append>
+    <set xpath="/items/item[@name='drinkJarBeer']/property[@name='EconomicValue']/@value">100</set>
+    <set xpath="/items/item[@name='drinkJarBeer']/property[@name='Tags']/@value">drinks,foodSkill</set>
+    <set xpath="/items/item[@name='drinkJarGrandpasMoonshine']/property[@name='UnlockedBy']/@value">skillChemistry</set>
+    <append xpath="/items/item[@name='drinkJarGrandpasMoonshine']"><property name="ItemWeight" value="0.75"/></append>
+    <set xpath="/items/item[@name='drinkJarGrandpasMoonshine']/property[@name='EconomicValue']/@value">500</set>
+    <set xpath="/items/item[@name='drinkJarGrandpasMoonshine']/property[@name='Tags']/@value">drinks,foodSkill</set>
+    <set xpath="/items/item[@name='drinkJarGrandpasAwesomeSauce']/property[@name='UnlockedBy']/@value">skillChemistry</set>
+    <append xpath="/items/item[@name='drinkJarGrandpasAwesomeSauce']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='drinkJarGrandpasAwesomeSauce']/property[@name='EconomicValue']/@value">500</set>
+    <set xpath="/items/item[@name='drinkJarGrandpasAwesomeSauce']/property[@name='Tags']/@value">drinks,foodSkill</set>
+    <set xpath="/items/item[@name='drinkJarGrandpasLearningElixir']/property[@name='UnlockedBy']/@value">skillChemistry</set>
+    <append xpath="/items/item[@name='drinkJarGrandpasLearningElixir']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='drinkJarGrandpasLearningElixir']/property[@name='EconomicValue']/@value">250</set>
+    <set xpath="/items/item[@name='drinkJarGrandpasLearningElixir']/property[@name='Tags']/@value">drinks,foodSkill</set>
+    <append xpath="/items/item[@name='drinkJarGrandpasForgettingElixir']"><property name="UnlockedBy" value="skillChemistry"/></append>
+    <append xpath="/items/item[@name='drinkJarGrandpasForgettingElixir']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='drinkJarGrandpasForgettingElixir']/property[@name='EconomicValue']/@value">2000</set>
+    <append xpath="/items/item[@name='bucketEmpty']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='bucketEmpty']"><property name="ItemWeight" value="3"/></append>
+    <set xpath="/items/item[@name='bucketEmpty']/property[@name='EconomicValue']/@value">84</set>
+    <append xpath="/items/item[@name='bucketRiverWater']"><property name="ItemWeight" value="11"/></append>
+    <set xpath="/items/item[@name='bucketRiverWater']/property[@name='EconomicValue']/@value">88</set>
+    <set xpath="/items/item[@name='schematicMaster']/property[@name='EconomicValue']/@value">800</set>
+    <append xpath="/items/item[@name='modGunBarrelExtenderSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunMuzzleBrakeSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunSoundSuppressorSilencerSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunLaserSightSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunFlashlightSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunScopeSmallSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunScopeMediumSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunScopeLargeSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunReflexSightSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunTriggerGroupSemiSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunTriggerGroupBurst3Schematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunTriggerGroupAutomaticSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunBipodSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunForegripSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunRetractingStockSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunDuckbillSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunChokeSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunMagazineExtenderSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modShotgunSawedOffBarrelSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunCrippleEmSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunBowPolymerStringSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunBowArrowRestSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunMeleeTheHunterSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modGunMeleeRadRemoverSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modMeleeTemperedBladeSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modMeleeSerratedBladeSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modMeleeWeightedHeadSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modMeleeStructuralBraceSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modMeleeErgonomicGripSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modMeleeFortifyingGripSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modMeleeClubBarbedWireSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modMeleeClubMetalSpikesSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modMeleeGraveDiggerSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modMeleeBunkerBusterSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modMeleeIronBreakerSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modMeleeWoodSplitterSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modArmorInsulatedLinerSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modArmorCoolingMeshSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modArmorImprovedFittingsSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modArmorCustomizedFittingsSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modArmorPlatingBasicSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modArmorPlatingReinforcedSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modArmorStoragePocketSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modArmorDoubleStoragePocketSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modArmorTripleStoragePocketSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modArmorMuffledConnectorsSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modArmorAdvancedMuffledConnectorsSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modArmorImpactBracingSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modArmorBandolierSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modArmorWaterPurifierSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modArmorHelmetLightSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modFuelTankSmallSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modFuelTankLargeSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modRoboticDroneCargoModSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modRoboticDroneMedicModSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modRoboticDroneHeadlampModSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modRoboticDroneArmorPlatingModSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modRoboticDroneMoraleBoosterModSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modVehicleFuelSaverSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modVehicleOffRoadHeadlightsSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modVehicleSuperChargerSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modVehicleExpandedSeatSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='modVehicleReserveFuelTankSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='schematicNoQualityRecipeMaster']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='foodCanShamSchematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='plantedGraceCorn1Schematic']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='skillBookMaster']"><property name="ItemWeight" value="0.04"/></append>
+    <set xpath="/items/item[@name='skillBookMaster']/property[@name='EconomicValue']/@value">500</set>
+    <set xpath="/items/item[@name='blankNoteMaster']/property[@name='EconomicValue']/@value">1600</set>
+    <append xpath="/items/item[@name='noteDuke01']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='questMaster']"><property name="ItemWeight" value="0.04"/></append>
+    <set xpath="/items/item[@name='questMaster']/property[@name='EconomicValue']/@value">1600</set>
+    <append xpath="/items/item[@name='challengeQuestMaster']"><property name="ItemWeight" value="0.04"/></append>
+    <set xpath="/items/item[@name='challengeQuestMaster']/property[@name='EconomicValue']/@value">400</set>
+    <append xpath="/items/item[@name='treasureQuestMaster']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='q_basicSurvival']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='qt_taylor']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='qt_nickole']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='qt_stephan']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='qt_jennifer']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='qt_claude']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='qt_sarah']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='qt_raphael']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='qtest_nextTraderAdmin']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='adminQuestTicketMaster']"><property name="ItemWeight" value="0.04"/></append>
+    <set xpath="/items/item[@name='adminQuestTicketMaster']/property[@name='EconomicValue']/@value">1600</set>
+    <append xpath="/items/item[@name='adminT1QuestTicket']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='adminT2QuestTicket']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='adminT3QuestTicket']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='adminT4QuestTicket']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='adminT5QuestTicket']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='adminT6QuestTicket']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='resourceRockSmall']"><property name="ItemWeight" value="0.1"/></append>
+    <set xpath="/items/item[@name='resourceRockSmall']/property[@name='EconomicValue']/@value">50</set>
+    <append xpath="/items/item[@name='resourceSnowBall']"><property name="ItemWeight" value="0.1"/></append>
+    <set xpath="/items/item[@name='resourceSnowBall']/property[@name='EconomicValue']/@value">5</set>
+    <append xpath="/items/item[@name='resourceAcid']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='resourceAcid']/property[@name='EconomicValue']/@value">140</set>
+    <append xpath="/items/item[@name='resourceYuccaFibers']"><property name="ItemWeight" value="0.0001"/></append>
+    <set xpath="/items/item[@name='resourceYuccaFibers']/property[@name='EconomicValue']/@value">5</set>
+    <append xpath="/items/item[@name='resourceCrushedSand']"><property name="ItemWeight" value="0.1"/></append>
+    <set xpath="/items/item[@name='resourceCrushedSand']/property[@name='EconomicValue']/@value">50</set>
+    <set xpath="/items/item[@name='resourceCrushedSand']/property[@name='NoScrapping']/@value">true</set>
+    <append xpath="/items/item[@name='resourceBrokenGlass']"><property name="ItemWeight" value="0.1"/></append>
+    <set xpath="/items/item[@name='resourceBrokenGlass']/property[@name='EconomicValue']/@value">5</set>
+    <append xpath="/items/item[@name='resourceScrapIron']"><property name="ItemWeight" value="0.8"/></append>
+    <set xpath="/items/item[@name='resourceScrapIron']/property[@name='EconomicValue']/@value">10</set>
+    <append xpath="/items/item[@name='resourceMetalPipe']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='resourceMetalPipe']"><property name="ItemWeight" value="10"/></append>
+    <set xpath="/items/item[@name='resourceMetalPipe']/property[@name='EconomicValue']/@value">12</set>
+    <append xpath="/items/item[@name='resourceScrapPolymers']"><property name="UnlockedBy" value="skillChemistry"/></append>
+    <append xpath="/items/item[@name='resourceScrapPolymers']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='resourceScrapPolymers']/property[@name='EconomicValue']/@value">8</set>
+    <set xpath="/items/item[@name='resourceScrapPolymers']/property[@name='Tags']/@value">junk</set>
+    <append xpath="/items/item[@name='resourceSewingKit']"><property name="UnlockedBy" value="skillTailoring"/></append>
+    <append xpath="/items/item[@name='resourceSewingKit']"><property name="ItemWeight" value="0.25"/></append>
+    <set xpath="/items/item[@name='resourceSewingKit']/property[@name='EconomicValue']/@value">16</set>
+    <set xpath="/items/item[@name='resourceSewingKit']/property[@name='Tags']/@value">junk</set>
+    <append xpath="/items/item[@name='resourceOilShale']"><property name="UnlockedBy" value="skillChemistry"/></append>
+    <append xpath="/items/item[@name='resourceOilShale']"><property name="ItemWeight" value="1.47"/></append>
+    <set xpath="/items/item[@name='resourceOilShale']/property[@name='EconomicValue']/@value">10</set>
+    <append xpath="/items/item[@name='resourceBone']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='resourceBone']/property[@name='EconomicValue']/@value">2</set>
+    <append xpath="/items/item[@name='resourceAnimalFat']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='resourceAnimalFat']/property[@name='EconomicValue']/@value">20</set>
+    <append xpath="/items/item[@name='resourceTestosteroneExtract']"><property name="ItemWeight" value="0.0625"/></append>
+    <set xpath="/items/item[@name='resourceTestosteroneExtract']/property[@name='EconomicValue']/@value">500</set>
+    <append xpath="/items/item[@name='resourceCropHopsFlower']"><property name="ItemWeight" value="0.0625"/></append>
+    <set xpath="/items/item[@name='resourceCropHopsFlower']/property[@name='EconomicValue']/@value">12</set>
+    <append xpath="/items/item[@name='resourceCropAloeLeaf']"><property name="ItemWeight" value="0.0625"/></append>
+    <set xpath="/items/item[@name='resourceCropAloeLeaf']/property[@name='EconomicValue']/@value">12</set>
+    <append xpath="/items/item[@name='resourceCropChrysanthemumPlant']"><property name="ItemWeight" value="0.0625"/></append>
+    <set xpath="/items/item[@name='resourceCropChrysanthemumPlant']/property[@name='EconomicValue']/@value">12</set>
+    <append xpath="/items/item[@name='resourceCropCottonPlant']"><property name="ItemWeight" value="0.0625"/></append>
+    <set xpath="/items/item[@name='resourceCropCottonPlant']/property[@name='EconomicValue']/@value">12</set>
+    <append xpath="/items/item[@name='resourceCropGoldenrodPlant']"><property name="ItemWeight" value="0.0625"/></append>
+    <set xpath="/items/item[@name='resourceCropGoldenrodPlant']/property[@name='EconomicValue']/@value">12</set>
+    <append xpath="/items/item[@name='resourceCropCoffeeBeans']"><property name="ItemWeight" value="0.0625"/></append>
+    <set xpath="/items/item[@name='resourceCropCoffeeBeans']/property[@name='EconomicValue']/@value">12</set>
+    <append xpath="/items/item[@name='resourceScrapBrass']"><property name="ItemWeight" value="0.75"/></append>
+    <set xpath="/items/item[@name='resourceScrapBrass']/property[@name='EconomicValue']/@value">20</set>
+    <set xpath="/items/item[@name='resourceScrapBrass']/property[@name='Tags']/@value">brass</set>
+    <append xpath="/items/item[@name='resourceScrapLead']"><property name="ItemWeight" value="0.75"/></append>
+    <set xpath="/items/item[@name='resourceScrapLead']/property[@name='EconomicValue']/@value">10</set>
+    <set xpath="/items/item[@name='resourceScrapLead']/property[@name='Tags']/@value">lead</set>
+    <append xpath="/items/item[@name='resourceClayLump']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='resourceClayLump']/property[@name='EconomicValue']/@value">6</set>
+    <append xpath="/items/item[@name='resourceCobblestones']"><property name="UnlockedBy" value="skillCivilEngineer"/></append>
+    <append xpath="/items/item[@name='resourceCobblestones']"><property name="ItemWeight" value="2"/></append>
+    <set xpath="/items/item[@name='resourceCobblestones']/property[@name='EconomicValue']/@value">10</set>
+    <append xpath="/items/item[@name='resourceCement']"><property name="UnlockedBy" value="skillCivilEngineer"/></append>
+    <append xpath="/items/item[@name='resourceCement']"><property name="ItemWeight" value="5"/></append>
+    <set xpath="/items/item[@name='resourceCement']/property[@name='EconomicValue']/@value">25</set>
+    <append xpath="/items/item[@name='resourceConcreteMix']"><property name="UnlockedBy" value="skillCivilEngineer"/></append>
+    <append xpath="/items/item[@name='resourceConcreteMix']"><property name="ItemWeight" value="8"/></append>
+    <set xpath="/items/item[@name='resourceConcreteMix']/property[@name='EconomicValue']/@value">125</set>
+    <append xpath="/items/item[@name='resourcePaper']"><property name="UnlockedBy" value="skillChemistry"/></append>
+    <append xpath="/items/item[@name='resourcePaper']"><property name="ItemWeight" value="0.04"/></append>
+    <set xpath="/items/item[@name='resourcePaper']/property[@name='EconomicValue']/@value">10</set>
+    <set xpath="/items/item[@name='resourcePaper']/property[@name='Tags']/@value">junk</set>
+    <append xpath="/items/item[@name='resourceElectricParts']"><property name="UnlockedBy" value="skillElectricalEngineer"/></append>
+    <append xpath="/items/item[@name='resourceElectricParts']"><property name="ItemWeight" value="0.125"/></append>
+    <set xpath="/items/item[@name='resourceElectricParts']/property[@name='EconomicValue']/@value">32</set>
+    <set xpath="/items/item[@name='resourceElectricParts']/property[@name='Tags']/@value">junk</set>
+    <append xpath="/items/item[@name='resourceHeadlight']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='resourceHeadlight']/property[@name='EconomicValue']/@value">240</set>
+    <set xpath="/items/item[@name='resourceHeadlight']/property[@name='Tags']/@value">junk</set>
+    <append xpath="/items/item[@name='resourceSpring']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='resourceSpring']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='resourceSpring']/property[@name='EconomicValue']/@value">22</set>
+    <set xpath="/items/item[@name='resourceSpring']/property[@name='Tags']/@value">junk</set>
+    <append xpath="/items/item[@name='resourceGlue']"><property name="UnlockedBy" value="skillChemistry"/></append>
+    <append xpath="/items/item[@name='resourceGlue']"><property name="ItemWeight" value="0.0625"/></append>
+    <set xpath="/items/item[@name='resourceGlue']/property[@name='EconomicValue']/@value">20</set>
+    <set xpath="/items/item[@name='resourceGlue']/property[@name='Tags']/@value">junk</set>
+    <append xpath="/items/item[@name='resourceDuctTape']"><property name="ItemWeight" value="0.125"/></append>
+    <set xpath="/items/item[@name='resourceDuctTape']/property[@name='EconomicValue']/@value">25</set>
+    <set xpath="/items/item[@name='resourceDuctTape']/property[@name='Tags']/@value">junk</set>
+    <append xpath="/items/item[@name='resourceFeather']"><property name="ItemWeight" value="0"/></append>
+    <set xpath="/items/item[@name='resourceFeather']/property[@name='EconomicValue']/@value">10</set>
+    <set xpath="/items/item[@name='resourceFeather']/property[@name='Tags']/@value">junk</set>
+    <append xpath="/items/item[@name='resourceArrowHeadIron']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='resourceArrowHeadIron']"><property name="ItemWeight" value="0.026"/></append>
+    <set xpath="/items/item[@name='resourceArrowHeadIron']/property[@name='EconomicValue']/@value">12</set>
+    <append xpath="/items/item[@name='resourceArrowHeadSteelAP']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='resourceArrowHeadSteelAP']"><property name="ItemWeight" value="0.03"/></append>
+    <set xpath="/items/item[@name='resourceArrowHeadSteelAP']/property[@name='EconomicValue']/@value">40</set>
+    <append xpath="/items/item[@name='resourceCoal']"><property name="ItemWeight" value="0.83"/></append>
+    <set xpath="/items/item[@name='resourceCoal']/property[@name='EconomicValue']/@value">10</set>
+    <append xpath="/items/item[@name='resourcePotassiumNitratePowder']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='resourcePotassiumNitratePowder']/property[@name='EconomicValue']/@value">10</set>
+    <append xpath="/items/item[@name='resourceGunPowder']"><property name="UnlockedBy" value="skillChemistry"/></append>
+    <append xpath="/items/item[@name='resourceGunPowder']"><property name="ItemWeight" value="0.95"/></append>
+    <set xpath="/items/item[@name='resourceGunPowder']/property[@name='EconomicValue']/@value">10</set>
+    <append xpath="/items/item[@name='resourceBuckshot']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='resourceBuckshot']"><property name="ItemWeight" value="0.02"/></append>
+    <set xpath="/items/item[@name='resourceBuckshot']/property[@name='EconomicValue']/@value">10</set>
+    <append xpath="/items/item[@name='resourceBulletCasing']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='resourceBulletCasing']"><property name="ItemWeight" value="0.017"/></append>
+    <set xpath="/items/item[@name='resourceBulletCasing']/property[@name='EconomicValue']/@value">10</set>
+    <append xpath="/items/item[@name='resourceBulletTip']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='resourceBulletTip']"><property name="ItemWeight" value="0.016"/></append>
+    <set xpath="/items/item[@name='resourceBulletTip']/property[@name='EconomicValue']/@value">10</set>
+    <append xpath="/items/item[@name='resourceNail']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='resourceNail']"><property name="ItemWeight" value="0.0017"/></append>
+    <set xpath="/items/item[@name='resourceNail']/property[@name='EconomicValue']/@value">10</set>
+    <append xpath="/items/item[@name='resourceNail']"><property name="NoScrapping" value="true"/></append>
+    <set xpath="/items/item[@name='resourceNail']/property[@name='Tags']/@value">ammo,ranged,attStrength,miningPerk</set>
+    <set xpath="/items/item[@name='resourceRocketTip']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='resourceRocketTip']"><property name="ItemWeight" value="2"/></append>
+    <set xpath="/items/item[@name='resourceRocketTip']/property[@name='EconomicValue']/@value">50</set>
+    <set xpath="/items/item[@name='resourceRocketCasing']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='resourceRocketCasing']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='resourceRocketCasing']/property[@name='EconomicValue']/@value">77</set>
+    <append xpath="/items/item[@name='resourceWaterFilter']"><property name="UnlockedBy" value="skillMechanicalEngineer"/></append>
+    <append xpath="/items/item[@name='resourceWaterFilter']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='resourceWaterFilter']/property[@name='EconomicValue']/@value">750</set>
+    <append xpath="/items/item[@name='resourceRepairKit']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='resourceRepairKit']/property[@name='EconomicValue']/@value">186</set>
+    <set xpath="/items/item[@name='resourceRepairKit']/property[@name='Tags']/@value">junk</set>
+    <set xpath="/items/item[@name='resourceOil']/property[@name='UnlockedBy']/@value">skillChemistry</set>
+    <append xpath="/items/item[@name='resourceOil']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='resourceOil']/property[@name='EconomicValue']/@value">5</set>
+    <set xpath="/items/item[@name='resourceOil']/property[@name='Tags']/@value">junk</set>
+    <append xpath="/items/item[@name='resourcePaint']"><property name="UnlockedBy" value="skillChemistry"/></append>
+    <append xpath="/items/item[@name='resourcePaint']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='resourcePaint']/property[@name='EconomicValue']/@value">12</set>
+    <set xpath="/items/item[@name='resourcePaint']/property[@name='Tags']/@value">junk</set>
+    <append xpath="/items/item[@name='resourceDoorKnob']"><property name="ItemWeight" value="0.25"/></append>
+    <set xpath="/items/item[@name='resourceDoorKnob']/property[@name='EconomicValue']/@value">40</set>
+    <set xpath="/items/item[@name='resourceDoorKnob']/property[@name='Tags']/@value">junk</set>
+    <append xpath="/items/item[@name='resourceCandleStick']"><property name="ItemWeight" value="0.125"/></append>
+    <set xpath="/items/item[@name='resourceCandleStick']/property[@name='EconomicValue']/@value">120</set>
+    <set xpath="/items/item[@name='resourceCandleStick']/property[@name='Tags']/@value">junk</set>
+    <append xpath="/items/item[@name='resourceRadiator']"><property name="ItemWeight" value="20"/></append>
+    <set xpath="/items/item[@name='resourceRadiator']/property[@name='EconomicValue']/@value">200</set>
+    <set xpath="/items/item[@name='resourceRadiator']/property[@name='Tags']/@value">junk</set>
+    <append xpath="/items/item[@name='resourceFishingWeight']"><property name="ItemWeight" value="0.125"/></append>
+    <set xpath="/items/item[@name='resourceFishingWeight']/property[@name='EconomicValue']/@value">25</set>
+    <set xpath="/items/item[@name='resourceFishingWeight']/property[@name='Tags']/@value">junk</set>
+    <append xpath="/items/item[@name='resourceTrophy1']"><property name="ItemWeight" value="1.8"/></append>
+    <set xpath="/items/item[@name='resourceTrophy1']/property[@name='EconomicValue']/@value">40</set>
+    <set xpath="/items/item[@name='resourceTrophy1']/property[@name='Tags']/@value">junk</set>
+    <append xpath="/items/item[@name='resourceTrophy2']"><property name="ItemWeight" value="7"/></append>
+    <set xpath="/items/item[@name='resourceTrophy2']/property[@name='EconomicValue']/@value">48</set>
+    <set xpath="/items/item[@name='resourceTrophy2']/property[@name='Tags']/@value">junk</set>
+    <append xpath="/items/item[@name='resourceSilverNugget']"><property name="ItemWeight" value="0.011"/></append>
+    <set xpath="/items/item[@name='resourceSilverNugget']/property[@name='EconomicValue']/@value">250</set>
+    <set xpath="/items/item[@name='resourceSilverNugget']/property[@name='Tags']/@value">gems</set>
+    <append xpath="/items/item[@name='resourceGoldNugget']"><property name="ItemWeight" value="0.011"/></append>
+    <set xpath="/items/item[@name='resourceGoldNugget']/property[@name='EconomicValue']/@value">700</set>
+    <set xpath="/items/item[@name='resourceGoldNugget']/property[@name='Tags']/@value">gems</set>
+    <append xpath="/items/item[@name='resourceRawDiamond']"><property name="ItemWeight" value="0.011"/></append>
+    <set xpath="/items/item[@name='resourceRawDiamond']/property[@name='EconomicValue']/@value">1500</set>
+    <set xpath="/items/item[@name='resourceRawDiamond']/property[@name='Tags']/@value">gems</set>
+    <append xpath="/items/item[@name='candle']"><property name="ItemWeight" value="0.11"/></append>
+    <set xpath="/items/item[@name='candle']/property[@name='EconomicValue']/@value">24</set>
+    <set xpath="/items/item[@name='candle']/property[@name='Tags']/@value">junk</set>
+    <append xpath="/items/item[@name='smallEngine']"><property name="UnlockedBy" value="skillAutomotive"/></append>
+    <append xpath="/items/item[@name='smallEngine']"><property name="ItemWeight" value="100"/></append>
+    <set xpath="/items/item[@name='smallEngine']/property[@name='EconomicValue']/@value">1000</set>
+    <set xpath="/items/item[@name='smallEngine']/property[@name='Tags']/@value">junk</set>
+    <set xpath="/items/item[@name='carBattery']/property[@name='UnlockedBy']/@value">skillAutomotive</set>
+    <append xpath="/items/item[@name='carBattery']"><property name="ItemWeight" value="40"/></append>
+    <set xpath="/items/item[@name='carBattery']/property[@name='EconomicValue']/@value">500</set>
+    <set xpath="/items/item[@name='carBattery']/property[@name='Tags']/@value">junk</set>
+    <append xpath="/items/item[@name='casinoCoin']"><property name="ItemWeight" value="0.011"/></append>
+    <set xpath="/items/item[@name='casinoCoin']/property[@name='EconomicValue']/@value">5</set>
+    <set xpath="/items/item[@name='casinoCoin']/property[@name='Tags']/@value">dukes</set>
+    <append xpath="/items/item[@name='oldCash']"><property name="ItemWeight" value="0.0022"/></append>
+    <set xpath="/items/item[@name='oldCash']/property[@name='EconomicValue']/@value">7</set>
+    <set xpath="/items/item[@name='oldCash']/property[@name='Tags']/@value">dukes</set>
+    <append xpath="/items/item[@name='solarCell']"><property name="UnlockedBy" value="skillElectricalEngineer"/></append>
+    <append xpath="/items/item[@name='solarCell']"><property name="ItemWeight" value="31.5"/></append>
+    <set xpath="/items/item[@name='solarCell']/property[@name='EconomicValue']/@value">4000</set>
+    <append xpath="/items/item[@name='toolCookingGrill']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='toolCookingGrill']"><property name="ItemWeight" value="2.2"/></append>
+    <set xpath="/items/item[@name='toolCookingGrill']/property[@name='EconomicValue']/@value">200</set>
+    <append xpath="/items/item[@name='toolCookingPot']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
+    <append xpath="/items/item[@name='toolCookingPot']"><property name="ItemWeight" value="5"/></append>
+    <set xpath="/items/item[@name='toolCookingPot']/property[@name='EconomicValue']/@value">200</set>
+    <append xpath="/items/item[@name='toolBeaker']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='toolBeaker']/property[@name='EconomicValue']/@value">500</set>
+    <set xpath="/items/item[@name='toolBeaker']/property[@name='Tags']/@value">junk</set>
+    <set xpath="/items/item[@name='toolBellows']/property[@name='UnlockedBy']/@value">skillLeatherworking</set>
+    <append xpath="/items/item[@name='toolBellows']"><property name="ItemWeight" value="10"/></append>
+    <set xpath="/items/item[@name='toolBellows']/property[@name='EconomicValue']/@value">500</set>
+    <set xpath="/items/item[@name='toolBellows']/property[@name='Tags']/@value">workstationSkill</set>
+    <set xpath="/items/item[@name='toolAnvil']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='toolAnvil']"><property name="ItemWeight" value="75"/></append>
+    <set xpath="/items/item[@name='toolAnvil']/property[@name='EconomicValue']/@value">240</set>
+    <set xpath="/items/item[@name='toolAnvil']/property[@name='Tags']/@value">toolAnvil,workstationSkill</set>
+    <set xpath="/items/item[@name='toolForgeCrucible']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <append xpath="/items/item[@name='toolForgeCrucible']"><property name="ItemWeight" value="9"/></append>
+    <set xpath="/items/item[@name='toolForgeCrucible']/property[@name='EconomicValue']/@value">5000</set>
+    <set xpath="/items/item[@name='toolForgeCrucible']/property[@name='Tags']/@value">workstationSkill</set>
+    <append xpath="/items/item[@name='unit_iron']"><property name="ItemWeight" value=".491"/></append>
+    <append xpath="/items/item[@name='unit_brass']"><property name="ItemWeight" value=".54"/></append>
+    <append xpath="/items/item[@name='unit_lead']"><property name="ItemWeight" value="1"/></append>
+    <append xpath="/items/item[@name='unit_glass']"><property name="ItemWeight" value="1"/></append>
+    <append xpath="/items/item[@name='unit_stone']"><property name="ItemWeight" value="1"/></append>
+    <append xpath="/items/item[@name='unit_clay']"><property name="ItemWeight" value="1"/></append>
+    <append xpath="/items/item[@name='questItem']"><property name="ItemWeight" value="1"/></append>
+    <set xpath="/items/item[@name='resourceLockPick']/property[@name='UnlockedBy']/@value">skillMechanicalEngineer</set>
+    <append xpath="/items/item[@name='resourceLockPick']"><property name="ItemWeight" value="0.011"/></append>
+    <set xpath="/items/item[@name='resourceLockPick']/property[@name='EconomicValue']/@value">100</set>
+    <set xpath="/items/item[@name='resourceLockPick']/property[@name='Tags']/@value">junk,explosivesSkill,resourceLockPick</set>
+    <set xpath="/items/item[@name='resourceLockPickBundle']/property[@name='UnlockedBy']/@value">skillBlacksmithing</set>
+    <set xpath="/items/item[@name='resourceLockPickBundle']/property[@name='EconomicValue']/@value">5000</set>
+    <append xpath="/items/item[@name='masterSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='masterSkillMagazine']/property[@name='EconomicValue']/@value">100</set>
+    <append xpath="/items/item[@name='harvestingToolsSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='harvestingToolsSkillMagazine']/property[@name='Tags']/@value">harvestingToolsCSM,csm</set>
+    <append xpath="/items/item[@name='repairToolsSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='repairToolsSkillMagazine']/property[@name='Tags']/@value">repairToolsCSM,csm</set>
+    <append xpath="/items/item[@name='salvageToolsSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='salvageToolsSkillMagazine']/property[@name='Tags']/@value">salvageToolsCSM,csm</set>
+    <append xpath="/items/item[@name='knucklesSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='knucklesSkillMagazine']/property[@name='Tags']/@value">knucklesCSM,csm</set>
+    <append xpath="/items/item[@name='bladesSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='bladesSkillMagazine']/property[@name='Tags']/@value">bladesCSM,csm</set>
+    <append xpath="/items/item[@name='clubsSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='clubsSkillMagazine']/property[@name='Tags']/@value">clubsCSM,csm</set>
+    <append xpath="/items/item[@name='sledgehammersSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='sledgehammersSkillMagazine']/property[@name='Tags']/@value">sledgehammersCSM,csm</set>
+    <append xpath="/items/item[@name='spearsSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='spearsSkillMagazine']/property[@name='Tags']/@value">spearsCSM,csm</set>
+    <append xpath="/items/item[@name='bowsSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='bowsSkillMagazine']/property[@name='Tags']/@value">bowsCSM,csm</set>
+    <append xpath="/items/item[@name='handgunsSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='handgunsSkillMagazine']/property[@name='Tags']/@value">handgunsCSM,csm</set>
+    <append xpath="/items/item[@name='shotgunsSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='shotgunsSkillMagazine']/property[@name='Tags']/@value">shotgunsCSM,csm</set>
+    <append xpath="/items/item[@name='riflesSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='riflesSkillMagazine']/property[@name='Tags']/@value">riflesCSM,csm</set>
+    <append xpath="/items/item[@name='machineGunsSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='machineGunsSkillMagazine']/property[@name='Tags']/@value">machineGunsCSM,csm</set>
+    <append xpath="/items/item[@name='explosivesSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='explosivesSkillMagazine']/property[@name='Tags']/@value">explosivesCSM,csm</set>
+    <append xpath="/items/item[@name='roboticsSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='roboticsSkillMagazine']/property[@name='Tags']/@value">roboticsCSM,csm</set>
+    <append xpath="/items/item[@name='medicalSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='medicalSkillMagazine']/property[@name='Tags']/@value">medicalCSM,csm</set>
+    <append xpath="/items/item[@name='foodSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='foodSkillMagazine']/property[@name='Tags']/@value">foodCSM,csm</set>
+    <append xpath="/items/item[@name='seedSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='seedSkillMagazine']/property[@name='Tags']/@value">seedCSM,csm</set>
+    <append xpath="/items/item[@name='electricianSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='electricianSkillMagazine']/property[@name='Tags']/@value">electricianCSM,csm</set>
+    <append xpath="/items/item[@name='trapsSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='trapsSkillMagazine']/property[@name='Tags']/@value">trapsCSM,csm</set>
+    <append xpath="/items/item[@name='workstationSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='workstationSkillMagazine']/property[@name='Tags']/@value">workstationCSM,csm</set>
+    <append xpath="/items/item[@name='vehiclesSkillMagazine']"><property name="ItemWeight" value="0.5"/></append>
+    <set xpath="/items/item[@name='vehiclesSkillMagazine']/property[@name='Tags']/@value">vehiclesCSM,csm</set>
+    <append xpath="/items/item[@name='questRewardBundleMaster']"><property name="ItemWeight" value="0.04"/></append>
+    <append xpath="/items/item[@name='questRewardAmmoCraftingBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardFarmT1Bundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardFarmT2Bundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardFarmT3Bundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT0HandgunBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT0RifleBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT0ShotgunBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT0MachineGunBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT1HandgunBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT1ShotgunBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT1RifleBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT1MachineGunBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT2HandgunBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT2ShotgunBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT2RifleBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT2MachineGunBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT3HandgunBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT3SMGBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT3ShotgunBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT3RifleBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT3MachineGunBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT3HandgunLegendaryBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT3SMGLegendaryBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT3ShotgunLegendaryBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT3RifleLegendaryBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT3MachineGunLegendaryBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT1BookBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT2BookBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT3BookBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT4BookBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT5BookBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT1SkillMagazineBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT1TrapsBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT2TrapsBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardDartTrapBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardBladeTrapBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardShotgunTurretBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardAutoTurretBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardSecuritySystemBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardGeneratorBankBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardBatteryBankBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardSolarBankBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT1MeleeModsBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT2MeleeModsBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT3MeleeModsBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT1RangedModsBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT2RangedModsBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT3RangedModsBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT2FoodBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT3FoodBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardT4FoodBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardVehiclePartsBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardMinibikePartsBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardMotorcyclePartsBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questReward4x4PartsBundle']"><property name="ItemWeight" value="5"/></append>
+    <append xpath="/items/item[@name='questRewardGyrocopterPartsBundle']"><property name="ItemWeight" value="5"/></append>
+    <set xpath="/items/item[@name='meleeToolPaintToolAdmin']/property[@name='Tags']/@value">admin,noMods</set>
+    <set xpath="/items/item[@name='meleeToolSalvageWrenchAdmin']/property[@name='Tags']/@value">blunt,melee,grunting,light,tool,attPerception,skillAutomotive,skillElectricalEngineer,skillMechanicalEngineer,admin,noMods</set>
+    <set xpath="/items/item[@name='meleeToolBlockReplaceTool']/property[@name='EconomicValue']/@value">20</set>
+    <set xpath="/items/item[@name='meleeToolBlockReplaceTool']/property[@name='Tags']/@value">tool,noMods</set>
+    <set xpath="/items/item[@name='gunToolDiggerAdmin']/property[@name='Tags']/@value">weapon,ranged,gun,shortRange,barrelAttachments,sideAttachments,smallTopAttachments,magazine,firingMode,bottomAttachments,attAgility,rangedPistols,9mmGun,admin,noMods</set>
+    <set xpath="/items/item[@name='gunHandgunPistolAdmin']/property[@name='Tags']/@value">weapon,ranged,gun,shortRange,pistol,barrelAttachments,sideAttachments,smallTopAttachments,magazine,firingMode,attAgility,rangedPistols,9mmGun,admin,noMods</set>
+    <set xpath="/items/item[@name='meleeToolHammerOfGodAdmin']/property[@name='Tags']/@value">melee,light,tool,attStrength,miningPerk,perkMotherLode,admin,noMods</set>
+    <set xpath="/items/item[@name='rocketBootsAdmin']/property[@name='Tags']/@value">lowerbody,feet,clothing,admin,noMods</set>
+    <set xpath="/items/item[@name='pimpMiningHelmetAdmin']/property[@name='Tags']/@value">head,armor,armorHead,lightArmor,lightArmorPenalty,admin,noMods</set>
+    <set xpath="/items/item[@name='ringOfFireAdmin']/property[@name='Tags']/@value">upperbody,hands,armor,armorHands,lightArmor,padded,admin,noMods</set>
+    <set xpath="/items/item[@name='adminPerkBook']/property[@name='Tags']/@value">admin</set>
+    <set xpath="/items/item[@name='adminSkillMagazine']/property[@name='Tags']/@value">admin</set>
+    <set xpath="/items/item[@name='adminModSchematic']/property[@name='Tags']/@value">admin</set>
+    <set xpath="/items/item[@name='TEST_ITEM_02']/property[@name='Tags']/@value">ammo</set>
+    <set xpath="/items/item[@name='TEST_ITEM_03']/property[@name='Tags']/@value">ammo</set>
+</configs>

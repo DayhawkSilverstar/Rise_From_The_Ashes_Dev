@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+	<Name value="1a_Rise_From_The_Ashes_Items_Resize" />
+	<DisplayName value="Resizes stack sizes" />
+	<Description value="Resizes the Vanilla stack sizes." />
+	<Author value="Dayhawk" />
+	<Website value=""/>
+	<Version value="1.0.0" />
+</xml>

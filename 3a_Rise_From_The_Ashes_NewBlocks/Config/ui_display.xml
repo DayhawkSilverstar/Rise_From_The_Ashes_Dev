@@ -1,0 +1,14 @@
+<RiseFromTheAshes>
+	<append xpath="/ui_display_info/crafting_category_display">
+		<crafting_category_list display_type="ComputerStation">			
+			<crafting_category name="Software" icon="ui_game_symbol_science" display_name="lblCatagorySoftware"/>			
+			<crafting_category name="Research" icon="ui_game_symbol_book" display_name="lblCatagoryResearchBundle"/>	
+		</crafting_category_list>
+		<crafting_category_list display_type="TailorWorkstation">			
+			<crafting_category name="Tanning" icon="ui_game_symbol_science" display_name="lblCatagoryTanning"/>			
+			<crafting_category name="Leatherworking" icon="ui_game_symbol_science" display_name="lblCatagoryLeatherworking"/>			
+			<crafting_category name="Tailoring" icon="ui_game_symbol_science" display_name="lblCatagoryTailoring"/>		
+			<crafting_category name="Research" icon="ui_game_symbol_book" display_name="lblCatagoryResearchBundle"/>				
+		</crafting_category_list>
+	</append>
+</RiseFromTheAshes>

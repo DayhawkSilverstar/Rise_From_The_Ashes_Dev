@@ -1,0 +1,1757 @@
+<configs>
+	<!-- Point to the new progression file -->
+	<!-- Exp can't be set to a variable. So here are the find and replace
+		
+		<property name="ExperienceGain" value="130"/>
+		<property name="ExperienceGain" value="206"/>
+		<property name="ExperienceGain" value="245"/>
+		<property name="ExperienceGain" value="400"/>
+		<property name="ExperienceGain" value="600"/>
+		<property name="ExperienceGain" value="750"/>
+		<property name="ExperienceGain" value="1200"/>
+		<property name="ExperienceGain" value="1500"/>
+		<property name="ExperienceGain" value="2000"/>
+
+	-->
+	<append xpath="/entity_classes">		
+		<entity_class name="zombieArleneIconic" extends="zombieArlene">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/>
+			<property name="CanClimbLadders" value="false"/>			
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>
+			<property name="Mesh" value="@:Entities/Zombies/Prefabs/ZArlene.prefab"/>						
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<!-- Break block, Destroy Area, Territorial, ApproachDistaction, Approach and attack, Approach Spot, Look, Wander -->			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />			
+			
+						
+		</entity_class>
+
+		<entity_class name="zombieArleneIconicFeral" extends="zombieArleneFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>
+			<property name="Mesh" value="@:Entities/Zombies/Prefabs/ZArleneFeral.prefab"/>
+
+			<!-- Gameplay zombieArleneIconic -->
+			<property name="DismemberMultiplierHead" value=".7"/><property name="DismemberMultiplierArms" value=".7"/><property name="DismemberMultiplierLegs" value=".7"/><!-- Feral -->
+			<property name="PainResistPerHit" value=".7"/><!-- Feral -->
+			<property name="MoveSpeedAggro" value="0.6, 1.45"/> <!-- slim, feral -->
+			<property name="JumpMaxDistance" value="4.6, 5"/>
+			<property name="HandItem" value="meleeHandZombieShortFeral"/>
+			<property name="ExperienceGain" value="750"/><!-- XP grunt feral -->
+			<property name="LootDropProb" value=".03"/> <!-- Feral -->
+			<property name="TrackerIcon" value="ui_game_symbol_zombie"/>
+			<effect_group name="Base Effects">
+				<passive_effect name="HealthMax" operation="base_set" value="300"/>
+				<!--<passive_effect name="EntityDamage" operation="perc_add" value="0"/>--> <!-- Feral damage -->
+			</effect_group>							
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />	
+
+			<effect_group name="Wasteland Biome"> 
+                <requirement name="InBiome" biome="08"/>
+                <passive_effect name="HealthMax" operation="perc_add" value="1"/>                
+            </effect_group> 
+			
+		</entity_class>
+
+		<entity_class name="zombieArleneIconicRadiated" extends="zombieArleneRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>
+			<property name="Mesh" value="@:Entities/Zombies/Prefabs/ZArleneRadiated.prefab"/>
+
+			<!-- Gameplay zombieArleneRadiated -->
+			<property name="DismemberMultiplierHead" value=".4"/><property name="DismemberMultiplierArms" value=".4"/><property name="DismemberMultiplierLegs" value=".4"/><!-- Radiated -->
+			<property name="PainResistPerHit" value=".9"/><!-- Radiated -->
+			<property name="ExperienceGain" value="1200"/><!-- XP grunt radiated -->
+			<property name="NavObject" value="skillTracking_zombie" />
+			<effect_group name="Base Effects">
+				<passive_effect name="HealthMax" operation="base_set" value="550"/>
+				<!--<passive_effect name="EntityDamage" operation="perc_add" value="0"/>--> <!-- Feral damage -->
+				<triggered_effect trigger="onOtherDamagedSelf" action="ModifyCVar" target="self" cvar="RadiatedRegenAmount" operation="set" value="4"/>
+				<triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" target="self" buff="buffRadiatedRegen"/>
+			</effect_group>							
+
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />	
+
+			<effect_group name="Wasteland Biome"> 
+                <requirement name="InBiome" biome="08"/>
+                <passive_effect name="HealthMax" operation="perc_add" value="1"/>                
+            </effect_group> 
+			
+		</entity_class>
+
+		<entity_class name="zombieMarleneIconic" extends="zombieMarlene">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />	
+			
+		</entity_class>
+
+		<entity_class name="zombieMarleneIconicFeral" extends="zombieMarleneFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />	
+			
+		</entity_class>
+
+		<entity_class name="zombieMarleneIconicRadiated" extends="zombieMarleneRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombiePartyGirlIconic" extends="zombiePartyGirl">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombiePartyGirlIconicFeral" extends="zombiePartyGirlFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombiePartyGirlIconicRadiated" extends="zombiePartyGirlRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieNurseIconic" extends="zombieNurse">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieNurseIconicFeral" extends="zombieNurseFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieNurseIconicRadiated" extends="zombieNurseRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieJoeIconic" extends="zombieJoe">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieJoeIconicFeral" extends="zombieJoeFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieJoeIconicRadiated" extends="zombieJoeRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieSteveIconic" extends="zombieSteve">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieSteveIconicFeral" extends="zombieSteveFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieSteveIconicRadiated" extends="zombieSteveRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieTomClarkIconic" extends="zombieTomClark">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieTomClarkIconicFeral" extends="zombieTomClarkFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieTomClarkIconicRadiated" extends="zombieTomClarkRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieBusinessManIconic" extends="zombieBusinessMan">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieBusinessManIconicFeral" extends="zombieBusinessManFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieBusinessManIconicRadiated" extends="zombieBusinessManRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieBurntIconic" extends="zombieBurnt">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieBurntIconicFeral" extends="zombieBurntFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieBurntIconicRadiated" extends="zombieBurntRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieSpiderIconic" extends="zombieSpider">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieSpiderIconicFeral" extends="zombieSpiderFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieSpiderIconicRadiated" extends="zombieSpiderRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieBoeIconic" extends="zombieBoe">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieBoeIconicFeral" extends="zombieBoeFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieBoeIconicRadiated" extends="zombieBoeRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieMaleHazmatIconic" extends="zombieMaleHazmat">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieMaleHazmatIconicFeral" extends="zombieMaleHazmatFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieMaleHazmatIconicRadiated" extends="zombieMaleHazmatRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieJanitorIconic" extends="zombieJanitor">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieJanitorIconicFeral" extends="zombieJanitorFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieJanitorIconicRadiated" extends="zombieJanitorRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieMoeIconic" extends="zombieMoe">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieMoeIconicFeral" extends="zombieMoeFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieMoeIconicRadiated" extends="zombieMoeRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieLabIconic" extends="zombieLab">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieLabIconicFeral" extends="zombieLabFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieLabIconicRadiated" extends="zombieLabRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieDarleneIconic" extends="zombieDarlene">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieDarleneIconicFeral" extends="zombieDarleneFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieDarleneIconicRadiated" extends="zombieDarleneRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieYoIconic" extends="zombieYo">			
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieYoIconicFeral" extends="zombieYoFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieYoIconicRadiated" extends="zombieYoRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieUtilityWorkerIconic" extends="zombieUtilityWorker">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieUtilityWorkerIconicFeral" extends="zombieUtilityWorkerFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieUtilityWorkerIconicRadiated" extends="zombieUtilityWorkerRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- *** ZOMBIES_STRONG -->
+		<!-- Higher HP, but slightly slower -->
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieBikerIconic" extends="zombieBiker">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieBikerIconicFeral" extends="zombieBikerFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieBikerIconicRadiated" extends="zombieBikerRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieLumberjackIconic" extends="zombieLumberjack">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieLumberjackIconicFeral" extends="zombieLumberjackFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+			
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieLumberjackIconicRadiated" extends="zombieLumberjackRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+						
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+				
+		<!-- Iconic  Version -->
+		<entity_class name="zombieFemaleFatIconic" extends="zombieFemaleFat">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+									
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieFemaleFatIconicFeral" extends="zombieFemaleFatFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieFemaleFatIconicRadiated" extends="zombieFemaleFatRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieFatHawaiianIconic" extends="zombieFatHawaiian">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieFatHawaiianIconicFeral" extends="zombieFatHawaiianFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieFatHawaiianIconicRadiated" extends="zombieFatHawaiianRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieFatCopIconic" extends="zombieFatCop">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieFatCopIconicFeral" extends="zombieFatCopFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieFatCopIconicRadiated" extends="zombieFatCopRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05"/>											
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- *** ZOMBIES_FIT -->
+		<!-- Lower HP than strong zombies, but faster than normal ones -->
+				
+		<!-- Iconic  Version -->
+		<entity_class name="zombieSkateboarderIconic" extends="zombieSkateboarder">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieSkateboarderIconicFeral" extends="zombieSkateboarderFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieSkateboarderIconicRadiated" extends="zombieSkateboarderRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieSoldierIconic" extends="zombieSoldier">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieSoldierIconicFeral" extends="zombieSoldierFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieSoldierIconicRadiated" extends="zombieSoldierRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>				
+
+		<!-- Iconic  Version -->	
+		<entity_class name="zombieWightIconicFeral" extends="zombieWightFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieWightIconicRadiated" extends="zombieWightRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,radiated,perkAT05,iconic"/>											
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<!-- *** ZOMBIES_SPECIAL -->
+			<!-- Iconic  Version -->
+			<entity_class name="zombieScreamerIconic" extends="zombieScreamer">
+				<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+				<property name="CanClimbLadders" value="false"/>
+				<property name="UserSpawnType" value="Menu"/>
+				<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+													
+				<property name="AITask" value=""/>
+				<property name="AITarget" value=""/>
+				
+				<property name="AITask-1" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />			
+				<property name="AITask-2" value="WanderIconic, Rise_From_The_Ashes" />
+				<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+				<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+				<property name="AITask-5" value="" />
+				<property name="AITask-6" value="" />
+				<property name="AITask-7" value="" />
+				<property name="AITask-8" value="" />
+				
+			</entity_class>
+	
+			<entity_class name="zombieScreamerIconicFeral" extends="zombieScreamerFeral">
+				<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+				<property name="UserSpawnType" value="Menu"/>
+				<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+														
+				<property name="AITask" value=""/>
+				<property name="AITarget" value=""/>
+			
+				<property name="AITask-1" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />			
+				<property name="AITask-2" value="WanderIconic, Rise_From_The_Ashes" />
+				<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+				<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+				<property name="AITask-5" value="" />
+				<property name="AITask-6" value="" />
+				<property name="AITask-7" value="" />
+				<property name="AITask-8" value="" />
+				
+			</entity_class>
+	
+			<entity_class name="zombieScreamerIconicRadiated" extends="zombieScreamerRadiated">
+				<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+				<property name="UserSpawnType" value="Menu"/>
+				<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+													
+				<property name="AITask" value=""/>
+				<property name="AITarget" value=""/>
+			
+				<property name="AITask-1" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />			
+				<property name="AITask-2" value="WanderIconic, Rise_From_The_Ashes" />
+				<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+				<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+				<property name="AITask-5" value="" />
+				<property name="AITask-6" value="" />
+				<property name="AITask-7" value="" />
+				<property name="AITask-8" value="" />
+				
+			</entity_class>	
+	
+		<!-- Iconic  Version -->
+		<entity_class name="zombieMutatedIconic" extends="zombieMutated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieMutatedIconicFeral" extends="zombieMutatedFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>
+
+		<entity_class name="zombieMutatedIconicRadiated" extends="zombieMutatedRadiated">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,feral,perkAT04,perkAT05,iconic"/>											
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>	
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieDemolitionIconic" extends="zombieDemolition">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,walker,perkAT04,perkAT05,iconic"/>								
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>		
+
+		<!-- Iconic  Version -->
+		<entity_class name="zombieSteveCrawlerIconic" extends="zombieSteveCrawler">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="CanClimbLadders" value="false"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,crawler,perkAT04,perkAT05,iconic"/>							
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>		
+
+		<entity_class name="zombieSteveCrawlerIconicFeral" extends="zombieSteveCrawlerFeral">
+			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/> 
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="Tags" value="entity,zombie,crawler,feral,perkAT04,perkAT05,iconic"/>						
+												
+			<property name="AITask" value=""/>
+			<property name="AITarget" value=""/>
+			
+			<property name="AITask-1" value="BreakBlocksIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-2" value="ApproachAndAttackIconic, Rise_From_The_Ashes" />						
+			<property name="AITask-3" value="ApproachSpotIconic, Rise_From_The_Ashes" />					
+			<property name="AITask-4" value="LookIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-5" value="WanderIconic, Rise_From_The_Ashes" />			
+			<property name="AITask-6" value="" />
+			<property name="AITask-7" value="" />
+			<property name="AITask-8" value="" />
+			
+		</entity_class>		
+	</append>
+</configs>

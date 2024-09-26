@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+	<Name value="0_Rise_From_The_Ashes_Remove_Blocks" />
+	<DisplayName value="Remove Vanilla Blocks" />
+	<Author value="Dayhawk" />
+	<Description value="This modlet removes the vanilla blocks that are not being used or being over written." />		
+	<Website value=""/>
+	<Version value="1.0.0" />
+</xml>

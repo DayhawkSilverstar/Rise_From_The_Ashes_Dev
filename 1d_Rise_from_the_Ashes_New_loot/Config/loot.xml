@@ -1,0 +1,37 @@
+<configs>
+	<!-- Point to the new progression file -->
+	<append xpath="/lootcontainers">		
+	
+		<!-- *** xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+		<!-- *** LOOT_LISTS -->
+		<!-- *** xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+		<!-- *** xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+		<!-- *** 					Rise From the Ashes					  -->
+		<!-- *** xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+		<!-- ScrapTruck -->
+		<lootcontainer name="ScrapTruck" count="1" size="7,4" sound_open="UseActions/open_vehicle" sound_close="UseActions/close_vehicle" open_time="4" loot_quality_template="qualBaseTemplate">
+			<item name="cobweb" count="0"/>
+		</lootcontainer>
+
+		<!-- Buddy 5 -->
+		<lootcontainer name="Buddy5" size="9,9" sound_open="UseActions/open_safe" sound_close="UseActions/close_safe" open_time="1" loot_quality_template="qualPlus1Template">
+			<item name="cobweb" count="0"/>
+		</lootcontainer>
+		
+		<!-- Chicken Coops loot -->
+		<lootcontainer name="chickenCoopWithEggs" count="1" size="6,2" sound_open="UseActions/open_cooler" sound_close="UseActions/close_cooler" loot_quality_template="qualBaseTemplate" destroy_on_close="empty">
+			<item group="groupBirdNest02"/>
+		</lootcontainer>	
+
+		<!-- birds nest-->
+		<lootcontainer name="birdNestWithEggs" count="1" size="6,2" sound_open="UseActions/nest_open" sound_close="UseActions/nest_shut" loot_quality_template="qualBaseTemplate" destroy_on_close="empty">
+			<item group="groupBirdNest02"/>
+		</lootcontainer>
+
+		<lootcontainer name="birdNestFeathers" count="1" size="6,2" sound_open="UseActions/nest_open" sound_close="UseActions/nest_shut" loot_quality_template="qualBaseTemplate" destroy_on_close="empty">
+			<item group="groupBirdNest01"/>
+		</lootcontainer>
+	</append>
+</configs>

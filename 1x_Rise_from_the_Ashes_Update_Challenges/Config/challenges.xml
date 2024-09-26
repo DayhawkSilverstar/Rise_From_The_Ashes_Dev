@@ -1,0 +1,6 @@
+<configs>
+	<set xpath="/challenges/challenge[@name='gatherResources']/objective[@item='resourceWood']/@item">resourceTwig</set>
+	<set xpath="/challenges/challenge[@name='gatherResourcesStoneAxe']/objective[@item='resourceWood']/@item">woodLogPillar100</set>
+	<set xpath="/challenges/challenge[@name='upgradeFrameHelpers']/objective[@needed_resource='resourceWood']/@needed_resource">resourceWoodT1</set>
+	<set xpath="/challenges/challenge[@name='gathererWood']/objective[@item='resourceWood']/@item">woodLogPillar100</set>
+</configs>

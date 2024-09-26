@@ -1,0 +1,29 @@
+<configs>
+	<append xpath="/blockplaceholders/placeholder[@name='carsRandomHelper']">
+		<block name="ctnMotorcycle1" prob="2"/>	
+		<block name="ctnMotorcycle1" prob="2"/>
+		<block name="ctnMotorcycle2" prob="2"/>
+		<block name="ctnMotorcycle2" prob="2"/>
+		<block name="ctnMotorcycle3" prob="2"/>
+		<block name="ctnMotorcycle3" prob="2"/>
+	</append>
+
+	<append xpath="/blockplaceholders/placeholder[@name='cntPickupTruck01AirRandomHelper']">
+		<block name="ctnMotorcycle1" prob="1"/>			
+		<block name="ctnMotorcycle2" prob="1"/>		
+		<block name="ctnMotorcycle3" prob="1"/>		
+	</append>
+
+	<append xpath="/blockplaceholders/placeholder[@name='abandonedPickupTruck01DoorRandomHelper']">
+		<block name="ctnMotorcycle1" prob="1"/>			
+		<block name="ctnMotorcycle2" prob="1"/>		
+		<block name="ctnMotorcycle3" prob="1"/>		
+	</append>
+
+	<append xpath="/blockplaceholders/placeholder[@name='cntSUV01AirRandomHelper']">
+		<block name="ctnMotorcycle1" prob="1"/>			
+		<block name="ctnMotorcycle2" prob="1"/>		
+		<block name="ctnMotorcycle3" prob="1"/>		
+	</append>
+	
+</configs>

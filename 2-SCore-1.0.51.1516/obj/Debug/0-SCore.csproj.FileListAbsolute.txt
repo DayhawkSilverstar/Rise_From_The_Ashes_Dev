@@ -1,0 +1,10 @@
+E:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Mods\2-SCore-1.0.51.1516\obj\Debug\0-SCore.csproj.AssemblyReference.cache
+E:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Mods\2-SCore-1.0.51.1516\obj\Debug\0-SCore.csproj.CoreCompileInputs.cache
+E:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Mods\2-SCore-1.0.51.1516\obj\Debug\0-SCore.csproj.Up2Date
+E:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Mods\2-SCore-1.0.51.1516\SCore.dll.config
+E:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Mods\2-SCore-1.0.51.1516\obj\Debug\SCore.dll
+E:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Mods\2-SCore-1.0.51.1516\obj\Debug\SCore.pdb
+E:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Mods\2-SCore-1.0.51.1516\SCore.dll
+E:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Mods\2-SCore-1.0.51.1516\SCore.pdb
+E:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Mods\2-SCore-1.0.51.1516\UnityEngine.ParticleSystemModule.dll
+E:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Mods\2-SCore-1.0.51.1516\UnityEngine.TextRenderingModule.dll

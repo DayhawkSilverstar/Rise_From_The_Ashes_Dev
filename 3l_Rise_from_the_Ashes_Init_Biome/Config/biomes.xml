@@ -1,0 +1,54 @@
+<configs>
+	<!-- birds nest with eggs for snow -->
+	<insertAfter xpath="/worldgeneration/biomes/biome[@name='snow']/decorations/decoration[@blockname='cntBirdnest']">
+		<decoration type="block" blockname="cntBirdnestWithEggs" prob="0.001"/>
+	</insertAfter>
+
+	<insertAfter xpath="/worldgeneration/biomes/biome[@name='snow']/subbiome/decorations/decoration[@blockname='cntBirdnest']">
+		<decoration type="block" blockname="cntBirdnestWithEggs" prob="0.001"/>
+	</insertAfter>	
+
+	<!-- birds nest with eggs for pine forest -->
+	<insertAfter xpath="/worldgeneration/biomes/biome[@name='pine_forest']/decorations/decoration[@blockname='cntBirdnest']">
+		<decoration type="block" blockname="cntBirdnestWithEggs" prob="0.001"/>
+	</insertAfter>
+
+	<insertAfter xpath="/worldgeneration/biomes/biome[@name='pine_forest']/subbiome/decorations/decoration[@blockname='cntBirdnest']">
+		<decoration type="block" blockname="cntBirdnestWithEggs" prob="0.001"/>
+	</insertAfter>	
+
+	<!-- birds nest with eggs for desert -->
+	<insertAfter xpath="/worldgeneration/biomes/biome[@name='desert']/decorations/decoration[@blockname='cntBirdnest']">
+		<decoration type="block" blockname="cntBirdnestWithEggs" prob="0.001"/>
+	</insertAfter>
+
+	<insertAfter xpath="/worldgeneration/biomes/biome[@name='desert']/subbiome/decorations/decoration[@blockname='cntBirdnest']">
+		<decoration type="block" blockname="cntBirdnestWithEggs" prob="0.001"/>
+	</insertAfter>	
+
+	<!-- birds nest with eggs for wasteland -->
+	<insertAfter xpath="/worldgeneration/biomes/biome[@name='wasteland']/decorations/decoration[@blockname='cntBirdnest']">
+		<decoration type="block" blockname="cntBirdnestWithEggs" prob="0.001"/>
+	</insertAfter>
+
+	<insertAfter xpath="/worldgeneration/biomes/biome[@name='wasteland']/subbiome/decorations/decoration[@blockname='cntBirdnest']">
+		<decoration type="block" blockname="cntBirdnestWithEggs" prob="0.001"/>
+	</insertAfter>	
+
+	<!-- birds nest with eggs for burnt_forest -->
+	<insertAfter xpath="/worldgeneration/biomes/biome[@name='burnt_forest']/decorations/decoration[@blockname='cntBirdnest']">
+		<decoration type="block" blockname="cntBirdnestWithEggs" prob="0.001"/>
+	</insertAfter>
+
+	<insertAfter xpath="/worldgeneration/biomes/biome[@name='burnt_forest']/subbiome/decorations/decoration[@blockname='cntBirdnest']">
+		<decoration type="block" blockname="cntBirdnestWithEggs" prob="0.001"/>
+	</insertAfter>
+
+	<!-- Add bushes to the pine_forest -->
+	<insertAfter xpath="/worldgeneration/biomes/biome[@name='pine_forest']/decorations/decoration[@blockname='rock02']">
+		<decoration type="block" blockname="bush2" prob="0.02" rotatemax="3"/>
+		<decoration type="block" blockname="bush3" prob="0.02" rotatemax="3"/>
+		<decoration type="block" blockname="bush4" prob="0.02" rotatemax="3"/>
+	</insertAfter>
+	
+</configs>

@@ -1,0 +1,13 @@
+<config>
+	<append xpath="/Sounds">
+        <SoundDataNode name="riseRadio"> <AudioSource name="Sounds/AudioSource_UseAction"/>
+            <Noise ID="3" noise="16" time="3" muffled_when_crouched="0.65" heat_map_strength="0.05" heat_map_time="60"/>
+            <AudioClip ClipName="#@modfolder:Resources/RadioAudio.unity3d?Gotta_keep_moving"/>
+            <LocalCrouchVolumeScale name="0.5"/>
+            <CrouchNoiseScale name="0.5"/>
+            <NoiseScale name="1"/>
+            <MaxVoices name="10"/>
+            <MaxRepeatRate name="0.01"/>
+        </SoundDataNode> 
+    </append>
+</config>

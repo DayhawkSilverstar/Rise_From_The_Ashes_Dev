@@ -1,0 +1,233 @@
+<configs>
+	<!-- Point to the new progression file -->	 
+	<set xpath="//action_sequence[@name='game_first_spawn']">
+        <property name="allow_user_trigger" value="false"/>
+        <property name="action_type" value="Game"/>
+        
+        <action class="Delay">
+            <property name="time" value="5"/>
+        </action>    
+
+		<action class="AddSkillPoints">
+			<property name="skill_points" value="12" />
+		  </action>
+        
+        <action class="SetItemSlots">
+            <property name="items_location" value="Toolbelt" />
+            <property name="items" value="profession,hobby" />
+            <property name="item_counts" value="1,2" />
+            <property name="slot_numbers" value="6,7" />
+        </action>
+    </set>
+
+	<append xpath="/gameevents">					
+		<!-- Rise GAME EVENTS -->
+		<action_sequence name="forage_grubs">
+			<property name="target_type" value="Block" />			
+			
+			<action class="AddItems">
+				<requirement class="Progression">				
+					<property name="operation" value="GTE" />
+					<property name="name" value="skillForaging" />
+					<property name="value" value="5" />
+				</requirement>
+				<property name="added_items" value="foodGrub" />
+				<property name="added_item_counts" value="1" />
+			</action>
+
+			<action class="AddItems">
+				<requirement class="Progression">				
+					<property name="operation" value="GTE" />
+					<property name="name" value="skillForaging" />
+					<property name="value" value="10" />
+				</requirement>
+				<property name="added_items" value="foodGrub" />
+				<property name="added_item_counts" value="1-5" />
+			</action>
+
+			<action class="AddItems">
+				<requirement class="Progression">				
+					<property name="operation" value="GTE" />
+					<property name="name" value="skillForaging" />
+					<property name="value" value="20" />
+				</requirement>
+				<property name="added_items" value="foodGrub" />
+				<property name="added_item_counts" value="1-5" />
+			</action>
+
+			<action class="AddItems">
+				<requirement class="Progression">				
+					<property name="operation" value="GTE" />
+					<property name="name" value="skillForaging" />
+					<property name="value" value="30" />
+				</requirement>
+				<property name="added_items" value="foodGrub" />
+				<property name="added_item_counts" value="1-5" />
+			</action>
+
+			<action class="AddItems">
+				<requirement class="Progression">				
+					<property name="operation" value="GTE" />
+					<property name="name" value="skillForaging" />
+					<property name="value" value="40" />
+				</requirement>
+				<property name="added_items" value="foodGrub" />
+				<property name="added_item_counts" value="1-5" />
+			</action>
+
+			<action class="AddItems">
+				<requirement class="Progression">				
+					<property name="operation" value="GTE" />
+					<property name="name" value="skillForaging" />
+					<property name="value" value="50" />
+				</requirement>
+				<property name="added_items" value="foodGrub" />
+				<property name="added_item_counts" value="1-5" />
+			</action>
+
+			<action class="AddItems">
+				<requirement class="Progression">				
+					<property name="operation" value="GTE" />
+					<property name="name" value="skillForaging" />
+					<property name="value" value="60" />
+				</requirement>
+				<property name="added_items" value="foodGrub" />
+				<property name="added_item_counts" value="1-5" />
+			</action>
+
+			<action class="AddItems">
+				<requirement class="Progression">				
+					<property name="operation" value="GTE" />
+					<property name="name" value="skillForaging" />
+					<property name="value" value="70" />
+				</requirement>
+				<property name="added_items" value="foodGrub" />
+				<property name="added_item_counts" value="1-5" />
+			</action>
+
+			<action class="AddItems">
+				<requirement class="Progression">				
+					<property name="operation" value="GTE" />
+					<property name="name" value="skillForaging" />
+					<property name="value" value="80" />
+				</requirement>
+				<property name="added_items" value="foodGrub" />
+				<property name="added_item_counts" value="1-5" />
+			</action>
+
+			<action class="AddItems">
+				<requirement class="Progression">				
+					<property name="operation" value="GTE" />
+					<property name="name" value="skillForaging" />
+					<property name="value" value="90" />
+				</requirement>
+				<property name="added_items" value="foodGrub" />
+				<property name="added_item_counts" value="1-5" />
+			</action>			
+		</action_sequence>
+
+		<action_sequence name="forage_seeds">
+			<property name="target_type" value="Block" />			
+			
+			<action class="AddItems">
+				<requirement class="Progression">				
+					<property name="operation" value="GTE" />
+					<property name="name" value="skillForaging" />
+					<property name="value" value="5" />
+				</requirement>
+				<property name="added_items" value="foodWildSeeds" />
+				<property name="added_item_counts" value="1" />
+			</action>
+
+			<action class="AddItems">
+				<requirement class="Progression">				
+					<property name="operation" value="GTE" />
+					<property name="name" value="skillForaging" />
+					<property name="value" value="10" />
+				</requirement>
+				<property name="added_items" value="foodWildSeeds" />
+				<property name="added_item_counts" value="1-5" />
+			</action>
+
+			<action class="AddItems">
+				<requirement class="Progression">				
+					<property name="operation" value="GTE" />
+					<property name="name" value="skillForaging" />
+					<property name="value" value="20" />
+				</requirement>
+				<property name="added_items" value="foodWildSeeds" />
+				<property name="added_item_counts" value="1-5" />
+			</action>
+
+			<action class="AddItems">
+				<requirement class="Progression">				
+					<property name="operation" value="GTE" />
+					<property name="name" value="skillForaging" />
+					<property name="value" value="30" />
+				</requirement>
+				<property name="added_items" value="foodWildSeeds" />
+				<property name="added_item_counts" value="1-5" />
+			</action>
+
+			<action class="AddItems">
+				<requirement class="Progression">				
+					<property name="operation" value="GTE" />
+					<property name="name" value="skillForaging" />
+					<property name="value" value="40" />
+				</requirement>
+				<property name="added_items" value="foodWildSeeds" />
+				<property name="added_item_counts" value="1-5" />
+			</action>
+
+			<action class="AddItems">
+				<requirement class="Progression">				
+					<property name="operation" value="GTE" />
+					<property name="name" value="skillForaging" />
+					<property name="value" value="50" />
+				</requirement>
+				<property name="added_items" value="foodWildSeeds" />
+				<property name="added_item_counts" value="1-5" />
+			</action>
+
+			<action class="AddItems">
+				<requirement class="Progression">				
+					<property name="operation" value="GTE" />
+					<property name="name" value="skillForaging" />
+					<property name="value" value="60" />
+				</requirement>
+				<property name="added_items" value="foodWildSeeds" />
+				<property name="added_item_counts" value="1-5" />
+			</action>
+
+			<action class="AddItems">
+				<requirement class="Progression">				
+					<property name="operation" value="GTE" />
+					<property name="name" value="skillForaging" />
+					<property name="value" value="70" />
+				</requirement>
+				<property name="added_items" value="foodWildSeeds" />
+				<property name="added_item_counts" value="1-5" />
+			</action>
+
+			<action class="AddItems">
+				<requirement class="Progression">				
+					<property name="operation" value="GTE" />
+					<property name="name" value="skillForaging" />
+					<property name="value" value="80" />
+				</requirement>
+				<property name="added_items" value="foodWildSeeds" />
+				<property name="added_item_counts" value="1-5" />
+			</action>
+
+			<action class="AddItems">
+				<requirement class="Progression">				
+					<property name="operation" value="GTE" />
+					<property name="name" value="skillForaging" />
+					<property name="value" value="90" />
+				</requirement>
+				<property name="added_items" value="foodWildSeeds" />
+				<property name="added_item_counts" value="1-5" />
+			</action>			
+		</action_sequence>
+	</append>	
+</configs>

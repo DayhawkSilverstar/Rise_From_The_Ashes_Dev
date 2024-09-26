@@ -1,0 +1,159 @@
+Change Log:
+
+Rise From The Ashes 0.1
+
+Rise From The Ashes is an overhaul modification for the popular survival game, 7 Days to Die, 
+designed to infuse the gameplay experience with the depth and richness characteristic of traditional RPGs.
+
+Upon embarking on their journey, players are prompted to define their character's backstory by selecting one profession and two hobbies from their pre-apocalypse life. 
+This choice not only imbues the character with a sense of identity but also influences their starting skills and abilities, setting the stage for a personalized gameplay experience.
+
+Central is the integration of a stats framework comprising attributes such as Strength, Intelligence, Wisdom, Fortitude, Dexterity, and Charisma. 
+These attributes play a pivotal role in affecting everything from combat prowess to crafting proficiency and social interactions.
+
+As players venture forth into the desolate landscape, they will find that skill development is not a static process but rather a dynamic journey of growth and improvement. 
+Skills are honed through practical experience, with proficiency increasing as players engage in various activities such as combat, crafting, and resource gathering.
+Moreover, players can augment their skill progression by acquiring and studying skill magazines or conducting research to uncover new crafting recipes and techniques.
+
+Crafting, a cornerstone of survival in the harsh post-apocalyptic world, follows a structured tiered system, ranging from Tier 1 to Tier 6. 
+Recipes for crafting items are designed to correspond with the tier level, with more advanced items requiring increasingly rare and valuable resources. 
+As players invest time and effort into honing their crafting skills, they unlock access to a wider array of crafting options, empowering them to create powerful weapons, 
+fortifications, and survival gear.
+
+The economic ecosystem is sustained by the presence of traders, who serve as both vendors for essential resources and buyers for crafted goods. 
+Players can earn valuable currency known as dukes by crafting and selling their wares to traders, thereby facilitating the acquisition of crucial supplies and equipment necessary for survival.
+This mod makes dukes a much needed resource as traders now sell more items that are needed for progression. Those who specialize will want to sell their goods and buy
+the items they can't make for themselves. Becoming a master of any single skill is time consuming and becoming a master of them all will be a daunting task. Unless you're 
+on a multiplayer game, you will need the trader to progress at a reasonable rate.
+
+(Multiplayer)
+Beyond the solitary struggle for survival, the mod encourages players to engage with the broader community of survivors scattered across the wasteland. By leveraging their 
+specialized skills and resources, players can forge alliances, barter for goods, and collaborate on ambitious endeavors. 
+
+- Character Progression
+	* Character stats apply to all sort of skills and abilities
+		- Strength
+			- Increases melee attack damage
+			- Reduces stamina cost for all weapons and hand tools
+			- Increases running speed
+			- Increases jumping height
+		- Dexterity
+			- Increases ranged attack damage			
+		- Fortitude
+			- Increases healing rate
+			- Increases stamina recovery		
+		- Wisdom
+			- Increases tracking range
+		- Intelligence
+			- Increases base exp gain for all skills
+		- Charisma
+			- 
+	* Professions provide bonuses based on what you used to do before the outbreak. You start with 1 token.
+		- Architect, Automotive Mechanic, Blacksmith, Burglar, Carpenter, Chemist, Cook, Electrical Engineer
+		- Generalist (Jack of all trades), Martial Artist, Mechanical Engineer, Police Officer
+		- Software Engineer, Soldier, Tailor
+		- Professions add several items to your starting gear.
+		_ Professions increase the based exp gain for their selected skill.
+	* Hobbies provide bonuses based on what you used to do before the outbreak. You start with 2 tokens.
+		- Architect, Automotive Mechanic, Blacksmith, Burglar, Carpenter, Chemist, Cook, Electrical Engineer
+		- Martial Artist, Mechanical Engineer, Police Officer, Software Engineer, Soldier, Tailor
+		- Hobbies add a single item to your starting gear.
+		_ Hobbies increase the based exp gain for their selected skill.
+		  (Only 1 hobby token should be used per skill. The effects do not stack with the same hobby)
+		
+	* 27 Learn By Doing Skills
+	* 12 Learn By Reading / Research Skills
+	* Bountiful Perks
+		- Spending points to increase the raw resource gathering for your characters
+	* Gifted Perks
+		- Spend points to increase the experience gained for each skill. 
+
+- Quests
+	* X new quests that allow you to progress your trader without having to do Clears, Fetches, or Buries Supplies.
+
+- Crafting
+	* Added Tier 1 - 6 crafting resources.
+		- Most components use a scale of: 
+			- Poor quality, Standard Quality, Good Quality, High Quality, Excellent Quality, Mastercrafted 
+		- Components are:
+			- Automotive, Cloth,Electrical, Leather, Mechanical, Programs, Reagents, Wood
+		- Exceptions
+			- Blacksmithing produces (Low Quality Wrought Iron, Wrought Iron, Forged Iron, Steel, Stainless Steel, and Tungsten)
+			- Civil Engineers produce blocks and unlock building materials based on skill.
+			
+	* Learn by research skills
+		- Each technical skill allows characters to craft a research bundle. 
+		- These bundles will return research notes as well as some crafting resources for that tier at a reduced efficiency.
+	* Recipes changed to reflect the new Tier component system.
+		
+- Farming
+	* Each crop has a tier from 1 to 6.
+	* Tier 1 crops produce 1 seed and 1 of that crop.
+	* Tier 2 crops produce 1 seed and 3 of that crop.
+	* Tier 3 crops produce 1 seed and 6 of that crop.
+	* Tier 4 crops produce 1 seed and 9 of that crop.
+	* Tier 5 crops produce 1 seed and 12 of that crop.
+	* Tier 6 crops produce 1 seed and 12 of that crop.
+      This Tier has other special properties.
+	* Farmers can select for higher Tier seeds with more skill. 
+	  Anyone harvesting a crop gets the full output for that crop.
+
+- Zombies
+	* Added "Iconic" zombies that do not jump, climb, and attempt to walk to you.
+	  They do not understand the pathing system so the current base meta won't work.
+	* 50% of the zombies will be Vanilla and the other 50% are Iconic.
+	* Zombies all want to eat living things now so expect them to attack all animals
+	* Zombie damage is capped when calculating nearby zombies
+		- The vanilla game uses a 20% increase of zombie damage due to other zombies being nearby
+		  This still works but is capped to 3 additional zombies instead of no cap.
+		  Iconic zombies add 10% per additional zombie to a max of 50% increase.
+	* Biomes modify the zombies stats. 
+		- Forest zombies are the standard zombie stats
+		- Desert zombies are faster but less hitpoints
+		- Snow zombies are slower but more hitpoints
+		- Wasteland zombies are the fastest and many more hitpoints
+- Items
+	* Holding a nailgun or hammer highlights damaged blocks to make repairing easier.
+	* Harvest grubs and wild seeds with foraging
+	* Craft a d20 that can be rolled.
+	* Research bundles
+
+- weapons
+	* Removed the +/- 4% random modifier to both entity and block damage
+
+- Vehicles
+	* Create a Scrap Truck with your Mechanical Engineering skill
+	
+- Blocks
+	* Blocks now have a damage reduction stat.
+		- Damage reduction subtracts the damage done from the zombie or characters before applying it to the blocks.
+		  This means that it is possible for zombies and characters to do zero damage.
+		  Unless your super strong, your not going to break into a wall safe with your stone axe anymore.
+		  Zombies will also do less damage to bases making new base designs more feasable.
+	* Blocks not used for structural building can be picked up.
+		- Containers
+		- Decorations
+		- Lights
+			_ Most lights can be powered using generators or battery banks.	
+	* Stack of bronze bars
+	* Buddy5 a container that autosorts its inventory to nearby storage containers.
+	* Birds nest with eggs now show the eggs. Ones without eggs don't.
+	* 3 new bushes to make seeing in the forest harder
+	* 1 new tree
+	* 4 new paintings
+	* Chicken Coop. Raise chickens for eggs and feathers or butcher them for meat, feathers, and bones.	
+
+- SCore
+	* This mod uses SCore and has the following enabled.
+		- Encumberance
+			- This means it matters how much a thing weighs. There is also a limitation on slots.
+		- Drop Boxs
+			- This is the support used for Buddy5
+		- Broadcasting
+			- Allows for accessing crafting from boxes and inventory remotely
+		- One block high crouching
+		- Show the targets health bars
+		- Disabled Trader Protection
+		- Allowed to build in the trader area but not place land claim blocks
+		
+	

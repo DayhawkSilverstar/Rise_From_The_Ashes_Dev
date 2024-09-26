@@ -1,0 +1,64 @@
+<configs>
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_timid']/@name">skillTracking_timid</set>
+
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_chicken']/@extends">skillTracking_timid</set>
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_rabbit']/@extends">skillTracking_timid</set>
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_doe']/@extends">skillTracking_timid</set>
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_stag']/@extends">skillTracking_timid</set>
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_hostile']/@extends">skillTracking_timid</set>
+	
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_chicken']/@name">skillTracking_chicken</set>
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_rabbit']/@name">skillTracking_rabbit</set>
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_doe']/@name">skillTracking_doe</set>
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_stag']/@name">skillTracking_stag</set>
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_hostile']/@name">skillTracking_hostile</set>
+
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_bear']/@extends">skillTracking_hostile</set>
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_boar']/@extends">skillTracking_hostile</set>
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_coyote']/@extends">skillTracking_hostile</set>
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_direwolf']/@extends">skillTracking_hostile</set>
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_mountainlion']/@extends">skillTracking_hostile</set>
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_snake']/@extends">skillTracking_hostile</set>
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_wolf']/@extends">skillTracking_hostile</set>
+
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_bear']/@name">skillTracking_bear</set>
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_boar']/@name">skillTracking_boar</set>
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_coyote']/@name">skillTracking_coyote</set>
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_direwolf']/@name">skillTracking_direwolf</set>
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_mountainlion']/@name">skillTracking_mountainlion</set>
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_snake']/@name">skillTracking_snake</set>
+	<set xpath="/nav_object_classes/nav_object_class[@name='animaltracking_wolf']/@name">skillTracking_wolf</set>
+
+	<!--
+	<append xpath="/nav_object_classes">
+		<nav_object_class name="radiated">
+			<map_settings>
+				<property name="sprite_name" value="ui_game_symbol_zombie"/>
+				<property name="min_distance" value="0"/>
+				<property name="max_distance" value="-1"/>
+				<property name="color" value="0,200,0,255"/>
+				<property name="has_pulse" value="true"/>
+			</map_settings>
+
+			<compass_settings>
+				<property name="sprite_name" value="ui_game_symbol_zombie"/>
+				<property name="min_distance" value="0"/>
+				<property name="max_distance" value="1024"/>
+				<property name="max_scale_distance" value="32"/>
+				<property name="color" value="0,200,0,255"/>
+				<property name="has_pulse" value="true"/>
+				<property name="icon_clamped" value="false" />
+			</compass_settings>
+		</nav_object_class>		
+
+		<nav_object_class name="skillTracking_zombie" extends="skillTracking_hostile">
+			<property name="requirement_type" value="Tracking" />
+			<property name="use_override_icon" value="true" />
+
+			<onscreen_settings>
+				<property name="offset" value="0,1.2,0"/>
+			</onscreen_settings>
+		</nav_object_class>
+	</append>
+	-->
+</configs>

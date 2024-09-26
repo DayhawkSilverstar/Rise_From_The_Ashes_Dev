@@ -1,0 +1,77 @@
+<configs>
+	<remove xpath="/traders/trader_item_groups/trader_item_group[@name='seeds']" />
+	
+	<insertAfter xpath="/traders/trader_item_groups/trader_item_group[@name='medicine']">
+		<trader_item_group name="seeds">
+			<item name="plantedPotatoT1-1"/>
+			<item name="plantedCoffeeT1-1"/>
+			<item name="plantedCornT1-1"/>
+			<item name="plantedBlueberryT1-1"/>
+			<item name="plantedCottonT1-1"/>
+			<item name="plantedGoldenrodT1-1"/>
+			<item name="plantedAloeT1-1"/>
+			<item name="plantedMushroomT1-1"/>
+			<item name="plantedYuccaT1-1"/>
+			<item name="plantedHopT1-1"/>
+			<item name="plantedChrysanthemumT1-1"/>
+			<item name="plantedPumpkinT1-1"/>
+		</trader_item_group>
+	</insertAfter>
+
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='foodSupplies']">
+		<item name="BakingSoda" count="4,8"/>
+		<item name="DistilledAlcohol" count="4,8"/>
+		<item name="SaltShaker" count="4,8"/>
+	</append>
+
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='generalResources']">
+		<item name="DrainCleaner" count="5,20"/>
+		<item name="CalciumCarbonate" count="5,20"/>
+		<item name="PaintRemover" count="5,20"/>
+		<item name="GlassCleaner" count="5,20"/>
+		<item name="LaundryDetergent" count="5,20"/>
+		<item name="D-Icer" count="5,20"/>
+		<item name="Bleach" count="5,20"/>
+		<item name="resourceGunPowder" count="30,100"/>
+		<item name="resourceAcid" count="4,8"/>
+		<item name="resourceMilitaryFiber" count="5,20" prob="0.6"/>		
+	</append>
+
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='traderAlways']">
+		<item name="resourceLockPick" count="10,20"/>	
+		<item name="resourceScrapPolymers" count="200,400"/>
+		<item name="resourceGunPowder" count="50,50"/>
+		<item name="TraderSuppliesQuestT1-1" count="1"/>
+		<item name="TraderSuppliesQuestT1-2" count="1"/>
+		<item name="TraderSuppliesQuestT1-3" count="1"/>
+		<item name="AutomotiveComponentsT1" count="15,50"/>
+		<item name="AutomotiveComponentsT2" count="15,50"/>
+		<item name="AutomotiveComponentsT3" count="15,50"/>	
+		<item name="BlankProgramT1" count="15,50"/>
+		<item name="BlankProgramT2" count="15,50"/>
+		<item name="BlankProgramT3" count="15,50"/>	
+		<item name="resourceLowQualityWroughtIron" count="5,50"/>
+		<item name="resourceClothT1" count="5,100"/>
+		<item name="resourceClothT2" count="5,100"/>
+		<item name="resourceClothT3" count="5,100"/>
+		<item name="LeatherSheetT1" count="5,25"/>
+		<item name="LeatherSheetT2" count="5,25"/>
+		<item name="LeatherSheetT3" count="5,25"/>
+		<item name="resourceElectricPartsT1" count="15,50"/>
+		<item name="resourceElectricPartsT2" count="15,50"/>
+		<item name="resourceElectricPartsT3" count="15,50"/>
+		<item name="resourceWroughtIron" count="5,50"/>
+		<item name="resourceForgedIron" count="5,50"/>
+		<item name="resourceForgedSteel" count="5,50"/>
+		<item name="resourceMechanicalPartsT1" count="15,80"/>
+		<item name="resourceMechanicalPartsT2" count="15,80"/>
+		<item name="resourceMechanicalPartsT3" count="15,80"/>
+		<item name="ReagentT1" count="15,50"/>
+		<item name="ReagentT2" count="15,50"/>
+		<item name="ReagentT3" count="15,50"/>
+		<item name="resourceWoodT1" count="50,1000"/>
+		<item name="resourceWoodT2" count="50,1000"/>
+		<item name="resourceWoodT3" count="50,1000"/>
+	</append>
+
+</configs>

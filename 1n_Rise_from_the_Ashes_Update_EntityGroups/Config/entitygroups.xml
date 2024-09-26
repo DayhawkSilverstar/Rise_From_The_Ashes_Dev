@@ -1,0 +1,121 @@
+<configs>
+	
+	<!-- ARLENE ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieArlene' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieArleneIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombieArleneFeral' )]/text()" delim="\n" op="add" >zombieArleneIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieArleneRadiated' )]/text()" delim="\n" op="add" >zombieArleneIconicRadiated</csv>
+
+	<!-- BOE ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieBoe' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieBoeIconic</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieBoeFeral' )]/text()" delim="\n" op="add" >zombieBoeIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieBoeRadiated' )]/text()" delim="\n" op="add" >zombieBoeIconicRadiated</csv>
+
+	<!-- BIKER ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieBiker' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieBikerIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombieBikerFeral' )]/text()" delim="\n" op="add" >zombieBikerIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieBikerRadiated' )]/text()" delim="\n" op="add" >zombieBikerIconicRadiated</csv>
+
+	<!-- BURNT ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieBurnt' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieBurntIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombieBurntFeral' )]/text()" delim="\n" op="add" >zombieBurntIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieBurntRadiated' )]/text()" delim="\n" op="add" >zombieBurntIconicRadiated</csv>
+
+	<!-- BUSINESSMAN ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieBusinessMan' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieBusinessManIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombieBusinessManFeral' )]/text()" delim="\n" op="add" >zombieBusinessManIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieBusinessManRadiated' )]/text()" delim="\n" op="add" >zombieBusinessManIconicRadiated</csv>
+
+	<!-- COP ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieFatCop' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieFatCopIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombieFatCopFeral' )]/text()" delim="\n" op="add" >zombieFatCopIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieFatCopRadiated' )]/text()" delim="\n" op="add" >zombieFatCopIconicRadiated</csv>
+
+	<!-- CRAWLER ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieSteveCrawler' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieSteveCrawlerIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombieSteveCrawlerFeral' )]/text()" delim="\n" op="add" >zombieSteveCrawlerIconicFeral</csv>	
+
+	<!-- DARLENE ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieDarlene' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieDarleneIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombieDarleneFeral' )]/text()" delim="\n" op="add" >zombieDarleneIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieDarleneRadiated' )]/text()" delim="\n" op="add" >zombieDarleneIconicRadiated</csv>
+
+	<!-- FAT HAWAIIAN ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieFatHawaiian' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieFatHawaiianIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombieFatHawaiianFeral' )]/text()" delim="\n" op="add" >zombieFatHawaiianIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieFatHawaiianRadiated' )]/text()" delim="\n" op="add" >zombieFatHawaiianIconicRadiated</csv>
+
+	<!-- JANITOR ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieJanitor' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieJanitorIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombieJanitorFeral' )]/text()" delim="\n" op="add" >zombieJanitorIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieJanitorRadiated' )]/text()" delim="\n" op="add" >zombieJanitorIconicRadiated</csv>
+
+	<!-- JOE ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieJoe' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieJoeIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombieJoeFeral' )]/text()" delim="\n" op="add" >zombieJoeIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieJoeRadiated' )]/text()" delim="\n" op="add" >zombieJoeIconicRadiated</csv>
+
+	<!-- LAB ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieLab' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieLabIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombieLabFeral' )]/text()" delim="\n" op="add" >zombieLabIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieLabRadiated' )]/text()" delim="\n" op="add" >zombieLabIconicRadiated</csv>
+
+	<!-- LUMBERJACK ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieLumberjack' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieLumberjackIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombieLumberjackFeral' )]/text()" delim="\n" op="add" >zombieLumberjackIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieLumberjackRadiated' )]/text()" delim="\n" op="add" >zombieLumberjackIconicRadiated</csv>
+	
+	<!-- MARLENE ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieMarlene' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieMarleneIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombieMarleneFeral' )]/text()" delim="\n" op="add" >zombieMarleneIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieMarleneRadiated' )]/text()" delim="\n" op="add" >zombieMarleneIconicRadiated</csv>
+	
+	<!-- MOE ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieMoe' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieMoeIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombieMoeFeral' )]/text()" delim="\n" op="add" >zombieMoeIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieMoeRadiated' )]/text()" delim="\n" op="add" >zombieMoeIconicRadiated</csv>
+
+	<!-- NURSE ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieNurse' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieNurseIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombieNurseFeral' )]/text()" delim="\n" op="add" >zombieNurseIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieNurseRadiated' )]/text()" delim="\n" op="add" >zombieNurseIconicRadiated</csv>
+
+	<!-- PARTY GIRL ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombiePartyGirl' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombiePartyGirlIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombiePartyGirlFeral' )]/text()" delim="\n" op="add" >zombiePartyGirlIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombiePartyGirlRadiated' )]/text()" delim="\n" op="add" >zombiePartyGirlIconicRadiated</csv>
+	
+	<!-- SKATE BOARDER ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieSkateboarder' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieSkateboarderIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombieSkateboarderFeral' )]/text()" delim="\n" op="add" >zombieSkateboarderIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieSkateboarderRadiated' )]/text()" delim="\n" op="add" >zombieSkateboarderIconicRadiated</csv>	
+
+	<!-- SPIDER ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieSpider' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieSpiderIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombieSpiderFeral' )]/text()" delim="\n" op="add" >zombieSpiderIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieSpiderRadiated' )]/text()" delim="\n" op="add" >zombieSpiderIconicRadiated</csv>
+
+	<!-- STEVE ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieSteve' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieSteveIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombieSteveFeral' )]/text()" delim="\n" op="add" >zombieSteveIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieSteveRadiated' )]/text()" delim="\n" op="add" >zombieSteveIconicRadiated</csv>
+
+	<!-- TOM CLARK ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieTomClark' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieTomClarkIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombieTomClarkFeral' )]/text()" delim="\n" op="add" >zombieTomClarkIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieTomClarkRadiated' )]/text()" delim="\n" op="add" >zombieTomClarkIconicRadiated</csv>
+
+	<!-- UTILITY WORKER ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieUtilityWorker' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieUtilityWorkerIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombieUtilityWorkerFeral' )]/text()" delim="\n" op="add" >zombieUtilityWorkerIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieUtilityWorkerRadiated' )]/text()" delim="\n" op="add" >zombieUtilityWorkerIconicRadiated</csv>
+	
+	<!-- WIGHT ZOMBIE -->	
+	<csv xpath="//entitygroup[contains(text(), 'zombieWightFeral' )]/text()" delim="\n" op="add" >zombieWightIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieWightRadiated' )]/text()" delim="\n" op="add" >zombieWightIconicRadiated</csv>
+
+	<!-- YO ZOMBIE -->
+	<csv xpath="//entitygroup[contains(text(), 'zombieYo' ) and not(contains(text(), 'Feral') or contains(text(), 'Radiated')) ]/text()" delim="\n" op="add" >zombieYoIconic</csv>	
+	<csv xpath="//entitygroup[contains(text(), 'zombieYoFeral' )]/text()" delim="\n" op="add" >zombieYoIconicFeral</csv>
+	<csv xpath="//entitygroup[contains(text(), 'zombieYoRadiated' )]/text()" delim="\n" op="add" >zombieYoIconicRadiated</csv>	
+	
+</configs>

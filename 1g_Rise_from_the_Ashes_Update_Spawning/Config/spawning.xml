@@ -1,0 +1,96 @@
+<configs>
+	<!-- *************** PINE FOREST -->
+	<!-- ALL AREAS NOT IN A CITY -->
+	<set xpath="/spawning/biome[@name='pine_forest']/spawn[@entitygroup='ZombiesAll' and @notags='commercial,industrial,downtown']/@maxcount">3</set>
+	<set xpath="/spawning/biome[@name='pine_forest']/spawn[@entitygroup='ZombiesNight' and @notags='commercial,industrial,downtown']/@maxcount">3</set>
+
+	<!-- COMERCIAL AND INDUSTRIAL -->
+	<set xpath="/spawning/biome[@name='pine_forest']/spawn[@entitygroup='ZombiesAll' and @tags='commercial,industrial']/@maxcount">6</set>
+	<set xpath="/spawning/biome[@name='pine_forest']/spawn[@entitygroup='ZombiesNight' and @tags='commercial,industrial']/@maxcount">6</set>
+
+	<!-- DOWNTOWN -->
+	<set xpath="/spawning/biome[@name='pine_forest']/spawn[@entitygroup='ZombiesForestDowntown' and @tags='downtown']/@maxcount">9</set>
+	<set xpath="/spawning/biome[@name='pine_forest']/spawn[@entitygroup='ZombiesForestDowntownNight' and @tags='downtown']/@maxcount">9</set>
+
+	<!-- ANIMAL SPAWNS -->
+	<set xpath="/spawning/biome[@name='pine_forest']/spawn[@entitygroup='WildGameForest']/@maxcount">6</set>
+	<set xpath="/spawning/biome[@name='pine_forest']/spawn[@entitygroup='WildGameForestNight']/@maxcount">3</set>
+	<set xpath="/spawning/biome[@name='pine_forest']/spawn[@entitygroup='EnemyAnimalsForest']/@maxcount">3</set>
+
+
+	<!-- **************** BURNT_FOREST_SPAWNS -->
+	<!-- ALL AREAS NOT IN A CITY -->
+	<set xpath="/spawning/biome[@name='burnt_forest']/spawn[@entitygroup='ZombiesBurntForest' and @respawndelay='2.8']/@maxcount">3</set>
+	<set xpath="/spawning/biome[@name='burnt_forest']/spawn[@entitygroup='ZombiesNight' and @respawndelay='3.2']/@maxcount">3</set>
+
+	<!-- COMERCIAL AND INDUSTRIAL -->
+	<set xpath="/spawning/biome[@name='burnt_forest']/spawn[@entitygroup='ZombiesAll' and @tags='commercial,industrial']/@maxcount">6</set>
+	<set xpath="/spawning/biome[@name='burnt_forest']/spawn[@entitygroup='ZombiesNight' and @tags='commercial,industrial']/@maxcount">6</set>
+
+	<!-- DOWNTOWN -->
+	<set xpath="/spawning/biome[@name='burnt_forest']/spawn[@entitygroup='ZombiesDowntown' and @tags='downtown' and @time='Day']/@maxcount">9</set>
+	<set xpath="/spawning/biome[@name='burnt_forest']/spawn[@entitygroup='ZombiesDowntown' and @tags='downtown' and @time='Night']/@maxcount">10</set>
+
+	<!-- ANIMAL SPAWNS -->	
+	<set xpath="/spawning/biome[@name='burnt_forest']/spawn[@entitygroup='EnemyAnimalsBurntForestAny']/@maxcount">6</set>	
+	<set xpath="/spawning/biome[@name='burnt_forest']/spawn[@entitygroup='WildGameForest']/@maxcount">6</set>	
+	<set xpath="/spawning/biome[@name='burnt_forest']/spawn[@entitygroup='WildGameForestNight']/@maxcount">6</set>			
+	<set xpath="/spawning/biome[@name='burnt_forest']/spawn[@entitygroup='EnemyAnimalsBurntForestNight']/@maxcount">3</set>
+
+	<!-- ***************** DESERT_SPAWNS -->
+	<!-- ALL AREAS NOT IN A CITY -->
+	<set xpath="/spawning/biome[@name='desert']/spawn[@entitygroup='ZombiesAll' and @notags='commercial,industrial,downtown']/@maxcount">3</set>
+	<set xpath="/spawning/biome[@name='desert']/spawn[@entitygroup='ZombiesNight' and @notags='commercial,industrial,downtown']/@maxcount">3</set>
+
+	<!-- COMERCIAL AND INDUSTRIAL -->
+	<set xpath="/spawning/biome[@name='desert']/spawn[@entitygroup='ZombiesAll' and @tags='commercial,industrial']/@maxcount">6</set>
+	<set xpath="/spawning/biome[@name='desert']/spawn[@entitygroup='ZombiesNight' and @tags='commercial,industrial']/@maxcount">6</set>
+
+	<!-- DOWNTOWN -->
+	<set xpath="/spawning/biome[@name='desert']/spawn[@entitygroup='ZombiesDowntown' and @tags='downtown' and @time='Day']/@maxcount">9</set>
+	<set xpath="/spawning/biome[@name='desert']/spawn[@entitygroup='ZombiesDowntown' and @tags='downtown' and @time='Night']/@maxcount">10</set>
+
+	<!-- ANIMAL SPAWNS -->
+	<set xpath="/spawning/biome[@name='desert']/spawn[@entitygroup='EnemyAnimalsDesertNight']/@maxcount">3</set>
+	<set xpath="/spawning/biome[@name='desert']/spawn[@entitygroup='WildGameForest']/@maxcount">6</set>	
+	<set xpath="/spawning/biome[@name='desert']/spawn[@entitygroup='EnemyAnimalsDesert']/@maxcount">3</set>
+
+	<!-- ***************** SNOW_SPAWNS -->
+	<!-- ALL AREAS NOT IN A CITY -->
+	<set xpath="/spawning/biome[@name='snow']/spawn[@entitygroup='SnowZombies' and @notags='downtown']/@maxcount">3</set>
+	
+	<set xpath="/spawning/biome[@name='snow']/spawn[@entitygroup='ZombiesNight' and @notags='commercial,industrial,downtown']/@maxcount">3</set>
+
+	<!-- COMERCIAL AND INDUSTRIAL -->
+	<set xpath="/spawning/biome[@name='snow']/spawn[@entitygroup='ZombiesAll' and @tags='commercial,industrial']/@maxcount">6</set>
+	<set xpath="/spawning/biome[@name='snow']/spawn[@entitygroup='ZombiesNight' and @tags='commercial,industrial']/@maxcount">6</set>
+
+	<!-- DOWNTOWN -->
+	<set xpath="/spawning/biome[@name='snow']/spawn[@entitygroup='ZombiesDowntown' and @tags='downtown' and @time='Day']/@maxcount">9</set>
+	<set xpath="/spawning/biome[@name='snow']/spawn[@entitygroup='ZombiesDowntown' and @tags='downtown' and @time='Night']/@maxcount">10</set>
+
+	<!-- ANIMAL SPAWNS -->
+	<set xpath="/spawning/biome[@name='snow']/spawn[@entitygroup='WildGameStagNight']/@maxcount">6</set>	
+	<set xpath="/spawning/biome[@name='snow']/spawn[@entitygroup='WildGameForest']/@maxcount">6</set>	
+	<set xpath="/spawning/biome[@name='snow']/spawn[@entitygroup='EnemyAnimalsSnow']/@maxcount">3</set>
+	<set xpath="/spawning/biome[@name='snow']/spawn[@entitygroup='EnemyAnimalsSnowNight']/@maxcount">5</set>
+	
+	<!-- ***************** WASTELAND_SPAWNS -->
+	<!-- ALL AREAS NOT IN A CITY -->
+	<set xpath="/spawning/biome[@name='wasteland']/spawn[@entitygroup='ZombiesWasteland' and @notags='commercial,industrial,downtown']/@maxcount">3</set>
+	<set xpath="/spawning/biome[@name='wasteland']/spawn[@entitygroup='ZombiesWastelandNight' and @notags='commercial,industrial,downtown']/@maxcount">3</set>
+
+	<!-- COMERCIAL AND INDUSTRIAL -->
+	<set xpath="/spawning/biome[@name='wasteland']/spawn[@entitygroup='ZombiesWasteland' and @tags='commercial,industrial']/@maxcount">6</set>
+	<set xpath="/spawning/biome[@name='wasteland']/spawn[@entitygroup='ZombiesWastelandNight' and @tags='commercial,industrial']/@maxcount">6</set>
+
+	<!-- DOWNTOWN -->
+	<set xpath="/spawning/biome[@name='wasteland']/spawn[@entitygroup='ZombiesWastelandDowntown' and @tags='downtown' and @time='Day']/@maxcount">9</set>
+	<set xpath="/spawning/biome[@name='wasteland']/spawn[@entitygroup='ZombiesWastelandDowntown' and @tags='downtown' and @time='Night']/@maxcount">10</set>
+
+	<!-- ANIMAL SPAWNS -->	
+	<set xpath="/spawning/biome[@name='wasteland']/spawn[@entitygroup='WildGameStagNight']/@maxcount">6</set>	
+	<set xpath="/spawning/biome[@name='wasteland']/spawn[@entitygroup='EnemyAnimalsWasteland']/@maxcount">3</set>
+	<set xpath="/spawning/biome[@name='wasteland']/spawn[@entitygroup='EnemyAnimalsWastelandNight']/@maxcount">3</set>
+
+</configs>

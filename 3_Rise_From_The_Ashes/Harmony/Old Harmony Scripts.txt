@@ -1,0 +1,52 @@
+﻿
+    [HarmonyPatch(typeof(XUiC_RecipeStack))]
+    [HarmonyPatch("outputStack")]
+    public class PostfixOutputStack
+    {
+        static void Postfix(XUiC_RecipeStack __instance, ref bool __result)
+        {
+
+            Log.Out($"XUiC_RecipeStack OutputStack Prefix");
+            EntityPlayerLocal entityPlayer = __instance.xui.playerUI.entityPlayer;
+            Recipe recipe = __instance.GetRecipe();
+
+            Log.Out(entityPlayer.EntityName + $" crafted " + recipe.GetName());
+            Log.Out($"Entity ID : " + entityPlayer.entityId.ToString());            
+
+        }
+    }
+
+
+    [HarmonyPatch(typeof(XUiC_RecipeStack))]
+    [HarmonyPatch("outputStack")]
+    public class PostFixOutputStack
+    {
+        static void Postfix(XUiC_RecipeStack __instance)
+        {            
+
+            Log.Out($"XUiC_RecipeStack OutputStack Postfix");
+            EntityPlayerLocal entityPlayer = __instance.xui.playerUI.entityPlayer;
+            Recipe recipe = __instance.GetRecipe();
+
+            Log.Out(entityPlayer.EntityName + $" crafted " + recipe.GetName());
+            Log.Out($"Entity ID : " + entityPlayer.entityId.ToString());
+            
+        }
+    }
+
+    [HarmonyPatch(typeof(XUiC_RecipeStack))]
+    [HarmonyPatch("Update")]
+    public class PostFixUpdate
+    {
+        static int lastRecipeCount;
+        static void Postfix(XUiC_RecipeStack __instance, ref float ___craftingTimeLeft, ref bool ___isCrafting, ref int ___recipeCount, ref Recipe ___recipe)
+        {
+
+            if (___isCrafting && ___craftingTimeLeft <= 0f && ___recipe != null && ___recipeCount < lastRecipeCount)
+            {
+                Log.Out($"XUiC_RecipeStack Update Finished : " + ___recipe.GetName());
+            }
+
+            lastRecipeCount = ___recipeCount;
+        }
+    }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+	<Name value="2_Rise_From_The_Ashes_Update_entityclasses" />
+	<DisplayName value="Update Entity Classes" />
+	<Description value="This modlet updates the entity classes for the Rise from the ashes mod." />
+	<Author value="Dayhawk" />
+	<Version value="1.0.0" />
+</xml>
