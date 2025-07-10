@@ -232,12 +232,12 @@ public class EAIApproachAndAttackIconic : EAIBase
     public void DoAttack()
     {
         zombie.SleeperSupressLivingSounds = false;
-        if (zombie.Attack(_bAttackReleased: false))
+        if (zombie.Attack(false))
         {
 #if DEBUG
             Log.Out("EAISingleTask - Attack - Making an attack");
 #endif
-            zombie.Attack(_bAttackReleased: true);
+            zombie.Attack(true);
             zombie.IsBreakingBlocks = false;
             AttackTimeout = zombie.GetAttackTimeoutTicks();
             return;

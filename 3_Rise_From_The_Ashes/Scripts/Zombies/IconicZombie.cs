@@ -72,7 +72,6 @@ public class IconicZombie : EntityAlive
         Log.Out("Iconic Zombie - Init");
 #endif
         base.Init(_entityClass);
-        constructEntityStats();
         switchModelView(EnumEntityModelView.ThirdPerson);
         InitPostCommon();
     }
@@ -230,17 +229,11 @@ public class IconicZombie : EntityAlive
             bool shouldGroan = false;
 
             // If there's a noise player and the volume is above the wake threshold
-            if (noisePlayer != null && noisePlayerVolume >= noiseWake)
+            if (noisePlayer != null && noisePlayerVolume >= sleeperNoiseToWake)
             {
                 // Set the closest player and distance to the noise player and distance
                 closestPlayer = noisePlayer;
                 closestDistance = noisePlayerDistance;
-            }
-            // If the volume is above the groan threshold
-            else if (noisePlayerVolume >= noiseGroan)
-            {
-                // Set the flag for whether the zombie should groan
-                shouldGroan = true;
             }
 
             // For each player in the list

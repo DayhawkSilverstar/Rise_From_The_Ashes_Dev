@@ -20,8 +20,8 @@
 
 	<!-- **************** BURNT_FOREST_SPAWNS -->
 	<!-- ALL AREAS NOT IN A CITY -->
-	<set xpath="/spawning/biome[@name='burnt_forest']/spawn[@entitygroup='ZombiesBurntForest' and @respawndelay='2.8']/@maxcount">3</set>
-	<set xpath="/spawning/biome[@name='burnt_forest']/spawn[@entitygroup='ZombiesNight' and @respawndelay='3.2']/@maxcount">3</set>
+	<set xpath="/spawning/biome[@name='burnt_forest']/spawn[@entitygroup='ZombiesBurntForest' and @respawndelay='2.7']/@maxcount">3</set>
+	<set xpath="/spawning/biome[@name='burnt_forest']/spawn[@entitygroup='ZombiesNight' and @respawndelay='2.3']/@maxcount">3</set>
 
 	<!-- COMERCIAL AND INDUSTRIAL -->
 	<set xpath="/spawning/biome[@name='burnt_forest']/spawn[@entitygroup='ZombiesAll' and @tags='commercial,industrial']/@maxcount">6</set>

@@ -1,0 +1,80 @@
+<config>
+
+	<append xpath="/items">
+		<item name="ScrapTruckPlaceable">
+			<property name="CustomIcon" value="ScrapTruck"/>
+			<property name="SellableToTrader" value="true"/>
+			<property name="Stacknumber" value="1"/>
+			<property name="Weight" value="5000"/>
+			<property name="Material" value="Mmetal"/>
+			<property name="HoldingItemHidden" value="true"/>
+			<property name="ItemWeight" value="135"/>
+			<property name="HoldType" value="7"/>
+			<property name="DescriptionKey" value="vehiclePlaceableGroupDesc"/>
+			<property name="Tags" value="vehicle,vengine,vfuel,vlight,vseat,canHaveCosmetic"/>
+			<property name="Meshfile" value="#@modfolder:Resources/ScrapTruck.unity3d?ScrapTruck"/>
+			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+			<property name="EconomicValue" value="5000"/>
+			<property name="ItemWeight" value="5000"/>			
+			<property name="UnlockedBy" value="skillMechanicalEngineer"/>
+			<property class="Action1">
+				<property name="Class" value="SpawnVehicle"/>
+				<property name="Vehicle" value="ScrapTruck"/>
+				<property name="VehicleSize" value="2.5, 2.1, 5"/>
+			</property>
+			<effect_group name="ScrapTruckPlaceable" tiered="false">
+				<passive_effect name="ModSlots" operation="base_set" value="5"/>
+				<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+				<passive_effect name="DegradationMax" operation="base_set" value="8000"/>
+			</effect_group>
+		</item>
+
+		<item name="vehicleScrapTruckChassis">
+			<property name="HoldType" value="45"/>
+			<property name="Tags" value="junk"/>
+			<property name="ItemWeight" value="3000"/>
+			<property name="CustomIcon" value="ScrapTruckChassis"/>
+			<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="MelectricParts"/>
+			<property name="UnlockedBy" value="skillMechanicalEngineer"/>
+			<property name="Weight" value="3000"/>
+			<property name="Stacknumber" value="1"/> <!-- Med -->
+			<property name="EconomicValue" value="2000"/>
+			<property name="Group" value="Resources"/>			
+		</item>
+
+		<item name="vehicleScrapTruckParts">
+			<property name="HoldType" value="45"/>
+			<property name="Tags" value="junk"/>
+			<property name="ItemWeight" value="2000"/>
+			<property name="CustomIcon" value="ScrapTruckParts"/>
+			<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="MelectricParts"/>
+			<property name="UnlockedBy" value="skillMechanicalEngineer"/>
+			<property name="Weight" value="2000"/>
+			<property name="Stacknumber" value="1"/> <!-- Med -->
+			<property name="EconomicValue" value="1500"/>
+			<property name="Group" value="Resources"/>			
+		</item>
+
+    <item name="vehicleScrapTruckSeat">                                                      
+      <property name="SellableToTrader" value="true" />      
+      <property name="ItemTypeIcon" value="treasure" />
+      <property name="HoldType" value="45"/>
+      <property name="Tags" value="junk"/>
+      <property name="ItemWeight" value="45"/>
+      <property name="CustomIcon" value="ScrapTruckChair"/>
+      <property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+      <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+      <property name="Material" value="MelectricParts"/>
+      <property name="UnlockedBy" value="skillMechanicalEngineer"/>
+      <property name="Weight" value="45"/>
+      <property name="Stacknumber" value="10"/>
+      <property name="EconomicValue" value="65"/>
+      <property name="Group" value="Resources"/>
+    </item>
+	</append>
+
+</config>

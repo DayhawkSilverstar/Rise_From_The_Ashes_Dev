@@ -1,0 +1,13 @@
+<configs>
+	<set xpath="//window[@name='menuBackground']/texture/@texture">@modfolder:Textures/RiseFromTheAshesMainMenu.jpg</set>	
+	<remove xpath="//window[@name='newsWindow']"/>
+	<append xpath="//window[@name='mainMenuLogo']">
+		<!-- achror_left moves it to the left from center. 
+			 anchor_top moves it to the top from center.
+			 achror_bottom resizes bottom of center but it can also move things to the left more.
+			 
+		-->
+		<texture depth="5" color="[white]" texture="@modfolder:Textures/Rise_From_The_Ashes_Title.png" name="modLogo" anchor_left="#cam,0.5,-800" anchor_bottom="#cam,0.5,0" anchor_right="#cam,0.5,-20" anchor_top="#cam,0.5, 200" pivot="center" keep_aspect_ratio="BasedOnHeight" aspect_ratio="2.3"/>
+		<texture depth="5" color="[white]" texture="@modfolder:Textures/SCore_NPCCore_Credit.png" name="modLogo" anchor_left="#cam,0.5,-1150" anchor_bottom="#cam,0.5,-400" anchor_right="#cam,0.5,-200" anchor_top="#cam,0.5, -200" pivot="center" keep_aspect_ratio="BasedOnHeight" aspect_ratio="2.3"/>
+	</append>
+</configs>

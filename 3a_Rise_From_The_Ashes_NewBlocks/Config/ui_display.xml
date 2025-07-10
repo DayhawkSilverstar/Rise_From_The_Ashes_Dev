@@ -1,14 +1,45 @@
 <RiseFromTheAshes>
-	<append xpath="/ui_display_info/crafting_category_display">
+
+  <remove xpath="/ui_display_info/crafting_category_display/crafting_category_list[@display_type='workbench']/crafting_category[@name='Clothing']" />
+  
+  <append xpath="/ui_display_info/crafting_category_display">
 		<crafting_category_list display_type="ComputerStation">			
 			<crafting_category name="Software" icon="ui_game_symbol_science" display_name="lblCatagorySoftware"/>			
 			<crafting_category name="Research" icon="ui_game_symbol_book" display_name="lblCatagoryResearchBundle"/>	
 		</crafting_category_list>
-		<crafting_category_list display_type="TailorWorkstation">			
-			<crafting_category name="Tanning" icon="ui_game_symbol_science" display_name="lblCatagoryTanning"/>			
-			<crafting_category name="Leatherworking" icon="ui_game_symbol_science" display_name="lblCatagoryLeatherworking"/>			
-			<crafting_category name="Tailoring" icon="ui_game_symbol_science" display_name="lblCatagoryTailoring"/>		
+		<crafting_category_list display_type="TailorWorkstation">
+      <crafting_category name="Tailoring" icon="ui_game_symbol_tailoring" display_name="lblCatagoryTailoring"/>
+			<crafting_category name="Tanning" icon="ui_game_symbol_armor_leather" display_name="lblCatagoryTanning"/>
+      <crafting_category name="Mods" icon="ui_game_symbol_assemble" display_name="lblCategoryMods" />
+      <crafting_category name="Tools/Traps" icon="ui_game_symbol_tool" display_name="lblCategoryToolsTraps" />
+      <crafting_category name="Armor" icon="ui_game_symbol_shirt" display_name="lblCatagoryLightArmor"/>
+      <crafting_category name="ArmorLeather" icon="ui_game_symbol_light_armor" display_name="lblCatagoryMedArmor"/>
 			<crafting_category name="Research" icon="ui_game_symbol_book" display_name="lblCatagoryResearchBundle"/>				
-		</crafting_category_list>
+		</crafting_category_list>    
 	</append>
+
+  <remove xpath="/ui_display_info/crafting_category_display/crafting_category_list[@display_type='workbench']/crafting_category[@name='Food/Cooking']" />
+  
+  <append xpath="/ui_display_info/crafting_category_display/crafting_category_list[@display_type='workbench']">
+      <crafting_category name="Armor" icon="ui_game_symbol_armor_iron" display_name="lblCatagoryHeavyArmor"/>
+      <crafting_category name="Research" icon="ui_game_symbol_book" display_name="lblCatagoryResearchBundle"/>
+  </append>
+
+  <append xpath="/ui_display_info/crafting_category_display/crafting_category_list[@display_type='forge']">    
+    <crafting_category name="Research" icon="ui_game_symbol_book" display_name="lblCatagoryBlacksmithingResearchBundle"/>
+  </append>
+
+  <append xpath="/ui_display_info/crafting_category_display/crafting_category_list[@display_type='cementMixer']">
+    <crafting_category name="Research" icon="ui_game_symbol_book" display_name="lblCatagoryCivilEngineerResearchBundle"/>
+  </append>
+
+  <append xpath="/ui_display_info/crafting_category_display/crafting_category_list[@display_type='chemistryStation']">
+    <crafting_category name="Ammo" icon="ui_game_symbol_knife" display_name="lblCategoryAmmoWeapons" />    
+    <crafting_category name="Research" icon="ui_game_symbol_book" display_name="lblCatagoryChemistryResearchBundle"/>
+  </append>
+
+  <append xpath="/ui_display_info/crafting_category_display/crafting_category_list[@display_type='campfire']">
+    <crafting_category name="Research" icon="ui_game_symbol_book" display_name="lblCatagoryCookingResearchBundle"/>
+  </append>
+
 </RiseFromTheAshes>

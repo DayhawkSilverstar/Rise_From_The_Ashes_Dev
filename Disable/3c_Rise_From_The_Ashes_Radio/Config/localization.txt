@@ -1,0 +1,318 @@
+Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate Text,german,spanish,french,italian,japanese,koreana,polish,brazilian,russian,turkish,schinese,tchinese
+plantedAloeT1-1,blocks,Farming,New,Not Used,Poor Yield Aloe Vera (Seed),,,,,,,,,,Produces 1 seed and 1 aloe.
+plantedAloeT2-1,blocks,Farming,New,Not Used,Low Yield Yield Aloe Vera (Seed),,,,,,,,,,Produces 1 seed and 3 aloe.
+plantedAloeT3-1,blocks,Farming,New,Not Used,Moderate Yield Aloe Vera (Seed),,,,,,,,,,Produces 1 seed and 6 aloe.
+plantedAloeT4-1,blocks,Farming,New,Not Used,High Yield Aloe Vera (Seed),,,,,,,,,,Produces 1 seed and 9 aloe.
+plantedAloeT5-1,blocks,Farming,New,Not Used,Exceptionally High Yield Aloe Vera (Seed),,,,,,,,,,Produces 1 seed and 12 aloe.
+plantedAloeT6-1,blocks,Farming,New,Not Used,Incredibly High Yield Aloe Vera (Seed),,,,,,,,,,Produces 1 seed and 15 aloe. Uses radiation instead of light to grow.
+plantedBlueberryT1-1,blocks,Farming,New,Not Used,Poor Yield Blueberry (Seed),,,,,,,,,,Produces 1 seed and 1 blueberry.
+plantedBlueberryT2-1,blocks,Farming,New,Not Used,Low Yield Yield Blueberry (Seed),,,,,,,,,,Produces 1 seed and 3 blueberries.
+plantedBlueberryT3-1,blocks,Farming,New,Not Used,Moderate Yield Blueberry (Seed),,,,,,,,,,Produces 1 seed and 6 blueberries.
+plantedBlueberryT4-1,blocks,Farming,New,Not Used,High Yield Blueberry (Seed),,,,,,,,,,Produces 1 seed and 9 blueberries.
+plantedBlueberryT5-1,blocks,Farming,New,Not Used,Exceptionally High Yield Blueberry (Seed),,,,,,,,,,Produces 1 seed and 12 blueberries.
+plantedBlueberryT6-1,blocks,Farming,New,Not Used,Incredibly High Yield Blueberry (Seed),,,,,,,,,,Produces 1 seed and 15 blueberries. Uses radiation instead of light to grow.
+plantedMushroomT1-1,blocks,Farming,New,Not Used,Poor Yield Mushroom (Seed),,,,,,,,,,Produces 1 spore and 1 mushroom.
+plantedMushroomT2-1,blocks,Farming,New,Not Used,Low Yield Yield Mushroom (Seed),,,,,,,,,,Produces 1 spore and 3 mushrooms.
+plantedMushroomT3-1,blocks,Farming,New,Not Used,Moderate Yield Mushroom (Seed),,,,,,,,,,Produces 1 spore and 6 mushrooms.
+plantedMushroomT4-1,blocks,Farming,New,Not Used,High Yield Mushroom (Seed),,,,,,,,,,Produces 1 spore and 9 mushrooms.
+plantedMushroomT5-1,blocks,Farming,New,Not Used,Exceptionally High Yield Mushroom (Seed),,,,,,,,,,Produces 1 spore and 12 mushrooms.
+plantedMushroomT6-1,blocks,Farming,New,Not Used,Incredibly High Yield Mushroom (Seed),,,,,,,,,,Produces 1 spore and 15 mushrooms. Requires radiation to grow.
+plantedYuccaT1-1,blocks,Farming,New,Not Used,Poor Yield Yucca (Seed),,,,,,,,,,Produces 1 seed and 1 yucca.
+plantedYuccaT2-1,blocks,Farming,New,Not Used,Low Yield Yield Yucca (Seed),,,,,,,,,,Produces 1 seed and 3 yuccas.
+plantedYuccaT3-1,blocks,Farming,New,Not Used,Moderate Yield Yucca (Seed),,,,,,,,,,Produces 1 seed and 6 yuccas.
+plantedYuccaT4-1,blocks,Farming,New,Not Used,High Yield Yucca (Seed),,,,,,,,,,Produces 1 seed and 9 yuccas.
+plantedYuccaT5-1,blocks,Farming,New,Not Used,Exceptionally High Yield Yucca (Seed),,,,,,,,,,Produces 1 seed and 12 yuccas.
+plantedYuccaT6-1,blocks,Farming,New,Not Used,Incredibly High Yield Yucca (Seed),,,,,,,,,,Produces 1 seed and 15 yuccas. Uses radiation instead of light to grow.
+plantedCottonT1-1,blocks,Farming,New,Not Used,Poor Yield Cotton (Seed),,,,,,,,,,Produces 1 seed and 1 cotton.
+plantedCottonT2-1,blocks,Farming,New,Not Used,Low Yield Yield Cotton (Seed),,,,,,,,,,Produces 1 seed and 3 cottons.
+plantedCottonT3-1,blocks,Farming,New,Not Used,Moderate Yield Cotton (Seed),,,,,,,,,,Produces 1 seed and 6 cottons.
+plantedCottonT4-1,blocks,Farming,New,Not Used,High Yield Cotton (Seed),,,,,,,,,,Produces 1 seed and 9 cottons.
+plantedCottonT5-1,blocks,Farming,New,Not Used,Exceptionally High Yield Cotton (Seed),,,,,,,,,,Produces 1 seed and 12 cottons.
+plantedCottonT6-1,blocks,Farming,New,Not Used,Incredibly High Yield Cotton (Seed),,,,,,,,,,Produces 1 seed and 15 cottons. Uses radiation instead of light to grow.
+plantedCoffeeT1-1,blocks,Farming,New,Not Used,Poor Yield Coffee (Seed),,,,,,,,,,Produces 1 seed and 1 coffee bean.
+plantedCoffeeT2-1,blocks,Farming,New,Not Used,Low Yield Yield Coffee (Seed),,,,,,,,,,Produces 1 seed and 3 coffee beans.
+plantedCoffeeT3-1,blocks,Farming,New,Not Used,Moderate Yield Coffee (Seed),,,,,,,,,,Produces 1 seed and 6 coffee beans.
+plantedCoffeeT4-1,blocks,Farming,New,Not Used,High Yield Coffee (Seed),,,,,,,,,,Produces 1 seed and 9 coffee beans.
+plantedCoffeeT5-1,blocks,Farming,New,Not Used,Exceptionally High Yield Coffee (Seed),,,,,,,,,,Produces 1 seed and 12 coffee beans.
+plantedCoffeeT6-1,blocks,Farming,New,Not Used,Incredibly High Yield Coffee (Seed),,,,,,,,,,Produces 1 seed and 15 coffee beans. Uses radiation instead of light to grow.
+plantedGoldenrodT1-1,blocks,Farming,New,Not Used,Poor Yield Goldenrod (Seed),,,,,,,,,,Produces 1 seed and 1 goldenrod flower.
+plantedGoldenrodT2-1,blocks,Farming,New,Not Used,Low Yield Yield Goldenrod (Seed),,,,,,,,,,Produces 1 seed and 3 goldenrod flowers.
+plantedGoldenrodT3-1,blocks,Farming,New,Not Used,Moderate Yield Goldenrod (Seed),,,,,,,,,,Produces 1 seed and 6 goldenrod flowers.
+plantedGoldenrodT4-1,blocks,Farming,New,Not Used,High Yield Goldenrod (Seed),,,,,,,,,,Produces 1 seed and 9 goldenrod flowers.
+plantedGoldenrodT5-1,blocks,Farming,New,Not Used,Exceptionally High Yield Goldenrod (Seed),,,,,,,,,,Produces 1 seed and 12 goldenrod flowers.
+plantedGoldenrodT6-1,blocks,Farming,New,Not Used,Incredibly High Yield Goldenrod (Seed),,,,,,,,,,Produces 1 seed and 15 goldenrod flowers. Uses radiation instead of light to grow.
+plantedPotatoT1-1,blocks,Farming,New,Not Used,Poor Yield Potato (Seed),,,,,,,,,,Produces 1 seed and 1 potato.
+plantedPotatoT2-1,blocks,Farming,New,Not Used,Low Yield Yield Potato (Seed),,,,,,,,,,Produces 1 seed and 3 potatoes.
+plantedPotatoT3-1,blocks,Farming,New,Not Used,Moderate Yield Potato (Seed),,,,,,,,,,Produces 1 seed and 6 potatoes.
+plantedPotatoT4-1,blocks,Farming,New,Not Used,High Yield Potato (Seed),,,,,,,,,,Produces 1 seed and 9 potatoes.
+plantedPotatoT5-1,blocks,Farming,New,Not Used,Exceptionally High Yield Potato (Seed),,,,,,,,,,Produces 1 seed and 12 potatoes.
+plantedPotatoT6-1,blocks,Farming,New,Not Used,Incredibly High Yield Potato (Seed),,,,,,,,,,Produces 1 seed and 15 potatoes. Uses radiation instead of light to grow.
+plantedChrysanthemumT1-1,blocks,Farming,New,Not Used,Poor Yield Chrysanthemum (Seed),,,,,,,,,,Produces 1 seed and 1 chrysanthemum.
+plantedChrysanthemumT2-1,blocks,Farming,New,Not Used,Low Yield Yield Chrysanthemum (Seed),,,,,,,,,,Produces 1 seed and 3 chrysanthemums.
+plantedChrysanthemumT3-1,blocks,Farming,New,Not Used,Moderate Yield Chrysanthemum (Seed),,,,,,,,,,Produces 1 seed and 6 chrysanthemums.
+plantedChrysanthemumT4-1,blocks,Farming,New,Not Used,High Yield Chrysanthemum (Seed),,,,,,,,,,Produces 1 seed and 9 chrysanthemums.
+plantedChrysanthemumT5-1,blocks,Farming,New,Not Used,Exceptionally High Yield Chrysanthemum (Seed),,,,,,,,,,Produces 1 seed and 12 chrysanthemums.
+plantedChrysanthemumT6-1,blocks,Farming,New,Not Used,Incredibly High Yield Chrysanthemum (Seed),,,,,,,,,,Produces 1 seed and 15 chrysanthemums. Uses radiation instead of light to grow.
+plantedCornT1-1,blocks,Farming,New,Not Used,Poor Yield Corn (Seed),,,,,,,,,,Produces 1 seed and 1 ear of corn.
+plantedCornT2-1,blocks,Farming,New,Not Used,Low Yield Yield Corn (Seed),,,,,,,,,,Produces 1 seed and 3 ears of corn.
+plantedCornT3-1,blocks,Farming,New,Not Used,Moderate Yield Corn (Seed),,,,,,,,,,Produces 1 seed and 6 ears of corn.
+plantedCornT4-1,blocks,Farming,New,Not Used,High Yield Corn (Seed),,,,,,,,,,Produces 1 seed and 9 ears of corn.
+plantedCornT5-1,blocks,Farming,New,Not Used,Exceptionally High Yield Corn (Seed),,,,,,,,,,Produces 1 seed and 12 ears of corn.
+plantedCornT6-1,blocks,Farming,New,Not Used,Incredibly High Yield Corn (Seed),,,,,,,,,,Produces 1 seed and 15 ears of corn. Uses radiation instead of light to grow.
+plantedGraceCornT1-1,blocks,Farming,New,Not Used,Poor Yield Super Corn (Seed),,,,,,,,,,Produces 1 seed and 1 Super Corn.
+plantedGraceCornT2-1,blocks,Farming,New,Not Used,Low Yield Yield Super Corn (Seed),,,,,,,,,,Produces 1 seed and 3 Super Corn.
+plantedGraceCornT3-1,blocks,Farming,New,Not Used,Moderate Yield Super Corn (Seed),,,,,,,,,,Produces 1 seed and 6 Super Corn.
+plantedGraceCornT4-1,blocks,Farming,New,Not Used,High Yield Super Corn (Seed),,,,,,,,,,Produces 1 seed and 9 Super Corn.
+plantedGraceCornT5-1,blocks,Farming,New,Not Used,Exceptionally High Yield Super Corn (Seed),,,,,,,,,,Produces 1 seed and 12 Super Corn.
+plantedGraceCornT6-1,blocks,Farming,New,Not Used,Incredibly High Yield Super Corn (Seed),,,,,,,,,,Produces 1 seed and 15 Super Corn. Uses radiation instead of light to grow.
+plantedHopsT1-1,blocks,Farming,New,Not Used,Poor Yield Hops (Seed),,,,,,,,,,Produces 1 seed and 1 hop cone.
+plantedHopsT2-1,blocks,Farming,New,Not Used,Low Yield Yield Hops (Seed),,,,,,,,,,Produces 1 seed and 3 hop cones.
+plantedHopsT3-1,blocks,Farming,New,Not Used,Moderate Yield Hops (Seed),,,,,,,,,,Produces 1 seed and 6 hop cones.
+plantedHopsT4-1,blocks,Farming,New,Not Used,High Yield Hops (Seed),,,,,,,,,,Produces 1 seed and 9 hop cones.
+plantedHopsT5-1,blocks,Farming,New,Not Used,Exceptionally High Yield Hops (Seed),,,,,,,,,,Produces 1 seed and 12 hop cones.
+plantedHopsT6-1,blocks,Farming,New,Not Used,Incredibly High Yield Hops (Seed),,,,,,,,,,Produces 1 seed and 15 hop cones. Uses radiation instead of light to grow.
+plantedPumpkinT1-1,blocks,Farming,New,Not Used,Poor Yield Pumpkin (Seed),,,,,,,,,,Produces 1 seed and 1 pumpkin.
+plantedPumpkinT2-1,blocks,Farming,New,Not Used,Low Yield Yield Pumpkin (Seed),,,,,,,,,,Produces 1 seed and 3 pumpkins.
+plantedPumpkinT3-1,blocks,Farming,New,Not Used,Moderate Yield Pumpkin (Seed),,,,,,,,,,Produces 1 seed and 6 pumpkins.
+plantedPumpkinT4-1,blocks,Farming,New,Not Used,High Yield Pumpkin (Seed),,,,,,,,,,Produces 1 seed and 9 pumpkins.
+plantedPumpkinT5-1,blocks,Farming,New,Not Used,Exceptionally High Yield Pumpkin (Seed),,,,,,,,,,Produces 1 seed and 12 pumpkins.
+plantedPumpkinT6-1,blocks,Farming,New,Not Used,Incredibly High Yield Pumpkin (Seed),,,,,,,,,,Produces 1 seed and 15 pumpkins. Uses radiation instead of light to grow.
+plantedAloeT1-2,blocks,Farming,New,Not Used,Poor Yield Aloe Vera (Growing),,,,,,,,,,Produces 1 seed and 1 aloe.
+plantedAloeT2-2,blocks,Farming,New,Not Used,Low Yield Yield Aloe Vera (Growing),,,,,,,,,,Produces 1 seed and 3 aloe.
+plantedAloeT3-2,blocks,Farming,New,Not Used,Moderate Yield Aloe Vera (Growing),,,,,,,,,,Produces 1 seed and 6 aloe.
+plantedAloeT4-2,blocks,Farming,New,Not Used,High Yield Aloe Vera (Growing),,,,,,,,,,Produces 1 seed and 9 aloe.
+plantedAloeT5-2,blocks,Farming,New,Not Used,Exceptionally High Yield Aloe Vera (Growing),,,,,,,,,,Produces 1 seed and 12 aloe.
+plantedAloeT6-2,blocks,Farming,New,Not Used,Incredibly High Yield Aloe Vera (Growing),,,,,,,,,,Produces 1 seed and 15 aloe. Uses radiation instead of light to grow.
+plantedBlueberryT1-2,blocks,Farming,New,Not Used,Poor Yield Blueberry (Growing),,,,,,,,,,Produces 1 seed and 1 blueberry.
+plantedBlueberryT2-2,blocks,Farming,New,Not Used,Low Yield Yield Blueberry (Growing),,,,,,,,,,Produces 1 seed and 3 blueberries.
+plantedBlueberryT3-2,blocks,Farming,New,Not Used,Moderate Yield Blueberry (Growing),,,,,,,,,,Produces 1 seed and 6 blueberries.
+plantedBlueberryT4-2,blocks,Farming,New,Not Used,High Yield Blueberry (Growing),,,,,,,,,,Produces 1 seed and 9 blueberries.
+plantedBlueberryT5-2,blocks,Farming,New,Not Used,Exceptionally High Yield Blueberry (Growing),,,,,,,,,,Produces 1 seed and 12 blueberries.
+plantedBlueberryT6-2,blocks,Farming,New,Not Used,Incredibly High Yield Blueberry (Growing),,,,,,,,,,Produces 1 seed and 15 blueberries. Uses radiation instead of light to grow.
+plantedMushroomT1-2,blocks,Farming,New,Not Used,Poor Yield Mushroom (Growing),,,,,,,,,,Produces 1 spore and 1 mushroom.
+plantedMushroomT2-2,blocks,Farming,New,Not Used,Low Yield Yield Mushroom (Growing),,,,,,,,,,Produces 1 spore and 3 mushrooms.
+plantedMushroomT3-2,blocks,Farming,New,Not Used,Moderate Yield Mushroom (Growing),,,,,,,,,,Produces 1 spore and 6 mushrooms.
+plantedMushroomT4-2,blocks,Farming,New,Not Used,High Yield Mushroom (Growing),,,,,,,,,,Produces 1 spore and 9 mushrooms.
+plantedMushroomT5-2,blocks,Farming,New,Not Used,Exceptionally High Yield Mushroom (Growing),,,,,,,,,,Produces 1 spore and 12 mushrooms.
+plantedMushroomT6-2,blocks,Farming,New,Not Used,Incredibly High Yield Mushroom (Growing),,,,,,,,,,Produces 1 spore and 15 mushrooms. Requires radiation to grow.
+plantedYuccaT1-2,blocks,Farming,New,Not Used,Poor Yield Yucca (Growing),,,,,,,,,,Produces 1 seed and 1 yucca.
+plantedYuccaT2-2,blocks,Farming,New,Not Used,Low Yield Yield Yucca (Growing),,,,,,,,,,Produces 1 seed and 3 yuccas.
+plantedYuccaT3-2,blocks,Farming,New,Not Used,Moderate Yield Yucca (Growing),,,,,,,,,,Produces 1 seed and 6 yuccas.
+plantedYuccaT4-2,blocks,Farming,New,Not Used,High Yield Yucca (Growing),,,,,,,,,,Produces 1 seed and 9 yuccas.
+plantedYuccaT5-2,blocks,Farming,New,Not Used,Exceptionally High Yield Yucca (Growing),,,,,,,,,,Produces 1 seed and 12 yuccas.
+plantedYuccaT6-2,blocks,Farming,New,Not Used,Incredibly High Yield Yucca (Growing),,,,,,,,,,Produces 1 seed and 15 yuccas. Uses radiation instead of light to grow.
+plantedCottonT1-2,blocks,Farming,New,Not Used,Poor Yield Cotton (Growing),,,,,,,,,,Produces 1 seed and 1 cotton.
+plantedCottonT2-2,blocks,Farming,New,Not Used,Low Yield Yield Cotton (Growing),,,,,,,,,,Produces 1 seed and 3 cottons.
+plantedCottonT3-2,blocks,Farming,New,Not Used,Moderate Yield Cotton (Growing),,,,,,,,,,Produces 1 seed and 6 cottons.
+plantedCottonT4-2,blocks,Farming,New,Not Used,High Yield Cotton (Growing),,,,,,,,,,Produces 1 seed and 9 cottons.
+plantedCottonT5-2,blocks,Farming,New,Not Used,Exceptionally High Yield Cotton (Growing),,,,,,,,,,Produces 1 seed and 12 cottons.
+plantedCottonT6-2,blocks,Farming,New,Not Used,Incredibly High Yield Cotton (Growing),,,,,,,,,,Produces 1 seed and 15 cottons. Uses radiation instead of light to grow.
+plantedCoffeeT1-2,blocks,Farming,New,Not Used,Poor Yield Coffee (Growing),,,,,,,,,,Produces 1 seed and 1 coffee bean.
+plantedCoffeeT2-2,blocks,Farming,New,Not Used,Low Yield Yield Coffee (Growing),,,,,,,,,,Produces 1 seed and 3 coffee beans.
+plantedCoffeeT3-2,blocks,Farming,New,Not Used,Moderate Yield Coffee (Growing),,,,,,,,,,Produces 1 seed and 6 coffee beans.
+plantedCoffeeT4-2,blocks,Farming,New,Not Used,High Yield Coffee (Growing),,,,,,,,,,Produces 1 seed and 9 coffee beans.
+plantedCoffeeT5-2,blocks,Farming,New,Not Used,Exceptionally High Yield Coffee (Growing),,,,,,,,,,Produces 1 seed and 12 coffee beans.
+plantedCoffeeT6-2,blocks,Farming,New,Not Used,Incredibly High Yield Coffee (Growing),,,,,,,,,,Produces 1 seed and 15 coffee beans. Uses radiation instead of light to grow.
+plantedGoldenrodT1-2,blocks,Farming,New,Not Used,Poor Yield Goldenrod (Growing),,,,,,,,,,Produces 1 seed and 1 goldenrod flower.
+plantedGoldenrodT2-2,blocks,Farming,New,Not Used,Low Yield Yield Goldenrod (Growing),,,,,,,,,,Produces 1 seed and 3 goldenrod flowers.
+plantedGoldenrodT3-2,blocks,Farming,New,Not Used,Moderate Yield Goldenrod (Growing),,,,,,,,,,Produces 1 seed and 6 goldenrod flowers.
+plantedGoldenrodT4-2,blocks,Farming,New,Not Used,High Yield Goldenrod (Growing),,,,,,,,,,Produces 1 seed and 9 goldenrod flowers.
+plantedGoldenrodT5-2,blocks,Farming,New,Not Used,Exceptionally High Yield Goldenrod (Growing),,,,,,,,,,Produces 1 seed and 12 goldenrod flowers.
+plantedGoldenrodT6-2,blocks,Farming,New,Not Used,Incredibly High Yield Goldenrod (Growing),,,,,,,,,,Produces 1 seed and 15 goldenrod flowers. Uses radiation instead of light to grow.
+plantedPotatoT1-2,blocks,Farming,New,Not Used,Poor Yield Potato (Growing),,,,,,,,,,Produces 1 seed and 1 potato.
+plantedPotatoT2-2,blocks,Farming,New,Not Used,Low Yield Yield Potato (Growing),,,,,,,,,,Produces 1 seed and 3 potatoes.
+plantedPotatoT3-2,blocks,Farming,New,Not Used,Moderate Yield Potato (Growing),,,,,,,,,,Produces 1 seed and 6 potatoes.
+plantedPotatoT4-2,blocks,Farming,New,Not Used,High Yield Potato (Growing),,,,,,,,,,Produces 1 seed and 9 potatoes.
+plantedPotatoT5-2,blocks,Farming,New,Not Used,Exceptionally High Yield Potato (Growing),,,,,,,,,,Produces 1 seed and 12 potatoes.
+plantedPotatoT6-2,blocks,Farming,New,Not Used,Incredibly High Yield Potato (Growing),,,,,,,,,,Produces 1 seed and 15 potatoes. Uses radiation instead of light to grow.
+plantedChrysanthemumT1-2,blocks,Farming,New,Not Used,Poor Yield Chrysanthemum (Growing),,,,,,,,,,Produces 1 seed and 1 chrysanthemum.
+plantedChrysanthemumT2-2,blocks,Farming,New,Not Used,Low Yield Yield Chrysanthemum (Growing),,,,,,,,,,Produces 1 seed and 3 chrysanthemums.
+plantedChrysanthemumT3-2,blocks,Farming,New,Not Used,Moderate Yield Chrysanthemum (Growing),,,,,,,,,,Produces 1 seed and 6 chrysanthemums.
+plantedChrysanthemumT4-2,blocks,Farming,New,Not Used,High Yield Chrysanthemum (Growing),,,,,,,,,,Produces 1 seed and 9 chrysanthemums.
+plantedChrysanthemumT5-2,blocks,Farming,New,Not Used,Exceptionally High Yield Chrysanthemum (Growing),,,,,,,,,,Produces 1 seed and 12 chrysanthemums.
+plantedChrysanthemumT6-2,blocks,Farming,New,Not Used,Incredibly High Yield Chrysanthemum (Growing),,,,,,,,,,Produces 1 seed and 15 chrysanthemums. Uses radiation instead of light to grow.
+plantedCornT1-2,blocks,Farming,New,Not Used,Poor Yield Corn (Growing),,,,,,,,,,Produces 1 seed and 1 ear of corn.
+plantedCornT2-2,blocks,Farming,New,Not Used,Low Yield Yield Corn (Growing),,,,,,,,,,Produces 1 seed and 3 ears of corn.
+plantedCornT3-2,blocks,Farming,New,Not Used,Moderate Yield Corn (Growing),,,,,,,,,,Produces 1 seed and 6 ears of corn.
+plantedCornT4-2,blocks,Farming,New,Not Used,High Yield Corn (Growing),,,,,,,,,,Produces 1 seed and 9 ears of corn.
+plantedCornT5-2,blocks,Farming,New,Not Used,Exceptionally High Yield Corn (Growing),,,,,,,,,,Produces 1 seed and 12 ears of corn.
+plantedCornT6-2,blocks,Farming,New,Not Used,Incredibly High Yield Corn (Growing),,,,,,,,,,Produces 1 seed and 15 ears of corn. Uses radiation instead of light to grow.
+plantedGraceCornT1-2,blocks,Farming,New,Not Used,Poor Yield Super Corn (Growing),,,,,,,,,,Produces 1 seed and 1 Super Corn.
+plantedGraceCornT2-2,blocks,Farming,New,Not Used,Low Yield Yield Super Corn (Growing),,,,,,,,,,Produces 1 seed and 3 Super Corn.
+plantedGraceCornT3-2,blocks,Farming,New,Not Used,Moderate Yield Super Corn (Growing),,,,,,,,,,Produces 1 seed and 6 Super Corn.
+plantedGraceCornT4-2,blocks,Farming,New,Not Used,High Yield Super Corn (Growing),,,,,,,,,,Produces 1 seed and 9 Super Corn.
+plantedGraceCornT5-2,blocks,Farming,New,Not Used,Exceptionally High Yield Super Corn (Growing),,,,,,,,,,Produces 1 seed and 12 Super Corn.
+plantedGraceCornT6-2,blocks,Farming,New,Not Used,Incredibly High Yield Super Corn (Growing),,,,,,,,,,Produces 1 seed and 15 Super Corn. Uses radiation instead of light to grow.
+plantedHopT1-2,blocks,Farming,New,Not Used,Poor Yield Hops (Growing),,,,,,,,,,Produces 1 seed and 1 hop cone.
+plantedHopT2-2,blocks,Farming,New,Not Used,Low Yield Yield Hops (Growing),,,,,,,,,,Produces 1 seed and 3 hop cones.
+plantedHopT3-2,blocks,Farming,New,Not Used,Moderate Yield Hops (Growing),,,,,,,,,,Produces 1 seed and 6 hop cones.
+plantedHopT4-2,blocks,Farming,New,Not Used,High Yield Hops (Growing),,,,,,,,,,Produces 1 seed and 9 hop cones.
+plantedHopT5-2,blocks,Farming,New,Not Used,Exceptionally High Yield Hops (Growing),,,,,,,,,,Produces 1 seed and 12 hop cones.
+plantedHopT6-2,blocks,Farming,New,Not Used,Incredibly High Yield Hops (Growing),,,,,,,,,,Produces 1 seed and 15 hop cones. Uses radiation instead of light to grow.
+plantedPumpkinT1-2,blocks,Farming,New,Not Used,Poor Yield Pumpkin (Growing),,,,,,,,,,Produces 1 seed and 1 pumpkin.
+plantedPumpkinT2-2,blocks,Farming,New,Not Used,Low Yield Yield Pumpkin (Growing),,,,,,,,,,Produces 1 seed and 3 pumpkins.
+plantedPumpkinT3-2,blocks,Farming,New,Not Used,Moderate Yield Pumpkin (Growing),,,,,,,,,,Produces 1 seed and 6 pumpkins.
+plantedPumpkinT4-2,blocks,Farming,New,Not Used,High Yield Pumpkin (Growing),,,,,,,,,,Produces 1 seed and 9 pumpkins.
+plantedPumpkinT5-2,blocks,Farming,New,Not Used,Exceptionally High Yield Pumpkin (Growing),,,,,,,,,,Produces 1 seed and 12 pumpkins.
+plantedPumpkin3HarvestPlayerT6,blocks,Farming,New,Not Used,Incredibly High Yield Pumpkin (Growing),,,,,,,,,,Produces 1 seed and 15 pumpkins. Uses radiation instead of light to grow.
+plantedAloe3HarvestPlayerT1,blocks,Farming,New,Not Used,Poor Yield Aloe Vera (Growing),,,,,,,,,,Produces 1 seed and 1 aloe.
+plantedAloe3HarvestPlayerT2,blocks,Farming,New,Not Used,Low Yield Yield Aloe Vera (Growing),,,,,,,,,,Produces 1 seed and 3 aloe.
+plantedAloe3HarvestPlayerT3,blocks,Farming,New,Not Used,Moderate Yield Aloe Vera (Growing),,,,,,,,,,Produces 1 seed and 6 aloe.
+plantedAloe3HarvestPlayerT4,blocks,Farming,New,Not Used,High Yield Aloe Vera (Growing),,,,,,,,,,Produces 1 seed and 9 aloe.
+plantedAloe3HarvestPlayerT5,blocks,Farming,New,Not Used,Exceptionally High Yield Aloe Vera (Growing),,,,,,,,,,Produces 1 seed and 12 aloe.
+plantedAloe3HarvestPlayerT6,blocks,Farming,New,Not Used,Incredibly High Yield Aloe Vera (Growing),,,,,,,,,,Produces 1 seed and 15 aloe. Uses radiation instead of light to grow.
+plantedBlueberry3HarvestPlayerT1,blocks,Farming,New,Not Used,Poor Yield Blueberry (Growing),,,,,,,,,,Produces 1 seed and 1 blueberry.
+plantedBlueberry3HarvestPlayerT2,blocks,Farming,New,Not Used,Low Yield Yield Blueberry (Growing),,,,,,,,,,Produces 1 seed and 3 blueberries.
+plantedBlueberry3HarvestPlayerT3,blocks,Farming,New,Not Used,Moderate Yield Blueberry (Growing),,,,,,,,,,Produces 1 seed and 6 blueberries.
+plantedBlueberry3HarvestPlayerT4,blocks,Farming,New,Not Used,High Yield Blueberry (Growing),,,,,,,,,,Produces 1 seed and 9 blueberries.
+plantedBlueberry3HarvestPlayerT5,blocks,Farming,New,Not Used,Exceptionally High Yield Blueberry (Growing),,,,,,,,,,Produces 1 seed and 12 blueberries.
+plantedBlueberry3HarvestPlayerT6,blocks,Farming,New,Not Used,Incredibly High Yield Blueberry (Growing),,,,,,,,,,Produces 1 seed and 15 blueberries. Uses radiation instead of light to grow.
+plantedMushroom3HarvestPlayerT1,blocks,Farming,New,Not Used,Poor Yield Mushroom (Growing),,,,,,,,,,Produces 1 spore and 1 mushroom.
+plantedMushroom3HarvestPlayerT2,blocks,Farming,New,Not Used,Low Yield Yield Mushroom (Growing),,,,,,,,,,Produces 1 spore and 3 mushrooms.
+plantedMushroom3HarvestPlayerT3,blocks,Farming,New,Not Used,Moderate Yield Mushroom (Growing),,,,,,,,,,Produces 1 spore and 6 mushrooms.
+plantedMushroom3HarvestPlayerT4,blocks,Farming,New,Not Used,High Yield Mushroom (Growing),,,,,,,,,,Produces 1 spore and 9 mushrooms.
+plantedMushroom3HarvestPlayerT5,blocks,Farming,New,Not Used,Exceptionally High Yield Mushroom (Growing),,,,,,,,,,Produces 1 spore and 12 mushrooms.
+plantedMushroom3HarvestPlayerT6,blocks,Farming,New,Not Used,Incredibly High Yield Mushroom (Growing),,,,,,,,,,Produces 1 spore and 15 mushrooms. Requires radiation to grow.
+plantedYucca3HarvestPlayerT1,blocks,Farming,New,Not Used,Poor Yield Yucca (Growing),,,,,,,,,,Produces 1 seed and 1 yucca.
+plantedYucca3HarvestPlayerT2,blocks,Farming,New,Not Used,Low Yield Yield Yucca (Growing),,,,,,,,,,Produces 1 seed and 3 yuccas.
+plantedYucca3HarvestPlayerT3,blocks,Farming,New,Not Used,Moderate Yield Yucca (Growing),,,,,,,,,,Produces 1 seed and 6 yuccas.
+plantedYucca3HarvestPlayerT4,blocks,Farming,New,Not Used,High Yield Yucca (Growing),,,,,,,,,,Produces 1 seed and 9 yuccas.
+plantedYucca3HarvestPlayerT5,blocks,Farming,New,Not Used,Exceptionally High Yield Yucca (Growing),,,,,,,,,,Produces 1 seed and 12 yuccas.
+plantedYucca3HarvestPlayerT6,blocks,Farming,New,Not Used,Incredibly High Yield Yucca (Growing),,,,,,,,,,Produces 1 seed and 15 yuccas. Uses radiation instead of light to grow.
+plantedCotton3HarvestPlayerT1,blocks,Farming,New,Not Used,Poor Yield Cotton (Growing),,,,,,,,,,Produces 1 seed and 1 cotton.
+plantedCotton3HarvestPlayerT2,blocks,Farming,New,Not Used,Low Yield Yield Cotton (Growing),,,,,,,,,,Produces 1 seed and 3 cottons.
+plantedCotton3HarvestPlayerT3,blocks,Farming,New,Not Used,Moderate Yield Cotton (Growing),,,,,,,,,,Produces 1 seed and 6 cottons.
+plantedCotton3HarvestPlayerT4,blocks,Farming,New,Not Used,High Yield Cotton (Growing),,,,,,,,,,Produces 1 seed and 9 cottons.
+plantedCotton3HarvestPlayerT5,blocks,Farming,New,Not Used,Exceptionally High Yield Cotton (Growing),,,,,,,,,,Produces 1 seed and 12 cottons.
+plantedCotton3HarvestPlayerT6,blocks,Farming,New,Not Used,Incredibly High Yield Cotton (Growing),,,,,,,,,,Produces 1 seed and 15 cottons. Uses radiation instead of light to grow.
+plantedCoffee3HarvestPlayerT1,blocks,Farming,New,Not Used,Poor Yield Coffee (Growing),,,,,,,,,,Produces 1 seed and 1 coffee bean.
+plantedCoffee3HarvestPlayerT2,blocks,Farming,New,Not Used,Low Yield Yield Coffee (Growing),,,,,,,,,,Produces 1 seed and 3 coffee beans.
+plantedCoffee3HarvestPlayerT3,blocks,Farming,New,Not Used,Moderate Yield Coffee (Growing),,,,,,,,,,Produces 1 seed and 6 coffee beans.
+plantedCoffee3HarvestPlayerT4,blocks,Farming,New,Not Used,High Yield Coffee (Growing),,,,,,,,,,Produces 1 seed and 9 coffee beans.
+plantedCoffee3HarvestPlayerT5,blocks,Farming,New,Not Used,Exceptionally High Yield Coffee (Growing),,,,,,,,,,Produces 1 seed and 12 coffee beans.
+plantedCoffee3HarvestPlayerT6,blocks,Farming,New,Not Used,Incredibly High Yield Coffee (Growing),,,,,,,,,,Produces 1 seed and 15 coffee beans. Uses radiation instead of light to grow.
+plantedGoldenrod3HarvestPlayerT1,blocks,Farming,New,Not Used,Poor Yield Goldenrod (Growing),,,,,,,,,,Produces 1 seed and 1 goldenrod flower.
+plantedGoldenrod3HarvestPlayerT2,blocks,Farming,New,Not Used,Low Yield Yield Goldenrod (Growing),,,,,,,,,,Produces 1 seed and 3 goldenrod flowers.
+plantedGoldenrod3HarvestPlayerT3,blocks,Farming,New,Not Used,Moderate Yield Goldenrod (Growing),,,,,,,,,,Produces 1 seed and 6 goldenrod flowers.
+plantedGoldenrod3HarvestPlayerT4,blocks,Farming,New,Not Used,High Yield Goldenrod (Growing),,,,,,,,,,Produces 1 seed and 9 goldenrod flowers.
+plantedGoldenrod3HarvestPlayerT5,blocks,Farming,New,Not Used,Exceptionally High Yield Goldenrod (Growing),,,,,,,,,,Produces 1 seed and 12 goldenrod flowers.
+plantedGoldenrod3HarvestPlayerT6,blocks,Farming,New,Not Used,Incredibly High Yield Goldenrod (Growing),,,,,,,,,,Produces 1 seed and 15 goldenrod flowers. Uses radiation instead of light to grow.
+plantedPotato3HarvestPlayerT1,blocks,Farming,New,Not Used,Poor Yield Potato (Growing),,,,,,,,,,Produces 1 seed and 1 potato.
+plantedPotato3HarvestPlayerT2,blocks,Farming,New,Not Used,Low Yield Yield Potato (Growing),,,,,,,,,,Produces 1 seed and 3 potatoes.
+plantedPotato3HarvestPlayerT3,blocks,Farming,New,Not Used,Moderate Yield Potato (Growing),,,,,,,,,,Produces 1 seed and 6 potatoes.
+plantedPotato3HarvestPlayerT4,blocks,Farming,New,Not Used,High Yield Potato (Growing),,,,,,,,,,Produces 1 seed and 9 potatoes.
+plantedPotato3HarvestPlayerT5,blocks,Farming,New,Not Used,Exceptionally High Yield Potato (Growing),,,,,,,,,,Produces 1 seed and 12 potatoes.
+plantedPotato3HarvestPlayerT6,blocks,Farming,New,Not Used,Incredibly High Yield Potato (Growing),,,,,,,,,,Produces 1 seed and 15 potatoes. Uses radiation instead of light to grow.
+plantedChrysanthemum3HarvestPlayerT1,blocks,Farming,New,Not Used,Poor Yield Chrysanthemum (Growing),,,,,,,,,,Produces 1 seed and 1 chrysanthemum.
+plantedChrysanthemum3HarvestPlayerT2,blocks,Farming,New,Not Used,Low Yield Yield Chrysanthemum (Growing),,,,,,,,,,Produces 1 seed and 3 chrysanthemums.
+plantedChrysanthemum3HarvestPlayerT3,blocks,Farming,New,Not Used,Moderate Yield Chrysanthemum (Growing),,,,,,,,,,Produces 1 seed and 6 chrysanthemums.
+plantedChrysanthemum3HarvestPlayerT4,blocks,Farming,New,Not Used,High Yield Chrysanthemum (Growing),,,,,,,,,,Produces 1 seed and 9 chrysanthemums.
+plantedChrysanthemum3HarvestPlayerT5,blocks,Farming,New,Not Used,Exceptionally High Yield Chrysanthemum (Growing),,,,,,,,,,Produces 1 seed and 12 chrysanthemums.
+plantedChrysanthemum3HarvestPlayerT6,blocks,Farming,New,Not Used,Incredibly High Yield Chrysanthemum (Growing),,,,,,,,,,Produces 1 seed and 15 chrysanthemums. Uses radiation instead of light to grow.
+plantedCorn3HarvestPlayerT1,blocks,Farming,New,Not Used,Poor Yield Corn (Growing),,,,,,,,,,Produces 1 seed and 1 ear of corn.
+plantedCorn3HarvestPlayerT2,blocks,Farming,New,Not Used,Low Yield Yield Corn (Growing),,,,,,,,,,Produces 1 seed and 3 ears of corn.
+plantedCorn3HarvestPlayerT3,blocks,Farming,New,Not Used,Moderate Yield Corn (Growing),,,,,,,,,,Produces 1 seed and 6 ears of corn.
+plantedCorn3HarvestPlayerT4,blocks,Farming,New,Not Used,High Yield Corn (Growing),,,,,,,,,,Produces 1 seed and 9 ears of corn.
+plantedCorn3HarvestPlayerT5,blocks,Farming,New,Not Used,Exceptionally High Yield Corn (Growing),,,,,,,,,,Produces 1 seed and 12 ears of corn.
+plantedCorn3HarvestPlayerT6,blocks,Farming,New,Not Used,Incredibly High Yield Corn (Growing),,,,,,,,,,Produces 1 seed and 15 ears of corn. Uses radiation instead of light to grow.
+plantedGraceCorn3HarvestPlayerT1,blocks,Farming,New,Not Used,Poor Yield Super Corn (Growing),,,,,,,,,,Produces 1 seed and 1 Super Corn.
+plantedGraceCorn3HarvestPlayerT2,blocks,Farming,New,Not Used,Low Yield Yield Super Corn (Growing),,,,,,,,,,Produces 1 seed and 3 Super Corn.
+plantedGraceCorn3HarvestPlayerT3,blocks,Farming,New,Not Used,Moderate Yield Super Corn (Growing),,,,,,,,,,Produces 1 seed and 6 Super Corn.
+plantedGraceCorn3HarvestPlayerT4,blocks,Farming,New,Not Used,High Yield Super Corn (Growing),,,,,,,,,,Produces 1 seed and 9 Super Corn.
+plantedGraceCorn3HarvestPlayerT5,blocks,Farming,New,Not Used,Exceptionally High Yield Super Corn (Growing),,,,,,,,,,Produces 1 seed and 12 Super Corn.
+plantedGraceCorn3HarvestPlayerT6,blocks,Farming,New,Not Used,Incredibly High Yield Super Corn (Growing),,,,,,,,,,Produces 1 seed and 15 Super Corn. Uses radiation instead of light to grow.
+plantedHops3HarvestPlayerT1,blocks,Farming,New,Not Used,Poor Yield Hops (Growing),,,,,,,,,,Produces 1 seed and 1 hop cone.
+plantedHops3HarvestPlayerT2,blocks,Farming,New,Not Used,Low Yield Yield Hops (Growing),,,,,,,,,,Produces 1 seed and 3 hop cones.
+plantedHops3HarvestPlayerT3,blocks,Farming,New,Not Used,Moderate Yield Hops (Growing),,,,,,,,,,Produces 1 seed and 6 hop cones.
+plantedHops3HarvestPlayerT4,blocks,Farming,New,Not Used,High Yield Hops (Growing),,,,,,,,,,Produces 1 seed and 9 hop cones.
+plantedHops3HarvestPlayerT5,blocks,Farming,New,Not Used,Exceptionally High Yield Hops (Growing),,,,,,,,,,Produces 1 seed and 12 hop cones.
+plantedHops3HarvestPlayerT6,blocks,Farming,New,Not Used,Incredibly High Yield Hops (Growing),,,,,,,,,,Produces 1 seed and 15 hop cones. Uses radiation instead of light to grow.
+plantedPumpkin3HarvestPlayerT1,blocks,Farming,New,Not Used,Poor Yield Pumpkin (Growing),,,,,,,,,,Produces 1 seed and 1 pumpkin.
+plantedPumpkin3HarvestPlayerT2,blocks,Farming,New,Not Used,Low Yield Yield Pumpkin (Growing),,,,,,,,,,Produces 1 seed and 3 pumpkins.
+plantedPumpkin3HarvestPlayerT3,blocks,Farming,New,Not Used,Moderate Yield Pumpkin (Growing),,,,,,,,,,Produces 1 seed and 6 pumpkins.
+plantedPumpkin3HarvestPlayerT4,blocks,Farming,New,Not Used,High Yield Pumpkin (Growing),,,,,,,,,,Produces 1 seed and 9 pumpkins.
+plantedPumpkin3HarvestPlayerT5,blocks,Farming,New,Not Used,Exceptionally High Yield Pumpkin (Growing),,,,,,,,,,Produces 1 seed and 12 pumpkins.
+plantedPumpkin3HarvestPlayerT6,blocks,Farming,New,Not Used,Incredibly High Yield Pumpkin (Growing),,,,,,,,,,Produces 1 seed and 15 pumpkins. Uses radiation instead of light to grow.
+plantedAloe3HarvestDescT1,blocks,Farming,New,Not Used,Poor Yield Aloe Vera,,,,,,,,,,Produces 1 seed and 1 aloe.
+plantedAloe3HarvestDescT2,blocks,Farming,New,Not Used,Low Yield Yield Aloe Vera,,,,,,,,,,Produces 1 seed and 3 aloe.
+plantedAloe3HarvestDescT3,blocks,Farming,New,Not Used,Moderate Yield Aloe Vera,,,,,,,,,,Produces 1 seed and 6 aloe.
+plantedAloe3HarvestDescT4,blocks,Farming,New,Not Used,High Yield Aloe Vera,,,,,,,,,,Produces 1 seed and 9 aloe.
+plantedAloe3HarvestDescT5,blocks,Farming,New,Not Used,Exceptionally High Yield Aloe Vera,,,,,,,,,,Produces 1 seed and 12 aloe.
+plantedAloe3HarvestDescT6,blocks,Farming,New,Not Used,Incredibly High Yield Aloe Vera,,,,,,,,,,Produces 1 seed and 15 aloe. Uses radiation instead of light to grow.
+plantedBlueberry3HarvestDescT1,blocks,Farming,New,Not Used,Poor Yield Blueberry,,,,,,,,,,Produces 1 seed and 1 blueberry.
+plantedBlueberry3HarvestDescT2,blocks,Farming,New,Not Used,Low Yield Yield Blueberry,,,,,,,,,,Produces 1 seed and 3 blueberries.
+plantedBlueberry3HarvestDescT3,blocks,Farming,New,Not Used,Moderate Yield Blueberry,,,,,,,,,,Produces 1 seed and 6 blueberries.
+plantedBlueberry3HarvestDescT4,blocks,Farming,New,Not Used,High Yield Blueberry,,,,,,,,,,Produces 1 seed and 9 blueberries.
+plantedBlueberry3HarvestDescT5,blocks,Farming,New,Not Used,Exceptionally High Yield Blueberry,,,,,,,,,,Produces 1 seed and 12 blueberries.
+plantedBlueberry3HarvestDescT6,blocks,Farming,New,Not Used,Incredibly High Yield Blueberry,,,,,,,,,,Produces 1 seed and 15 blueberries. Uses radiation instead of light to grow.
+plantedMushroom3HarvestDescT1,blocks,Farming,New,Not Used,Poor Yield Mushrooms,,,,,,,,,,Produces 1 spore and 1 mushroom.
+plantedMushroom3HarvestDescT2,blocks,Farming,New,Not Used,Low Yield Yield Mushroom,,,,,,,,,,Produces 1 spore and 3 mushrooms.
+plantedMushroom3HarvestDescT3,blocks,Farming,New,Not Used,Moderate Yield Mushroom,,,,,,,,,,Produces 1 spore and 6 mushrooms.
+plantedMushroom3HarvestDescT4,blocks,Farming,New,Not Used,High Yield Mushroom,,,,,,,,,,Produces 1 spore and 9 mushrooms.
+plantedMushroom3HarvestDescT5,blocks,Farming,New,Not Used,Exceptionally High Yield Mushroom,,,,,,,,,,Produces 1 spore and 12 mushrooms.
+plantedMushroom3HarvestDescT6,blocks,Farming,New,Not Used,Incredibly High Yield Mushroom,,,,,,,,,,Produces 1 spore and 15 mushrooms. Requires radiation to grow.
+plantedYucca3HarvestDescT1,blocks,Farming,New,Not Used,Poor Yield Yucca,,,,,,,,,,Produces 1 seed and 1 yucca.
+plantedYucca3HarvestDescT2,blocks,Farming,New,Not Used,Low Yield Yield Yucca,,,,,,,,,,Produces 1 seed and 3 yuccas.
+plantedYucca3HarvestDescT3,blocks,Farming,New,Not Used,Moderate Yield Yucca,,,,,,,,,,Produces 1 seed and 6 yuccas.
+plantedYucca3HarvestDescT4,blocks,Farming,New,Not Used,High Yield Yucca,,,,,,,,,,Produces 1 seed and 9 yuccas.
+plantedYucca3HarvestDescT5,blocks,Farming,New,Not Used,Exceptionally High Yield Yucca,,,,,,,,,,Produces 1 seed and 12 yuccas.
+plantedYucca3HarvestDescT6,blocks,Farming,New,Not Used,Incredibly High Yield Yucca,,,,,,,,,,Produces 1 seed and 15 yuccas. Uses radiation instead of light to grow.
+plantedCotton3HarvestDescT1,blocks,Farming,New,Not Used,Poor Yield Cotton,,,,,,,,,,Produces 1 seed and 1 cotton.
+plantedCotton3HarvestDescT2,blocks,Farming,New,Not Used,Low Yield Yield Cotton,,,,,,,,,,Produces 1 seed and 3 cottons.
+plantedCotton3HarvestDescT3,blocks,Farming,New,Not Used,Moderate Yield Cotton,,,,,,,,,,Produces 1 seed and 6 cottons.
+plantedCotton3HarvestDescT4,blocks,Farming,New,Not Used,High Yield Cotton,,,,,,,,,,Produces 1 seed and 9 cottons.
+plantedCotton3HarvestDescT5,blocks,Farming,New,Not Used,Exceptionally High Yield Cotton,,,,,,,,,,Produces 1 seed and 12 cottons.
+plantedCotton3HarvestDescT6,blocks,Farming,New,Not Used,Incredibly High Yield Cotton,,,,,,,,,,Produces 1 seed and 15 cottons. Uses radiation instead of light to grow.
+plantedCoffee3HarvestDescT1,blocks,Farming,New,Not Used,Poor Yield Coffee,,,,,,,,,,Produces 1 seed and 1 coffee bean.
+plantedCoffee3HarvestDescT2,blocks,Farming,New,Not Used,Low Yield Yield Coffee,,,,,,,,,,Produces 1 seed and 3 coffee beans.
+plantedCoffee3HarvestDescT3,blocks,Farming,New,Not Used,Moderate Yield Coffee,,,,,,,,,,Produces 1 seed and 6 coffee beans.
+plantedCoffee3HarvestDescT4,blocks,Farming,New,Not Used,High Yield Coffee,,,,,,,,,,Produces 1 seed and 9 coffee beans.
+plantedCoffee3HarvestDescT5,blocks,Farming,New,Not Used,Exceptionally High Yield Coffee,,,,,,,,,,Produces 1 seed and 12 coffee beans.
+plantedCoffee3HarvestDescT6,blocks,Farming,New,Not Used,Incredibly High Yield Coffee,,,,,,,,,,Produces 1 seed and 15 coffee beans. Uses radiation instead of light to grow.
+plantedGoldenrod3HarvestDescT1,blocks,Farming,New,Not Used,Poor Yield Goldenrod,,,,,,,,,,Produces 1 seed and 1 goldenrod flower.
+plantedGoldenrod3HarvestDescT2,blocks,Farming,New,Not Used,Low Yield Yield Goldenrod,,,,,,,,,,Produces 1 seed and 3 goldenrod flowers.
+plantedGoldenrod3HarvestDescT3,blocks,Farming,New,Not Used,Moderate Yield Goldenrod,,,,,,,,,,Produces 1 seed and 6 goldenrod flowers.
+plantedGoldenrod3HarvestDescT4,blocks,Farming,New,Not Used,High Yield Goldenrod,,,,,,,,,,Produces 1 seed and 9 goldenrod flowers.
+plantedGoldenrod3HarvestDescT5,blocks,Farming,New,Not Used,Exceptionally High Yield Goldenrod,,,,,,,,,,Produces 1 seed and 12 goldenrod flowers.
+plantedGoldenrod3HarvestDescT6,blocks,Farming,New,Not Used,Incredibly High Yield Goldenrod,,,,,,,,,,Produces 1 seed and 15 goldenrod flowers. Uses radiation instead of light to grow.
+plantedPotato3HarvestDescT1,blocks,Farming,New,Not Used,Poor Yield Potato,,,,,,,,,,Produces 1 seed and 1 potato.
+plantedPotato3HarvestDescT2,blocks,Farming,New,Not Used,Low Yield Yield Potato,,,,,,,,,,Produces 1 seed and 3 potatoes.
+plantedPotato3HarvestDescT3,blocks,Farming,New,Not Used,Moderate Yield Potato,,,,,,,,,,Produces 1 seed and 6 potatoes.
+plantedPotato3HarvestDescT4,blocks,Farming,New,Not Used,High Yield Potato,,,,,,,,,,Produces 1 seed and 9 potatoes.
+plantedPotato3HarvestDescT5,blocks,Farming,New,Not Used,Exceptionally High Yield Potato,,,,,,,,,,Produces 1 seed and 12 potatoes.
+plantedPotato3HarvestDescT6,blocks,Farming,New,Not Used,Incredibly High Yield Potato,,,,,,,,,,Produces 1 seed and 15 potatoes. Uses radiation instead of light to grow.
+plantedChrysanthemum3HarvestDescT1,blocks,Farming,New,Not Used,Poor Yield Chrysanthemum,,,,,,,,,,Produces 1 seed and 1 chrysanthemum.
+plantedChrysanthemum3HarvestDescT2,blocks,Farming,New,Not Used,Low Yield Yield Chrysanthemum,,,,,,,,,,Produces 1 seed and 3 chrysanthemums.
+plantedChrysanthemum3HarvestDescT3,blocks,Farming,New,Not Used,Moderate Yield Chrysanthemum,,,,,,,,,,Produces 1 seed and 6 chrysanthemums.
+plantedChrysanthemum3HarvestDescT4,blocks,Farming,New,Not Used,High Yield Chrysanthemum,,,,,,,,,,Produces 1 seed and 9 chrysanthemums.
+plantedChrysanthemum3HarvestDescT5,blocks,Farming,New,Not Used,Exceptionally High Yield Chrysanthemum,,,,,,,,,,Produces 1 seed and 12 chrysanthemums.
+plantedChrysanthemum3HarvestDescT6,blocks,Farming,New,Not Used,Incredibly High Yield Chrysanthemum,,,,,,,,,,Produces 1 seed and 15 chrysanthemums. Uses radiation instead of light to grow.
+plantedCorn3HarvestDescT1,blocks,Farming,New,Not Used,Poor Yield Corn,,,,,,,,,,Produces 1 seed and 1 ear of corn.
+plantedCorn3HarvestDescT2,blocks,Farming,New,Not Used,Low Yield Yield Corn,,,,,,,,,,Produces 1 seed and 3 ears of corn.
+plantedCorn3HarvestDescT3,blocks,Farming,New,Not Used,Moderate Yield Corn,,,,,,,,,,Produces 1 seed and 6 ears of corn.
+plantedCorn3HarvestDescT4,blocks,Farming,New,Not Used,High Yield Corn,,,,,,,,,,Produces 1 seed and 9 ears of corn.
+plantedCorn3HarvestDescT5,blocks,Farming,New,Not Used,Exceptionally High Yield Corn,,,,,,,,,,Produces 1 seed and 12 ears of corn.
+plantedCorn3HarvestDescT6,blocks,Farming,New,Not Used,Incredibly High Yield Corn,,,,,,,,,,Produces 1 seed and 15 ears of corn. Uses radiation instead of light to grow.
+plantedGraceCorn3HarvestDescT1,blocks,Farming,New,Not Used,Poor Yield Super Corn,,,,,,,,,,Produces 1 seed and 1 Super Corn.
+plantedGraceCorn3HarvestDescT2,blocks,Farming,New,Not Used,Low Yield Yield Super Corn,,,,,,,,,,Produces 1 seed and 3 Super Corn.
+plantedGraceCorn3HarvestDescT3,blocks,Farming,New,Not Used,Moderate Yield Super Corn,,,,,,,,,,Produces 1 seed and 6 Super Corn.
+plantedGraceCorn3HarvestDescT4,blocks,Farming,New,Not Used,High Yield Super Corn,,,,,,,,,,Produces 1 seed and 9 Super Corn.
+plantedGraceCorn3HarvestDescT5,blocks,Farming,New,Not Used,Exceptionally High Yield Super Corn,,,,,,,,,,Produces 1 seed and 12 Super Corn.
+plantedGraceCorn3HarvestDescT6,blocks,Farming,New,Not Used,Incredibly High Yield Super Corn,,,,,,,,,,Produces 1 seed and 15 Super Corn. Uses radiation instead of light to grow.
+plantedHop3HarvestDescT1,blocks,Farming,New,Not Used,Poor Yield Hops,,,,,,,,,,Produces 1 seed and 1 hop cone.
+plantedHop3HarvestDescT2,blocks,Farming,New,Not Used,Low Yield Yield Hops,,,,,,,,,,Produces 1 seed and 3 hop cones.
+plantedHop3HarvestDescT3,blocks,Farming,New,Not Used,Moderate Yield Hops,,,,,,,,,,Produces 1 seed and 6 hop cones.
+plantedHop3HarvestDescT4,blocks,Farming,New,Not Used,High Yield Hops,,,,,,,,,,Produces 1 seed and 9 hop cones.
+plantedHop3HarvestDescT5,blocks,Farming,New,Not Used,Exceptionally High Yield Hops,,,,,,,,,,Produces 1 seed and 12 hop cones.
+plantedHop3HarvestDescT6,blocks,Farming,New,Not Used,Incredibly High Yield Hops,,,,,,,,,,Produces 1 seed and 15 hop cones. Uses radiation instead of light to grow.
+plantedPumpkin3HarvestDescT1,blocks,Farming,New,Not Used,Poor Yield Pumpkin,,,,,,,,,,Produces 1 seed and 1 pumpkin.
+plantedPumpkin3HarvestDescT2,blocks,Farming,New,Not Used,Low Yield Yield Pumpkin,,,,,,,,,,Produces 1 seed and 3 pumpkins.
+plantedPumpkin3HarvestDescT3,blocks,Farming,New,Not Used,Moderate Yield Pumpkin,,,,,,,,,,Produces 1 seed and 6 pumpkins.
+plantedPumpkin3HarvestDescT4,blocks,Farming,New,Not Used,High Yield Pumpkin,,,,,,,,,,Produces 1 seed and 9 pumpkins.
+plantedPumpkin3HarvestDescT5,blocks,Farming,New,Not Used,Exceptionally High Yield Pumpkin,,,,,,,,,,Produces 1 seed and 12 pumpkins.
+plantedPumpkin3HarvestDescT6,blocks,Farming,New,Not Used,Incredibly High Yield Pumpkin,,,,,,,,,,Produces 1 seed and 15 pumpkins. Uses radiation instead of light to grow.
+cntBirdnestWithEggs,blocks,Farming,New,Not Used,Bird Nest,,,,,,,,,,A wild birds nest
+cntBirdnest,blocks,Farming,New,Not Used,Bird Nest,,,,,,,,,,A wild birds nest
+cntBirdnestWithEggsDesc,blocks,Farming,New,Not Used,Bird Nest,,,,,,,,,,A wild birds nest
+cntBirdnestDesc,blocks,Farming,New,Not Used,Bird Nest,,,,,,,,,,A wild birds nest
+

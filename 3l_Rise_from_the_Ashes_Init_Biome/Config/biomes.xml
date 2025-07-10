@@ -50,5 +50,12 @@
 		<decoration type="block" blockname="bush3" prob="0.02" rotatemax="3"/>
 		<decoration type="block" blockname="bush4" prob="0.02" rotatemax="3"/>
 	</insertAfter>
-	
+
+	<!-- Increase biome difficulty -->
+  <set xpath="/worldgeneration/biomes/biome[@name='burnt_forest']/@gamestage_bonus">25</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='desert']/@gamestage_bonus">50</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='snow']/@gamestage_bonus">100</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='wasteland']/@gamestage_bonus">350</set>
+  
+
 </configs>

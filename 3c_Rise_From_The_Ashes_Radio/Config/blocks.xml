@@ -1,0 +1,33 @@
+<configs>
+	<append xpath="/blocks" >		
+		<block name="Radio">
+			<property name="Class" value="RiseRadio, Rise_From_The_Ashes"/>			
+			<property name="AllowPickup" value="1"/>
+			<property name="CanPickUp" value="true"/>
+			<property name="TakeDelay" value="1" /> 
+			<property name="LootList" value="Buddy5"/>			
+			<property name="Shape" value="ModelEntity" />	
+			<property name="Model" value="#@modfolder:Resources/Radio.unity3d?RiseRadio"/>			 
+			<property name="CustomIcon" value="Buddy5" />
+			<property name="CreativeMode" value="Player" />		
+			<property name="UnlockedBy" value="skillMechanicalEngineer"/>	
+			<property name="Collide" value="sight,movement,melee,bullet,arrow,rocket"/>			
+			<property name="DescriptionKey" value="steelBlockGroupDesc"/>
+			<property name="DisplayType" value="blockHardened"/>
+			<property name="Material" value="Mwood_weak"/>
+			<property name="EconomicValue" value="160"/>
+			<property name="ModelOffset" value="0,.1,0"/>			
+			<property class="RepairItems">
+				<property name="resourceForgedSteel" value="8"/>
+			</property>
+			<drop event="Harvest" name="resourceScrapIron" count="15" tag="allHarvest"/>
+			<drop event="Destroy" count="0"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<property name="UpgradeSound" value="place_block_metal"/>
+			<property name="SortOrder1" value="S040"/>
+			<!-- SortOrder2 is assigned in code to keep all of the shapes in the same order for each material -->
+			<property name="Group" value="Building,advBuilding"/>
+			<property name="FilterTags" value="MC_Shapes"/>
+		</block>
+	</append>
+</configs>

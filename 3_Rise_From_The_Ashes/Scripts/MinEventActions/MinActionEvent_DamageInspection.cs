@@ -18,26 +18,11 @@ public class MinEventAction_DamageInspection : MinEventActionTargetedBase
     public static int TotalIterations = 0;
     public static int GetBlocks = 0;
     public int searchSizeXZ = 5;
-    public int searchSizeY = 2;
+    public int searchSizeY = 5;
     public bool destroy = false;
     private RiseHelp riseHelp = new RiseHelp();
 
     // <triggered_effect trigger = "onSelfBuffUpdate" action="_DamageInspection, Rise_From_The_Ashes" />
-
-    public MinEventAction_DamageInspection() : base()
-    {
-        Log.Out("Creating _DamageInspection");
-        displayObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        displayObject.transform.localScale = Vector3.one * 1.01f;
-        displayObject.name = "DamageIndicator";
-        displayObject.SetActive(true);
-
-        Object.Destroy(displayObject.GetComponent<BoxCollider>());
-        Color yellow = new Color(250 / 255f, 245f / 255f, 212f / 255f, 0.15f);
-        // color is controlled like this
-        displayObject.GetComponent<Renderer>().material.color = yellow;
-        displayObject.GetComponent<Renderer>().enabled = true;
-    }
 
     public override void Execute(MinEventParams _params)
     {
@@ -119,7 +104,7 @@ public class MinEventAction_DamageInspection : MinEventActionTargetedBase
     public void InstantiateCube(Vector3 position,int damage, int maxDamage)
     {
         float percent = 100 - (((float)damage / (float)maxDamage) * 100f);
-        Log.Out("Damage : " + damage.ToString() + " Max : " + maxDamage.ToString() + " Percent : " + percent.ToString());
+        Log.Out("Position" + position.ToString() + "Damage : " + damage.ToString() + " Max : " + maxDamage.ToString() + " Percent : " + percent.ToString());
         GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         
         cube.transform.position = position;

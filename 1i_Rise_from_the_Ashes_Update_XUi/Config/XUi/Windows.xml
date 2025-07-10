@@ -1,14 +1,44 @@
 <configs>
 
+	<!-- GUI Updates for Tan Theme -->
+
+	<!-- Update the forge wood icon -->				
+	<!-- <set xpath="/windows/window[@name='windowFuel']/grid[@name='slot_preview']/rect/sprite[@name='slot']/@sprite">resourceWoodT1</set> -->
+
+	<!-- Reposition the Health bar -->
 	<set xpath ="/windows/window[@name='HUDLeftStatBars']/rect[@name='hud' and @pos='9,156']/@rows">4</set>
 	<set xpath ="/windows/window[@name='HUDLeftStatBars']/rect[@name='hud' and @pos='9,156']/@pos">9,256</set>	
 
+	<!-- Reposition the Stamina bar -->
 	<set xpath ="/windows/window[@name='HUDLeftStatBars']/rect[@name='hud' and @pos='90,132']/@pos">90,233</set>	
 
+	<!-- Reposition the toggle lock button -->
+	<set xpath="/windows/window[@name='windowBackpack']/panel[@name='header']/rect/button[@name='btnToggleLockMode' and @pos='0, -22']/@pos">-80, -22</set>
+
+	<!-- Reposition the Clear Inventory Button bar -->	
+	<set xpath="/windows/window[@name='windowBackpack']/panel[@name='header']/rect/button[@name='btnClearInventory' and @pos='-45, -22']/@pos">-120, -22</set>	
+
+	<!-- Reposition the Sort Button bar -->
+	<set xpath ="/windows/window[@name='windowLooting']/panel[@name='header']/rect/button[@name='btnSort' and @pos='194, -22']/@pos">144, -22</set>	
+	<set xpath ="/windows/window[@name='windowBackpack']/panel[@name='header']/rect/button[@name='btnSort' and @pos='50, -22']/@pos">-40, -22</set>	
+	<set xpath ="/windows/window[@name='windowVehicleStorage']/panel[@name='header']/rect/button[@name='btnSort' and @pos='194, -22']/@pos">144, -22</set>		
+
+	<!-- Reposition the move fill and smart button -->
+	<set xpath ="/windows/window[@name='windowLooting']/panel[@name='header']/rect/button[@name='btnMoveFillAndSmart' and @pos='234, -22']/@pos">184, -22</set>		
+	<set xpath ="/windows/window[@name='windowBackpack']/panel[@name='header']/rect/rect/button[@name='btnMoveFillAndSmart' and @pos='100, -22']/@pos">10, -22</set>	
+	<set xpath ="/windows/window[@name='windowVehicleStorage']/panel[@name='header']/rect/button[@name='btnMoveFillAndSmart' and @pos='234, -22']/@pos">184, -22</set>	
+
+	<!-- Reposition the move all button -->
+	<set xpath ="/windows/window[@name='windowLooting']/panel[@name='header']/rect/button[@name='btnMoveAll' and @pos='274, -22']/@pos">224, -22</set>	
+	<set xpath ="/windows/window[@name='windowBackpack']/panel[@name='header']/rect/rect/button[@name='btnMoveAll' and @pos='150, -22']/@pos">50, -22</set>	
+	<set xpath ="/windows/window[@name='windowVehicleStorage']/panel[@name='header']/rect/button[@name='btnMoveAll' and @pos='274, -22']/@pos">224, -22</set>	
+
+	<!-- Turn on the target window -->
 	<set xpath ="/windows/window[@name='windowTargetBar']/@visibility">always</set>	
-
+		
 	<insertAfter xpath="/windows/window[@name='HUDLeftStatBars']/rect[1]/rect[@stat_type='Health']">
-
+		
+		<!-- Add the food bar -->
 		<rect width="171" height="46" pos="0,-150" controller="HUDStatBar" stat_type="Food" visible="{statvisible}">
 			<sprite depth="1" name="border" color="0,0,0,128" type="sliced"/>
 
@@ -24,6 +54,7 @@
 			<filledsprite depth="3" name="background" color="0,0,0,255" width="170" fillcenter="false" type="filled" fill="{statmodifiedmax}" />
 		</rect>
 
+		<!-- Add the water bar -->
 		<rect width="171" height="46" pos="0,-200" controller="HUDStatBar" stat_type="Water" visible="{statvisible}">
 			<sprite depth="1" name="border" color="0,0,0,128" type="sliced"/>
 
@@ -73,5 +104,5 @@
 		<label depth="2" pos="480,-8" width="100" height="28" text="{cvar(.encumbrancePercent:0)}" justify="right" />
 		<label depth="2" pos="575,-8" width="25" height="28" text="%" justify="right" />	
 	</insertAfter>
-
+  
 </configs>

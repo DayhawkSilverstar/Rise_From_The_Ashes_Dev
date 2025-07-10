@@ -5,8 +5,7 @@ using Platform;
 public class RiseDeco : RiseMasterBlock
 {
     private readonly BlockActivationCommand[] cmds =
-    {
-        new BlockActivationCommand("Loot", "loot", false),
+    {        
         new BlockActivationCommand("Search", "search", false),
         new BlockActivationCommand("Take", "hand", false)
     };
@@ -45,13 +44,6 @@ public class RiseDeco : RiseMasterBlock
         base.OnBlockUnloaded(_world, _clrIdx, _blockPos, _blockValue);
     }
 
-    public override void OnBlockAdded(WorldBase world, Chunk _chunk, Vector3i _blockPos, BlockValue _blockValue)
-    {
-        #region OnBlockAdded
-            base.OnBlockAdded(world, _chunk, _blockPos, _blockValue);
-        #endregion
-    }
-
     // Display custom messages for turning on and off the music box, based on the block's name.
     public override string GetActivationText(WorldBase _world, BlockValue _blockValue, int _clrIdx, Vector3i _blockPos,
         EntityAlive _entityFocusing)
@@ -68,8 +60,8 @@ public class RiseDeco : RiseMasterBlock
         // TODO : Check to see if the person is in someone elses claim and not a friend. Don't allow them to pick it up then.
         if (AllowPickup > 0)
         {
-            cmds[1].enabled = true;
-            cmds[2].enabled = TakeDelay > 0f;
+            cmds[0].enabled = true;
+            cmds[1].enabled = TakeDelay > 0f;
         }
         else
         {
@@ -82,6 +74,7 @@ public class RiseDeco : RiseMasterBlock
     public override bool OnBlockActivated(string _commandName, WorldBase _world, int _cIdx, Vector3i _blockPos, BlockValue _blockValue, EntityPlayerLocal _player)
     {
         Log.Out("Command : {0}", _commandName);
+        Log.Out("AllowPickup : {0}", AllowPickup);
         if (AllowPickup > 0)
         {
             if (_commandName == "Take")

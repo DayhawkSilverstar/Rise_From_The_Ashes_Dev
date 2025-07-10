@@ -1,0 +1,7 @@
+<configs>
+	    <append xpath="/windows/window[@name='windowSkillCraftingInfo']/rect[@name='content']/rect[@name='tableBox']">
+        <panel depth="2" pos="370,0" width="104" height="43" disableautobackground="false">
+            <pager name="pager" pos="4,-6"/>
+        </panel>
+    </append>
+</configs>

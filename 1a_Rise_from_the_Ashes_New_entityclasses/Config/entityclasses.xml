@@ -13,7 +13,12 @@
 		<property name="ExperienceGain" value="2000"/>
 
 	-->
+
+
+
 	<append xpath="/entity_classes">		
+
+
 		<entity_class name="zombieArleneIconic" extends="zombieArlene">
 			<property name="Class" value="IconicZombie, Rise_From_The_Ashes"/>
 			<property name="CanClimbLadders" value="false"/>			

@@ -8,7 +8,7 @@ namespace RiseFromTheAshes.Harmony
     [HarmonyPatch("OnActivated")]
     public class OnActivatedSell
     {
-        static float barterExpToCoinRatio = 252;        
+        static float barterExpToCoinRatio = 100;        
         private static void Prefix(ItemActionEntrySell __instance)
         {
             Log.Out($"Running Sell Prefix");
@@ -25,7 +25,12 @@ namespace RiseFromTheAshes.Harmony
             float barterExpTotal = entityPlayer.GetCVar("$barterExpTotal");
             float dukeExp = sellPrice / barterExpToCoinRatio;
             float statSkillExp = entityPlayer.GetCVar("$BarterExp");
-            float finalExp = dukeExp * statSkillExp ;
+            Log.Out("statSkillExp: {0}", statSkillExp);
+            float sellRatio = sellPrice / 1000f;
+            Log.Out("Sell Price: {0}", sellPrice);
+            Log.Out("sellRatio: {0}", sellRatio);
+            statSkillExp = statSkillExp * sellRatio;
+            float finalExp = dukeExp + statSkillExp ;
             barterExpTotal += finalExp;
             Log.Out("base exp from stat and perks: {0}, exp from dukes: {1}, final exp: {2}", statSkillExp, dukeExp,finalExp);            
             entityPlayer.SetCVar("$barterExpTotal", barterExpTotal);
@@ -37,8 +42,7 @@ namespace RiseFromTheAshes.Harmony
     [HarmonyPatch("OnActivated")]
     public class OnActivatedPurchased
     {
-        static float barterExpToCoinRatio = 5;
-        static float statSkillBonus = 126;
+        static float barterExpToCoinRatio = 100;
         private static void Prefix(ItemActionEntryPurchase __instance)
         {
             try
@@ -59,11 +63,13 @@ namespace RiseFromTheAshes.Harmony
                 float barterExpTotal = entityPlayer.GetCVar("$barterExpTotal");
                 float dukeExp = buyPrice / barterExpToCoinRatio;
                 float statSkillExp = entityPlayer.GetCVar("$BarterExp");
-                float expRatio = statSkillExp / statSkillBonus;
-                float expBonus = dukeExp * expRatio;
-                float finalExp = dukeExp + expBonus;
+                Log.Out("statSkillExp: {0}", statSkillExp);
+                float buyRatio = buyPrice / 1000f;
+                Log.Out("buyRatio: {0}", buyPrice);
+                statSkillExp = statSkillExp * buyRatio;
+                float finalExp = dukeExp + statSkillExp;
                 barterExpTotal += finalExp;
-                Log.Out("base exp from stat and perks: {0}, exp from dukes: {1},  statPerk / 126 ratio: {2}, expBonus: {3}, final exp: {4}", statSkillExp, dukeExp, expRatio, expBonus, finalExp);
+                Log.Out("base exp from stat and perks: {0}, exp from dukes: {1}, final exp: {2}", statSkillExp, dukeExp, finalExp);
                 entityPlayer.SetCVar("$barterExpTotal", barterExpTotal);
             }
             catch (Exception ex) 

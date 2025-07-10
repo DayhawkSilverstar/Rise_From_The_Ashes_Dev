@@ -1,0 +1,159 @@
+<config>
+	<append xpath="/Sounds">
+        <SoundDataNode name="Blood_Moon_Rising"> <AudioSource name="Sounds/AudioSource_UseAction"/>
+            <Noise ID="3" noise="16" time="3" muffled_when_crouched="0.65" heat_map_strength="0.05" heat_map_time="120"/>
+            <AudioClip ClipName="#@modfolder:Resources/riseRadio.unity3d?Blood_Moon_Rising"/>
+            <LocalCrouchVolumeScale name="0.5"/>
+            <CrouchNoiseScale name="0.5"/>
+            <NoiseScale name="1"/>
+            <MaxVoices name="10"/>
+            <MaxRepeatRate name="0.01"/>
+        </SoundDataNode> 
+        <SoundDataNode name="Chasing_Slumber"> <AudioSource name="Sounds/AudioSource_UseAction"/>
+            <Noise ID="3" noise="16" time="3" muffled_when_crouched="0.65" heat_map_strength="0.05" heat_map_time="120"/>
+            <AudioClip ClipName="#@modfolder:Resources/riseRadio.unity3d?Chasing_Slumber"/>
+            <LocalCrouchVolumeScale name="0.5"/>
+            <CrouchNoiseScale name="0.5"/>
+            <NoiseScale name="1"/>
+            <MaxVoices name="10"/>
+            <MaxRepeatRate name="0.01"/>
+        </SoundDataNode> 
+        <!-- 
+        <SoundDataNode name="Break_Through_The_Night"> <AudioSource name="Sounds/AudioSource_UseAction"/>
+            <Noise ID="3" noise="16" time="3" muffled_when_crouched="0.65" heat_map_strength="0.05" heat_map_time="60"/>
+            <AudioClip ClipName="#@modfolder:Resources/riseRadio.unity3d?Break_Through_The_Night"/>
+            <LocalCrouchVolumeScale name="0.5"/>
+            <CrouchNoiseScale name="0.5"/>
+            <NoiseScale name="1"/>
+            <MaxVoices name="10"/>
+            <MaxRepeatRate name="0.01"/>
+        </SoundDataNode> 
+        <SoundDataNode name="Dreaming_of_Showers"> <AudioSource name="Sounds/AudioSource_UseAction"/>
+            <Noise ID="3" noise="16" time="3" muffled_when_crouched="0.65" heat_map_strength="0.05" heat_map_time="60"/>
+            <AudioClip ClipName="#@modfolder:Resources/riseRadio.unity3d?Dreaming_of_Showers"/>
+            <LocalCrouchVolumeScale name="0.5"/>
+            <CrouchNoiseScale name="0.5"/>
+            <NoiseScale name="1"/>
+            <MaxVoices name="10"/>
+            <MaxRepeatRate name="0.01"/>
+        </SoundDataNode> 
+        <SoundDataNode name="Fist_Fighting"> <AudioSource name="Sounds/AudioSource_UseAction"/>
+            <Noise ID="3" noise="16" time="3" muffled_when_crouched="0.65" heat_map_strength="0.05" heat_map_time="60"/>
+            <AudioClip ClipName="#@modfolder:Resources/riseRadio.unity3d?Fist_Fighting"/>
+            <LocalCrouchVolumeScale name="0.5"/>
+            <CrouchNoiseScale name="0.5"/>
+            <NoiseScale name="1"/>
+            <MaxVoices name="10"/>
+            <MaxRepeatRate name="0.01"/>
+        </SoundDataNode> 
+        <SoundDataNode name="FlamingShaft"> <AudioSource name="Sounds/AudioSource_UseAction"/>
+            <Noise ID="3" noise="16" time="3" muffled_when_crouched="0.65" heat_map_strength="0.05" heat_map_time="60"/>
+            <AudioClip ClipName="#@modfolder:Resources/riseRadio.unity3d?FlamingShaft"/>
+            <LocalCrouchVolumeScale name="0.5"/>
+            <CrouchNoiseScale name="0.5"/>
+            <NoiseScale name="1"/>
+            <MaxVoices name="10"/>
+            <MaxRepeatRate name="0.01"/>
+        </SoundDataNode> 
+        <SoundDataNode name="Gotta_keep_moving"> <AudioSource name="Sounds/AudioSource_UseAction"/>
+            <Noise ID="3" noise="16" time="3" muffled_when_crouched="0.65" heat_map_strength="0.05" heat_map_time="60"/>
+            <AudioClip ClipName="#@modfolder:Resources/riseRadio.unity3d?Gotta_keep_moving"/>
+            <LocalCrouchVolumeScale name="0.5"/>
+            <CrouchNoiseScale name="0.5"/>
+            <NoiseScale name="1"/>
+            <MaxVoices name="10"/>
+            <MaxRepeatRate name="0.01"/>
+        </SoundDataNode> 
+        <SoundDataNode name="Horde_Base"> <AudioSource name="Sounds/AudioSource_UseAction"/>
+            <Noise ID="3" noise="16" time="3" muffled_when_crouched="0.65" heat_map_strength="0.05" heat_map_time="60"/>
+            <AudioClip ClipName="#@modfolder:Resources/riseRadio.unity3d?Horde_Base"/>
+            <LocalCrouchVolumeScale name="0.5"/>
+            <CrouchNoiseScale name="0.5"/>
+            <NoiseScale name="1"/>
+            <MaxVoices name="10"/>
+            <MaxRepeatRate name="0.01"/>
+        </SoundDataNode> 
+        <SoundDataNode name="Machete_Betty"> <AudioSource name="Sounds/AudioSource_UseAction"/>
+            <Noise ID="3" noise="16" time="3" muffled_when_crouched="0.65" heat_map_strength="0.05" heat_map_time="60"/>
+            <AudioClip ClipName="#@modfolder:Resources/riseRadio.unity3d?Machete_Betty"/>
+            <LocalCrouchVolumeScale name="0.5"/>
+            <CrouchNoiseScale name="0.5"/>
+            <NoiseScale name="1"/>
+            <MaxVoices name="10"/>
+            <MaxRepeatRate name="0.01"/>
+        </SoundDataNode> 
+        <SoundDataNode name="Night_of_the_undead"> <AudioSource name="Sounds/AudioSource_UseAction"/>
+            <Noise ID="3" noise="16" time="3" muffled_when_crouched="0.65" heat_map_strength="0.05" heat_map_time="60"/>
+            <AudioClip ClipName="#@modfolder:Resources/riseRadio.unity3d?Night_of_the_undead"/>
+            <LocalCrouchVolumeScale name="0.5"/>
+            <CrouchNoiseScale name="0.5"/>
+            <NoiseScale name="1"/>
+            <MaxVoices name="10"/>
+            <MaxRepeatRate name="0.01"/>
+        </SoundDataNode> 
+        <SoundDataNode name="Restock_my_heart"> <AudioSource name="Sounds/AudioSource_UseAction"/>
+            <Noise ID="3" noise="16" time="3" muffled_when_crouched="0.65" heat_map_strength="0.05" heat_map_time="60"/>
+            <AudioClip ClipName="#@modfolder:Resources/riseRadio.unity3d?Restock_my_heart"/>
+            <LocalCrouchVolumeScale name="0.5"/>
+            <CrouchNoiseScale name="0.5"/>
+            <NoiseScale name="1"/>
+            <MaxVoices name="10"/>
+            <MaxRepeatRate name="0.01"/>
+        </SoundDataNode> 
+        <SoundDataNode name="Rise"> <AudioSource name="Sounds/AudioSource_UseAction"/>
+            <Noise ID="3" noise="16" time="3" muffled_when_crouched="0.65" heat_map_strength="0.05" heat_map_time="60"/>
+            <AudioClip ClipName="#@modfolder:Resources/riseRadio.unity3d?Rise"/>
+            <LocalCrouchVolumeScale name="0.5"/>
+            <CrouchNoiseScale name="0.5"/>
+            <NoiseScale name="1"/>
+            <MaxVoices name="10"/>
+            <MaxRepeatRate name="0.01"/>
+        </SoundDataNode> 
+        <SoundDataNode name="Shadows_of_the_apocalypse"> <AudioSource name="Sounds/AudioSource_UseAction"/>
+            <Noise ID="3" noise="16" time="3" muffled_when_crouched="0.65" heat_map_strength="0.05" heat_map_time="60"/>
+            <AudioClip ClipName="#@modfolder:Resources/riseRadio.unity3d?Shadows_of_the_apocalypse"/>
+            <LocalCrouchVolumeScale name="0.5"/>
+            <CrouchNoiseScale name="0.5"/>
+            <NoiseScale name="1"/>
+            <MaxVoices name="10"/>
+            <MaxRepeatRate name="0.01"/>
+        </SoundDataNode> 
+        <SoundDataNode name="Soggy_Bottom_Zombois"> <AudioSource name="Sounds/AudioSource_UseAction"/>
+            <Noise ID="3" noise="16" time="3" muffled_when_crouched="0.65" heat_map_strength="0.05" heat_map_time="60"/>
+            <AudioClip ClipName="#@modfolder:Resources/riseRadio.unity3d?Soggy_Bottom_Zombois"/>
+            <LocalCrouchVolumeScale name="0.5"/>
+            <CrouchNoiseScale name="0.5"/>
+            <NoiseScale name="1"/>
+            <MaxVoices name="10"/>
+            <MaxRepeatRate name="0.01"/>
+        </SoundDataNode> 
+        <SoundDataNode name="Survival_by_pages"> <AudioSource name="Sounds/AudioSource_UseAction"/>
+            <Noise ID="3" noise="16" time="3" muffled_when_crouched="0.65" heat_map_strength="0.05" heat_map_time="60"/>
+            <AudioClip ClipName="#@modfolder:Resources/riseRadio.unity3d?Survival_by_pages"/>
+            <LocalCrouchVolumeScale name="0.5"/>
+            <CrouchNoiseScale name="0.5"/>
+            <NoiseScale name="1"/>
+            <MaxVoices name="10"/>
+            <MaxRepeatRate name="0.01"/>
+        </SoundDataNode> 
+        <SoundDataNode name="Survivors_Now"> <AudioSource name="Sounds/AudioSource_UseAction"/>
+            <Noise ID="3" noise="16" time="3" muffled_when_crouched="0.65" heat_map_strength="0.05" heat_map_time="60"/>
+            <AudioClip ClipName="#@modfolder:Resources/riseRadio.unity3d?Survivors_Now"/>
+            <LocalCrouchVolumeScale name="0.5"/>
+            <CrouchNoiseScale name="0.5"/>
+            <NoiseScale name="1"/>
+            <MaxVoices name="10"/>
+            <MaxRepeatRate name="0.01"/>
+        </SoundDataNode> 
+        <SoundDataNode name="Zombie_Beatdown"> <AudioSource name="Sounds/AudioSource_UseAction"/>
+            <Noise ID="3" noise="16" time="3" muffled_when_crouched="0.65" heat_map_strength="0.05" heat_map_time="60"/>
+            <AudioClip ClipName="#@modfolder:Resources/riseRadio.unity3d?Zombie_Beatdown"/>
+            <LocalCrouchVolumeScale name="0.5"/>
+            <CrouchNoiseScale name="0.5"/>
+            <NoiseScale name="1"/>
+            <MaxVoices name="10"/>
+            <MaxRepeatRate name="0.01"/>
+        </SoundDataNode> 
+        -->
+    </append>
+</config>

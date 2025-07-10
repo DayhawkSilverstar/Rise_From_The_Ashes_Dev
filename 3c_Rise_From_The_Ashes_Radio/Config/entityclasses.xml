@@ -1,0 +1,48 @@
+<configs>
+	<append xpath="/entity_classes">		
+
+		<!-- *** JUNK_DRONE -->
+		<entity_class name="entityRiseJunkDrone">
+			<property name="Class" value="RiseDrone, Rise_From_The_Ashes"/>
+			<property name="UserSpawnType" value="Console"/>
+			<property name="Tags" value="drone,deployed,noMedBuffs"/>
+			<property name="Parent" value="NPC"/>
+			<property name="Mesh" value="@:Other/Items/Weapons/Ranged/Junk Drone/junkDrone_Prefab.prefab"/>
+			<property name="Prefab" value="NPC"/>
+			<property name="ModelType" value="Custom"/>
+			<property name="SurfaceCategory" value="metal"/>
+			<property name="SizeScale" value="0.25"/>
+		
+			<property name="LootListAlive" value="roboticDrone"/>	<!-- used to determine container X/Y size -->
+			<property name="TimeStayAfterDeath" value="3600"/>	<!-- player death backpacks will go poof after this many seconds. 0 means 0, not infinite. -->
+			<property name="IsEnemyEntity" value="false"/>
+			<property name="Faction" value="none"/>
+			<property name="NPCID" value="NPCjunkDrone"/>
+			<property name="MapIcon" value="ui_game_symbol_map_player_arrow"/>
+			<property name="NavObject" value="NOJunkDrone" />
+			<!-- <property name="TrackerIcon" value="ui_game_symbol_drone"/> *Handled by NavObject -->
+		
+			<property name="MaxDistance" value="15"/>
+			<property name="RaySpread" value="5"/>
+			<!--- <property name="RayCount" value="1"/> -->
+			<property name="BurstRoundCount" value="3"/>
+			<property name="BurstFireRate" value="0.2"/>
+			<property name="CooldownTime" value="1"/>
+			<property name="EntityDamage" value="5"/>
+		
+			<property name="StunActionTime" value="1"/>
+			<property name="StunCooldown" value="14"/>
+			<property name="HealActionTime" value="2"/>
+			<property name="HealCooldown" value="15"/>
+			<property name="HealDamageThreshold" value="50"/>
+		
+			<effect_group>
+				<passive_effect name="HealthMax" operation="base_set" value="100"/>
+				<passive_effect name="StaminaMax" operation="base_set" value="100"/>
+				<passive_effect name="WaterMax" operation="base_set" value="100"/>
+				<passive_effect name="BuffResistance" operation="base_set" value="1" tags="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffInfectionCatch,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingOne,buffInjuryBleedingTwo,buffInjuryBleeding,buffBurningZombie,buffBurningElement,buffBurningEnvironment,buffBurningEnvironmentHack,buffBurningFlamingArrow,buffBurningMolotov,buffIsOnFire,buffShocked,buffPerkCharismaticNature,buffRadiationPool"/>
+			</effect_group>
+		  
+		</entity_class>
+	</append>
+</configs>

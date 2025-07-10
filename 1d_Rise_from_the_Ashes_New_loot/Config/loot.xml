@@ -33,5 +33,25 @@
 		<lootcontainer name="birdNestFeathers" count="1" size="6,2" sound_open="UseActions/nest_open" sound_close="UseActions/nest_shut" loot_quality_template="qualBaseTemplate" destroy_on_close="empty">
 			<item group="groupBirdNest01"/>
 		</lootcontainer>
+
+		<!-- *** Player Footlocker -->
+		<lootcontainer name="playerStorageSmall" count="0" size="6,2" sound_open="UseActions/open_chest" sound_close="UseActions/close_chest" loot_quality_template="qualBaseTemplate">
+			<item name="cobweb"/>
+		</lootcontainer>
+
+		<!-- *** Player Footlocker -->
+		<lootcontainer name="playerStorageMed" count="0" size="8,3" sound_open="UseActions/open_chest" sound_close="UseActions/close_chest" loot_quality_template="qualBaseTemplate">
+			<item name="cobweb"/>
+		</lootcontainer>
+
+		<!-- *** Player Footlocker -->
+		<lootcontainer name="playerStorageLarge" count="0" size="8,4" sound_open="UseActions/open_chest" sound_close="UseActions/close_chest" loot_quality_template="qualBaseTemplate">
+			<item name="cobweb"/>
+		</lootcontainer>
+
+		<!-- *** Player Footlocker -->
+		<lootcontainer name="playerStorageExtraLarge" count="0" size="8,6" sound_open="UseActions/open_chest" sound_close="UseActions/close_chest" loot_quality_template="qualBaseTemplate">
+			<item name="cobweb"/>
+		</lootcontainer>	
 	</append>
 </configs>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xml>
+    <Name value="Console_Extensions"/>
+    <Author value="Dayhawk"/>
+    <Description value="Debugging commands for the console"/>
+    <DisplayName value="Code Modification"/>
+    <Website value=""/>
+    <Version value="1.0.0.0"/>
+</xml>

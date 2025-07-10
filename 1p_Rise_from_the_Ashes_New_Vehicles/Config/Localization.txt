@@ -1,0 +1,4 @@
+Key,english
+ApocTruckVehicle_TEPlaceable,"Ravager"
+ApocTruckVehicle_TE,"Ravager"
+ApocTruckBlock_TE,"Ravager"

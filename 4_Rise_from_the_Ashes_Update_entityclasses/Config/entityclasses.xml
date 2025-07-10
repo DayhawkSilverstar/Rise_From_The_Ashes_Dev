@@ -9,8 +9,42 @@
 
 	<set xpath="/entity_classes/entity_class[@name='playerMale']/effect_group/passive_effect[@name='CarryCapacity']/@value">45</set>
 
-	<!-- add tracking tags to zombies -->	
+  <append xpath="/entity_classes/entity_class[@name='zombieTemplateMale']">
+		<effect_group name="Snow Biome">
+			<requirement name="InBiome" biome="1"/>
+			<passive_effect name="HealthMax" operation="perc_add" value="2"/>
+			<passive_effect name="WalkSpeed" operation="perc_add" value="-0.5"/>
+			<passive_effect name="RunSpeed" operation="perc_add" value="-0.5"/>
+			<passive_effect name="ExperienceGain" operation="base_add" value="100"/>
+		</effect_group>
+		<effect_group name="Forest Biome">
+			<requirement name="InBiome" biome="3"/>
+		</effect_group>
+		<effect_group name="Desert Biome">
+			<requirement name="InBiome" biome="5"/>
+			<passive_effect name="HealthMax" operation="perc_add" value="-0.5"/>
+			<passive_effect name="WalkSpeed" operation="perc_add" value="1"/>
+			<passive_effect name="RunSpeed" operation="perc_add" value=".5"/>
+		</effect_group>
+		<effect_group name="Wasteland Biome">
+			<requirement name="InBiome" biome="8"/>
+			<passive_effect name="HealthMax" operation="perc_add" value="3"/>
+			<passive_effect name="WalkSpeed" operation="perc_add" value="3"/>
+			<passive_effect name="RunSpeed" operation="perc_add" value="2"/>
+			<passive_effect name="ExperienceGain" operation="base_add" value="200"/>
+		</effect_group>
+    <effect_group name="Burnt Biome">
+      <requirement name="InBiome" biome="9"/>            
+    </effect_group>
+  </append>
+
+  <!-- add tracking tags to zombies -->	
+	<set xpath="/entity_classes/entity_class[@name='animalTemplateHostile']/property[@name='NavObject']/@value">twitch_spawn,twitch_spawn_other,skillTracking_hostile,clear_sleeper</set>
+	<set xpath="/entity_classes/entity_class[@name='animalDoe']/property[@name='NavObject']/@value">skillTracking_doe</set>
+
 	<set xpath="/entity_classes/entity_class[@name='zombieTemplateMale']/property[@name='Tags']/@value">entity,zombie,walker,perkAT04,perkAT05</set>
+	<set xpath="/entity_classes/entity_class[@name='zombieTemplateMale']/property[@name='NavObject']/@value">twitch_spawn,twitch_spawn_other,clear_sleeper,skillTracking_zombie</set>	
+
 	<set xpath="/entity_classes/entity_class[@name='zombieTemplateSlimFemale']/property[@name='Tags']/@value">entity,zombie,walker,perkAT04,perkAT05</set>
 
 	<set xpath="/entity_classes/entity_class[@name='zombieArlene']/property[@name='Tags']/@value">entity,zombie,walker,perkAT04,perkAT05</set>
@@ -139,22 +173,44 @@
 
 	<!-- add tracking tags to animals -->
 	<set xpath="/entity_classes/entity_class[@name='animalStag']/property[@name='Tags']/@value">entity,animal,deer,stag,perkAT02,perkAT03,perkAT04,perkAT05</set>
+	<set xpath="/entity_classes/entity_class[@name='animalStag']/property[@name='NavObject']/@value">skillTracking_stag</set>
+
 	<set xpath="/entity_classes/entity_class[@name='animalRabbit']/property[@name='Tags']/@value">entity,animal,rabbit,perkAT01,perkAT02,perkAT03,perkAT04,perkAT05</set>
+	<set xpath="/entity_classes/entity_class[@name='animalRabbit']/property[@name='NavObject']/@value">skillTracking_rabbit</set>	
+	
 	<set xpath="/entity_classes/entity_class[@name='animalChicken']/property[@name='Tags']/@value">entity,animal,chicken,perkAT01,perkAT02,perkAT03,perkAT04,perkAT05</set>
+	<set xpath="/entity_classes/entity_class[@name='animalChicken']/property[@name='NavObject']/@value">skillTracking_chicken</set>
 
 	<set xpath="/entity_classes/entity_class[@name='animalBear']/property[@name='Tags']/@value">entity,animal,hostile,bear,perkAT03,perkAT04,perkAT05</set>
-	<set xpath="/entity_classes/entity_class[@name='animalBearSmall']/property[@name='Tags']/@value">entity,animal,hostile,bear,perkAT03,perkAT04,perkAT05</set>
+	<set xpath="/entity_classes/entity_class[@name='animalBear']/property[@name='NavObject']/@value">twitch_spawn,twitch_spawn_other,skillTracking_bear,clear_sleeper</set>
+	<set xpath="/entity_classes/entity_class[@name='animalBearSmall']/property[@name='Tags']/@value">entity,animal,hostile,bear,perkAT03,perkAT04,perkAT05</set>	
 	<set xpath="/entity_classes/entity_class[@name='animalZombieBear']/property[@name='Tags']/@value">entity,animal,hostile,bear,perkAT05</set>
+	
 	<set xpath="/entity_classes/entity_class[@name='animalWolf']/property[@name='Tags']/@value">entity,animal,hostile,wolf,perkAT02,perkAT03,perkAT04,perkAT05</set>
+	<set xpath="/entity_classes/entity_class[@name='animalWolf']/property[@name='NavObject']/@value">twitch_spawn,twitch_spawn_other,skillTracking_wolf,clear_sleeper</set>
+	
 	<set xpath="/entity_classes/entity_class[@name='animalDireWolf']/property[@name='Tags']/@value">entity,animal,hostile,wolf,perkAT02,perkAT03,perkAT04,perkAT05</set>
+	<set xpath="/entity_classes/entity_class[@name='animalDireWolf']/property[@name='NavObject']/@value">twitch_spawn,twitch_spawn_other,skillTracking_direwolf,clear_sleeper</set>
+	
 	<set xpath="/entity_classes/entity_class[@name='animalChickenHostile']/property[@name='Tags']/@value">entity,animal,chicken,hostile,perkAT01,perkAT02,perkAT03,perkAT04,perkAT05</set>
+	<set xpath="/entity_classes/entity_class[@name='animalChickenHostile']/property[@name='NavObject']/@value">twitch_spawn,twitch_spawn_other,skillTracking_chicken</set>
+
 	<set xpath="/entity_classes/entity_class[@name='animalCoyote']/property[@name='Tags']/@value">entity,animal,coyote,hostile,perkAT01,perkAT02,perkAT03,perkAT04,perkAT05</set>
+	<set xpath="/entity_classes/entity_class[@name='animalCoyote']/property[@name='NavObject']/@value">twitch_spawn,twitch_spawn_other,skillTracking_coyote,clear_sleeper</set>
+
 	<set xpath="/entity_classes/entity_class[@name='animalMountainLion']/property[@name='Tags']/@value">entity,animal,mountainlion,hostile,perkAT03,perkAT04,perkAT05</set>
-	<set xpath="/entity_classes/entity_class[@name='animalZombieVulture']/property[@name='Tags']/@value">entity,animal,vulture,hostile,perkAT04,perkAT05</set>
+	<set xpath="/entity_classes/entity_class[@name='animalMountainLion']/property[@name='NavObject']/@value">twitch_spawn,twitch_spawn_other,skillTracking_mountainlion,clear_sleeper</set>
+	
+	<set xpath="/entity_classes/entity_class[@name='animalZombieVulture']/property[@name='Tags']/@value">entity,animal,vulture,hostile,perkAT04,perkAT05</set>	
 	<set xpath="/entity_classes/entity_class[@name='animalZombieVultureRadiated']/property[@name='Tags']/@value">entity,animal,zombie,hostile,radiated,vulture,perkAT04,perkAT05</set>
 	<set xpath="/entity_classes/entity_class[@name='animalZombieDog']/property[@name='Tags']/@value">entity,animal,zombie,hostile,dog,perkAT04,perkAT05</set>
+	
 	<set xpath="/entity_classes/entity_class[@name='animalSnake']/property[@name='Tags']/@value">entity,animal,hostile,snake,perkAT01,perkAT02,perkAT03,perkAT04,perkAT05</set>
+	<set xpath="/entity_classes/entity_class[@name='animalSnake']/property[@name='NavObject']/@value">twitch_spawn,twitch_spawn_other,skillTracking_snake,clear_sleeper</set>	
+
 	<set xpath="/entity_classes/entity_class[@name='animalBoar']/property[@name='Tags']/@value">entity,animal,hostile,boar,perkAT01,perkAT02,perkAT03,perkAT04,perkAT05</set>
+	<set xpath="/entity_classes/entity_class[@name='animalBoar']/property[@name='NavObject']/@value">twitch_spawn,twitch_spawn_other,skillTracking_boar,clear_sleeper</set>	
+
 	<set xpath="/entity_classes/entity_class[@name='animalBossGrace']/property[@name='Tags']/@value">entity,animal,hostile,boar,perkAT03,boss,perkAT04,perkAT05</set>
 
 	<!-- Zombies attack all living animals -->

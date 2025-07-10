@@ -1,0 +1,6 @@
+<configs>
+	<!-- Point to the new progression file -->
+	<set xpath="/buffs">		
+		
+	</set>
+</configs>

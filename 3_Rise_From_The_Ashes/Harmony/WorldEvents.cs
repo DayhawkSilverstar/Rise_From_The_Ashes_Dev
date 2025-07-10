@@ -12,7 +12,8 @@ namespace RiseFromTheAshes
     {
         private static void Postfix(GameManager __instance)
         {
-            DynamicEventManager.Instance.Update();            
+            DynamicEventManager.Instance.Update();   
+            RadioManager.Instance.Update();
         }        
     }
 }

@@ -1,9 +1,9 @@
 <configs>
 	<!-- Point to the new progression file -->
 
-	<set xpath="//item/effect_group/passive_effect[@tags='perkMiner69r']/@tags">attStrength</set>
-	<set xpath="//item/effect_group/passive_effect[@tags='perkMiner69r,axe']/@tags">attStrength</set>
-	<set xpath="//item/effect_group/passive_effect[@tags='head,perkMiner69r']/@tags">attStrength</set>
+	<set xpath="//item/effect_group/passive_effect[@tags='perkMiner69r']/@tags">statStrength</set>
+	<set xpath="//item/effect_group/passive_effect[@tags='perkMiner69r,axe']/@tags">statStrength</set>
+	<set xpath="//item/effect_group/passive_effect[@tags='head,perkMiner69r']/@tags">statStrength</set>
 	
 	<set xpath="/items/item/property[@name='UnlockedBy' and @value='craftingArmor']/@value">skillCarpentry</set>
 	
@@ -118,9 +118,18 @@
 		</item>
 
 		<item name="foodChickenFeed">
-			<property name="Extends" value="foodRiseMaster"/>
+      <property name="Tags" value="junk"/>
+      <property name="DescriptionKey" value="chickenFeedDesc" />
+      <property name="HoldType" value="31" />
+      <property name="ItemWeight" value="0.0625" />      
+      <property name="Meshfile" value="@:Other/Items/Misc/parcelPrefab.prefab" />
+      <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab" />
+      <property name="Material" value="Morganic" />
+      <property name="EconomicValue" value="2" />
+      <property name="Stacknumber" value="6000" />      
+      <property name="Group" value="Food/Cooking,CFFood/Cooking" />
 			<property name="RepairAmount" value="100"/>
-			<property name="CustomIcon" value="ChickenFeed"/> 									
+			<property name="CustomIcon" value="ChickenFeed"/> 				
 		</item>
 
 		<item name="foodWildSeeds">		
@@ -219,6 +228,24 @@
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="2"/>				
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$stress" operation="add" value="1"/>
+			</effect_group>
+		</item>
+
+		<item name="TestingResourceful">
+		<property name="Extends" value="foodRiseMaster"/>
+		<property name="CustomIcon" value="questMaster"/>
+		<property name="CustomIconTint" value="4287f5"/>
+		<effect_group tiered="false" name="Food Tier 0">        
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="twitch_voteResourceful"/>
+		</effect_group>
+		</item>
+
+		<item name="TestingResourceful">
+			<property name="Extends" value="foodRiseMaster"/>
+			<property name="CustomIcon" value="questMaster"/>
+			<property name="CustomIconTint" value="4235f5"/>
+			<effect_group tiered="false" name="Food Tier 0">        
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="twitch_voteResourceful"/>
 			</effect_group>
 		</item>
 
@@ -433,6 +460,8 @@
 			<property name="Group" value="Resources"/>
 			<property name="CraftingIngredientTime" value=".2"/>
 		</item>
+    
+    
 
 		<!-- *** xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 		<!-- *** Seeds                            -->
@@ -897,7 +926,7 @@
 			<property class="Action0">
 				<property name="Create_item" value="CivilengineerSkillResearchNotes1"/>
 				<property name="Create_item_count" value="1"/>
-				<property name="Random_item" value="woodShapes:VariantHelper"/>
+				<property name="Random_item" value="cobblestoneShapes:VariantHelper"/>
 				<property name="Random_item_count" value="50"/>
 				<property name="Random_count" value="1"/>
 				<property name="Unique_random_only" value="false"/>
@@ -910,7 +939,7 @@
 			<property class="Action0">				
 				<property name="Create_item" value="CivilengineerSkillResearchNotes2"/>
 				<property name="Create_item_count" value="1"/>
-				<property name="Random_item" value="cobblestoneShapes:VariantHelper"/>
+				<property name="Random_item" value="brickShapes:VariantHelper"/>
 				<property name="Random_item_count" value="50"/>
 				<property name="Random_count" value="1"/>
 				<property name="Unique_random_only" value="false"/>
@@ -923,7 +952,7 @@
 			<property class="Action0">
 				<property name="Create_item" value="CivilengineerSkillResearchNotes3"/>
 				<property name="Create_item_count" value="1"/>
-				<property name="Random_item" value="brickShapes:VariantHelper"/>
+				<property name="Random_item" value="concreteShapes:VariantHelper"/>
 				<property name="Random_item_count" value="50"/>
 				<property name="Random_count" value="1"/>
 				<property name="Unique_random_only" value="false"/>
@@ -1006,7 +1035,7 @@
 				<property name="Create_item" value="CookingSkillResearchNotes2"/>
 				<property name="Create_item_count" value="1"/>
 				<property name="Random_item" value="foodBaconAndEggs"/>
-				<property name="Random_item_count" value="1"/>
+				<property name="Random_item_count" value="2"/>
 				<property name="Random_count" value="1"/>
 				<property name="Unique_random_only" value="false"/>
 			</property>
@@ -1206,7 +1235,7 @@
 			<property class="Action0">
 				<property name="Class" value="OpenBundle"/>
 				<property name="Delay" value="0"/>
-				<property name="Create_item" value="LeatherworkingSkillResearchNotes1,LeatherSheetT1,toolCookingPot"/>
+				<property name="Create_item" value="LeatherworkingSkillResearchNotes1,LeatherSheetT1,bucketEmpty"/>
 				<property name="Create_item_count" value="1,1,2"/>								
 			</property>
 		</item>
@@ -1217,7 +1246,7 @@
 			<property class="Action0">
 				<property name="Class" value="OpenBundle"/>
 				<property name="Delay" value="0"/>
-				<property name="Create_item" value="LeatherworkingSkillResearchNotes2,LeatherSheetT2,toolCookingPot"/>
+				<property name="Create_item" value="LeatherworkingSkillResearchNotes2,LeatherSheetT2,bucketEmpty"/>
 				<property name="Create_item_count" value="1,1,2"/>				
 			</property>
 		</item>
@@ -1228,7 +1257,7 @@
 			<property class="Action0">
 				<property name="Class" value="OpenBundle"/>
 				<property name="Delay" value="0"/>
-				<property name="Create_item" value="LeatherworkingSkillResearchNotes3,LeatherSheetT3,toolCookingPot"/>
+				<property name="Create_item" value="LeatherworkingSkillResearchNotes3,LeatherSheetT3,bucketEmpty"/>
 				<property name="Create_item_count" value="1,1,2"/>				
 			</property>
 		</item>
@@ -1239,7 +1268,7 @@
 			<property class="Action0">
 				<property name="Class" value="OpenBundle"/>
 				<property name="Delay" value="0"/>
-				<property name="Create_item" value="LeatherworkingSkillResearchNotes4,LeatherSheetT4,toolCookingPot"/>
+				<property name="Create_item" value="LeatherworkingSkillResearchNotes4,LeatherSheetT4,bucketEmpty"/>
 				<property name="Create_item_count" value="1,1,2"/>				
 			</property>
 		</item>
@@ -1250,7 +1279,7 @@
 			<property class="Action0">
 				<property name="Class" value="OpenBundle"/>
 				<property name="Delay" value="0"/>
-				<property name="Create_item" value="LeatherworkingSkillResearchNotes5,LeatherSheetT5,toolCookingPot"/>
+				<property name="Create_item" value="LeatherworkingSkillResearchNotes5,LeatherSheetT5,bucketEmpty"/>
 				<property name="Create_item_count" value="1,1,2"/>				
 			</property>
 		</item>
@@ -1261,7 +1290,7 @@
 			<property class="Action0">
 				<property name="Class" value="OpenBundle"/>
 				<property name="Delay" value="0"/>
-				<property name="Create_item" value="LeatherworkingSkillResearchNotes6,LeatherSheetT6,toolCookingPot"/>
+				<property name="Create_item" value="LeatherworkingSkillResearchNotes6,LeatherSheetT6,bucketEmpty"/>
 				<property name="Create_item_count" value="1,1,2"/>				
 			</property>
 		</item>
@@ -1494,7 +1523,7 @@
 				<property name="Create_item" value="TailoringSkillResearchNotes1"/>
 				<property name="Create_item_count" value="1"/>
 				<property name="Random_item" value="resourceClothT1"/>
-				<property name="Random_item_count" value="3"/>
+				<property name="Random_item_count" value="15"/>
 				<property name="Random_count" value="1"/>				
 			</property>
 		</item>
@@ -1581,8 +1610,8 @@
 		<item name="AutomotiveSkillResearchNotes1">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="AutomotiveResearchNotes"/>
+			<property name="CustomIconTint" value="ffffff"/>
 			<property name="DescriptionKey" value="automotiveSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1594,8 +1623,8 @@
 		<item name="AutomotiveSkillResearchNotes2">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="AutomotiveResearchNotes"/>
+			<property name="CustomIconTint" value="bda68c"/>
 			<property name="DescriptionKey" value="automotiveSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1607,8 +1636,8 @@
 		<item name="AutomotiveSkillResearchNotes3">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="AutomotiveResearchNotes"/>
+			<property name="CustomIconTint" value="af7d4a"/>
 			<property name="DescriptionKey" value="automotiveSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1620,8 +1649,8 @@
 		<item name="AutomotiveSkillResearchNotes4">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="AutomotiveResearchNotes"/>
+			<property name="CustomIconTint" value="e8d99f"/>
 			<property name="DescriptionKey" value="automotiveSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1633,8 +1662,8 @@
 		<item name="AutomotiveSkillResearchNotes5">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="AutomotiveResearchNotes"/>
+			<property name="CustomIconTint" value="93a564"/>
 			<property name="DescriptionKey" value="automotiveSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1646,8 +1675,8 @@
 		<item name="AutomotiveSkillResearchNotes6">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="AutomotiveResearchNotes"/>
+			<property name="CustomIconTint" value="8c8da2"/>
 			<property name="DescriptionKey" value="automotiveSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1661,8 +1690,8 @@
 		<item name="BlacksmithingSkillResearchNotes1">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="BlackSmithingResearchNotes"/>
+			<property name="CustomIconTint" value="ffffff"/>
 			<property name="DescriptionKey" value="blacksmithingSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1674,7 +1703,7 @@
 		<item name="BlacksmithingSkillResearchNotes2">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
+			<property name="CustomIcon" value="BlackSmithingResearchNotes"/>
 			<property name="CustomIconTint" value="9f44db"/>
 			<property name="DescriptionKey" value="blacksmithingSkillMagazineDesc"/>			
 			
@@ -1687,8 +1716,8 @@
 		<item name="BlacksmithingSkillResearchNotes3">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="BlackSmithingResearchNotes"/>
+			<property name="CustomIconTint" value="af7d4a"/>
 			<property name="DescriptionKey" value="blacksmithingSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1700,8 +1729,8 @@
 		<item name="BlacksmithingSkillResearchNotes4">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="BlackSmithingResearchNotes"/>
+			<property name="CustomIconTint" value="e8d99f"/>
 			<property name="DescriptionKey" value="blacksmithingSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1713,8 +1742,8 @@
 		<item name="BlacksmithingSkillResearchNotes5">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="BlackSmithingResearchNotes"/>
+			<property name="CustomIconTint" value="93a564"/>
 			<property name="DescriptionKey" value="blacksmithingSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1726,8 +1755,8 @@
 		<item name="BlacksmithingSkillResearchNotes6">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="BlackSmithingResearchNotes"/>
+			<property name="CustomIconTint" value="8c8da2"/>
 			<property name="DescriptionKey" value="blacksmithingSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1740,8 +1769,8 @@
 		<item name="CarpentrySkillResearchNotes1">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="CarpentryResearchNotes"/>
+			<property name="CustomIconTint" value="ffffff"/>
 			<property name="DescriptionKey" value="cookingSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1754,8 +1783,8 @@
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>
 			<property name="Tags" value="cookingCSM,csm"/>
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="CarpentryResearchNotes"/>
+			<property name="CustomIconTint" value="bda68c"/>
 			<property name="DescriptionKey" value="cookingSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1767,8 +1796,8 @@
 		<item name="CarpentrySkillResearchNotes3">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="CarpentryResearchNotes"/>
+			<property name="CustomIconTint" value="af7d4a"/>
 			<property name="DescriptionKey" value="cookingSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1780,8 +1809,8 @@
 		<item name="CarpentrySkillResearchNotes4">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="CarpentryResearchNotes"/>
+			<property name="CustomIconTint" value="e8d99f"/>
 			<property name="DescriptionKey" value="cookingSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1793,8 +1822,8 @@
 		<item name="CarpentrySkillResearchNotes5">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="CarpentryResearchNotes"/>
+			<property name="CustomIconTint" value="93a564"/>
 			<property name="DescriptionKey" value="cookingSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1806,8 +1835,8 @@
 		<item name="CarpentrySkillResearchNotes6">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="CarpentryResearchNotes"/>
+			<property name="CustomIconTint" value="8c8da2"/>
 			<property name="DescriptionKey" value="cookingSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1820,8 +1849,8 @@
 		<item name="ChemistrySkillResearchNotes1">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="ChemistryResearchNotes"/>
+			<property name="CustomIconTint" value="ffffff"/>
 			<property name="DescriptionKey" value="ChemistrySkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1833,8 +1862,8 @@
 		<item name="ChemistrySkillResearchNotes2">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="ChemistryResearchNotes"/>
+			<property name="CustomIconTint" value="bda68c"/>
 			<property name="DescriptionKey" value="ChemistrySkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1846,8 +1875,8 @@
 		<item name="ChemistrySkillResearchNotes3">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="ChemistryResearchNotes"/>
+			<property name="CustomIconTint" value="af7d4a"/>
 			<property name="DescriptionKey" value="ChemistrySkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1859,8 +1888,8 @@
 		<item name="ChemistrySkillResearchNotes4">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="ChemistryResearchNotes"/>
+			<property name="CustomIconTint" value="e8d99f"/>
 			<property name="DescriptionKey" value="ChemistrySkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1872,8 +1901,8 @@
 		<item name="ChemistrySkillResearchNotes5">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>		
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="ChemistryResearchNotes"/>
+			<property name="CustomIconTint" value="93a564"/>
 			<property name="DescriptionKey" value="ChemistrySkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1885,8 +1914,8 @@
 		<item name="ChemistrySkillResearchNotes6">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="ChemistryResearchNotes"/>
+			<property name="CustomIconTint" value="8c8da2"/>
 			<property name="DescriptionKey" value="ChemistrySkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1900,8 +1929,8 @@
 		<item name="CivilengineerSkillResearchNotes1">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>	
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="CivilEngineerResearchNotes"/>
+			<property name="CustomIconTint" value="ffffff"/>
 			<property name="DescriptionKey" value="civilengineerSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1913,8 +1942,8 @@
 		<item name="CivilengineerSkillResearchNotes2">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>		
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="CivilEngineerResearchNotes"/>
+			<property name="CustomIconTint" value="bda68c"/>
 			<property name="DescriptionKey" value="civilengineerSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1926,8 +1955,8 @@
 		<item name="CivilengineerSkillResearchNotes3">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="CivilEngineerResearchNotes"/>
+			<property name="CustomIconTint" value="af7d4a"/>
 			<property name="DescriptionKey" value="civilengineerSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1939,8 +1968,8 @@
 		<item name="CivilengineerSkillResearchNotes4">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="CivilEngineerResearchNotes"/>
+			<property name="CustomIconTint" value="e8d99f"/>
 			<property name="DescriptionKey" value="civilengineerSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1952,8 +1981,8 @@
 		<item name="CivilengineerSkillResearchNotes5">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="CivilEngineerResearchNotes"/>
+			<property name="CustomIconTint" value="93a564"/>
 			<property name="DescriptionKey" value="civilengineerSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1965,8 +1994,8 @@
 		<item name="CivilengineerSkillResearchNotes6">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="CivilEngineerResearchNotes"/>
+			<property name="CustomIconTint" value="8c8da2"/>
 			<property name="DescriptionKey" value="civilengineerSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1979,8 +2008,8 @@
 		<item name="CookingSkillResearchNotes1">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="CookingResearchNotes"/>
+			<property name="CustomIconTint" value="ffffff"/>
 			<property name="DescriptionKey" value="cookingSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -1992,8 +2021,8 @@
 		<item name="CookingSkillResearchNotes2">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="CookingResearchNotes"/>
+			<property name="CustomIconTint" value="bda68c"/>
 			<property name="DescriptionKey" value="cookingSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2005,8 +2034,8 @@
 		<item name="CookingSkillResearchNotes3">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="CookingResearchNotes"/>
+			<property name="CustomIconTint" value="af7d4a"/>
 			<property name="DescriptionKey" value="cookingSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2018,8 +2047,8 @@
 		<item name="CookingSkillResearchNotes4">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="CookingResearchNotes"/>
+			<property name="CustomIconTint" value="e8d99f"/>
 			<property name="DescriptionKey" value="cookingSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2031,8 +2060,8 @@
 		<item name="CookingSkillResearchNotes5">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="CookingResearchNotes"/>
+			<property name="CustomIconTint" value="93a564"/>
 			<property name="DescriptionKey" value="cookingSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2044,8 +2073,8 @@
 		<item name="CookingSkillResearchNotes6">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>		
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="CookingResearchNotes"/>
+			<property name="CustomIconTint" value="8c8da2"/>
 			<property name="DescriptionKey" value="cookingSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2060,7 +2089,7 @@
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
 			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIconTint" value="ffffff"/>
 			<property name="DescriptionKey" value="demolitionsSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2073,7 +2102,7 @@
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
 			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIconTint" value="bda68c"/>
 			<property name="DescriptionKey" value="demolitionsSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2086,7 +2115,7 @@
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
 			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIconTint" value="af7d4a"/>
 			<property name="DescriptionKey" value="demolitionsSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2099,7 +2128,7 @@
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>		
 			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIconTint" value="e8d99f"/>
 			<property name="DescriptionKey" value="demolitionsSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2112,7 +2141,7 @@
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
 			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIconTint" value="93a564"/>
 			<property name="DescriptionKey" value="demolitionsSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2125,7 +2154,7 @@
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
 			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIconTint" value="8c8da2"/>
 			<property name="DescriptionKey" value="demolitionsSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2138,8 +2167,8 @@
 		<item name="ElectricianSkillResearchNotes1">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="ElectricalResearchNotes"/>
+			<property name="CustomIconTint" value="ffffff"/>
 			<property name="DescriptionKey" value="electricianSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2151,8 +2180,8 @@
 		<item name="ElectricianSkillResearchNotes2">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="ElectricalResearchNotes"/>
+			<property name="CustomIconTint" value="bda68c"/>
 			<property name="DescriptionKey" value="electricianSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2164,8 +2193,8 @@
 		<item name="ElectricianSkillResearchNotes3">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="ElectricalResearchNotes"/>
+			<property name="CustomIconTint" value="af7d4a"/>
 			<property name="DescriptionKey" value="electricianSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2177,8 +2206,8 @@
 		<item name="ElectricianSkillResearchNotes4">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="ElectricalResearchNotes"/>
+			<property name="CustomIconTint" value="e8d99f"/>
 			<property name="DescriptionKey" value="electricianSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2190,8 +2219,8 @@
 		<item name="ElectricianSkillResearchNotes5">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="ElectricalResearchNotes"/>
+			<property name="CustomIconTint" value="93a564"/>
 			<property name="DescriptionKey" value="electricianSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2203,8 +2232,8 @@
 		<item name="ElectricianSkillResearchNotes6">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="ElectricalResearchNotes"/>
+			<property name="CustomIconTint" value="8c8da2"/>
 			<property name="DescriptionKey" value="electricianSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2217,8 +2246,8 @@
 		<item name="LeatherworkingSkillResearchNotes1">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="LeatherworkingResearchNotes"/>
+			<property name="CustomIconTint" value="ffffff"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2230,8 +2259,8 @@
 		<item name="LeatherworkingSkillResearchNotes2">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="LeatherworkingResearchNotes"/>
+			<property name="CustomIconTint" value="bda68c"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2243,8 +2272,8 @@
 		<item name="LeatherworkingSkillResearchNotes3">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="LeatherworkingResearchNotes"/>
+			<property name="CustomIconTint" value="af7d4a"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2256,8 +2285,8 @@
 		<item name="LeatherworkingSkillResearchNotes4">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="LeatherworkingResearchNotes"/>
+			<property name="CustomIconTint" value="e8d99f"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2269,8 +2298,8 @@
 		<item name="LeatherworkingSkillResearchNotes5">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="LeatherworkingResearchNotes"/>
+			<property name="CustomIconTint" value="93a564"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2283,8 +2312,8 @@
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>
 			<property name="Tags" value="medcialCSM,csm"/>
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="LeatherworkingResearchNotes"/>
+			<property name="CustomIconTint" value="8c8da2"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2298,8 +2327,8 @@
 		<item name="MechanicalSkillResearchNotes1">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>		
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="MechanicalEngineerResearchNotes"/>
+			<property name="CustomIconTint" value="ffffff"/>
 			<property name="DescriptionKey" value="mechanicalSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2311,8 +2340,8 @@
 		<item name="MechanicalSkillResearchNotes2">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="MechanicalEngineerResearchNotes"/>
+			<property name="CustomIconTint" value="bda68c"/>
 			<property name="DescriptionKey" value="mechanicalSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2324,8 +2353,8 @@
 		<item name="MechanicalSkillResearchNotes3">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="MechanicalEngineerResearchNotes"/>
+			<property name="CustomIconTint" value="af7d4a"/>
 			<property name="DescriptionKey" value="mechanicalSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2337,8 +2366,8 @@
 		<item name="MechanicalSkillResearchNotes4">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="MechanicalEngineerResearchNotes"/>
+			<property name="CustomIconTint" value="e8d99f"/>
 			<property name="DescriptionKey" value="mechanicalSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2350,8 +2379,8 @@
 		<item name="MechanicalSkillResearchNotes5">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="MechanicalEngineerResearchNotes"/>
+			<property name="CustomIconTint" value="93a564"/>
 			<property name="DescriptionKey" value="mechanicalSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2363,8 +2392,8 @@
 		<item name="MechanicalSkillResearchNotes6">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="MechanicalEngineerResearchNotes"/>
+			<property name="CustomIconTint" value="8c8da2"/>
 			<property name="DescriptionKey" value="mechanicalSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2379,7 +2408,7 @@
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>
 			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIconTint" value="ffffff"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2392,7 +2421,7 @@
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
 			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIconTint" value="bda68c"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2405,7 +2434,7 @@
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
 			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIconTint" value="af7d4a"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2418,7 +2447,7 @@
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
 			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIconTint" value="e8d99f"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2431,7 +2460,7 @@
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
 			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIconTint" value="93a564"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2444,7 +2473,7 @@
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>		
 			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIconTint" value="8c8da2"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2457,8 +2486,8 @@
 		<item name="SoftwareSkillResearchNotes1">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="SoftwareEngineerResearchNotes"/>
+			<property name="CustomIconTint" value="ffffff"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2470,8 +2499,8 @@
 		<item name="SoftwareSkillResearchNotes2">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="SoftwareEngineerResearchNotes"/>
+			<property name="CustomIconTint" value="bda68c"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2483,8 +2512,8 @@
 		<item name="SoftwareSkillResearchNotes3">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="SoftwareEngineerResearchNotes"/>
+			<property name="CustomIconTint" value="af7d4a"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2496,8 +2525,8 @@
 		<item name="SoftwareSkillResearchNotes4">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="SoftwareEngineerResearchNotes"/>
+			<property name="CustomIconTint" value="e8d99f"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2509,7 +2538,7 @@
 		<item name="SoftwareSkillResearchNotes5">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
+			<property name="CustomIcon" value="SoftwareEngineerResearchNotes"/>
 			<property name="CustomIconTint" value="9f44db"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
@@ -2522,8 +2551,8 @@
 		<item name="SoftwareSkillResearchNotes6">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="SoftwareEngineerResearchNotes"/>
+			<property name="CustomIconTint" value="8c8da2"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2536,8 +2565,8 @@
 		<item name="TailoringSkillResearchNotes1">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="TailoringResearchNotes"/>
+			<property name="CustomIconTint" value="ffffff"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2549,8 +2578,8 @@
 		<item name="TailoringSkillResearchNotes2">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="TailoringResearchNotes"/>
+			<property name="CustomIconTint" value="bda68c"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2562,8 +2591,8 @@
 		<item name="TailoringSkillResearchNotes3">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="TailoringResearchNotes"/>
+			<property name="CustomIconTint" value="af7d4a"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2575,8 +2604,8 @@
 		<item name="TailoringSkillResearchNotes4">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="TailoringResearchNotes"/>
+			<property name="CustomIconTint" value="e8d99f"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2588,7 +2617,7 @@
 		<item name="TailoringSkillResearchNotes5">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
+			<property name="CustomIcon" value="TailoringResearchNotes"/>
 			<property name="CustomIconTint" value="9f44db"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
@@ -2601,8 +2630,8 @@
 		<item name="TailoringSkillResearchNotes6">
 			<property name="Extends" value="researchMaster"/>
 			<property name="ItemWeight" value="0.5"/>			
-			<property name="CustomIcon" value="questMaster"/>
-			<property name="CustomIconTint" value="9f44db"/>
+			<property name="CustomIcon" value="TailoringResearchNotes"/>
+			<property name="CustomIconTint" value="8c8da2"/>
 			<property name="DescriptionKey" value="medcialSkillMagazineDesc"/>			
 			
 			<effect_group tiered="false">
@@ -2610,38 +2639,6 @@
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message="You have gained knowledge in Tailoring ({cvar(.Tailoring_addResearchT6:0)})"/>
 			</effect_group>
 		</item>	
-
-		<item name="resourceTreenail">
-			<property name="DescriptionKey" value="resourceTreenailDesc"/>
-			<property name="CustomIcon" value="treenails"/>
-		<!--	<property name="CustomIconTint" value="ffb0b0"/>	-->
-			<property name="Meshfile" value="@:Other/Items/Tools/nailProjectilePrefab.prefab"/>
-			<property name="HoldType" value="45"/>
-			<property name="ItemWeight" value="0.0017"/>
-			<property name="HandMeshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
-			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-			<property name="Material" value="Mwood"/>
-			<property name="Stacknumber" value="10000"/> <!-- Tiny -->
-			<property name="EconomicValue" value="1"/>
-			<property name="EconomicBundleSize" value="10"/>			
-			<property name="Group" value="Resources"/>			
-		</item>
-
-		<item name="resourceWoodRepairParts">
-			<property name="DescriptionKey" value="resourceWoodRepairPartsDesc"/>
-			<property name="CustomIcon" value="resourceWoodRepairParts"/>
-		<!--	<property name="CustomIconTint" value="ffb0b0"/>	-->
-			<property name="Meshfile" value="@:Other/Items/Tools/nailProjectilePrefab.prefab"/>
-			<property name="HoldType" value="45"/>
-			<property name="ItemWeight" value="1.8068"/>
-			<property name="HandMeshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
-			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-			<property name="Material" value="Mwood"/>
-			<property name="Stacknumber" value="6000"/> <!-- Small -->
-			<property name="EconomicValue" value="10"/>
-			<property name="EconomicBundleSize" value="10"/>			
-			<property name="Group" value="Resources"/>			
-		</item>
 
 		<item name="softwareMaster">
 			<property name="DescriptionKey" value="softwareSledgeTurretDesc"/>
@@ -2665,8 +2662,8 @@
 			<property name="Extends" value="softwareMaster"/>
 			<property name="EconomicValue" value="1500"/>
 			<property name="EconomicBundleSize" value="1"/>
-			<property name="DescriptionKey" value="AirFilterMineProgram"/>
-			<property name="CustomIcon" value="AirFilterMineProgram"/>				
+			<property name="DescriptionKey" value="AutoTurretProgram"/>
+			<property name="CustomIcon" value="AutoTurretProgram"/>				
 		</item>
 
 		<item name="AirFilterMineProgram">
@@ -2684,6 +2681,14 @@
 			<property name="DescriptionKey" value="BladeTrapProgram"/>
 			<property name="CustomIcon" value="BladeTrapProgram"/>	
 		</item>
+
+    <item name="Buddy5Program">
+      <property name="Extends" value="softwareMaster"/>
+      <property name="EconomicValue" value="200"/>
+      <property name="EconomicBundleSize" value="1"/>
+      <property name="DescriptionKey" value="BladeTrapProgram"/>
+      <property name="CustomIcon" value="BuddyProgram"/>
+    </item>
 
 		<item name="CandyMineProgram">
 			<property name="Extends" value="softwareMaster"/>
@@ -3400,7 +3405,7 @@
 			</property>
 		</item>
 
-		<item name="vehicle4x4TruckAccessoriesExhaust">
+		<item name="vehicleTruck4x4AccessoriesExhaust">
 			<property name="HoldType" value="45"/>
 			<property name="Tags" value="junk"/>
 			<property name="ItemWeight" value="0.125"/>
@@ -3416,7 +3421,7 @@
 			<property name="CraftingIngredientTime" value=".2"/>
 		</item>
 
-		<item name="vehicle4x4TruckAccessoryFront">
+		<item name="vehicleTruck4x4AccessoryFront">
 			<property name="HoldType" value="45"/>
 			<property name="Tags" value="junk"/>
 			<property name="ItemWeight" value="0.125"/>
@@ -3432,7 +3437,7 @@
 			<property name="CraftingIngredientTime" value=".2"/>
 		</item>
 
-		<item name="vehicle4x4TruckChassisBackend">
+		<item name="vehicleTruck4x4ChassisBackend">
 			<property name="HoldType" value="45"/>
 			<property name="Tags" value="junk"/>
 			<property name="ItemWeight" value="0.125"/>
@@ -3448,7 +3453,7 @@
 			<property name="CraftingIngredientTime" value=".2"/>
 		</item>
 
-		<item name="vehicle4x4TruckChassisFront">
+		<item name="vehicleTruck4x4ChassisFront">
 			<property name="HoldType" value="45"/>
 			<property name="Tags" value="junk"/>
 			<property name="ItemWeight" value="0.125"/>
@@ -3532,9 +3537,9 @@
 			<property name="Group" value="Tools/Traps"/>
 		</item>
 
-		<item name="AxeHead">			
+		<item name="IronAxeHead">			
 			<property name="CreativeMode" value="Player"/>
-			<property name="CustomIcon" value="AxeHead"/>
+			<property name="CustomIcon" value="IronAxeHead"/>
 			<property name="ItemWeight" value="1"/>						
 			<property name="HoldType" value="45"/>
 			<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
@@ -3549,9 +3554,9 @@
 			<property name="Group" value="Tools/Traps"/>			
 		</item>
 
-		<item name="ClawHammerHead">			
+		<item name="IronClawHammerHead">			
 			<property name="CreativeMode" value="Player"/>
-			<property name="CustomIcon" value="ClawHammerHead"/>
+			<property name="CustomIcon" value="IronHammerHead"/>
 			<property name="ItemWeight" value="1"/>						
 			<property name="HoldType" value="45"/>
 			<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
@@ -4504,7 +4509,7 @@
 			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
 			<property name="Material" value="MresourceWood"/>
 			<property name="Weight" value="5"/>
-			<property name="Stacknumber" value="1000"/> <!-- Med -->
+			<property name="Stacknumber" value="6000"/> <!-- Med -->
 			<property name="FuelValue" value="50"/>
 			<property name="EconomicValue" value="5"/>
 			<property name="EconomicBundleSize" value="10"/>
@@ -4556,7 +4561,7 @@
 			<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
 			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
 			<property name="Material" value="MresourceForgedIron"/>
-			<property name="Stacknumber" value="1000"/> <!-- Med -->
+			<property name="Stacknumber" value="6000"/> <!-- Med -->
 			<property name="EconomicValue" value="100"/>
 			<property name="CraftingIngredientTime" value="10"/>
 			<property name="RepairTime" value=".5"/>
@@ -4572,7 +4577,7 @@
 			<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
 			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
 			<property name="Material" value="MresourceForgedIron"/>
-			<property name="Stacknumber" value="1000"/> <!-- Med -->
+			<property name="Stacknumber" value="6000"/> <!-- Med -->
 			<property name="EconomicValue" value="14"/>
 			<property name="CraftingIngredientTime" value="10"/>
 			<property name="RepairTime" value=".5"/>
@@ -4586,12 +4591,135 @@
 			<property name="CustomIcon" value="IronT2"/>
 		</item>
 
-		<item name="resourceForgedIron">
-			<property name="Extends" value="resourceLowQualityWroughtIron"/>	
-			<property name="EconomicValue" value="22"/>
-			<property name="CustomIcon" value="IronT3"/>			
-		</item>
+    <recipe name="gunBowT1WoodenBowParts" count="1" tags="learnable,skillCarpentry">
+      <ingredient name="resourceWoodT3" count="5"/>
+      <ingredient name="resourceGlue" count="2"/>
+      <ingredient name="resourceDuctTape" count="1"/>
+      <ingredient name="resourceMechanicalPartsT3" count="2"/>
+      <effect_group>
 
+      </effect_group>
+    </recipe>
+
+    <recipe name="gunBowT0PrimitiveBow" count="1" tags="rangedBows">
+      <ingredient name="resourceTwig" count="8"/>
+      <ingredient name="resourceYuccaFibers" count="3"/>
+    </recipe>
+
+    <recipe name="gunBowT1WoodenBow" count="1" tags="learnable,skillCarpentry">
+      <ingredient name="gunBowT1WoodenBowParts" count="1"/>
+      <ingredient name="resourceWoodT3" count="20"/>
+      <ingredient name="LeatherSheetT3" count="3"/>
+      <ingredient name="resourceGlue" count="2"/>
+      <ingredient name="resourceDuctTape" count="3"/>
+      <effect_group>
+
+      </effect_group>
+    </recipe>
+
+    <recipe name="gunBowT3CompoundBow" count="1" craft_area="workbench" tags="learnable,skillCarpentry">
+      <ingredient name="gunBowT1WoodenBowParts" count="1"/>
+      <ingredient name="resourceScrapPolymers" count="25"/>
+      <ingredient name="LeatherSheetT5" count="5"/>
+      <ingredient name="resourceDuctTape" count="5"/>
+      <ingredient name="resourceSpring" count="10"/>
+      <effect_group>
+
+      </effect_group>
+    </recipe>
+
+    <recipe name="gunBowT1IronCrossbow" count="1" craft_area="workbench" tags="learnable,skillCarpentry">
+      <ingredient name="gunBowT1WoodenBowParts" count="1"/>
+      <ingredient name="resourceWroughtIron" count="15"/>
+      <ingredient name="resourceDuctTape" count="3"/>
+      <ingredient name="LeatherSheetT3" count="3"/>
+      <ingredient name="resourceWoodT3" count="20"/>
+      <effect_group>
+
+      </effect_group>
+    </recipe>
+
+    <recipe name="gunBowT3CompoundCrossbow" count="1" craft_area="workbench" tags="learnable,skillCarpentry">
+      <ingredient name="gunBowT1WoodenBowParts" count="1"/>
+      <ingredient name="resourceForgedSteel" count="15"/>
+      <ingredient name="resourceDuctTape" count="3"/>
+      <ingredient name="LeatherSheetT4" count="3"/>
+      <ingredient name="resourceScrapPolymers" count="20"/>
+      <effect_group>
+
+      </effect_group>
+    </recipe>
+
+    <recipe name="gunBotRoboticsPartsT3" count="1" craft_area="workbench" tags="learnable,skillMechanicalEngineer">
+      <ingredient name="resourceForgedIron" count="10"/>
+      <ingredient name="resourceMechanicalPartsT3" count="10"/>
+      <ingredient name="resourceElectricPartsT3" count="10"/>
+      <effect_group>
+
+      </effect_group>
+    </recipe>
+
+    <recipe name="meleeToolAxeT3ChainsawParts" count="1" craft_area="workbench" tags="learnable,skillMechanicalEngineer">
+      <ingredient name="resourceMechanicalPartsT4" count="5"/>
+      <ingredient name="resourceElectricPartsT4" count="5"/>
+      <effect_group>
+
+      </effect_group>
+    </recipe>
+
+    <recipe name="gunBotRoboticsPartsT4" count="1" craft_area="workbench" tags="learnable,skillMechanicalEngineer">
+      <ingredient name="resourceForgedSteel" count="10"/>
+      <ingredient name="resourceMechanicalPartsT4" count="10"/>
+      <ingredient name="resourceElectricPartsT4" count="10"/>
+      <effect_group>
+
+      </effect_group>
+    </recipe>
+
+    <recipe name="gunBotT1JunkSledge" count="1" craft_area="workbench" tags="learnable,skillMechanicalEngineer">
+      <ingredient name="gunBotRoboticsPartsT3" count="1"/>
+      <ingredient name="resourceForgedIron" count="40"/>
+      <ingredient name="SledgeTurretProgram" count="1"/>
+      <ingredient name="resourceScrapPolymers" count="10"/>
+      <ingredient name="resourceSpring" count="10"/>
+      <effect_group>
+
+      </effect_group>
+    </recipe>
+
+    <recipe name="gunBotT2JunkTurret" count="1" craft_area="workbench" tags="learnable,skillMechanicalEngineer">
+      <ingredient name="gunBotRoboticsPartsT4" count="1"/>
+      <ingredient name="resourceForgedSteel" count="40"/>
+      <ingredient name="JunkTurretProgram" count="1"/>
+      <ingredient name="resourceScrapPolymers" count="10"/>
+      <ingredient name="resourceSpring" count="10"/>
+      <effect_group>
+
+      </effect_group>
+    </recipe>
+
+    <recipe name="gunBotT3JunkDrone" count="1" craft_area="workbench" tags="learnable,skillMechanicalEngineer">
+      <ingredient name="gunBotRoboticsPartsT4" count="1"/>
+      <ingredient name="resourceForgedSteel" count="10"/>
+      <ingredient name="DroneProgram" count="1"/>
+      <ingredient name="resourceScrapPolymers" count="50"/>
+      <ingredient name="motionsensor" count="2"/>
+      <effect_group>
+
+      </effect_group>
+    </recipe>
+
+    <recipe name="meleeToolRepairT3Nailgun" count="1" craft_area="workbench" tags="learnable,workbenchCrafting,skillMechanicalEngineer">
+      <ingredient name="meleeToolAxeT3ChainsawParts" count="1"/>
+      <ingredient name="resourceForgedSteel" count="16"/>
+      <ingredient name="resourceMechanicalPartsT4" count="6"/>
+      <ingredient name="resourceSpring" count="3"/>
+      <ingredient name="resourceDuctTape" count="3"/>
+      <effect_group>
+
+      </effect_group>
+    </recipe>
+    
 		<item name="resourceForgedSteel">			
 			<property name="Extends" value="resourceLowQualityWroughtIron"/>	
 			<property name="EconomicValue" value="26"/>
@@ -4770,7 +4898,7 @@
 			<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
 			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
 			<property name="Material" value="Mcloth"/>
-			<property name="Stacknumber" value="1000"/> <!-- Med -->
+			<property name="Stacknumber" value="6000"/> <!-- Med -->
 			<property name="RepairAmount" value="50"/>
 			<property name="FuelValue" value="1"/>
 			<property name="Weight" value="5"/>
@@ -5030,7 +5158,7 @@
 			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
 			<property name="Material" value="MresourceAcid"/>
 			<property name="Weight" value="0"/>
-			<property name="Stacknumber" value="6000"/> <!-- STK resource -->
+			<property name="Stacknumber" value="10000"/> <!-- STK resource -->
 			<property name="EconomicValue" value="5"/>
 			<property name="EconomicBundleSize" value="100"/>
 			<property name="Group" value="Resources,Chemicals"/>
@@ -5583,7 +5711,22 @@
 			<property name="EconomicBundleSize" value="1"/>
 			<property name="Group" value="Food/Cooking,CFFood/Cooking"/>
 		</item>
-		
+
+    <item name="SalicylicAcid">
+      <property name="CustomIcon" value="SalicylicAcid"/>
+      <property name="Tags" value="medical,medicalSkill"/>
+      <property name="DisplayType" value="medicalVitamins" />
+      <property name="ItemWeight" value="6"/>
+      <property name="HoldType" value="31"/>
+      <property name="Meshfile" value="@:Other/Items/Misc/parcelPrefab.prefab"/>
+      <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+      <property name="Material" value="MresourceCrop"/>
+      <property name="Stacknumber" value="1000"/>
+      <!-- Med -->
+      <property name="EconomicValue" value="10"/>
+      <property name="EconomicBundleSize" value="1"/>
+      <property name="Group" value="Science,CFChemicals,Medical,TCMedical" />
+    </item>		
 		
 		<item name="DistilledAlcohol">
 			<property name="Tags" value="drinks,foodSkill"/>
@@ -5635,15 +5778,6 @@
 			<property name="EconomicBundleSize" value="20"/>
 			<property name="Group" value="Resources"/>
 			<property name="CraftingIngredientTime" value=".25"/>
-		</item>
-
-		<item name="gunBotRoboticsPartsT3">
-			<property name="Extends" value="gunMGT1AK47Parts"/>
-			<property name="CustomIcon" value="gunBotRoboticsParts"/>
-			<property name="ItemWeight" value="1"/>
-			<property name="Tags" value="parts,roboticsSkill"/>
-			<property name="Material" value="MJunkTurretParts"/>
-			<property name="UnlockedBy" value="skillMechanicalEngineer"/>
 		</item>
 
 		<item name="gunBotRoboticsPartsT4">

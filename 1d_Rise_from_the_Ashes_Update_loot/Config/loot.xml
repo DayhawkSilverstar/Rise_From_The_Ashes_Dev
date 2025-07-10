@@ -21,8 +21,7 @@
 	<remove xpath="/lootcontainers/lootgroup[@name='groupBirdNest02']"/>
 
 	<remove xpath="/lootcontainers/lootgroup[@name='groupBookcase01']/item[@group='booksAllScaled']"/>
-	<remove xpath="/lootcontainers/lootgroup[@name='groupBookcase02']/item[@group='booksAllScaled']"/>
-	<remove xpath="/lootcontainers/lootgroup[@name='booksAllScaled']/item[@group='perkBooks']"/>
+	<remove xpath="/lootcontainers/lootgroup[@name='groupBookcase02']/item[@group='booksAllScaled']"/>	
 	<remove xpath="/lootcontainers/lootgroup[@name='shamwaySafeFiller']/item[@group='booksRareOnlyScaled']"/>
 	<remove xpath="/lootcontainers/lootgroup[@name='groupJunk03']/item[@group='booksAllScaled']"/>
 	<remove xpath="/lootcontainers/lootgroup[@name='groupJunk03']/item[@group='booksRareOnlyScaled']"/>
@@ -58,7 +57,14 @@
 	<remove xpath="/lootcontainers/lootgroup[@name='twitch_T4_Home_Run_Rewards']/item[@group='twitch_Home_Run_Books']"/>
 	<remove xpath="/lootcontainers/lootgroup[@name='twitch_T5_Home_Run_Rewards']/item[@group='twitch_Home_Run_Books']"/>
 
-	<insertAfter xpath="/lootcontainers/lootgroup[@name='empty']">
+  <remove xpath="/lootcontainers/lootgroup[@name='schematicsModsAndGeneralT2']/item[@group='modRoboticDroneCargoModSchematic']"/>
+  <remove xpath="/lootcontainers/lootgroup[@name='schematicsModsAndGeneralT2']/item[@group='modRoboticDroneMedicModSchematic']"/>
+  <remove xpath="/lootcontainers/lootgroup[@name='schematicsModsAndGeneralT2']/item[@group='modRoboticDroneArmorPlatingModSchematic']"/>
+  <remove xpath="/lootcontainers/lootgroup[@name='schematicsModsAndGeneralT2']/item[@group='modRoboticDroneArmorPlatingModSchematic']"/>
+
+  
+
+  <insertAfter xpath="/lootcontainers/lootgroup[@name='empty']">
 		<lootgroup name="groupWorkingStiffsBooks">
 			<item name="harvestingToolsSkillMagazine"/>
 			<item name="repairToolsSkillMagazine"/>
@@ -125,6 +131,7 @@
 			<item name="resourceFeather" count="1,4" />
 		</lootgroup>
 		  
+		  
 	</insertAfter>
 
 	<!-- CLOTH -->
@@ -133,7 +140,7 @@
 	<set xpath="/lootcontainers/lootgroup[@name='groupMedicalCommon']/item[@name='resourceCloth']/@name">resourceClothT1</set>
 	<set xpath="/lootcontainers/lootgroup[@name='groupShamwayShelves01']/item[@name='resourceCloth']/@name">resourceClothT1</set>
 	<set xpath="/lootcontainers/lootgroup[@name='groupBathtub']/item[@name='resourceCloth']/@name">resourceClothT1</set>
-	<set xpath="/lootcontainers/lootgroup[@name='resourceScrapBrass']/item[@name='resourceCloth']/@name">resourceClothT1</set>
+	<set xpath="/lootcontainers/lootgroup[@name='groupWorkbenchLoot01']/item[@name='resourceCloth']/@name">resourceClothT1</set>
 	<set xpath="/lootcontainers/lootgroup[@name='groupRollingToolbox01']/item[@name='resourceCloth']/@name">resourceClothT1</set>
 	<set xpath="/lootcontainers/lootgroup[@name='groupSavageCountryCrate02']/item[@name='resourceCloth']/@name">resourceClothT1</set>
 	<set xpath="/lootcontainers/lootgroup[@name='groupLaundry01']/item[@name='resourceCloth']/@name">resourceClothT1</set>
@@ -159,8 +166,12 @@
 	<set xpath="/lootcontainers/lootgroup[@name='groupZpackStrong01']/item[@name='resourceMechanicalParts']/@name">resourceMechanicalPartsT1</set>
 	<set xpath="/lootcontainers/lootgroup[@name='groupZpackBoss01']/item[@name='resourceMechanicalParts']/@name">resourceMechanicalPartsT1</set>
 	<set xpath="/lootcontainers/lootgroup[@name='twitch_craftresources2']/item[@name='resourceMechanicalParts']/@name">resourceMechanicalPartsT1</set>	
+  
+  <!-- Robotic Parts-->
+  <set xpath="/lootcontainers/lootgroup[@name='groupWeapons_RangedParts']/item[@name='gunBotRoboticsParts']/@name">gunBotRoboticsPartsT3</set>
 
-	<!-- SEED -->
+
+  <!-- SEED -->
 	<set xpath="/lootcontainers/lootgroup[@name='seeds']/item[@name='plantedPotato1']/@name">plantedPotatoT1-1</set>	
 	<set xpath="/lootcontainers/lootgroup[@name='seeds']/item[@name='plantedCoffee1']/@name">plantedCoffeeT1-1</set>	
 	<set xpath="/lootcontainers/lootgroup[@name='seeds']/item[@name='plantedCorn1']/@name">plantedCornT1-1</set>	
@@ -193,5 +204,4 @@
 	<set xpath="/lootcontainers/lootgroup[@name='groupConstructionCrate01']/item[@name='resourceWood']/@name">resourceWoodT1</set>
 	<set xpath="/lootcontainers/lootgroup[@name='twitch_natresources1']/item[@name='resourceWood']/@name">resourceWoodT1</set>
 	<set xpath="/lootcontainers/lootgroup[@name='twitch_builder_box1']/item[@name='resourceWood']/@name">resourceWoodT1</set>
-
 </configs>

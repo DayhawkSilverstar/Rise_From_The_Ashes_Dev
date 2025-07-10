@@ -23,6 +23,7 @@
 					<triggered_effect trigger="onSelfEnteredGame" action="ModifyCVar" cvar=".baseHealingRate" operation="set" value="1"/>
 					<triggered_effect trigger="onSelfEnteredGame" action="ModifyCVar" cvar=".healingMultiplier" operation="set" value="1.05"/>
 					<triggered_effect trigger="onSelfEnteredGame" action="ModifyCVar" cvar="MaxEncumbranceBase" operation="set" value="2000"/>				
+					<triggered_effect trigger="onSelfEnteredGame" action="ModifyCVar" cvar="$treatedCritHealing" operation="set" value="1"/>
 				</effect_group>
 
 				<effect_group name="PerkValueCVars">								
@@ -406,7 +407,71 @@
 					<passive_effect name="RunSpeed" operation="perc_add" value="-.25,1.1" tier="1,30"/> <!-- tier bonus -->
 					<passive_effect name="WalkSpeed" operation="perc_add" value="-.25,1.1" tier="1,30"/> <!-- tier bonus -->
 					<passive_effect name="CrouchSpeed" operation="perc_add" value="-.25,1.1" tier="1,30"/> <!-- tier bonus -->
-					<passive_effect name="JumpStrength" operation="perc_add" value="-.25,1" tier="1,30"/> <!-- tier bonus -->						
+					<passive_effect name="JumpStrength" operation="perc_add" value="-.25,1" tier="1,30"/> <!-- tier bonus -->
+					<passive_effect name="WaterLossPerHealthPointGained" operation="perc_add" level="1,5" value="-.05,-.25"/>
+					<passive_effect name="WaterLossPerStaminaPointGained" operation="perc_add" level="1,5" value="-.05,-.25"/>
+					<passive_effect name="FoodLossPerStaminaPointGained" operation="perc_add" level="1,5" value="-.05,-.25"/>					
+
+					<!-- Increase MetabolismDuration with each level of the perk -->
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" cvar="$MetabolismDuration" operation="set" value=".5">
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="1"/>
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="LT" value="3"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" cvar="$MetabolismDuration" operation="set" value=".7">
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="3"/>
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="LT" value="5"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" cvar="$MetabolismDuration" operation="set" value=".9">
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="5"/>
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="LT" value="7"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" cvar="$MetabolismDuration" operation="set" value="1">
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="7"/>
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="LT" value="9"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" cvar="$MetabolismDuration" operation="set" value="1.1">
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="9"/>
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="LT" value="11"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" cvar="$MetabolismDuration" operation="set" value="1.2">
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="11"/>
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="LT" value="13"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" cvar="$MetabolismDuration" operation="set" value="1.4">
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="13"/>
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="LT" value="15"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" cvar="$MetabolismDuration" operation="set" value="1.6">
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="15"/>
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="LT" value="17"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" cvar="$MetabolismDuration" operation="set" value="1.9">
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="17"/>
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="LT" value="19"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" cvar="$MetabolismDuration" operation="set" value="2.2">
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="19"/>
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="LT" value="21"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" cvar="$MetabolismDuration" operation="set" value="2.5">
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="21"/>
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="LT" value="23"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" cvar="$MetabolismDuration" operation="set" value="2.8">
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="23"/>
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="LT" value="25"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" cvar="$MetabolismDuration" operation="set" value="3.1">
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="25"/>
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="LT" value="28"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" cvar="$MetabolismDuration" operation="set" value="3.4">
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="28"/>
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="LT" value="29"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" cvar="$MetabolismDuration" operation="set" value="4">
+						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="30"/>						
+					</triggered_effect>
 				</effect_group>
 
 				<effect_group name="AdjustStrenghtStatMods-entityAndBlockDamage">
@@ -525,22 +590,22 @@
 					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$playerStrengthStamLoss" operation="set" value=".18">
 						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="17"/>
 					</triggered_effect>
-					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$playerStrengthStamLoss" operation="set" value=".2">
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$playerStrengthStamLoss" operation="set" value=".20">
 						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="19"/>
 					</triggered_effect>
-					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$playerStrengthStamLoss" operation="set" value=".35">
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$playerStrengthStamLoss" operation="set" value=".22">
 						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="21"/>
 					</triggered_effect>
-					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$playerStrengthStamLoss" operation="set" value=".4">
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$playerStrengthStamLoss" operation="set" value=".25">
 						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="23"/>
 					</triggered_effect>
-					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$playerStrengthStamLoss" operation="set" value=".50">
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$playerStrengthStamLoss" operation="set" value=".30">
 						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="25"/>
 					</triggered_effect>
-					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$playerStrengthStamLoss" operation="set" value=".65">
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$playerStrengthStamLoss" operation="set" value=".35">
 						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="27"/>
 					</triggered_effect>
-					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$playerStrengthStamLoss" operation="set" value=".75">
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$playerStrengthStamLoss" operation="set" value=".4">
 						<requirement name="ProgressionLevel" progression_name="statStrength" operation="GTE" value="29"/>
 					</triggered_effect>
 				</effect_group>
@@ -609,11 +674,11 @@
 					<effect_description level="30" desc_key="statDexterityLevel030" long_desc_key="statDexterityLevel030LongDesc"/>				
 				</effect_group>
 				<effect_group>
-					<passive_effect name="ReloadSpeedMultiplier" operation="perc_add"  value="-.25,0.5" tier="1,20" tags="gun"/> 
+					<passive_effect name="ReloadSpeedMultiplier" operation="perc_add"  value="-.25,0" tier="1,7" tags="gun"/> 
+					<passive_effect name="ReloadSpeedMultiplier" operation="perc_add"  value="0.05,0.5" tier="8,20" tags="gun"/> 
 					<passive_effect name="ReloadSpeedMultiplier" operation="perc_add"  value="0.6,0.85" tier="21,30" tags="gun"/> 
-					<passive_effect name="ReloadSpeedMultiplier" operation="perc_add" value="-.25,0.5" level="1,20" tags="rangedBows"/>
-					<passive_effect name="ReloadSpeedMultiplier" operation="perc_add" value="0.6,0.85" level="21,30" tags="rangedBows"/>
-					<passive_effect name="RoundsPerMinute" operation="perc_add" value="-.25,0.5" level="1,20" tags="rangedBows"/>
+					<passive_effect name="RoundsPerMinute" operation="perc_add" value="-.25,0" level="1,7" tags="rangedBows"/>
+					<passive_effect name="RoundsPerMinute" operation="perc_add" value="0.05,0.5" level="8,20" tags="rangedBows"/>
 					<passive_effect name="RoundsPerMinute" operation="perc_add" value="0.6,0.85" level="21,30" tags="rangedBows"/>
 				</effect_group>
 				<effect_group name="AdjustDexterityStatMods">			
@@ -702,6 +767,12 @@
 						<requirement name="ProgressionLevel" progression_name="statDexterity" operation="GTE" value="30"/>						
 					</triggered_effect>
 				</effect_group>
+				<effect_group>				
+				
+					<passive_effect name="PlayerExpGain" operation="perc_add" level="1,30" value="-.1,-.4" tags="Harvesting">
+						<requirement name="HoldingItemHasTags" tags="salvageTool"/>
+					</passive_effect>				
+				</effect_group>
 			</perk>
 			<perk name="statFortitude" min_level="3" max_level="30" parent="attStat" name_key="statFortitudeName" desc_key="statFortitudeDesc" icon="ui_game_symbol_cardio">
 				<level_requirements level="1"><requirement name="PlayerLevel" operation="GTE" value="1" desc_key="reqGenericPoints01"/></level_requirements>
@@ -768,9 +839,16 @@
 				</effect_group>
 
 				<effect_group>
-					<passive_effect name="StaminaChangeOT" operation="perc_add" value="-.25,0.75" tier="1,30"/> <!-- tier bonus -->
-					<passive_effect name="HealthMax" operation="perc_add" value="-0.25,1" tier="1,30"/> <!-- tier bonus -->
-					<passive_effect name="StaminaMax" operation="perc_add" value="-0.25,0.5" tier="1,30"/> <!-- tier bonus -->				
+					<passive_effect name="StaminaChangeOT" operation="perc_add" value="-.25,0" tier="1,7"/> <!-- tier bonus -->
+					<passive_effect name="StaminaChangeOT" operation="perc_add" value="0.05,.35" tier="8,20"/> <!-- tier bonus -->
+					<passive_effect name="StaminaChangeOT" operation="perc_add" value=".40,0.75" tier="21,30"/> <!-- tier bonus -->
+					<passive_effect name="HealthMax" operation="perc_add" value="-0.25,.55" tier="1,20"/> <!-- tier bonus -->
+					<passive_effect name="HealthMax" operation="perc_add" value="1,2" tier="21,30"/> <!-- tier bonus -->
+					<passive_effect name="StaminaMax" operation="perc_add" value="-0.25,.55" tier="1,20"/> <!-- tier bonus -->				
+					<passive_effect name="StaminaMax" operation="perc_add" value="1,2" tier="21,30"/> <!-- tier bonus -->	
+					
+					<!-- Increase MetabolismResist with each level the fortitude stat -->
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$MetabolismResist" operation="set" value="0"/>
 				</effect_group>
 
 				<effect_group name="AdjustFortitudeStatMods">			
@@ -1413,32 +1491,32 @@
 			<!-- *** Weapon Perks -->	
 			<perk name="meleeBlades" parent="skillMeleeCombat" name_key="meleeBladesName" desc_key="meleeBladesDesc"  base_skill_point_cost="0" icon="ui_game_symbol_knife">
 				<effect_group>				
-					<passive_effect name="EntityDamage" operation="perc_add" value="0,2" level="1,100" tags="knife"/>
+					<passive_effect name="EntityDamage" operation="perc_add" value="0,1" level="1,100" tags="knife"/>
 				</effect_group>
 			</perk>
 			<perk name="meleeClubs" parent="skillMeleeCombat" name_key="meleeClubsName" desc_key="meleeClubsDesc" base_skill_point_cost="0" icon="ui_game_symbol_club">
 				<effect_group>
-					<passive_effect name="EntityDamage" operation="perc_add" value="0,2" level="1,100" tags="club"/>
+					<passive_effect name="EntityDamage" operation="perc_add" value="0,1" level="1,100" tags="club"/>
 				</effect_group>
 				</perk>
 			<perk name="meleeFists" parent="skillMeleeCombat" name_key="meleeFistsName" desc_key="meleeFistsDesc" base_skill_point_cost="0" icon="ui_game_symbol_boxer">
 				<effect_group>
-					<passive_effect name="EntityDamage" operation="perc_add" value="0,2" level="1,100" tags="fists,knuckleSkill"/>				
+					<passive_effect name="EntityDamage" operation="perc_add" value="0,1" level="1,100" tags="fists,knuckleSkill"/>				
 				</effect_group>
 			</perk>
 			<perk name="meleeImprovised" parent="skillMeleeCombat" name_key="meleeImprovisedName" desc_key="meleeImprovisedDesc" base_skill_point_cost="0" icon="ui_game_symbol_sledge">
 				<effect_group>
-					<passive_effect name="EntityDamage" operation="perc_add" value="0,2" level="1,100" tags="improvised"/>				
+					<passive_effect name="EntityDamage" operation="perc_add" value="0,1" level="1,100" tags="improvised"/>				
 				</effect_group>
 			</perk>
 			<perk name="meleeSpears" parent="skillMeleeCombat" name_key="meleeSpearsName" desc_key="meleeSpearsDesc" base_skill_point_cost="0" icon="ui_game_symbol_spear">
 				<effect_group>
-					<passive_effect name="EntityDamage" operation="perc_add" value="0,2" level="1,100" tags="spearSkill"/>
+					<passive_effect name="EntityDamage" operation="perc_add" value="0,1" level="1,100" tags="spearSkill"/>
 				</effect_group>
 			</perk>
 			<perk name="rangedBows" parent="skillRangedCombat" name_key="rangedBowsName" desc_key="rangedBowsDesc" base_skill_point_cost="0" icon="ui_game_symbol_archery">
 				<effect_group>
-					<passive_effect name="EntityDamage" operation="perc_add" value="0,2" level="1,100" tags="rangedBows"/>							
+					<passive_effect name="EntityDamage" operation="perc_add" value="0,1" level="1,100" tags="rangedBows"/>							
 					<passive_effect name="WeaponHandling" operation="perc_add" value="0,.5" level="1,100" tags="rangedBows"/>					
 				</effect_group>		
 				
@@ -1455,14 +1533,14 @@
 			<!-- ********************************************** DEMOLITIONS *****************************************-->
 			<perk name="skillDemolitions" parent="skillRangedCombat" name_key="skillDemolitionsName" desc_key="skillDemolitionsDesc" base_skill_point_cost="0" icon="ui_game_symbol_explosion">
 				<effect_group>
-					<passive_effect name="BlockDamage" operation="perc_add" value="0,2" level="1,100" tags="skillDemolitions"/>				
-					<passive_effect name="EntityDamage" operation="perc_add" value="0,2" level="1,100" tags="skillDemolitions"/>
+					<passive_effect name="BlockDamage" operation="perc_add" value="0,1" level="1,100" tags="skillDemolitions"/>				
+					<passive_effect name="EntityDamage" operation="perc_add" value="0,1" level="1,100" tags="skillDemolitions"/>
 				</effect_group>					
 			</perk>
 
 			<perk name="rangedMachineguns" parent="skillRangedCombat" name_key="rangedMachinegunsName" desc_key="rangedMachinegunsDesc" base_skill_point_cost="0" icon="ui_game_symbol_rifle">
 				<effect_group>
-					<passive_effect name="EntityDamage" operation="perc_add" value="0,2" level="1,100" tags="machinegunSkill,rangedMachineguns"/>				
+					<passive_effect name="EntityDamage" operation="perc_add" value="0,1" level="1,100" tags="machinegunSkill,rangedMachineguns"/>				
 				</effect_group>
 
 				<effect_group>
@@ -1475,8 +1553,9 @@
 				</effect_group>
 			</perk>
 			<perk name="rangedPistols" parent="skillRangedCombat" name_key="rangedPistolsName" desc_key="rangedPistolsDesc" base_skill_point_cost="0" icon="ui_game_symbol_pistol">
+				
 				<effect_group>
-					<passive_effect name="EntityDamage" operation="perc_add" value="0,2" level="1,100" tags="handgunSkill,rangedPistols"/>
+					<passive_effect name="EntityDamage" operation="perc_add" value="0,1" level="1,100" tags="rangedPistols"/>				
 				</effect_group>
 
 				<effect_group>
@@ -1490,7 +1569,7 @@
 			</perk>
 			<perk name="rangedRifles" parent="skillRangedCombat" name_key="rangedRiflesName" desc_key="rangedRiflesDesc" base_skill_point_cost="0" icon="ui_game_symbol_long_shot">
 				<effect_group>
-					<passive_effect name="EntityDamage" operation="perc_add" value="0,2" level="1,100" tags="rifleSkill,rangedRifles"/>				
+					<passive_effect name="EntityDamage" operation="perc_add" value="0,1" level="1,100" tags="rifleSkill,rangedRifles"/>				
 				</effect_group>
 
 				<effect_group>
@@ -1504,7 +1583,7 @@
 			</perk>
 			<perk name="rangedShotguns" parent="skillRangedCombat" name_key="rangedShotgunsName" desc_key="rangedShotgunsDesc" base_skill_point_cost="0" icon="ui_game_symbol_shotgun">
 				<effect_group>
-					<passive_effect name="EntityDamage" operation="perc_add" value="0,2" level="1,100" tags="shotgun,rangedShotguns"/>				
+					<passive_effect name="EntityDamage" operation="perc_add" value="0,1" level="1,100" tags="shotgun,rangedShotguns"/>				
 				</effect_group>
 
 				<effect_group>
@@ -1785,7 +1864,41 @@
 
 			<!-- ********************************************** MEDICAL *****************************************-->
 			<perk name="skillMedical" parent="survivalTab" name_key="skillMedicalName" desc_key="skillMedicalDesc" base_skill_point_cost="0" icon="ui_game_symbol_medical">				
-				<effect_group>														
+				<effect_group>		
+					<!-- Increase medicRegHealthIncreaseSpeed as the skill increases -->				
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$medicRegHealthIncreaseSpeed" operation="set" value="2">
+						<requirement name="ProgressionLevel" progression_name="skillMedical" operation="GTE" value="1"/>						
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$medicRegHealthIncreaseSpeed" operation="set" value="2.1">
+						<requirement name="ProgressionLevel" progression_name="skillMedical" operation="GTE" value="10"/>						
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$medicRegHealthIncreaseSpeed" operation="set" value="2.2">
+						<requirement name="ProgressionLevel" progression_name="skillMedical" operation="GTE" value="20"/>						
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$medicRegHealthIncreaseSpeed" operation="set" value="2.5">
+						<requirement name="ProgressionLevel" progression_name="skillMedical" operation="GTE" value="30"/>						
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$medicRegHealthIncreaseSpeed" operation="set" value="2.7">
+						<requirement name="ProgressionLevel" progression_name="skillMedical" operation="GTE" value="40"/>						
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$medicRegHealthIncreaseSpeed" operation="set" value="3">
+						<requirement name="ProgressionLevel" progression_name="skillMedical" operation="GTE" value="50"/>						
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$medicRegHealthIncreaseSpeed" operation="set" value="3.3">
+						<requirement name="ProgressionLevel" progression_name="skillMedical" operation="GTE" value="60"/>						
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$medicRegHealthIncreaseSpeed" operation="set" value="3.6">
+						<requirement name="ProgressionLevel" progression_name="skillMedical" operation="GTE" value="70"/>						
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$medicRegHealthIncreaseSpeed" operation="set" value="3.9">
+						<requirement name="ProgressionLevel" progression_name="skillMedical" operation="GTE" value="80"/>						
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$medicRegHealthIncreaseSpeed" operation="set" value="4.2">
+						<requirement name="ProgressionLevel" progression_name="skillMedical" operation="GTE" value="90"/>						
+					</triggered_effect>
+					<triggered_effect trigger="onSelfProgressionUpdate" action="ModifyCVar" target="self" cvar="$medicRegHealthIncreaseSpeed" operation="set" value="4.5">
+						<requirement name="ProgressionLevel" progression_name="skillMedical" operation="GTE" value="100"/>						
+					</triggered_effect>
 				</effect_group>		
 			</perk>
 			<!-- ********************************************** MINING *****************************************-->
@@ -1870,7 +1983,7 @@
 				</effect_group>				
 			</perk>	
 
-			<perk name="adeptBladePerk" min_level="0" max_level="5" base_skill_point_cost="1" parent="adeptMeleePerk" name_key="adeptBladePerkName" desc_key="adeptBladePerkDesc"  icon="ui_game_symbol_mining">
+			<perk name="adeptBladePerk" min_level="0" max_level="5" base_skill_point_cost="1" parent="adeptMeleePerk" name_key="adeptBladePerkName" desc_key="adeptBladePerkDesc"  icon="ui_game_symbol_knife">
 				<effect_group>
 					<effect_description level="1" desc_key="adeptBladePerkDescRank1" long_desc_key="adeptBladePerkLongDescRank1"/>
 					<effect_description level="2" desc_key="adeptBladePerkDescRank2" long_desc_key="adeptBladePerkLongDescRank2"/>
@@ -1927,6 +2040,16 @@
 					<effect_description level="3" desc_key="adeptBowPerkDescRank3" long_desc_key="adeptBowPerkLongDescRank3"/>
 					<effect_description level="4" desc_key="adeptBowPerkDescRank4" long_desc_key="adeptBowPerkLongDescRank4"/>
 					<effect_description level="5" desc_key="adeptBowPerkDescRank5" long_desc_key="adeptBowPerkLongDescRank5"/>
+				</effect_group>
+			</perk>
+
+			<perk name="adeptDemolitionsPerk" min_level="0" max_level="5" base_skill_point_cost="1"  parent="adeptRangePerk" name_key="adeptDemolitionsPerkName" desc_key="adeptDemolitionsPerkDesc"   icon="ui_game_symbol_mining">				
+				<effect_group>
+					<effect_description level="1" desc_key="adeptDemolitionsPerkDescRank1" long_desc_key="adeptDemolitionsPerkLongDescRank1"/>
+					<effect_description level="2" desc_key="adeptDemolitionsPerkDescRank2" long_desc_key="adeptDemolitionsPerkLongDescRank2"/>
+					<effect_description level="3" desc_key="adeptDemolitionsPerkDescRank3" long_desc_key="adeptDemolitionsPerkLongDescRank3"/>
+					<effect_description level="4" desc_key="adeptDemolitionsPerkDescRank4" long_desc_key="adeptDemolitionsPerkLongDescRank4"/>
+					<effect_description level="5" desc_key="adeptDemolitionsPerkDescRank5" long_desc_key="adeptDemolitionsPerkLongDescRank5"/>
 				</effect_group>
 			</perk>
 
@@ -2070,6 +2193,26 @@
 				</effect_group>
 			</perk>
 
+			<perk name="adeptMedicalPerk" min_level="0" max_level="5" base_skill_point_cost="1"  parent="adeptSurvivalPerk" name_key="adeptMedicalPerkName" desc_key="adeptMedicalPerkDesc" icon="ui_game_symbol_medical">
+				<effect_group>
+					<effect_description level="1" desc_key="adeptMedicalPerkDescRank1" long_desc_key="adeptMedicalPerkLongDescRank1"/>
+					<effect_description level="2" desc_key="adeptMedicalPerkDescRank2" long_desc_key="adeptMedicalPerkLongDescRank2"/>
+					<effect_description level="3" desc_key="adeptMedicalPerkDescRank3" long_desc_key="adeptMedicalPerkLongDescRank3"/>
+					<effect_description level="4" desc_key="adeptMedicalPerkDescRank4" long_desc_key="adeptMedicalPerkLongDescRank4"/>
+					<effect_description level="5" desc_key="adeptMedicalPerkDescRank5" long_desc_key="adeptMedicalPerkLongDescRank5"/>
+				</effect_group>
+			</perk>
+
+			<perk name="adeptMiningPerk" min_level="0" max_level="5" base_skill_point_cost="1"  parent="adeptSurvivalPerk" name_key="adeptMiningPerkName" desc_key="adeptMiningPerkDesc" icon="ui_game_symbol_mining">
+				<effect_group>
+					<effect_description level="1" desc_key="adeptMiningPerkDescRank1" long_desc_key="adeptMiningPerkLongDescRank1"/>
+					<effect_description level="2" desc_key="adeptMiningPerkDescRank2" long_desc_key="adeptMiningPerkLongDescRank2"/>
+					<effect_description level="3" desc_key="adeptMiningPerkDescRank3" long_desc_key="adeptMiningPerkLongDescRank3"/>
+					<effect_description level="4" desc_key="adeptMiningPerkDescRank4" long_desc_key="adeptMiningPerkLongDescRank4"/>
+					<effect_description level="5" desc_key="adeptMiningPerkDescRank5" long_desc_key="adeptMiningPerkLongDescRank5"/>
+				</effect_group>
+			</perk>
+
 			<perk name="adeptScavengingPerk" min_level="0" max_level="5" base_skill_point_cost="1" parent="adeptSurvivalPerk" name_key="adeptScavengingPerkName" desc_key="adeptScavengingPerkDesc"   icon="ui_game_symbol_mining">
 				<effect_group>
 					<effect_description level="1" desc_key="adeptScavengingPerkDescRank1" long_desc_key="adeptScavengingPerkLongDescRank1"/>
@@ -2150,16 +2293,6 @@
 				</effect_group>
 			</perk>
 
-			<perk name="adeptMiningPerk" min_level="0" max_level="5" base_skill_point_cost="1"  parent="adeptSurvivalPerk" name_key="adeptMiningPerkName" desc_key="adeptMiningPerkDesc" icon="ui_game_symbol_mining">
-				<effect_group>
-					<effect_description level="1" desc_key="adeptMiningPerkDescRank1" long_desc_key="adeptMiningPerkLongDescRank1"/>
-					<effect_description level="2" desc_key="adeptMiningPerkDescRank2" long_desc_key="adeptMiningPerkLongDescRank2"/>
-					<effect_description level="3" desc_key="adeptMiningPerkDescRank3" long_desc_key="adeptMiningPerkLongDescRank3"/>
-					<effect_description level="4" desc_key="adeptMiningPerkDescRank4" long_desc_key="adeptMiningPerkLongDescRank4"/>
-					<effect_description level="5" desc_key="adeptMiningPerkDescRank5" long_desc_key="adeptMiningPerkLongDescRank5"/>
-				</effect_group>
-			</perk>
-
 			<perk name="adeptSoftwareEngineerPerk" min_level="0" max_level="5" base_skill_point_cost="1"  parent="adeptCraftingPerk" name_key="adeptSoftwareEngineerPerkName" desc_key="adeptSoftwareEngineerPerkDesc"   icon="ui_game_symbol_mining">
 				<effect_group>
 					<effect_description level="1" desc_key="adeptSoftwareEngineerPerkDescRank1" long_desc_key="adeptSoftwareEngineerPerkLongDescRank1"/>
@@ -2210,16 +2343,6 @@
 				</effect_group>
 			</perk>
 
-			<perk name="adeptDemolitionsPerk" min_level="0" max_level="5" base_skill_point_cost="1"  parent="adeptCraftingPerk" name_key="adeptDemolitionsPerkName" desc_key="adeptDemolitionsPerkDesc"   icon="ui_game_symbol_mining">
-				<effect_group>
-					<effect_description level="1" desc_key="adeptDemolitionsPerkDescRank1" long_desc_key="adeptDemolitionsPerkLongDescRank1"/>
-					<effect_description level="2" desc_key="adeptDemolitionsPerkDescRank2" long_desc_key="adeptDemolitionsPerkLongDescRank2"/>
-					<effect_description level="3" desc_key="adeptDemolitionsPerkDescRank3" long_desc_key="adeptDemolitionsPerkLongDescRank3"/>
-					<effect_description level="4" desc_key="adeptDemolitionsPerkDescRank4" long_desc_key="adeptDemolitionsPerkLongDescRank4"/>
-					<effect_description level="5" desc_key="adeptDemolitionsPerkDescRank5" long_desc_key="adeptDemolitionsPerkLongDescRank5"/>
-				</effect_group>
-			</perk>
-
 			<perk name="adeptFarmingPerk" min_level="0" max_level="5" base_skill_point_cost="1"  parent="adeptCraftingPerk" name_key="adeptFarmingPerkName" desc_key="adeptFarmingPerkDesc"   icon="ui_game_symbol_mining">
 				<effect_group>
 					<effect_description level="1" desc_key="adeptFarmingPerkDescRank1" long_desc_key="adeptFarmingPerkLongDescRank1"/>
@@ -2263,24 +2386,20 @@
 					<unlock_entry item="carBattery" unlock_tier="1" />
 				</display_entry>
 
-				<display_entry icon="smallEngine" name_key="vehiclesT1-3" has_quality="false" unlock_level="10" >										
-					<unlock_entry item="smallEngine,vehicleWheels" unlock_tier="1" />
+				<display_entry icon="vehicleWheels" name_key="vehiclesT1-3" has_quality="false" unlock_level="10" >										
+					<unlock_entry item="vehicleWheels" unlock_tier="1" />
 				</display_entry>
 
 				<display_entry icon="AutomotiveResearchBundle2" name_key="vehiclesT2-1" has_quality="false" unlock_level="15,20" >
-					<unlock_entry item="AutomotiveResearchBundle2,AutomotiveComponentsT2,vehicleMinibikeChassis,vehicleMinibikeHandlebars,modVehicleOffRoadHeadlights,vehicleMinibikePlaceable" unlock_tier="1" />						
+					<unlock_entry item="AutomotiveResearchBundle2,AutomotiveComponentsT2,smallEngine,vehicleMinibikeChassis,vehicleMinibikeHandlebars,modVehicleOffRoadHeadlights,vehicleMinibikePlaceable" unlock_tier="1" />					
 				</display_entry>
 				<display_entry icon="AutomotiveResearchBundle3" name_key="vehiclesT3-1" has_quality="false" unlock_level="25,30,35,40" >
 					<unlock_entry item="AutomotiveResearchBundle3,AutomotiveComponentsT3,MotorcycleFrame,MotorcycleShocksFront,MotorcycleShocksRear,vehicleMotorcyclePlaceable,MotorCycleEngine,vehicleMotorcycleHandlebars,modVehicleReserveFuelTank,modVehicleExpandedSeat,vehicleMotorcycleChassis" unlock_tier="1" />
-					<unlock_entry item="modVehicleFuelSaver,modFuelTankSmall" unlock_tier="2" />
-					<unlock_entry item="" unlock_tier="3" />
-					<unlock_entry item="" unlock_tier="4" />					
+					<unlock_entry item="modVehicleFuelSaver,modFuelTankSmall" unlock_tier="2" />									
 				</display_entry>
-				<display_entry icon="AutomotiveResearchBundle4" name_key="vehiclesT4-1" has_quality="false" unlock_level="45,50,55,60" >					
-					<unlock_entry item="AutomotiveResearchBundle4,AutomotiveComponentsT4,CarEngine,vehicle4x4TruckChassis,vehicle4x4TruckChassisFront,vehicle4x4TruckAccessories,vehicle4x4TruckAccessoriesExhaust,vehicle4x4TruckAccessoryFront,vehicle4x4TruckChassisBackend,vehicle4x4TruckPlaceable,modVehicleSuperCharger" unlock_tier="1" />
+				<display_entry icon="AutomotiveResearchBundle4" name_key="vehiclesT4-1" has_quality="false" unlock_level="45,50,55,60" >			  		
+					<unlock_entry item="AutomotiveResearchBundle4,AutomotiveComponentsT4,CarEngine,vehicleTruck4x4Chassis,vehicleTruck4x4ChassisFront,vehicleTruck4x4Accessories,vehicleTruck4x4AccessoriesExhaust,vehicleTruck4x4AccessoryFront,vehicleTruck4x4ChassisBackend,vehicleTruck4x4Placeable,modVehicleSuperCharger" unlock_tier="1" />
 					<unlock_entry item="modFuelTankLarge" unlock_tier="2" />
-					<unlock_entry item="" unlock_tier="3" />
-					<unlock_entry item="" unlock_tier="4" />
 				</display_entry>
 				<display_entry icon="AutomotiveResearchBundle5" name_key="vehiclesT5-1" has_quality="false" unlock_level="65,70,75,80" >					
 					<unlock_entry item="AutomotiveResearchBundle5,AutomotiveComponentsT5" unlock_tier="1" />					
@@ -2290,7 +2409,7 @@
 				</display_entry>
 
 				<effect_group>				
-					<passive_effect name="HarvestCount" operation="base_add" value="0,2" level="1,100" tags="skillAutomotive"/>
+					<passive_effect name="HarvestCount" operation="base_add" value="0,1" level="1,100" tags="skillAutomotive"/>
 				</effect_group>
 				<effect_group>
 					<passive_effect name="CraftingTime" operation="perc_add" value="0.5,-.5" level="1,100" tags="skillAutomotive"/>
@@ -2300,14 +2419,11 @@
 					<passive_effect name="CraftingTier" operation="base_set" level="5,8,11,14,18,21,100" value="1,2,3,4,5,6,6" tags="carBattery"/>
 					
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5,100" value="1" tags="AutomotiveResearchBundle1,AutomotiveComponentsT1,carBattery,Waterpump,StarterMotor,Alternator"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="smallEngine,vehicleWheels"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="AutomotiveResearchBundle2,AutomotiveComponentsT2,vehicleMinibikeChassis,vehicleMinibikeHandlebars,modVehicleOffRoadHeadlights,vehicleMinibikePlaceable"/>										
-
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="vehicleWheels"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="AutomotiveResearchBundle2,AutomotiveComponentsT2,smallEngine,vehicleMinibikeChassis,vehicleMinibikeHandlebars,modVehicleOffRoadHeadlights,vehicleMinibikePlaceable"/>																								
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="AutomotiveResearchBundle3,AutomotiveComponentsT3,MotorcycleFrame,MotorcycleShocksFront,MotorcycleShocksRear,vehicleMotorcyclePlaceable,MotorCycleEngine,vehicleMotorcycleHandlebars,modVehicleReserveFuelTank,modVehicleExpandedSeat,vehicleMotorcycleChassis"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="modVehicleFuelSaver,modFuelTankSmall"/>
-	
-		
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="AutomotiveResearchBundle4,AutomotiveComponentsT4,CarEngine,vehicle4x4TruckChassis,vehicle4x4TruckChassisFront,vehicle4x4TruckAccessories,vehicle4x4TruckAccessoriesExhaust,vehicle4x4TruckAccessoryFront,vehicle4x4TruckChassisBackend,vehicle4x4TruckPlaceable,modVehicleSuperCharger"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="modVehicleFuelSaver,modFuelTankSmall"/>			
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="AutomotiveResearchBundle4,AutomotiveComponentsT4,CarEngine,vehicleTruck4x4Chassis,vehicleTruck4x4ChassisFront,vehicleTruck4x4Accessories,vehicleTruck4x4AccessoriesExhaust,vehicleTruck4x4AccessoryFront,vehicleTruck4x4ChassisBackend,vehicleTruck4x4Placeable,modVehicleSuperCharger"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,100" value="1" tags="modFuelTankLarge"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="65,100" value="1" tags="AutomotiveResearchBundle5,AutomotiveComponentsT5"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="85,100" value="1" tags="AutomotiveResearchBundle6,AutomotiveComponentsT6"/>
@@ -2316,13 +2432,29 @@
 			<!-- ********************************************** BLACKSMITHING *****************************************-->
 			<crafting_skill name="skillBlacksmithing" parent="technicalTab" name_key="skillBlacksmithingName" desc_key="skillBlacksmithingDesc" base_skill_point_cost="0" icon="ui_game_symbol_forge">				
 				<display_entry icon="BlacksmithingResearchBundle1" name_key="blacksmithingT1-1" has_quality="false" unlock_level="5,10" >					
-					<unlock_entry item="BlacksmithingResearchBundle1,resourceLowQualityWroughtIron,forge,corrugatedMetalShapes,cntMailBox01VariantHelper,cntMailBox02VariantHelper,cntMailBox03VariantHelper" unlock_tier="1" />
+					<unlock_entry item="BlacksmithingResearchBundle1,resourceLowQualityWroughtIron,forge,corrugatedMetalShapes:VariantHelper,cntMailBox01VariantHelper,cntMailBox02VariantHelper,cntMailBox03VariantHelper" unlock_tier="1" />
 					<unlock_entry item="glassBlockVariantHelper,trapGlassBusinessSheet1x1,trapGlassBusinessCTRSheet1x1,ammoDartIron,resourceBuckshot,resourceMetalPipe,toolCookingGrill,resourceNail,modMeleeClubMetalSpikes,resourceBulletCasing,ammoJunkTurretRegular,resourceBulletTip,bucketEmpty,metalFenceRailingTrellisSheetBlockVariantHelper" unlock_tier="2" />
 				</display_entry>
 
-				<display_entry icon="BlacksmithingResearchBundle2" name_key="blacksmithingT2-1" has_quality="false" unlock_level="15,20" >										
-					<unlock_entry item="BlacksmithingResearchBundle2,resourceWroughtIron,burningBarrelPlayer,trapSpikesIronDmg0,modGunChoke,ladderMetal,modGunDuckbill,metalFurnitureBlockVariantHelper,cellarDoorDoubleIron,ironDoorDoubleBlockVariantHelper,ironDoorBlockVariantHelper,toolCookingPot,resourceArrowHeadIron" unlock_tier="1" />
-					<unlock_entry item="rollUpDoor3x3VariantHelper,rollUpDoor5x4VariantHelper,rollUpDoor7x4VariantHelper,cntWallSafe_Player,modGunMuzzleBrake,cntDeskSafe_Player,shuttersIronBlockVariantHelper,AxeHead,ClawHammerHead,IronShovelHead,IronPickaxeHead,ironHatchBlockVariantHelper,ammoJunkTurretShell" unlock_tier="2" />
+        <display_entry icon="armorMinerOutfit" name_key="blacksmithingT2-3" has_quality="true" unlock_level="15,25,35,45,55,65" >
+          <unlock_entry item="armorMinerHelmet,armorMinerOutfit,armorMinerGloves,armorMinerBoots" unlock_tier="1" />
+        </display_entry>
+
+        <display_entry icon="armorNomadOutfit" name_key="blacksmithingT2-3" has_quality="true" unlock_level="15,25,35,45,55,65" >
+          <unlock_entry item="armorNomadHelmet,armorNomadOutfit,armorNomadGloves,armorNomadBoots" unlock_tier="1" />
+        </display_entry>
+
+        <display_entry icon="armorNerdOutfit" name_key="blacksmithingT2-3" has_quality="true" unlock_level="15,25,35,45,55,65" >
+          <unlock_entry item="armorNerdHelmet,armorNerdOutfit,armorNerdGloves,armorNerdBoots" unlock_tier="1" />
+        </display_entry>
+
+        <display_entry icon="armorRaiderOutfit" name_key="blacksmithingT2-3" has_quality="true" unlock_level="15,25,35,45,55,65" >
+          <unlock_entry item="armorRaiderHelmet,armorRaiderOutfit,armorRaiderGloves,armorRaiderBoots" unlock_tier="1" />
+        </display_entry>
+
+        <display_entry icon="BlacksmithingResearchBundle2" name_key="blacksmithingT2-1" has_quality="false" unlock_level="15,20" >										
+					<unlock_entry item="BlacksmithingResearchBundle2,resourceWroughtIron,burningBarrelPlayer,trapSpikesIronDmg0,modGunChoke,ladderMetal,modGunDuckbill,metalFurnitureBlockVariantHelper,toolCookingPot,resourceArrowHeadIron,ammoBundleJunkTurretRegular" unlock_tier="1" />
+					<unlock_entry item="rollUpDoor3x3VariantHelper,rollUpDoor5x4VariantHelper,rollUpDoor7x4VariantHelper,cntWallSafe_Player,modGunMuzzleBrake,cntDeskSafe_Player,shuttersIronBlockVariantHelper,IronAxeHead,IronClawHammerHead,IronShovelHead,IronPickaxeHead,ironHatchBlockVariantHelper,ammoJunkTurretShell" unlock_tier="2" />
 				</display_entry>				
 			
 				<display_entry icon="meleeToolRepairT1ClawHammer" name_key="blacksmithingT2-2" has_quality="true" unlock_level="20,25,30,35,40,45" >
@@ -2330,43 +2462,49 @@
 				</display_entry>
 
 				<display_entry icon="BlacksmithingResearchBundle3" name_key="blacksmithingT3-2" has_quality="false" unlock_level="25,30,35,40" >
-					<unlock_entry item="BlacksmithingResearchBundle3,metalTrussingIBeamBlockVariantHelper,ironGarageDoorBlockVariantHelper,ironBarsCentered,resourceForgedIron,ironBars,ironBarsCNR,ammoJunkTurretAP,ammo9mmBulletHP,ammo9mmBulletAP,modMeleeGraveDigger,trapSpikesScrapIronMaster,gunHandgunT1PistolParts,gunRifleT1HuntingRifleParts,gunShotgunT1DoubleBarrelParts,gunMGT1AK47Parts" unlock_tier="1" />
-					<unlock_entry item="toolAnvil" unlock_tier="2" />
+					<unlock_entry item="BlacksmithingResearchBundle3,metalTrussingIBeamBlockVariantHelper,cellarDoorDoubleIron,ironDoorDoubleBlockVariantHelper,ironDoorBlockVariantHelper,ironGarageDoorBlockVariantHelper,ironBarsCentered,resourceForgedIron,ironBars,ironBarsCNR,ammoJunkTurretAP,ammo9mmBulletHP,ammo9mmBulletAP,trapSpikesScrapIronMaster,gunHandgunT1PistolParts,gunRifleT1HuntingRifleParts,gunShotgunT1DoubleBarrelParts,gunMGT1AK47Parts,cntIronWritableCrate" unlock_tier="1" />
+					<unlock_entry item="toolAnvil,ammoBundleJunkTurretAP" unlock_tier="2" />
 					<unlock_entry item="resourceLockPick" unlock_tier="3" />
 					<unlock_entry item="resourceSpring" unlock_tier="4" />					
 				</display_entry>
 
-				<display_entry icon="modMeleeWeightedHead" name_key="blacksmithingT3-1" has_quality="false" unlock_level="25,30,35,40" >
-					<unlock_entry item="" unlock_tier="1" />
-					<unlock_entry item="modMeleeWeightedHead,modMeleeWoodSplitter,modMeleeSerratedBlade" unlock_tier="2" />
+				<display_entry icon="modMeleeWeightedHead" name_key="blacksmithingT3-1" has_quality="false" unlock_level="25,30,35,40" >          
+          <unlock_entry item="modMeleeWeightedHead,modMeleeGraveDigger,modMeleeWoodSplitter" unlock_tier="1" />
+          <unlock_entry item="modMeleeSerratedBlade" unlock_tier="2" />
 					<unlock_entry item="modMeleeBunkerBuster,modMeleeTemperedBlade" unlock_tier="3" />
-					<unlock_entry item="modMeleeIronBreaker,modMeleeFiremansAxeMod" unlock_tier="4" />					
+					<unlock_entry item="modMeleeIronBreaker" unlock_tier="4" />					
 				</display_entry>
 
 				<display_entry icon="ammo44MagnumBulletHP" name_key="blacksmithingT3-1" has_quality="false" unlock_level="25,30,35,40" >
-					<unlock_entry item="" unlock_tier="1" />
 					<unlock_entry item="ammo44MagnumBulletHP,ammo44MagnumBulletAP" unlock_tier="2" />
-					<unlock_entry item="ammo762mmBulletHP,ammo762mmBulletAP,ammoShotgunBreachingSlug,ammoShotgunSlug" unlock_tier="3" />
+					<unlock_entry item="ammo762mmBulletHP,ammo762mmBulletAP,ammoShotgunBreachingSlug,ammoShotgunSlug,ammoBundleJunkTurretShell" unlock_tier="3" />
 					<unlock_entry item="resourceRocketCasing,resourceRocketTip" unlock_tier="4" />					
 				</display_entry>
 
 				<display_entry icon="meleeWpnBladeT1HuntingKnife" name_key="blacksmithingT3-3" has_quality="true" unlock_level="25,30,35,40,45,50" >
 					<unlock_entry item="meleeWpnBladeT1HuntingKnife,meleeWpnSpearT1IronSpear,meleeWpnKnucklesT1IronKnuckles,meleeWpnSledgeT1IronSledgehammer" unlock_tier="1" />
 				</display_entry>
+     
+        <display_entry icon="modMeleeFiremansAxeMod" name_key="blacksmithingT4-1" has_quality="false" unlock_level="45,50,55,60" >
+          <unlock_entry item="modMeleeFiremansAxeMod,modMeleeClubBarbedWire,modShotgunSawedOffBarrel" unlock_tier="1" />
+        </display_entry>
 
-				<display_entry icon="BlacksmithingResearchBundle4" name_key="blacksmithingT4-2" has_quality="false" unlock_level="45,50,55,60" >					
-					<unlock_entry item="BlacksmithingResearchBundle4,toolForgeCrucible,meleeToolWireTool,modGunBarrelExtender,modMeleeClubBarbedWire,resourceForgedSteel,cellarDoorDoubleSteel,ladderSteel,cntGunSafeVariantHelper,SteelAxeHead,SteelShovelHead,SteelPickaxeHead" unlock_tier="1" />
-					<unlock_entry item="vaultDoor01Double,vaultDoor01,vaultHatch01,cntMunitionsBoxArmy,cntSteelWallCabinetSecure,shuttersSteelBlockVariantHelper,modMeleeFortifyingGrip" unlock_tier="2" />
-					<unlock_entry item="steelShapes,armorSteelSetParts,modArmorCustomizedFittings,modMeleeClubMetalChain,modRoboticDroneArmorPlatingMod" unlock_tier="3" />
-					<unlock_entry item="resourceArrowHeadSteelAP,modMeleeDiamondTip,modMeleeErgonomicGrip,modMeleeFortifyingGrip" unlock_tier="4" />
+        <display_entry icon="BlacksmithingResearchBundle4" name_key="blacksmithingT4-2" has_quality="false" unlock_level="45,50" >					
+					<unlock_entry item="BlacksmithingResearchBundle4,toolForgeCrucible,meleeToolWireTool,modGunBarrelExtender,resourceForgedSteel,cellarDoorDoubleSteel,ladderSteel,cntGunSafeVariantHelper,SteelAxeHead,SteelShovelHead,SteelPickaxeHead,glassBulletproofBlockVariantHelper" unlock_tier="1" />
+					<unlock_entry item="vaultDoor01Double,vaultDoor01,vaultHatch01,cntMunitionsBoxArmy,cntSteelWallCabinetSecure,shuttersSteelBlockVariantHelper,modMeleeFortifyingGrip,cntSteelWritableCrate" unlock_tier="2" />					
 				</display_entry>
+
+        <display_entry icon="modArmorCustomizedFittings" name_key="blacksmithingT4-2" has_quality="false" unlock_level="55,60" >          
+          <unlock_entry item="modArmorCustomizedFittings,modMeleeClubMetalChain,modRoboticDroneArmorPlatingMod,meleeToolAxeT3ChainsawParts" unlock_tier="1" />
+          <unlock_entry item="resourceArrowHeadSteelAP,modMeleeDiamondTip,modMeleeErgonomicGrip,modMeleeFortifyingGrip" unlock_tier="2" />
+        </display_entry>
 
 				<display_entry icon="meleeToolAxeT2SteelAxe" name_key="blacksmithingT4-3" has_quality="true" unlock_level="45,48,51,54,58,62" >
 					<unlock_entry item="meleeToolAxeT2SteelAxe,meleeToolPickT2SteelPickaxe,meleeToolShovelT2SteelShovel" unlock_tier="1" />
 				</display_entry>
 				
 				<display_entry icon="BlacksmithingResearchBundle5" name_key="blacksmithingT5-1" has_quality="false" unlock_level="65,70,75,80">
-					<unlock_entry item="BlacksmithingResearchBundle5,resourceForgedStainlessSteel,meleeWpnKnucklesT3SteelKnucklesParts,meleeWpnBladeT3MacheteParts,meleeWpnSpearT3SteelSpearParts,meleeWpnClubT3SteelClubParts,meleeWpnSledgeT3SteelSledgehammerParts,meleeToolAllSteelParts,armorSteelSetParts" unlock_tier="1" />	
+					<unlock_entry item="BlacksmithingResearchBundle5,resourceForgedStainlessSteel,meleeWpnKnucklesT3SteelKnucklesParts,meleeWpnBladeT3MacheteParts,meleeWpnSpearT3SteelSpearParts,meleeWpnClubT3SteelClubParts,meleeWpnSledgeT3SteelSledgehammerParts,meleeToolAllSteelParts" unlock_tier="1" />	
 					<unlock_entry item="gunExplosivesT3RocketLauncherParts" unlock_tier="2" />										
 				</display_entry>
 
@@ -2380,34 +2518,41 @@
 				<effect_group>
 					<passive_effect name="CraftingTime" operation="perc_add" value="0.5,-.5" level="1,100" tags="skillBlacksmithing"/>
 				</effect_group>
-				<effect_group>
-					
+				<effect_group>					
 					
 					<passive_effect name="CraftingTier" operation="base_set" level="20,25,30,35,40,45,100" value="1,2,3,4,5,6,6" tags="meleeToolRepairT1ClawHammer,meleeToolAxeT1IronFireaxe,meleeToolPickT1IronPickaxe,meleeToolShovelT1IronShovel"/>					
 					<passive_effect name="CraftingTier" operation="base_set" level="45,48,51,54,58,62,100" value="1,2,3,4,5,6,6" tags="meleeToolAxeT2SteelAxe,meleeToolPickT2SteelPickaxe,meleeToolShovelT2SteelShovel"/>
-					<passive_effect name="CraftingTier" operation="base_set" level="65,70,75,80,85,90,100" value="1,2,3,4,5,6,6" tags="meleeWpnClubT3SteelClub,meleeWpnSpearT3SteelSpear,meleeWpnSledgeT3SteelSledgehammer,meleeWpnKnucklesT3SteelKnuckles,meleeWpnBladeT3Machete"/>					
+					<passive_effect name="CraftingTier" operation="base_set" level="65,70,75,80,85,90,100" value="1,2,3,4,5,6,6" tags="meleeWpnClubT3SteelClub,meleeWpnSpearT3SteelSpear,meleeWpnSledgeT3SteelSledgehammer,meleeWpnKnucklesT3SteelKnuckles,meleeWpnBladeT3Machete"/>
 
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="1,100" value="1" tags="resourceForgedIron"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5,100" value="1" tags="BlacksmithingResearchBundle1,resourceLowQualityWroughtIron,forge,corrugatedMetalShapes,cntMailBox01VariantHelper,cntMailBox02VariantHelper,cntMailBox03VariantHelper"/>
+          <passive_effect name="CraftingTier" operation="base_add" level="15,25,35,45,55,65,100" value="0,1,2,3,4,5,5" tags="armorMinerHelmet,armorMinerOutfit,armorMinerGloves,armorMinerBoots"/>
+          <passive_effect name="CraftingTier" operation="base_add" level="15,25,35,45,55,65,100" value="0,1,2,3,4,5,5" tags="armorNomadHelmet,armorNomadOutfit,armorNomadGloves,armorNomadBoots"/>
+          <passive_effect name="CraftingTier" operation="base_add" level="15,25,35,45,55,65,100" value="0,1,2,3,4,5,5" tags="armorNerdHelmet,armorNerdOutfit,armorNerdGloves,armorNerdBoots"/>
+          <passive_effect name="CraftingTier" operation="base_add" level="15,25,35,45,55,65,100" value="0,1,2,3,4,5,5" tags="armorRaiderHelmet,armorRaiderOutfit,armorRaiderGloves,armorRaiderBoots"/>          
+					
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5,100" value="1" tags="BlacksmithingResearchBundle1,resourceLowQualityWroughtIron,forge,corrugatedMetalShapes:VariantHelper,cntMailBox01VariantHelper,cntMailBox02VariantHelper,cntMailBox03VariantHelper"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="glassBlockVariantHelper,trapGlassBusinessSheet1x1,trapGlassBusinessCTRSheet1x1,ammoDartIron,resourceBuckshot,resourceMetalPipe,toolCookingGrill,resourceNail,modMeleeClubMetalSpikes,resourceBulletCasing,resourceBulletTip,ammoJunkTurretRegular,bucketEmpty,metalFenceRailingTrellisSheetBlockVariantHelper"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="BlacksmithingResearchBundle2,resourceWroughtIron,burningBarrelPlayer,trapSpikesIronDmg0,modGunChoke,ladderMetal,modGunDuckbill,metalFurnitureBlockVariantHelper,cellarDoorDoubleIron,ironDoorDoubleBlockVariantHelper,ironDoorBlockVariantHelper,toolCookingPot,resourceArrowHeadIron"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="20,100" value="1" tags="rollUpDoor3x3VariantHelper,rollUpDoor5x4VariantHelper,rollUpDoor7x4VariantHelper,cntWallSafe_Player,modGunMuzzleBrake,cntDeskSafe_Player,shuttersIronBlockVariantHelper,AxeHead,ClawHammerHead,IronShovelHead,IronPickaxeHead,modMeleeClubMetalSpikes,meleeToolRepairT1ClawHammer,meleeToolAxeT1IronFireaxe,meleeToolPickT1IronPickaxe,meleeToolShovelT1IronShovel,ironHatchBlockVariantHelper,ammoJunkTurretShell"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="armorMinerHelmet,armorMinerOutfit,armorMinerGloves,armorMinerBoots"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="armorNomadHelmet,armorNomadOutfit,armorNomadGloves,armorNomadBoots"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="armorNerdHelmet,armorNerdOutfit,armorNerdGloves,armorNerdBoots"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="armorRaiderHelmet,armorRaiderOutfit,armorRaiderGloves,armorRaiderBoots"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="BlacksmithingResearchBundle2,resourceWroughtIron,burningBarrelPlayer,trapSpikesIronDmg0,modGunChoke,ladderMetal,modGunDuckbill,metalFurnitureBlockVariantHelper,toolCookingPot,resourceArrowHeadIron,ammoBundleJunkTurretRegular"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="20,100" value="1" tags="rollUpDoor3x3VariantHelper,rollUpDoor5x4VariantHelper,rollUpDoor7x4VariantHelper,cntWallSafe_Player,modGunMuzzleBrake,cntDeskSafe_Player,shuttersIronBlockVariantHelper,IronAxeHead,IronClawHammerHead,IronShovelHead,IronPickaxeHead,modMeleeClubMetalSpikes,meleeToolRepairT1ClawHammer,meleeToolAxeT1IronFireaxe,meleeToolPickT1IronPickaxe,meleeToolShovelT1IronShovel,ironHatchBlockVariantHelper,ammoJunkTurretShell"/>
 		
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="BlacksmithingResearchBundle3,metalTrussingIBeamBlockVariantHelper,resourceForgedIron,ironBarsCentered,resourceForgedIron,ironBars,ironBarsCNR,ammoJunkTurretAP,ammo9mmBulletHP,ammo9mmBulletAP,modMeleeGraveDigger,trapSpikesScrapIronMaster,gunHandgunT1PistolParts,gunRifleT1HuntingRifleParts,gunShotgunT1DoubleBarrelParts,gunMGT1AK47Parts"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="ironGarageDoorBlockVariantHelper"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="modMeleeWeightedHead,modMeleeWoodSplitter,toolAnvil,ammo44MagnumBulletHP,ammo44MagnumBulletAP,modMeleeSerratedBlade"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="35,100" value="1" tags="modMeleeBunkerBuster,modMeleeTemperedBlade,resourceLockPick,ammo762mmBulletHP,ammo762mmBulletAP,ammoShotgunBreachingSlug,ammoShotgunSlug"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="40,100" value="1" tags="modMeleeIronBreaker,resourceSpring,modMeleeFiremansAxeMod,resourceRocketCasing,resourceRocketTip"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="BlacksmithingResearchBundle3,metalTrussingIBeamBlockVariantHelper,cellarDoorDoubleIron,ironDoorDoubleBlockVariantHelper,ironDoorBlockVariantHelper,resourceForgedIron,ironBarsCentered,ironBars,ironBarsCNR,ammoJunkTurretAP,ammo9mmBulletHP,ammo9mmBulletAP,modMeleeGraveDigger,trapSpikesScrapIronMaster,gunHandgunT1PistolParts,gunRifleT1HuntingRifleParts,gunShotgunT1DoubleBarrelParts,gunMGT1AK47Parts"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="modMeleeWeightedHead,ironGarageDoorBlockVariantHelper,modMeleeWoodSplitter"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="toolAnvil,ammo44MagnumBulletHP,ammo44MagnumBulletAP,modMeleeSerratedBlade,ammoBundleJunkTurretAP"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="35,100" value="1" tags="modMeleeBunkerBuster,modMeleeTemperedBlade,resourceLockPick,ammo762mmBulletHP,ammo762mmBulletAP,ammoShotgunBreachingSlug,ammoShotgunSlug,ammoBundleJunkTurretShell"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="40,100" value="1" tags="modMeleeIronBreaker,resourceSpring,resourceRocketCasing,resourceRocketTip"/>
 		
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="meleeWpnBladeT1HuntingKnife,meleeWpnSpearT1IronSpear,meleeWpnKnucklesT1IronKnuckles,meleeWpnSledgeT1IronSledgehammer"/>
 
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="BlacksmithingResearchBundle4,toolForgeCrucible,meleeToolWireTool,modGunBarrelExtender,modMeleeClubBarbedWire,resourceForgedSteel,cellarDoorDoubleSteel,ladderSteel,cntGunSafeVariantHelper,SteelAxeHead,SteelShovelHead,SteelPickaxeHead"/>				
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="meleeToolAxeT2SteelAxe,meleeToolPickT2SteelPickaxe,meleeToolShovelT2SteelShovel"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,100" value="1" tags="vaultDoor01Double,vaultDoor01,vaultHatch01,cntMunitionsBoxArmy,modMeleeFortifyingGrip"/>					
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="55,100" value="1" tags="steelShapes,armorSteelSetParts,modArmorCustomizedFittings,modMeleeClubMetalChain,modRoboticDroneArmorPlatingMod"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="modShotgunSawedOffBarrel,modMeleeFiremansAxeMod,meleeToolAxeT2SteelAxe,meleeToolPickT2SteelPickaxe,meleeToolShovelT2SteelShovel,glassBulletproofBlockVariantHelper"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,100" value="1" tags="vaultDoor01Double,vaultDoor01,vaultHatch01,cntMunitionsBoxArmy,modMeleeFortifyingGrip,cntSteelWritableCrate"/>					
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="55,100" value="1" tags="modArmorCustomizedFittings,modMeleeClubMetalChain,modRoboticDroneArmorPlatingMod,meleeToolAxeT3ChainsawParts"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="60,100" value="1" tags="resourceArrowHeadSteelAP,modMeleeDiamondTip,modMeleeErgonomicGrip,modMeleeFortifyingGrip"/>
 
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="65,100" value="1" tags="BlacksmithingResearchBundle5,resourceForgedStainlessSteel,meleeWpnKnucklesT3SteelKnucklesParts,meleeWpnBladeT3MacheteParts,meleeWpnSpearT3SteelSpearParts,meleeWpnClubT3SteelClubParts,meleeWpnSledgeT3SteelSledgehammerParts,meleeToolAllSteelParts,armorSteelSetParts"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="65,100" value="1" tags="BlacksmithingResearchBundle5,resourceForgedStainlessSteel,meleeWpnKnucklesT3SteelKnucklesParts,meleeWpnBladeT3MacheteParts,meleeWpnSpearT3SteelSpearParts,meleeWpnClubT3SteelClubParts,meleeWpnSledgeT3SteelSledgehammerParts,meleeToolAllSteelParts"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="65,100" value="1" tags="meleeWpnClubT3SteelClub,meleeWpnSpearT3SteelSpear,meleeWpnSledgeT3SteelSledgehammer,meleeWpnKnucklesT3SteelKnuckles,meleeWpnBladeT3Machete"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="70,100" value="1" tags="gunExplosivesT3RocketLauncherParts"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="85,100" value="1" tags="BlacksmithingResearchBundle6,resourceForgedTungsten"/>
@@ -2415,42 +2560,53 @@
 			</crafting_skill>
 			<!-- ********************************************** CARPENTRY *****************************************-->
 			<crafting_skill name="skillCarpentry" parent="technicalTab" name_key="skillCarpentryName" desc_key="skillCarpentryDesc" base_skill_point_cost="0" icon="ui_game_symbol_workbench">				
-				<display_entry icon="treenails" name_key="carpentryT0-1" has_quality="false" unlock_level="1" >
-					<unlock_entry item="resourceTreenail" unlock_tier="1" />					
-				</display_entry>
-				<display_entry icon="meleeWpnClubT0WoodenClub" name_key="carpentryT1-2" has_quality="true" unlock_level="1,4,8,12,16,24" >
-					<unlock_entry item="meleeWpnClubT0WoodenClub,gunBowT0PrimitiveBow,meleeToolRepairT0StoneAxe,meleeToolShovelT0StoneShovel,meleeWpnSpearT0StoneSpear,meleeWpnSledgeT0StoneSledgehammer" unlock_tier="1" />
-				</display_entry>
-				<display_entry icon="CarpentryResearchBundle1" name_key="carpentryT1-1" has_quality="false" unlock_level="5,10" >					
-					<unlock_entry item="CarpentryResearchBundle1,workbench,couchUglyLargeBlockVariantHelper,couchUglySmallBlockVariantHelper,couchUglySingleBlockVariantHelper,resourceWoodT1,EmptyFarmPlot,ladderWood,looseBoardsTrapBlock1x1,looseBoardsTrapBlock3x3,looseBoardsTrapPlate1x1" unlock_tier="1" />
-					<unlock_entry item="oldWoodDoor,sectionalPlaidCouchSofaBlockVariantHelper,sectionalLeatherCouchSofaBlockVariantHelper,oldWoodDoorDouble,oldChair1VariantHelper,cellarDoorDoubleWood,woodHatch,palletEmpty,woodShapes:VariantHelper,WoodenHandle,trapSpikesWoodDmg0" unlock_tier="2" />												
-				</display_entry>				
-				<display_entry icon="CarpentryResearchBundle2" name_key="carpentryT2-1" has_quality="false" unlock_level="15,20" >										
-					<unlock_entry item="CarpentryResearchBundle2,resourceWoodT2,barbedFence,woodSignBlockVariantHelper,cntSecureStorageChest,shuttersWoodBlockVariantHelper,CrateHollow,chickenCoopEmpty" unlock_tier="1" />
-					<unlock_entry item="logWallPillar,logWallLeft,logWallRight,doorWoodLargeGate,shootingRangeTarget,metalReinforcedWoodDrawBridge" unlock_tier="2" />
+
+        <display_entry icon="meleeWpnClubT0WoodenClub" name_key="carpentryT1-tools" has_quality="true" unlock_level="1,4,8,12,16,24" >
+          <unlock_entry item="meleeWpnClubT0WoodenClub,gunBowT0PrimitiveBow,meleeToolRepairT0StoneAxe,meleeToolShovelT0StoneShovel,meleeWpnSpearT0StoneSpear,meleeWpnSledgeT0StoneSledgehammer" unlock_tier="1" />
+        </display_entry>
+        
+        <display_entry icon="CarpentryResearchBundle1" name_key="carpentryT1-building1" has_quality="false" unlock_level="5" >
+          <unlock_entry item="CarpentryResearchBundle1,workbench,resourceWoodT1,cntFootlockerVariantHelper,EmptyFarmPlot,ladderWood,looseBoardsTrapBlock1x1,looseBoardsTrapBlock3x3,looseBoardsTrapPlate1x1" unlock_tier="1" />          " />
+        </display_entry>               
+
+        <display_entry icon="CarpentryResearchBundle1" name_key="carpentryT1-building2" has_quality="false" unlock_level="10" >          
+          <unlock_entry item="cntWoodWritableCrate,oldWoodDoor,oldWoodDoorDouble,woodHatch,palletEmpty,woodShapes:VariantHelper,WoodenHandle,trapSpikesWoodDmg0" unlock_tier="1" />
+        </display_entry>
+
+        <display_entry icon="armorPrimitiveHelmet" name_key="carpentryT2-2" has_quality="true" unlock_level="15,25,35,45,55,65" >
+          <unlock_entry item="armorPrimitiveHelmet,armorPrimitiveOutfit,armorPrimitiveGloves,armorPrimitiveBoots" unlock_tier="1" />
+        </display_entry>
+        
+        <display_entry icon="CarpentryResearchBundle2" name_key="carpentryT2-1" has_quality="false" unlock_level="15,20" >										
+					<unlock_entry item="CarpentryResearchBundle2,resourceWoodT2,barbedFence,woodSignBlockVariantHelper,shuttersWoodBlockVariantHelper,chickenCoopEmpty,cellarDoorDoubleWood" unlock_tier="1" />
+					<unlock_entry item="logWallPillar,logWallLeft,logWallRight,doorWoodLargeGate,shootingRangeTarget" unlock_tier="2" />
 				</display_entry>						
 
-				<display_entry icon="CarpentryResearchBundle3" name_key="carpentryT3-1" has_quality="false" unlock_level="25,30,35,40" >
-					<unlock_entry item="CarpentryResearchBundle3,resourceWoodT3,woodFenceRailingTrellisSheetBlockVariantHelper,churchPewLeftBrown,churchPewRightBrown,cntStorageGeneric,keyRackWood,gunBowT1WoodenBowParts" unlock_tier="1" />
-					<unlock_entry item="cntFootlockerVariantHelper,couchModernBlockVariantHelper,cntStorageGenericSigned,bed02" unlock_tier="2" />
-					<unlock_entry item="endTable,cntWoodFurnitureBlockVariantHelper,cntWoodFurnitureBlockVariantHelper2" unlock_tier="3" />					
+				<display_entry icon="CarpentryResearchBundle3" name_key="carpentryT3-1" has_quality="false" unlock_level="25,30" >
+					<unlock_entry item="CarpentryResearchBundle3,resourceWoodT3,churchPewLeftBrown,churchPewRightBrown,keyRackWood,gunBowT1WoodenBowParts,couchUglyLargeBlockVariantHelper,couchUglySmallBlockVariantHelper,couchUglySingleBlockVariantHelper,metalReinforcedWoodDrawBridge" unlock_tier="1" />
+					<unlock_entry item="couchModernBlockVariantHelper,bed02,sectionalPlaidCouchSofaBlockVariantHelper" unlock_tier="2" />					
 				</display_entry>
-				<display_entry icon="gunBowT1WoodenBow" name_key="carpentryT3-2" has_quality="true" unlock_level="30,34,48,52,56,64" >
-					<unlock_entry item="gunBowT1WoodenBow,meleeWpnClubT1BaseballBat,gunBowT1IronCrossbow" unlock_tier="1" />
-				</display_entry>
+
+        <display_entry icon="gunBowT1WoodenBow" name_key="carpentryT3-Weapons" has_quality="true" unlock_level="30,34,48,52,56,64" >
+          <unlock_entry item="gunBowT1WoodenBow,meleeWpnClubT1BaseballBat,gunBowT1IronCrossbow" unlock_tier="1" />
+        </display_entry>
+        
+        <display_entry icon="cntNightstandClosed" name_key="carpentryT3-building1" has_quality="false" unlock_level="35,40" >                    
+          <unlock_entry item="cntWoodFurnitureBlockVariantHelper,cntWoodFurnitureBlockVariantHelper2,sectionalLeatherCouchSofaBlockVariantHelper" unlock_tier="1" />
+        </display_entry>
+
 				<display_entry icon="CarpentryResearchBundle4" name_key="carpentryT4-1" has_quality="false" unlock_level="45,50,55,60" >
-					<unlock_entry item="CarpentryResearchBundle4,resourceWoodT4" unlock_tier="1" />
-					<unlock_entry item="" unlock_tier="2" />
+					<unlock_entry item="CarpentryResearchBundle4,resourceWoodT4" unlock_tier="1" />					
 					<unlock_entry item="wineBarrelPlayerSecure" unlock_tier="3" />					
 				</display_entry>
 
+        <display_entry icon="gunBowT3CompoundBow" name_key="carpentryT5-2" has_quality="true" unlock_level="65,68,71,74,77,80" >
+          <unlock_entry item="gunBowT3CompoundBow,gunBowT3CompoundCrossbow" unlock_tier="1" />
+        </display_entry>
+        
 				<display_entry icon="CarpentryResearchBundle5" name_key="carpentryT5-1" has_quality="false" unlock_level="65,70,75,80" >
 					<unlock_entry item="CarpentryResearchBundle5,resourceWoodT5" unlock_tier="1" />
 					<unlock_entry item="woodenBear" unlock_tier="2" />
-				</display_entry>
-
-				<display_entry icon="gunBowT3CompoundBow" name_key="carpentryT5-2" has_quality="true" unlock_level="65,68,71,74,77,80" >
-					<unlock_entry item="gunBowT3CompoundBow,gunBowT3CompoundCrossbow" unlock_tier="1" />
 				</display_entry>
 
 				<display_entry icon="CarpentryResearchBundle6" name_key="carpentryT6-1" has_quality="false" unlock_level="85,90,95,100" >
@@ -2466,17 +2622,18 @@
 					<passive_effect name="CraftingTier" operation="base_set" level="30,34,48,52,56,64,100" value="1,2,3,4,5,6,6" tags="gunBowT1WoodenBow,meleeWpnClubT1BaseballBat,gunBowT1IronCrossbow"/>
 					<passive_effect name="CraftingTier" operation="base_set" level="65,68,71,74,77,80,100" value="1,2,3,4,5,6,6" tags="gunBowT3CompoundBow,gunBowT3CompoundCrossbow"/>
 					
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="1,100" value="1" tags="frameShapes:VariantHelper,woodShapes:VariantHelper,meleeWpnClubT0WoodenClub,gunBowT0PrimitiveBow,resourceTreenail,meleeToolRepairT0StoneAxe,meleeToolShovelT0StoneShovel,meleeWpnSpearT0StoneSpear,meleeWpnSledgeT0StoneSledgehammer"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="1,100" value="1" tags="frameShapes:VariantHelper,woodShapes:VariantHelper,meleeWpnClubT0WoodenClub,gunBowT0PrimitiveBow,meleeToolRepairT0StoneAxe,meleeToolShovelT0StoneShovel,meleeWpnSpearT0StoneSpear,meleeWpnSledgeT0StoneSledgehammer"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="1,100" value="1" tags="armorPrimitiveOutfit,armorPrimitiveHelmet,armorPrimitiveGloves,armorPrimitiveBoots"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5,100" value="1" tags="CarpentryResearchBundle1,workbench,couchUglyLargeBlockVariantHelper,couchUglySmallBlockVariantHelper,couchUglySingleBlockVariantHelper,resourceWoodT1,EmptyFarmPlot,ladderWood,looseBoardsTrapBlock1x1,looseBoardsTrapBlock3x3,looseBoardsTrapPlate1x1"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="oldWoodDoor,sectionalPlaidCouchSofaBlockVariantHelper,sectionalLeatherCouchSofaBlockVariantHelper,oldWoodDoorDouble,oldChair1VariantHelper,cellarDoorDoubleWood,woodHatch,palletEmpty,woodShapes:VariantHelper,WoodenHandle,trapSpikesWoodDmg0"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="CarpentryResearchBundle2,resourceWoodT2,barbedFence,woodSignBlockVariantHelper,cntSecureStorageChest,shuttersWoodBlockVariantHelper,CrateHollow,chickenCoopEmpty"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5,100" value="1" tags="CarpentryResearchBundle1,workbench,resourceWoodT1,cntFootlockerVariantHelper,EmptyFarmPlot,ladderWood,looseBoardsTrapBlock1x1,looseBoardsTrapBlock3x3,looseBoardsTrapPlate1x1"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="oldWoodDoor,sectionalPlaidCouchSofaBlockVariantHelper,sectionalLeatherCouchSofaBlockVariantHelper,oldWoodDoorDouble,cellarDoorDoubleWood,woodHatch,palletEmpty,woodShapes:VariantHelper,WoodenHandle,trapSpikesWoodDmg0,cntWoodWritableCrate"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="armorPrimitiveHelmet,armorPrimitiveOutfit,armorPrimitiveGloves,armorPrimitiveBoots"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="CarpentryResearchBundle2,resourceWoodT2,barbedFence,woodSignBlockVariantHelper,shuttersWoodBlockVariantHelper,chickenCoopEmpty"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="20,100" value="1" tags="logWallPillar,logWallLeft,logWallRight,doorWoodLargeGate,shootingRangeTarget"/>
 		
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="CarpentryResearchBundle3,resourceWoodT3,gunBowT1WoodenBowParts,woodFenceRailingTrellisSheetBlockVariantHelper,churchPewLeftBrown,churchPewRightBrown,cntStorageGeneric,keyRackWood"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="cntFootlockerVariantHelper,couchModernBlockVariantHelper,cntStorageGenericSigned,bed02"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="CarpentryResearchBundle3,resourceWoodT3,gunBowT1WoodenBowParts,churchPewLeftBrown,churchPewRightBrown,keyRackWood,couchUglyLargeBlockVariantHelper,couchUglySmallBlockVariantHelper,couchUglySingleBlockVariantHelper,metalReinforcedWoodDrawBridge"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="couchModernBlockVariantHelper,bed02,sectionalPlaidCouchSofaBlockVariantHelper"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="gunBowT1WoodenBow,meleeWpnClubT1BaseballBat,gunBowT1IronCrossbow"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="35,100" value="1" tags="endTable,cntWoodFurnitureBlockVariantHelper,cntWoodFurnitureBlockVariantHelper2"/>					
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="35,100" value="1" tags="cntWoodFurnitureBlockVariantHelper,cntWoodFurnitureBlockVariantHelper2,sectionalLeatherCouchSofaBlockVariantHelper"/>
 
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="CarpentryResearchBundle4,resourceWoodT4"/>					
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="55,100" value="1" tags="wineBarrelPlayerSecure"/>					
@@ -2493,24 +2650,27 @@
 					<unlock_entry item="medicalAloeCream,candleTableLightPlayer,candle" unlock_tier="1" />
 				</display_entry>
 				<display_entry icon="ChemistryResearchBundle1" name_key="chemistryT1-1" has_quality="false" unlock_level="5,10" >										
-					<unlock_entry item="ChemistryResearchBundle1,ReagentT1,resourceGlue,foodCornOil,chemistryStation,medicalFirstAidBandage" unlock_tier="1" />
-					<unlock_entry item="resourcePotassiumNitratePowder,drugPainkillers,resourceGunPowder,CrudeOil,thrownAmmoPipeBomb,thrownDynamite,resourcePaper" unlock_tier="2" />										
+					<unlock_entry item="ChemistryResearchBundle1,ReagentT1,resourceGlue,foodCornOil,chemistryStation,medicalFirstAidBandage,SalicylicAcid" unlock_tier="1" />
+					<unlock_entry item="drugPainkillers,resourceGunPowder,CrudeOil,thrownAmmoPipeBomb,thrownDynamite,resourcePaper" unlock_tier="2" />										
 				</display_entry>
 				<display_entry icon="ChemistryResearchBundle2" name_key="chemistryT2-1" has_quality="false" unlock_level="15,20" >									
-					<unlock_entry item="ChemistryResearchBundle2,ReagentT2,resourcePaint,medicalBandage,resourceOil,mineCandyTin,mineCookingPot,mineHubcap,mineAirFilter" unlock_tier="1" />
+					<unlock_entry item="ChemistryResearchBundle2,ReagentT2,resourcePaint,resourceOil,mineCandyTin,mineCookingPot,mineHubcap,mineAirFilter" unlock_tier="1" />
 					<unlock_entry item="Rubber,drugSteroids,drinkJarBeer,thrownGrenade,thrownGrenadeContact" unlock_tier="2" />
 				</display_entry>
-				<display_entry icon="ChemistryResearchBundle3" name_key="chemistryT3-1" has_quality="false" unlock_level="25,30,35,40" >
+				<display_entry icon="ChemistryResearchBundle3" name_key="chemistryT3-1" has_quality="false" unlock_level="25,30" >
 					<unlock_entry item="ChemistryResearchBundle3,ReagentT3,medicalPlasterCast,medicalFirstAidKit,drugVitamins,drinkJarGrandpasAwesomeSauce,resourceScrapPolymers" unlock_tier="1" />
-					<unlock_entry item="resourceAcid,drugFortBites" unlock_tier="2" />
-					<unlock_entry item="drugHerbalAntibiotics,drinkJarGrandpasMoonshine,resourceMilitaryFiber" unlock_tier="3" />
-					<unlock_entry item="SodiumMetal,drugAntibiotics,drugRecog" unlock_tier="4" />
+					<unlock_entry item="resourceAcid,drugFortBites,ammoGasCan" unlock_tier="2" />
 				</display_entry>
-				<display_entry icon="ChemistryResearchBundle4" name_key="chemistryT4-1" has_quality="false" unlock_level="45,50,55,60" >
-					<unlock_entry item="ChemistryResearchBundle4,ReagentT4,modMeleeClubBurningShaft,drinkJarPureMineralWater,drinkJarGrandpasForgettingElixir,ammoGasCan" unlock_tier="1" />
+
+        <display_entry icon="ChemistryResearchBundle3" name_key="chemistryT3-1" has_quality="false" unlock_level="35,40" >
+          <unlock_entry item="drugHerbalAntibiotics,drinkJarGrandpasMoonshine,modMeleeClubBurningShaft" unlock_tier="1" />
+          <unlock_entry item="drugAntibiotics,drugRecog,ammoGasCanBundle" unlock_tier="2" />
+        </display_entry>
+
+        <display_entry icon="ChemistryResearchBundle4" name_key="chemistryT4-1" has_quality="false" unlock_level="45,50,55,60" >
+					<unlock_entry item="ChemistryResearchBundle4,ReagentT4,drinkJarPureMineralWater" unlock_tier="1" />
 					<unlock_entry item="drinkJarGrandpasLearningElixir,modGunMeleeRadRemover,ammoRocketFrag" unlock_tier="2" />
 					<unlock_entry item="ammoRocketHE" unlock_tier="3" />
-					<unlock_entry item="" unlock_tier="4" />
 				</display_entry>
 				<display_entry icon="ChemistryResearchBundle5" name_key="chemistryT5-1" has_quality="false" unlock_level="65,70,75,80" >
 					<unlock_entry item="ChemistryResearchBundle5,ReagentT5" unlock_tier="1" />					
@@ -2525,17 +2685,17 @@
 				<effect_group>								
 
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="1,100" value="1" tags="medicalAloeCream,candleTableLightPlayer,candle"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5,100" value="1" tags="ChemistryResearchBundle1,ReagentT1,resourceGlue,foodCornOil,chemistryStation,medicalFirstAidBandage"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="resourcePotassiumNitratePowder,drugPainkillers,resourceGunPowder,CrudeOil,thrownAmmoPipeBomb,thrownDynamite,resourcePaper"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="ChemistryResearchBundle2,ReagentT2,resourcePaint,medicalBandage,resourceOil,mineCandyTin,mineCookingPot,mineHubcap,mineAirFilter"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5,100" value="1" tags="ChemistryResearchBundle1,ReagentT1,resourceGlue,foodCornOil,chemistryStation,medicalFirstAidBandage,SalicylicAcid"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="drugPainkillers,resourceGunPowder,CrudeOil,thrownAmmoPipeBomb,thrownDynamite,resourcePaper"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="ChemistryResearchBundle2,ReagentT2,resourcePaint,resourceOil,mineCandyTin,mineCookingPot,mineHubcap,mineAirFilter"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="20,100" value="1" tags="Rubber,drugSteroids,drinkJarBeer,thrownGrenade,thrownGrenadeContact"/>
 		
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="ChemistryResearchBundle3,ReagentT3,medicalPlasterCast,medicalFirstAidKit,drugVitamins,drinkJarGrandpasAwesomeSauce,resourceScrapPolymers"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="resourceAcid,drugFortBites"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="35,100" value="1" tags="drugHerbalAntibiotics,drinkJarGrandpasMoonshine,resourceMilitaryFiber"/>		
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="40,100" value="1" tags="SodiumMetal,drugAntibiotics,drugRecog"/>										
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="resourceAcid,drugFortBites,ammoGasCan"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="35,100" value="1" tags="drugHerbalAntibiotics,drinkJarGrandpasMoonshine,modMeleeClubBurningShaft"/>		
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="40,100" value="1" tags="drugAntibiotics,drugRecog,ammoGasCanBundle"/>										
 
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="ChemistryResearchBundle4,ReagentT4,modMeleeClubBurningShaft,drinkJarPureMineralWater,drinkJarGrandpasForgettingElixir,ammoGasCan"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="ChemistryResearchBundle4,ReagentT4,drinkJarPureMineralWater"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,100" value="1" tags="drinkJarGrandpasLearningElixir,modGunMeleeRadRemover,ammoRocketFrag"/>					
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="55,100" value="1" tags="ammoRocketHE"/>					
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="65,100" value="1" tags="ChemistryResearchBundle5,ReagentT5"/>
@@ -2545,18 +2705,14 @@
 			</crafting_skill>
 			<!-- ********************************************** CIVIL ENGINEERING *****************************************-->
 			<crafting_skill name="skillCivilEngineer" parent="technicalTab" name_key="skillCivilEngineerName" desc_key="skillCivilEngineerDesc" base_skill_point_cost="0" icon="ui_game_symbol_hammer">
-				<display_entry icon="resourceWoodRepairParts" name_key="civilEngineerT0-1" has_quality="false" unlock_level="1" >
-					<unlock_entry item="resourceWoodRepairParts" unlock_tier="1" />
+				<display_entry icon="CivilEngineerResearchBundle1" name_key="civilEngineerT1-1" has_quality="false" unlock_level="5" >					
+					<unlock_entry item="CivilEngineerResearchBundle1,resourceCobblestones,cobblestoneShapes:VariantHelper,terrAsphalt,terrStone" unlock_tier="1" />
 				</display_entry>
-				<display_entry icon="CivilEngineerResearchBundle1" name_key="civilEngineerT1-1" has_quality="false" unlock_level="5,10,15" >					
-					<unlock_entry item="CivilEngineerResearchBundle1,woodShapes:VariantHelper" unlock_tier="1" />
+				<display_entry icon="CivilEngineerResearchBundle2" name_key="civilEngineerT2-1" has_quality="false" unlock_level="10" >					
+					<unlock_entry item="CivilEngineerResearchBundle2,resourceBrick,brickShapes:VariantHelper" unlock_tier="1" />
 				</display_entry>
-				<display_entry icon="CivilEngineerResearchBundle2" name_key="civilEngineerT2-1" has_quality="false" unlock_level="15,20" >					
-					<unlock_entry item="CivilEngineerResearchBundle2,resourceCobblestones,cobblestoneShapes:VariantHelper,terrAsphalt,terrStone" unlock_tier="1" />
-				</display_entry>
-				<display_entry icon="CivilEngineerResearchBundle3" name_key="civilEngineerT3-1" has_quality="false" unlock_level="25,30,35,40" >
-					<unlock_entry item="CivilEngineerResearchBundle3,resourceBrick,brickShapes:VariantHelper" unlock_tier="1" />
-					<unlock_entry item="resourceCement,resourceConcreteMix,concreteShapes:VariantHelper" unlock_tier="3" />
+				<display_entry icon="CivilEngineerResearchBundle3" name_key="civilEngineerT3-1" has_quality="false" unlock_level="25" >
+					<unlock_entry item="CivilEngineerResearchBundle3,resourceCement,resourceConcreteMix,concreteShapes:VariantHelper" unlock_tier="1" />
 				</display_entry>
 				<display_entry icon="CivilEngineerResearchBundle4" name_key="civilEngineerT4-1" has_quality="false" unlock_level="45,50,55,60" >
 					<unlock_entry item="CivilEngineerResearchBundle4,ironShapes:VariantHelper" unlock_tier="1" />
@@ -2565,7 +2721,7 @@
 				<display_entry icon="CivilEngineerResearchBundle5" name_key="civilEngineerT5-1" has_quality="false" unlock_level="65,70,75,80" >
 					<unlock_entry item="CivilEngineerResearchBundle5,stainLessSteelShapes:VariantHelper" unlock_tier="1" />
 				</display_entry>
-				<display_entry icon="CivilEngineerResearchBundle6" name_key="civilEngineerT6-1" has_quality="false" unlock_level="85,90,95,100" >
+				<display_entry icon="CivilEngineerResearchBundle6" name_key="civilEngineerT6-1" has_quality="false" unlock_level="85" >
 					<unlock_entry item="CivilEngineerResearchBundle6,tungstenShapes:VariantHelper" unlock_tier="1" />
 				</display_entry>
 				<effect_group>
@@ -2573,10 +2729,9 @@
 				</effect_group>
 
 				<effect_group>								
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5,100" value="1" tags="CivilEngineerResearchBundle1,woodShapes:VariantHelper"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="CivilEngineerResearchBundle2,resourceCobblestones,cobblestoneShapes:VariantHelper,terrAsphalt,terrStone"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="CivilEngineerResearchBundle3,resourceBrick,brickShapes:VariantHelper"/>								
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="35,100" value="1" tags="resourceCement,resourceConcreteMix,concreteShapes:VariantHelper"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5,100" value="1" tags="CivilEngineerResearchBundle1,resourceCobblestones,cobblestoneShapes:VariantHelper,terrAsphalt,terrStone"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="CivilEngineerResearchBundle2,resourceBrick,brickShapes:VariantHelper"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="CivilEngineerResearchBundle3,resourceCement,resourceConcreteMix,concreteShapes:VariantHelper"/>													
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="CivilEngineerResearchBundle4,ironShapes:VariantHelper"/>					
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="55,100" value="1" tags="steelShapes:VariantHelper"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="65,100" value="1" tags="CivilEngineerResearchBundle5,stainLessSteelShapes:VariantHelper"/>
@@ -2614,7 +2769,7 @@
 					<unlock_entry item="foodGumboStew" unlock_tier="3" />
 					<unlock_entry item="foodPumpkinCheesecake" unlock_tier="4" />					
 				</display_entry>
-				<display_entry icon="CookingResearchBundle6" name_key="cookingT6-1" has_quality="false" unlock_level="85,90,95,100" >
+				<display_entry icon="CookingResearchBundle6" name_key="cookingT6-1" has_quality="false" unlock_level="85" >
 					<unlock_entry item="CookingResearchBundle6,foodHerbChickenDinner" unlock_tier="1" />
 				</display_entry>				
 				<effect_group>
@@ -2626,7 +2781,7 @@
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5,100" value="1" tags="CookingResearchBundle1,foodGrilledMeat,drinkJarYuccaJuice,foodBakedPotato,foodCornOnTheCob"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="drinkJarGoldenRodTea,drinkJarRedTea,foodBoneBroth,foodBoiledMeat,foodEggBoiled"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="CookingResearchBundle2,foodBaconAndEggs,drinkJarCoffee,foodMapleSyrup"/>
-							
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="20,100" value="1" tags="foodCornMeal"/>							
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="CookingResearchBundle3,foodCornBread,drinkJarBlackStrapCoffee"/>								
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="drinkYuccaJuiceSmoothie"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="35,100" value="1" tags="foodSpaghetti"/>
@@ -2649,34 +2804,37 @@
 					<unlock_entry item="pressureplate,speaker,pressureplateLong,spotlightPlayer,ceilingLight07_player,BlankProgramT1,modGunFlashlight" unlock_tier="2" />									
 				</display_entry>
 				<display_entry icon="ElectronicsResearchBundle2" name_key="electricalT2-1" has_quality="false" unlock_level="15,20" >				
-					<unlock_entry item="ElectronicsResearchBundle2,resourceElectricPartsT2,tripwirepost,lightCeilingBulbMountWhite,lanternDecorLightBlockVariantHelper" unlock_tier="1" />
-					<unlock_entry item="electricfencepost,batterybank,generatorbank,industrialLight01_player,industrialLight02_player,BlankProgramT2,cntBeerCooler" unlock_tier="2" />					
+					<unlock_entry item="ElectronicsResearchBundle2,resourceElectricPartsT2,tripwirepost,ceilingLight01_player,lanternDecorLightBlockVariantHelper" unlock_tier="1" />
+					<unlock_entry item="electricfencepost,batterybank,generatorbank,industrialLight01_player,industrialLight02_player,BlankProgramT2,endTableLamp" unlock_tier="2" />					
 				</display_entry>
-				<display_entry icon="ElectronicsResearchBundle3" name_key="electricalT3-1" has_quality="false" unlock_level="25,30,35,40" >
-					<unlock_entry item="ElectronicsResearchBundle3,resourceElectricPartsT3,electrictimerrelay,endTableLamp,lanternDecorLightBlockVariantHelper,motionsensor,appliancesVariantHelper" unlock_tier="1" />
-					<unlock_entry item="woodenGarageDoor5x3_PoweredBlockVariantHelper,woodenGarageDoor4x3_PoweredBlockVariantHelper,woodenGarageDoor3x3_PoweredBlockVariantHelper,ironGarageDoor_PoweredBlockVariantHelper,modGunLaserSight,BlankProgramT3,thrownTimedCharge,solarbank" unlock_tier="2" />
-					<unlock_entry item="metalReinforcedWoodDrawBridgePowered" unlock_tier="3" />					
+				<display_entry icon="ElectronicsResearchBundle3" name_key="electricalT3-1" has_quality="false" unlock_level="25,30" >
+					<unlock_entry item="ElectronicsResearchBundle3,resourceElectricPartsT3,electrictimerrelay,motionsensor,modArmorNightVision,appliancesVariantHelper" unlock_tier="1" />
+					<unlock_entry item="woodenGarageDoor5x3_PoweredBlockVariantHelper,woodenGarageDoor4x3_PoweredBlockVariantHelper,woodenGarageDoor3x3_PoweredBlockVariantHelper,ironGarageDoor_PoweredBlockVariantHelper,modGunLaserSight,BlankProgramT3,thrownTimedCharge,solarbank" unlock_tier="2" />					
 				</display_entry>
+
+        <display_entry icon="ElectronicsResearchBundle3" name_key="electricalT3-3" has_quality="false" unlock_level="35,40" >          
+          <unlock_entry item="metalReinforcedWoodDrawBridgePowered" unlock_tier="1" />
+        </display_entry>
 
 				<display_entry icon="solarCell" name_key="electricalT3-2" has_quality="true" unlock_level="30,33,36,39,42,45" >
 					<unlock_entry item="solarCell" unlock_tier="1" />					
-				</display_entry>
-
-				<display_entry icon="ElectronicsResearchBundle4" name_key="electricalT4-1" has_quality="false" unlock_level="45,50,55,60" >
-					<unlock_entry item="ElectronicsResearchBundle4,resourceElectricPartsT4,modArmorHelmetLight,modGunReflexSight,meleeWpnBatonT2StunBatonParts" unlock_tier="1" />
-					<unlock_entry item="vaultDoor01Double_Powered,vaultDoor01_Powered,vaultHatch01_Powered,steelGarageDoor5x3_PoweredBlockVariantHelper,steelGarageDoor4x3_PoweredBlockVariantHelper,steelGarageDoor3x3_PoweredBlockVariantHelper,BlankProgramT4" unlock_tier="2" />
-					<unlock_entry item="modRoboticDroneHeadlampMod,modMeleeStunBatonRepulsor" unlock_tier="3" />					
 				</display_entry>
 
 				<display_entry icon="meleeWpnBatonT2StunBaton" name_key="electricalT4-2" has_quality="true" unlock_level="45,48,51,54,57,62" >
 					<unlock_entry item="meleeWpnBatonT2StunBaton" unlock_tier="1" />					
 				</display_entry>
 
-				<display_entry icon="ElectronicsResearchBundle5" name_key="electricalT5-1" has_quality="false" unlock_level="65,70,75,80" >
+				<display_entry icon="ElectronicsResearchBundle4" name_key="electricalT4-1" has_quality="false" unlock_level="45,50,55" >
+					<unlock_entry item="ElectronicsResearchBundle4,resourceElectricPartsT4,modArmorHelmetLight,modGunReflexSight,meleeWpnBatonT2StunBatonParts" unlock_tier="1" />
+					<unlock_entry item="vaultDoor01Double_Powered,vaultDoor01_Powered,vaultHatch01_Powered,steelGarageDoor5x3_PoweredBlockVariantHelper,steelGarageDoor4x3_PoweredBlockVariantHelper,steelGarageDoor3x3_PoweredBlockVariantHelper,BlankProgramT4" unlock_tier="2" />
+					<unlock_entry item="modRoboticDroneHeadlampMod,modMeleeStunBatonRepulsor" unlock_tier="3" />					
+				</display_entry>
+
+				<display_entry icon="ElectronicsResearchBundle5" name_key="electricalT5-1" has_quality="false" unlock_level="65,70" >
 					<unlock_entry item="ElectronicsResearchBundle5,resourceElectricPartsT5" unlock_tier="1" />
 					<unlock_entry item="BlankProgramT5" unlock_tier="2" />					
 				</display_entry>
-				<display_entry icon="ElectronicsResearchBundle6" name_key="electricalT6-1" has_quality="false" unlock_level="85,90,95,100" >
+				<display_entry icon="ElectronicsResearchBundle6" name_key="electricalT6-1" has_quality="false" unlock_level="85,90" >
 					<unlock_entry item="ElectronicsResearchBundle6,resourceElectricPartsT6" unlock_tier="1" />
 					<unlock_entry item="BlankProgramT6" unlock_tier="2" />					
 				</display_entry>
@@ -2689,14 +2847,14 @@
 					
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5,100" value="1" tags="ElectronicsResearchBundle1,resourceElectricPartsT1,switch,electricwirerelay"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="pressureplate,speaker,pressureplateLong,spotlightPlayer,ceilingLight07_player,BlankProgramT1,modGunFlashlight"/>							
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="ElectronicsResearchBundle2,resourceElectricPartsT2,tripwirepost,lightCeilingBulbMountWhite,lanternDecorLightBlockVariantHelper,motionsensor,appliancesVariantHelper"/>							
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="ElectronicsResearchBundle2,resourceElectricPartsT2,tripwirepost,ceilingLight01_player,lanternDecorLightBlockVariantHelper,motionsensor,modArmorNightVision,appliancesVariantHelper"/>							
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="20,100" value="1" tags="industrialLight01_player,industrialLight02_player"/>							
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="20,100" value="1" tags="electricfencepost,batterybank,generatorbank,BlankProgramT2,cntBeerCooler"/>							
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="ElectronicsResearchBundle3,resourceElectricPartsT3,BlankProgram,electrictimerrelay,endTableLamp"/>				
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="20,100" value="1" tags="electricfencepost,batterybank,generatorbank,BlankProgramT2,endTableLamp"/>							
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="ElectronicsResearchBundle3,resourceElectricPartsT3,BlankProgram,electrictimerrelay"/>				
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="woodenGarageDoor5x3_PoweredBlockVariantHelper,woodenGarageDoor4x3_PoweredBlockVariantHelper,woodenGarageDoor3x3_PoweredBlockVariantHelper,ironGarageDoor_PoweredBlockVariantHelper,modGunLaserSight,BlankProgramT3,thrownTimedCharge,solarbank"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="solarCell"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="35,100" value="1" tags="metalReinforcedWoodDrawBridgePowered"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="ElectronicsResearchBundle4,resourceElectricPartsT4,modArmorHelmetLight,modGunReflexSight,meleeWpnBatonT2StunBatonParts"/>				
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="ElectronicsResearchBundle4,resourceElectricPartsT4,modArmorHelmetLight,modGunReflexSight,meleeWpnBatonT2StunBatonParts,meleeWpnBatonT2StunBaton"/>				
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,100" value="1" tags="vaultDoor01Double_Powered,vaultDoor01_Powered,vaultHatch01_Powered,steelGarageDoor5x3_PoweredBlockVariantHelper,steelGarageDoor4x3_PoweredBlockVariantHelper,steelGarageDoor3x3_PoweredBlockVariantHelper,BlankProgramT4"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="55,100" value="1" tags="modRoboticDroneHeadlampMod,modMeleeStunBatonRepulsor"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="65,100" value="1" tags="ElectronicsResearchBundle5,resourceElectricPartsT5"/>				
@@ -2760,16 +2918,43 @@
 				<display_entry icon="LeatherworkingResearchBundle1" name_key="leatherWorkingT1-1" has_quality="false" unlock_level="5,10" >
 					<unlock_entry item="LeatherworkingResearchBundle1,LeatherworkingResearchBundle1-2,TanninSolution,LeatherSheetT1" unlock_tier="1" />		
 					<unlock_entry item="modGunMeleeTheHunter" unlock_tier="2" />															
-				</display_entry>				
-				<display_entry icon="LeatherworkingResearchBundle2" name_key="leatherWorkingT2-1" has_quality="false" unlock_level="15,20" >					
-					<unlock_entry item="LeatherworkingResearchBundle2,meleeWpnKnucklesT0LeatherKnuckles,LeatherSheetT2" unlock_tier="1" />
-					<unlock_entry item="apparelGothBoots,modArmorImpactBracing" unlock_tier="2" />
+				</display_entry>
+        
+        <display_entry icon="armorFarmerOutfit" name_key="leatherWorkingT2-2" has_quality="true" unlock_level="15,25,35,45,55,65" >
+          <unlock_entry item="armorFarmerHelmet,armorFarmerOutfit,armorFarmerGloves,armorFarmerBoots" unlock_tier="1" />
+        </display_entry>
+
+        <display_entry icon="armorBikerOutfit" name_key="leatherWorkingT2-3" has_quality="true" unlock_level="15,25,35,45,55,65" >
+          <unlock_entry item="armorBikerHelmet,armorBikerHelmet,armorBikerGloves,armorBikerBoots" unlock_tier="1" />
+        </display_entry>
+
+        <display_entry icon="armorScavengerOutfit" name_key="leatherWorkingT2-4" has_quality="true" unlock_level="15,25,35,45,55,65" >
+          <unlock_entry item="armorScavengerHelmet,armorScavengerHelmet,armorScavengerGloves,armorScavengerBoots" unlock_tier="1" />
+        </display_entry>
+
+        <display_entry icon="armorRangerOutfit" name_key="leatherWorkingT2-5" has_quality="true" unlock_level="15,25,35,45,55,65" >
+          <unlock_entry item="armorRangerHelmet,armorRangerHelmet,armorRangerGloves,armorRangerBoots" unlock_tier="1" />
+        </display_entry>
+
+        <display_entry icon="armorCommandoOutfit" name_key="leatherWorkingT2-6" has_quality="true" unlock_level="15,25,35,45,55,65" >
+          <unlock_entry item="armorCommandoHelmet,armorCommandoHelmet,armorCommandoGloves,armorCommandoBoots" unlock_tier="1" />
+        </display_entry>
+
+        <display_entry icon="armorAssassinOutfit" name_key="leatherWorkingT2-7" has_quality="true" unlock_level="15,25,35,45,55,65" >
+          <unlock_entry item="armorAssassinHelmet,armorAssassinHelmet,armorAssassinGloves,armorAssassinBoots" unlock_tier="1" />          
+        </display_entry>
+
+        <display_entry icon="LeatherworkingResearchBundle2" name_key="leatherWorkingT2-1" has_quality="false" unlock_level="15,20" >					
+					<unlock_entry item="LeatherworkingResearchBundle2,LeatherSheetT2,modArmorPlatingBasic" unlock_tier="1" />          
+          <unlock_entry item="toolBellows" unlock_tier="2" />
 				</display_entry>
 				<display_entry icon="LeatherworkingResearchBundle3" name_key="leatherWorkingT3-1" has_quality="false" unlock_level="25,30,35,40" >
-					<unlock_entry item="LeatherworkingResearchBundle3,LeatherSheetT3,toolBellows" unlock_tier="1" />				
-				</display_entry>
+					<unlock_entry item="LeatherworkingResearchBundle3,LeatherSheetT3" unlock_tier="1" />
+          <unlock_entry item="modArmorImprovedFittings" unlock_tier="2" />                         
+        </display_entry>
 				<display_entry icon="LeatherworkingResearchBundle4" name_key="leatherWorkingT4-1" has_quality="false" unlock_level="45,50,55,60" >
-					<unlock_entry item="LeatherworkingResearchBundle4,LeatherSheetT4" unlock_tier="1" />					
+					<unlock_entry item="LeatherworkingResearchBundle4,LeatherSheetT4" unlock_tier="1" />
+          <unlock_entry item="modArmorPlatingReinforced" unlock_tier="3" />
 				</display_entry>
 				<display_entry icon="LeatherworkingResearchBundle5" name_key="leatherWorkingT5-1" has_quality="false" unlock_level="65,70,75,80" >
 					<unlock_entry item="LeatherworkingResearchBundle5,LeatherSheetT5" unlock_tier="1" />					
@@ -2781,14 +2966,29 @@
 					<passive_effect name="CraftingTime" operation="perc_add" value="0.5,-.5" level="1,100" tags="skillLeatherworking"/>
 				</effect_group>
 
-				<effect_group>																		
+				<effect_group>
+          <passive_effect name="CraftingTier" operation="base_add" level="15,25,35,45,55,65,100" value="0,1,2,3,4,5,5" tags="armorFarmerHelmet,armorFarmerOutfit,armorFarmerGloves,armorFarmerBoots"/>
+          <passive_effect name="CraftingTier" operation="base_add" level="15,25,35,45,55,65,100" value="0,1,2,3,4,5,5" tags="armorBikerHelmet,armorBikerOutfit,armorBikerGloves,armorBikerBoots"/>
+          <passive_effect name="CraftingTier" operation="base_add" level="15,25,35,45,55,65,100" value="0,1,2,3,4,5,5" tags="armorScavengerHelmet,armorScavengerOutfit,armorScavengerGloves,armorScavengerBoots"/>
+          <passive_effect name="CraftingTier" operation="base_add" level="15,25,35,45,55,65,100" value="0,1,2,3,4,5,5" tags="armorRangerHelmet,armorRangerOutfit,armorRangerGloves,armorRangerBoots"/>
+          <passive_effect name="CraftingTier" operation="base_add" level="15,25,35,45,55,65,100" value="0,1,2,3,4,5,5" tags="armorCommandoHelmet,armorCommandoOutfit,armorCommandoGloves,armorCommandoBoots"/>
+          <passive_effect name="CraftingTier" operation="base_add" level="15,25,35,45,55,65,100" value="0,1,2,3,4,5,5" tags="armorAssassinHelmet,armorAssassinOutfit,armorAssassinGloves,armorAssassinBoots"/>
+                    
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="1,100" value="1" tags="meleeWpnKnucklesT0LeatherKnuckles"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5,100" value="1" tags="LeatherworkingResearchBundle1,LeatherworkingResearchBundle1-2,TanninSolution,LeatherSheetT1"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="modGunMeleeTheHunter"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="LeatherworkingResearchBundle2,LeatherSheetT2"/>							
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="20,100" value="1" tags="apparelGothBoots,modArmorImpactBracing"/>				
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="LeatherworkingResearchBundle3,LeatherSheetT3,toolBellows"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="LeatherworkingResearchBundle4,LeatherSheetT4"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="armorFarmerHelmet,armorFarmerOutfit,armorFarmerGloves,armorFarmerBoots"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="armorBikerHelmet,armorBikerOutfit,armorBikerGloves,armorBikerBoots"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="armorScavengerHelmet,armorScavengerOutfit,armorScavengerGloves,armorScavengerBoots"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="armorRangerHelmet,armorRangerOutfit,armorRangerGloves,armorRangerBoots"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="armorCommandoHelmet,armorCommandoOutfit,armorCommandoGloves,armorCommandoBoots"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="armorAssassinHelmet,armorAssassinOutfit,armorAssassinGloves,armorAssassinBoots"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="LeatherworkingResearchBundle2,LeatherSheetT2"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="20,100" value="1" tags="toolBellows"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="LeatherworkingResearchBundle3,LeatherSheetT3,modArmorPlatingBasic"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="modArmorImprovedFittings"/>          
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="LeatherworkingResearchBundle4,LeatherSheetT4"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="55,100" value="1" tags="modArmorPlatingReinforced"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="65,100" value="1" tags="LeatherworkingResearchBundle5,LeatherSheetT5"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="85,100" value="1" tags="LeatherworkingResearchBundle6,LeatherSheetT6"/>
 				</effect_group>
@@ -2800,72 +3000,65 @@
 					<unlock_entry item="vehicleBicyclePlaceable,vehicleBicycleChassis,vehicleBicycleHandlebars" unlock_tier="2" />													
 				</display_entry>
 				
-				<display_entry icon="armorMiningHelmet" name_key="mechanicalT2-2" has_quality="true" unlock_level="5,8,11,14,17,22" >
-					<unlock_entry item="armorMiningHelmet" unlock_tier="1" />					
-				</display_entry>
-
 				<display_entry icon="gunHandgunT0PipePistol" name_key="mechanicalT2-2" has_quality="true" unlock_level="5,8,11,14,17,22" >
 					<unlock_entry item="gunHandgunT0PipePistol,gunShotgunT0PipeShotgun,gunRifleT0PipeRifle,gunMGT0PipeMachineGun,meleeWpnBatonT0PipeBaton" unlock_tier="1" />					
 				</display_entry>
 
 				<display_entry icon="MechanicalResearchBundle2" name_key="mechanicalT2-1" has_quality="false" unlock_level="15,20" >							
 					<unlock_entry item="MechanicalResearchBundle2,resourceMechanicalPartsT2,resourceLockPick,resourceWaterFilter,cementMixer,smallEngine,officeChair01VariantHelper" unlock_tier="1" />
-					<unlock_entry item="ScrapTruckPlaceable,vehicleScrapTruckChassis,vehicleScrapTruckParts,modArmorWaterPurifier,modMeleeStunBatonRepulsor" unlock_tier="2" />					
+					<unlock_entry item="vehicleScrapTruckSeat,vehicleScrapTruckParts,vehicleScrapTruckChassis,ScrapTruckPlaceable,modArmorWaterPurifier,cntVendingMachine" unlock_tier="2" />					
 				</display_entry>
 
 				<display_entry icon="meleeToolSalvageT1Wrench" name_key="mechanicalT2-3" has_quality="true" unlock_level="20,25,30,35,40,45" >
-					<unlock_entry item="meleeToolSalvageT1Wrench" unlock_tier="1" />					
-				</display_entry>
+					<unlock_entry item="meleeToolSalvageT1Wrench" unlock_tier="1" />          
+        </display_entry>
 		
 				<display_entry icon="MechanicalResearchBundle3" name_key="mechanicalT3-1" has_quality="false" unlock_level="25,30" >
 					<unlock_entry item="MechanicalResearchBundle3,resourceMechanicalPartsT3,dartTrap,bladeTrap,tableSaw,modGunSoundSuppressorSilencer,modGunBipod,modGunBowPolymerString" unlock_tier="1" />
-					<unlock_entry item="sinksToiletsBlockVariantHelper,modGunBowArrowRest,modGunBarrelExtender,modArmorCustomizedFittings,modGunScopeSmall" unlock_tier="2" />									
-				</display_entry>
-
-				<display_entry icon="gunBotT1JunkSledge" name_key="mechanicalT3-2" has_quality="true" unlock_level="25,28,31,34,37,42" >
-					<unlock_entry item="gunBotT1JunkSledge" unlock_tier="1" />										
+					<unlock_entry item="sinksToiletsBlockVariantHelper,modGunBowArrowRest,modGunBarrelExtender,modGunScopeSmall,gunBotRoboticsPartsT3" unlock_tier="2" />									
 				</display_entry>
 
 				<display_entry icon="gunHandgunT1Pistol" name_key="mechanicalT3-3" has_quality="true" unlock_level="25,28,31,34,37,42" >
 					<unlock_entry item="gunHandgunT1Pistol,gunShotgunT1DoubleBarrel,gunRifleT1HuntingRifle,gunMGT1AK47,meleeToolSalvageT2Ratchet" unlock_tier="1" />					
 				</display_entry>
 
+        <display_entry icon="gunBotT1JunkSledge" name_key="mechanicalT3-2" has_quality="true" unlock_level="30,33,36,39,42,47" >
+          <unlock_entry item="gunBotT1JunkSledge" unlock_tier="1" />
+        </display_entry>
+
 				<display_entry icon="autoTurret" name_key="mechanicalT3-4" has_quality="false" unlock_level="35,40" >
-					<unlock_entry item="autoTurret,shotgunTurret,gunBotRoboticsPartsT3,modGunForegrip,modGunMagazineExtender,modArmorMuffledConnectors,modGunTriggerGroupSemi" unlock_tier="1" />
-					<unlock_entry item="modShotgunSawedOffBarrel,modGunShotgunTubeExtenderMagazine,modMeleeStructuralBrace" unlock_tier="2" />	
+					<unlock_entry item="autoTurret,shotgunTurret,modGunForegrip,modGunMagazineExtender,modArmorMuffledConnectors,modGunTriggerGroupSemi,LargeGenerator" unlock_tier="1" />
+					<unlock_entry item="modGunShotgunTubeExtenderMagazine,modMeleeStructuralBrace" unlock_tier="2" />	
 				</display_entry>
 
-				<display_entry icon="MechanicalResearchBundle4" name_key="mechanicalT4-1" has_quality="false" unlock_level="45,50,55,60" >
-					<unlock_entry item="MechanicalResearchBundle4,resourceMechanicalPartsT4,modGunScopeMedium,Buddy5,gunBotRoboticsPartsT4,meleeToolAxeT3ChainsawParts,modGunDrumMagazineExtender,modArmorAdvancedMuffledConnectors" unlock_tier="1" />
-					<unlock_entry item="modGunCrippleEm,modGunRetractingStock,modRoboticDroneCargoMod,modGunScopeLarge,modGunTriggerGroupBurst3,modGunTriggerGroupAutomatic" unlock_tier="2" />	
-					<unlock_entry item="modRoboticDroneMedicMod" unlock_tier="3" />															
+        <display_entry icon="gunBotT2JunkTurret" name_key="mechanicalT4-2" has_quality="true" unlock_level="45,48,51,54,57,62" >
+          <unlock_entry item="gunBotT2JunkTurret,meleeToolRepairT3Nailgun" unlock_tier="1" />
+        </display_entry>
+
+        <display_entry icon="gunShotgunT2PumpShotgun" name_key="mechanicalT4-3" has_quality="true" unlock_level="45,48,51,54,57,62" >
+          <unlock_entry item="gunShotgunT2PumpShotgun,gunHandgunT2Magnum44,gunRifleT2LeverActionRifle,gunMGT2TacticalAR" unlock_tier="1" />
+        </display_entry>
+
+        <display_entry icon="MechanicalResearchBundle4" name_key="mechanicalT4-1" has_quality="false" unlock_level="45,50" >
+					<unlock_entry item="MechanicalResearchBundle4,resourceMechanicalPartsT4,modGunScopeMedium,Buddy5,gunBotRoboticsPartsT4,modGunDrumMagazineExtender,modArmorAdvancedMuffledConnectors" unlock_tier="1" />
+					<unlock_entry item="modGunCrippleEm,modGunRetractingStock,modGunScopeLarge,modGunTriggerGroupBurst3,modGunTriggerGroupAutomatic" unlock_tier="2" />																			
 				</display_entry>
 
-				<display_entry icon="gunBotT2JunkTurret" name_key="mechanicalT4-2" has_quality="true" unlock_level="45,48,51,54,57,62" >
-					<unlock_entry item="gunBotT2JunkTurret,meleeToolRepairT3Nailgun" unlock_tier="1" />										
-				</display_entry>
-			
-				<display_entry icon="gunShotgunT2PumpShotgun" name_key="mechanicalT4-3" has_quality="true" unlock_level="45,48,51,54,57,62" >
-					<unlock_entry item="gunShotgunT2PumpShotgun,gunHandgunT2Magnum44,gunRifleT2LeverActionRifle,gunMGT2TacticalAR" unlock_tier="1" />					
-				</display_entry>
-				
-				<display_entry icon="MechanicalResearchBundle5" name_key="mechanicalT5-1" has_quality="false" unlock_level="65,70,75,80" >
-					<unlock_entry item="MechanicalResearchBundle5,resourceMechanicalPartsT5" unlock_tier="1" />
-					<unlock_entry item="" unlock_tier="2" />					
-					<unlock_entry item="vehicleGyroCopterAccessories,vehicleGyroCopterChassis,vehicleGyrocopterPlaceable" unlock_tier="3" />
-					<unlock_entry item="" unlock_tier="4" />				
-				</display_entry>
+        <display_entry icon="gunBotT3JunkDrone" name_key="mechanicalT5-2" has_quality="true" unlock_level="65,68,71,74,77,82" >
+          <unlock_entry item="gunBotT3JunkDrone" unlock_tier="1" />
+        </display_entry>
 
-				<display_entry icon="gunBotT3JunkDrone" name_key="mechanicalT5-2" has_quality="true" unlock_level="65,68,71,74,77,82" >
-					<unlock_entry item="gunBotT3JunkDrone" unlock_tier="1" />										
-				</display_entry>
+        <display_entry icon="gunHandgunT3DesertVulture" name_key="mechanicalT5-3" has_quality="true" unlock_level="65,68,71,74,77,82" >
+          <unlock_entry item="gunHandgunT3DesertVulture,gunHandgunT3SMG5,gunShotgunT3AutoShotgun,gunRifleT3SniperRifle,gunMGT3M60,gunExplosivesT3RocketLauncher,gunRifleT3SniperRifle" unlock_tier="1" />
+        </display_entry>
 
-				<display_entry icon="gunHandgunT3DesertVulture" name_key="mechanicalT5-3" has_quality="true" unlock_level="65,68,71,74,77,82" >
-					<unlock_entry item="gunHandgunT3DesertVulture,gunHandgunT3SMG5,gunShotgunT3AutoShotgun,gunRifleT3SniperRifle,gunMGT3M60,gunExplosivesT3RocketLauncher,gunRifleT3SniperRifle" unlock_tier="1" />						
-				</display_entry>
-
-				<display_entry icon="meleeToolPickT3Auger" name_key="mechanicalT5-4" has_quality="true" unlock_level="65,68,71,74,77,82" >
-					<unlock_entry item="meleeToolPickT3Auger,meleeToolAxeT3Chainsaw,meleeToolSalvageT3ImpactDriver" unlock_tier="1" />
+        <display_entry icon="meleeToolPickT3Auger" name_key="mechanicalT5-4" has_quality="true" unlock_level="65,68,71,74,77,82" >
+          <unlock_entry item="meleeToolPickT3Auger,meleeToolAxeT3Chainsaw,meleeToolSalvageT3ImpactDriver" unlock_tier="1" />
+        </display_entry>
+        
+				<display_entry icon="MechanicalResearchBundle5" name_key="mechanicalT5-1" has_quality="false" unlock_level="65,75" >
+					<unlock_entry item="MechanicalResearchBundle5,resourceMechanicalPartsT5,modRoboticDroneMedicMod,modRoboticDroneCargoMod" unlock_tier="1" />										
+					<unlock_entry item="vehicleGyroCopterAccessories,vehicleGyroCopterChassis,vehicleGyrocopterPlaceable" unlock_tier="2" />									
 				</display_entry>
 
 				<display_entry icon="MechanicalResearchBundle6" name_key="mechanicalT6-1" has_quality="false" unlock_level="85,90,95,100" >
@@ -2875,30 +3068,29 @@
 					<passive_effect name="CraftingTime" operation="perc_add" value="0.5,-.5" level="1,100" tags="skillMechanicalEngineer"/>
 				</effect_group>
 
-				<effect_group>
-					<passive_effect name="CraftingTier" operation="base_set" level="5,8,11,14,17,22,100" value="1,2,3,4,5,6,6" tags="armorMiningHelmet"/>
+				<effect_group>					
 					<passive_effect name="CraftingTier" operation="base_set" level="5,8,11,14,17,22,100" value="1,2,3,4,5,6,6" tags="gunHandgunT0PipePistol,gunShotgunT0PipeShotgun,gunRifleT0PipeRifle,gunMGT0PipeMachineGun,meleeWpnBatonT0PipeBaton"/>
 					<passive_effect name="CraftingTier" operation="base_set" level="20,25,30,35,40,45,100" value="1,2,3,4,5,6,6" tags="meleeToolSalvageT1Wrench"/>
-					<passive_effect name="CraftingTier" operation="base_set" level="25,28,31,34,37,42,100" value="1,2,3,4,5,6,6" tags="gunHandgunT1Pistol,gunShotgunT1DoubleBarrel,gunRifleT1HuntingRifle,gunMGT1AK47,meleeToolSalvageT2Ratchet"/>					
-					<passive_effect name="CraftingTier" operation="base_set" level="45,48,51,54,57,62,100" value="1,2,3,4,5,6,6" tags="gunShotgunT2PumpShotgun,gunHandgunT2Magnum44,gunRifleT2LeverActionRifle,gunMGT2TacticalAR"/>
+					<passive_effect name="CraftingTier" operation="base_set" level="25,28,31,34,37,42,100" value="1,2,3,4,5,6,6" tags="gunHandgunT1Pistol,gunShotgunT1DoubleBarrel,gunRifleT1HuntingRifle,gunMGT1AK47,meleeToolSalvageT2Ratchet"/>
+          <passive_effect name="CraftingTier" operation="base_set" level="30,33,36,39,42,47,100" value="1,2,3,4,5,6,6" tags="gunBotT1JunkSledge"/>          
+          <passive_effect name="CraftingTier" operation="base_set" level="45,48,51,54,57,62,100" value="1,2,3,4,5,6,6" tags="gunShotgunT2PumpShotgun,gunHandgunT2Magnum44,gunRifleT2LeverActionRifle,gunMGT2TacticalAR,gunBotT2JunkTurret,meleeToolRepairT3Nailgun"/>
 					<passive_effect name="CraftingTier" operation="base_set" level="65,68,71,74,77,82,100" value="1,2,3,4,5,6,6" tags="gunHandgunT3DesertVulture,gunHandgunT3SMG5,gunShotgunT3AutoShotgun,gunRifleT3SniperRifle,gunMGT3M60,gunExplosivesT3RocketLauncher,meleeToolPickT3Auger,meleeToolAxeT3Chainsaw,meleeToolSalvageT3ImpactDriver,meleeToolRepairT3Nailgun,gunBotT3JunkDrone"/>
 
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5,100" value="1" tags="MechanicalResearchBundle1,resourceMechanicalPartsT1,cntDewCollector,cntCoolerVariantHelper,armorMiningHelmet"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5,100" value="1" tags="gunHandgunT0PipePistol,gunShotgunT0PipeShotgun,gunRifleT0PipeRifle,gunMGT0PipeMachineGun"/>					
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="vehicleBicyclePlaceable,vehicleBicycleChassis,vehicleBicycleHandlebars"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="MechanicalResearchBundle2,resourceMechanicalPartsT2,resourceLockPick,resourceWaterFilter,cementMixer,smallEngine,officeChair01VariantHelper"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="20,100" value="1" tags="ScrapTruckPlaceable,vehicleScrapTruckChassis,vehicleScrapTruckParts,modArmorWaterPurifier,modMeleeStunBatonRepulsor"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="20,100" value="1" tags="vehicleScrapTruckSeat,vehicleScrapTruckParts,vehicleScrapTruckChassis,ScrapTruckPlaceable,modArmorWaterPurifier,cntVendingMachine"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="20,100" value="1" tags="meleeToolSalvageT1Wrench"/>
-
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="MechanicalResearchBundle3,resourceMechanicalPartsT3,dartTrap,bladeTrap,tableSaw,modGunSoundSuppressorSilencer,modGunBipod,modGunBowPolymerString"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="gunHandgunT1Pistol,gunShotgunT1DoubleBarrel,gunRifleT1HuntingRifle,gunMGT1AK47,meleeToolSalvageT2Ratchet"/>					
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="sinksToiletsBlockVariantHelper,modGunBowArrowRest,modGunBarrelExtender,modArmorCustomizedFittings,modGunScopeSmall"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="35,100" value="1" tags="autoTurret,shotgunTurret,gunBotRoboticsPartsT3,modGunForegrip,modGunMagazineExtender,modArmorMuffledConnectors,modGunTriggerGroupSemi"/>					
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="40,100" value="1" tags="modShotgunSawedOffBarrel,modGunShotgunTubeExtenderMagazine,modMeleeStructuralBrace,autoTurret"/>					
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="gunShotgunT2PumpShotgun,gunHandgunT2Magnum44,gunRifleT2LeverActionRifle,gunMGT2TacticalAR,meleeToolRepairT3Nailgun"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="sinksToiletsBlockVariantHelper,modGunBowArrowRest,modGunBarrelExtender,modGunScopeSmall,gunBotRoboticsPartsT3,gunBotT1JunkSledge"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="35,100" value="1" tags="autoTurret,shotgunTurret,modGunForegrip,modGunMagazineExtender,modArmorMuffledConnectors,modGunTriggerGroupSemi,LargeGenerator"/>					
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="40,100" value="1" tags="modGunShotgunTubeExtenderMagazine,modMeleeStructuralBrace"/>					
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="gunBotT2JunkTurret,gunShotgunT2PumpShotgun,gunHandgunT2Magnum44,gunRifleT2LeverActionRifle,gunMGT2TacticalAR,meleeToolRepairT3Nailgun"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="MechanicalResearchBundle4,resourceMechanicalPartsT4,meleeToolAxeT3ChainsawParts,modGunScopeMedium,Buddy5,gunBotRoboticsPartsT4,modGunDrumMagazineExtender,modArmorAdvancedMuffledConnectors"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,100" value="1" tags="modGunCrippleEm,modGunRetractingStock,modRoboticDroneCargoMod,modGunScopeLarge,modGunTriggerGroupBurst3,modGunTriggerGroupAutomatic"/>
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="55,100" value="1" tags="modRoboticDroneMedicMod"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,100" value="1" tags="modGunCrippleEm,modGunRetractingStock,modGunScopeLarge,modGunTriggerGroupBurst3,modGunTriggerGroupAutomatic"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="65,100" value="1" tags="modRoboticDroneMedicMod,modRoboticDroneCargoMod,gunBotRoboticsPartsT4"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="65,100" value="1" tags="meleeToolPickT3Auger,meleeToolAxeT3Chainsaw,meleeToolSalvageT3ImpactDriver"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="65,100" value="1" tags="gunHandgunT3DesertVulture,gunHandgunT3SMG5,gunShotgunT3AutoShotgun,gunRifleT3SniperRifle,gunMGT3M60,gunExplosivesT3RocketLauncher,meleeToolPickT3Auger,meleeToolAxeT3Chainsaw,meleeToolSalvageT3ImpactDriver,meleeToolRepairT3Nailgun"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="65,100" value="1" tags="MechanicalResearchBundle5,resourceMechanicalPartsT5,gunBotT3JunkDrone"/>						
@@ -2909,46 +3101,42 @@
 			<!-- ********************************************** SOFTWARE ENGINEERING *****************************************-->
 			<crafting_skill name="skillSoftwareEngineer" parent="technicalTab" name_key="skillSoftwareEngineerName" desc_key="skillSoftwareEngineerDesc" base_skill_point_cost="0" icon="ui_game_symbol_computer"><effect_group/>
 				<display_entry icon="SoftwareResearchBundle1" name_key="softwareT1-1" has_quality="false" unlock_level="5,10" >
-					<unlock_entry item="SoftwareResearchBundle1,ComputerStation,HelloWorld,BladeTrapProgram" unlock_tier="1" />					
+					<unlock_entry item="SoftwareResearchBundle1,ComputerStation,HelloWorld" unlock_tier="1" />					
 				</display_entry>
 				<display_entry icon="SoftwareResearchBundle2" name_key="softwareT2-1" has_quality="false" unlock_level="15,20" >					
-					<unlock_entry item="SoftwareResearchBundle2,StarterProgram,FlameThrowerTrapProgram" unlock_tier="1" />
-					<unlock_entry item="AirFilterMineProgram,CandyMineProgram,CookingPotMineProgram,HubcapMineProgram,SledgeTurretProgram" unlock_tier="2" />
+					<unlock_entry item="SoftwareResearchBundle2,StarterProgram,AirFilterMineProgram,CandyMineProgram,CookingPotMineProgram,HubcapMineProgram" unlock_tier="1" />
+          <unlock_entry item="VendingMachineProgram" unlock_tier="2" />
+          
+        </display_entry>
+				<display_entry icon="SoftwareResearchBundle3" name_key="softwareT3-1" has_quality="false" unlock_level="25,30,35" >
+					<unlock_entry item="SoftwareResearchBundle3,SimpleProgram,BladeTrapProgram,MotionCameraProgram,NightVisionProgram" unlock_tier="1" />
+					<unlock_entry item="SolarBankProgram,TimedChargeProgram,SledgeTurretProgram" unlock_tier="2" />          
+					<unlock_entry item="LargeGeneratorProgram,AutoTurretProgram,ShotgunTurretProgram" unlock_tier="3" />								
 				</display_entry>
-				<display_entry icon="SoftwareResearchBundle3" name_key="softwareT3-1" has_quality="false" unlock_level="25,30,35,40" >
-					<unlock_entry item="SoftwareResearchBundle3,SimpleProgram,JunkTurretProgram" unlock_tier="1" />
-					<unlock_entry item="MotionCameraProgram,NightVisionProgram,SolarBankProgram,TimedChargeProgram,ShotgunTurretProgram" unlock_tier="2" />					
-					<unlock_entry item="LargeGeneratorProgram" unlock_tier="3" />
-					<unlock_entry item="VendingMachineProgram" unlock_tier="4" />					
+				<display_entry icon="SoftwareResearchBundle4" name_key="softwareT4-1" has_quality="false" unlock_level="45,50,55" >
+					<unlock_entry item="SoftwareResearchBundle4,IntermediateProgram,JunkTurretProgram,Buddy5Program" unlock_tier="1" />	
+					<unlock_entry item="StunRepulsorProgram" unlock_tier="3" />																												
 				</display_entry>
-				<display_entry icon="SoftwareResearchBundle4" name_key="softwareT4-1" has_quality="false" unlock_level="45,50,55,60" >
-					<unlock_entry item="SoftwareResearchBundle4,IntermediateProgram,AutoTurretProgram,HamRadioProgram" unlock_tier="1" />	
-					<unlock_entry item="StunRepulsorProgram" unlock_tier="2" />															
-					<unlock_entry item="" unlock_tier="3" />										
-				</display_entry>
-				<display_entry icon="SoftwareResearchBundle5" name_key="softwareT5-1" has_quality="false" unlock_level="65,70,75,80" >
-					<unlock_entry item="SoftwareResearchBundle5,DroneProgram,AdvancedProgram" unlock_tier="1" />
-					<unlock_entry item="DroneMedicProgram" unlock_tier="3" />
+				<display_entry icon="SoftwareResearchBundle5" name_key="softwareT5-1" has_quality="false" unlock_level="65" >
+					<unlock_entry item="SoftwareResearchBundle5,AdvancedProgram,DroneProgram,DroneMedicProgram" unlock_tier="1" />					
 				</display_entry>
 				<display_entry icon="SoftwareResearchBundle6" name_key="softwareT6-1" has_quality="false" unlock_level="85,90,95,100" >
-					<unlock_entry item="SoftwareResearchBundle6" unlock_tier="1" />					
+					<unlock_entry item="SoftwareResearchBundle6,MasterProgram" unlock_tier="1" />					
 				</display_entry>
 				<effect_group>
 					<passive_effect name="CraftingTime" operation="perc_add" value="0.5,-.5" level="1,100" tags="skillSoftwareEngineer"/>
 				</effect_group>
 				<effect_group>													
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5,100" value="1" tags="SoftwareResearchBundle1,ComputerStation,HelloWorld,BladeTrapProgram"/>					
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="SoftwareResearchBundle2,FlameThrowerTrapProgram,StarterProgram"/>							
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="20,100" value="1" tags="AirFilterMineProgram,CandyMineProgram,CookingPotMineProgram,HubcapMineProgram,SledgeTurretProgram,TimedChargeProgram"/>							
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="SoftwareResearchBundle3,SimpleProgram,JunkTurretProgram"/>				
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="MotionCameraProgram,NightVisionProgram,SolarBankProgram,TimedChargeProgram,ShotgunTurretProgram"/>				
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="35,100" value="1" tags="LargeGeneratorProgram"/>				
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="40,100" value="1" tags="VendingMachineProgram"/>				
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="SoftwareResearchBundle4,IntermediateProgram,AutoTurretProgram,HamRadioProgram"/>				
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,100" value="1" tags="StunRepulsorProgram"/>						
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="65,100" value="1" tags="SoftwareResearchBundle5,DroneProgram,AdvancedProgram"/>	
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="75,100" value="1" tags="DroneMedicProgram"/>	
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="85,100" value="1" tags="SoftwareResearchBundle6"/>
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5,100" value="1" tags="SoftwareResearchBundle1,ComputerStation,HelloWorld"/>					
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="SoftwareResearchBundle2,StarterProgram"/>							
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="20,100" value="1" tags="AirFilterMineProgram,CandyMineProgram,CookingPotMineProgram,HubcapMineProgram,TimedChargeProgram,VendingMachineProgram"/>							
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="SoftwareResearchBundle3,SimpleProgram,BladeTrapProgram,MotionCameraProgram,NightVisionProgram"/>				
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="SolarBankProgram,TimedChargeProgram,SledgeTurretProgram"/>				
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="35,100" value="1" tags="LargeGeneratorProgram,AutoTurretProgram,ShotgunTurretProgram"/>									
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="SoftwareResearchBundle4,IntermediateProgram,JunkTurretProgram,Buddy5Program"/>				
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="55,100" value="1" tags="StunRepulsorProgram"/>						
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="65,100" value="1" tags="SoftwareResearchBundle5,AdvancedProgram,DroneMedicProgram,DroneProgram"/>						
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="85,100" value="1" tags="SoftwareResearchBundle6,MasterProgram"/>
 				</effect_group>
 			</crafting_skill>															
 			<!-- ********************************************** Tailoring ENGINEERING *****************************************-->
@@ -2958,21 +3146,39 @@
 					<unlock_entry item="apparelBandana,apparelTShirtPlain,apparelTShirtZU,apparelTankTop" unlock_tier="2" />					
 				</display_entry>
 
+        <display_entry icon="armorLumberjackOutfit" name_key="tailoringT2-2" has_quality="true" unlock_level="15,25,35,45,55,65" >
+         <unlock_entry item="armorLumberjackHelmet,armorLumberjackOutfit,armorLumberjackGloves,armorLumberjackBoots" unlock_tier="1"/>
+        </display_entry>
+
+        <display_entry icon="armorPreacherOutfit" name_key="tailoringT2-3" has_quality="true" unlock_level="15,25,35,45,55,65" >
+          <unlock_entry item="armorPreacherHelmet,armorPreacherOutfit,armorPreacherGloves,armorPreacherBoots" unlock_tier="1" />
+        </display_entry>
+
+        <display_entry icon="armorRogueOutfit" name_key="tailoringT2-4" has_quality="true" unlock_level="15,25,35,45,55,65" >
+          <unlock_entry item="armorRogueHelmet,armorRogueOutfit,armorRogueGloves,armorRogueBoots" unlock_tier="1" />
+        </display_entry>
+
+        <display_entry icon="armorAthleticOutfit" name_key="tailoringT2-5" has_quality="true" unlock_level="15,25,35,45,55,65" >
+          <unlock_entry item="armorAthleticHelmet,armorAthleticOutfit,armorAthleticGloves,armorAthleticBoots" unlock_tier="1" />
+        </display_entry>
+
+        <display_entry icon="armorEnforcerOutfit" name_key="tailoringT2-6" has_quality="true" unlock_level="15,25,35,45,55,65" >
+          <unlock_entry item="armorEnforcerHelmet,armorEnforcerOutfit,armorEnforcerGloves,armorEnforcerBoots" unlock_tier="1" />
+        </display_entry>
+
 				<display_entry icon="TailoringResearchBundle2" name_key="tailoringT2-1" has_quality="false" unlock_level="15,20" >					
-					<unlock_entry item="TailoringResearchBundle2,resourceClothT2,modArmorInsulatedLiner,modArmorImprovedFittings,resourceSewingKit" unlock_tier="1" />
+					<unlock_entry item="TailoringResearchBundle2,resourceClothT2,modArmorCoolingMesh,modArmorInsulatedLiner,resourceSewingKit" unlock_tier="1" />
 					<unlock_entry item="modArmorStoragePocket" unlock_tier="2" />					
 				</display_entry>
 
 				<display_entry icon="TailoringResearchBundle3" name_key="tailoringT3-1" has_quality="false" unlock_level="25,30,35,40" >
 					<unlock_entry item="TailoringResearchBundle3,resourceClothT3,flagThick44BlockVariantHelper" unlock_tier="1" />
-					<unlock_entry item="modArmorDoubleStoragePocket" unlock_tier="2" />					
-					<unlock_entry item="modArmorPlatingBasic" unlock_tier="3" />
+					<unlock_entry item="modArmorDoubleStoragePocket" unlock_tier="2" />										
 				</display_entry>
 
 				<display_entry icon="TailoringResearchBundle4" name_key="tailoringT4-1" has_quality="false" unlock_level="45,50,55,60" >
 					<unlock_entry item="TailoringResearchBundle4,resourceClothT4,modArmorImpactBracing" unlock_tier="1" />
-					<unlock_entry item="modArmorTripleStoragePocket,modRoboticDroneMoraleBoosterMod" unlock_tier="2" />					
-					<unlock_entry item="modArmorPlatingReinforced" unlock_tier="3" />
+					<unlock_entry item="modArmorTripleStoragePocket,modRoboticDroneMoraleBoosterMod" unlock_tier="2" />										
 				</display_entry>
 
 				<display_entry icon="TailoringResearchBundle5" name_key="tailoringT5-1" has_quality="false" unlock_level="65,70,75,80" >
@@ -2987,16 +3193,25 @@
 					<passive_effect name="CraftingTime" operation="perc_add" value="0.5,-.5" level="1,100" tags="skillTailoring"/>
 				</effect_group>
 
-				<effect_group>									
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5,100" value="1" tags="TailoringResearchBundle1,TailorWorkstation,resourceClothT1,sandbagBlockVariantHelper,medicalBandage"/>										
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="TailoringResearchBundle2,resourceClothT2,modArmorInsulatedLiner,modClothingStoragePocket,modArmorImprovedFittings,resourceSewingKit"/>
+				<effect_group>
+          <passive_effect name="CraftingTier" operation="base_add" level="15,25,35,45,55,65,100" value="0,1,2,3,4,5,5" tags="armorLumberjackHelmet,armorLumberjackOutfit,armorLumberjackGloves,armorLumberjackBoots"/>
+          <passive_effect name="CraftingTier" operation="base_add" level="15,25,35,45,55,65,100" value="0,1,2,3,4,5,5" tags="armorPreacherHelmet,armorPreacherOutfit,armorPreacherGloves,armorPreacherBoots"/>
+          <passive_effect name="CraftingTier" operation="base_add" level="15,25,35,45,55,65,100" value="0,1,2,3,4,5,5" tags="armorRogueHelmet,armorRogueOutfit,armorRogueGloves,armorRogueBoots"/>
+          <passive_effect name="CraftingTier" operation="base_add" level="15,25,35,45,55,65,100" value="0,1,2,3,4,5,5" tags="armorAthleticHelmet,armorAthleticOutfit,armorAthleticGloves,armorAthleticBoots"/>
+          <passive_effect name="CraftingTier" operation="base_add" level="15,25,35,45,55,65,100" value="0,1,2,3,4,5,5" tags="armorEnforcerHelmet,armorEnforcerOutfit,armorEnforcerGloves,armorEnforcerBoots"/>
+          
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="5,100" value="1" tags="TailoringResearchBundle1,TailorWorkstation,resourceClothT1,sandbagBlockVariantHelper,medicalBandage"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="armorLumberjackHelmet,armorLumberjackOutfit,armorLumberjackGloves,armorLumberjackBoots"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="armorPreacherHelmet,armorPreacherOutfit,armorPreacherGloves,armorPreacherBoots"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="armorRogueHelmet,armorRogueOutfit,armorRogueGloves,armorRogueBoots"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="armorAthleticHelmet,armorAthleticOutfit,armorAthleticGloves,armorAthleticBoots"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="armorEnforcerHelmet,armorEnforcerOutfit,armorEnforcerGloves,armorEnforcerBoots"/>
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="TailoringResearchBundle2,resourceClothT2,modArmorCoolingMesh,modArmorInsulatedLiner,modClothingStoragePocket,modArmorImprovedFittings,resourceSewingKit"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="20,100" value="1" tags="modArmorStoragePocket"/>
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="TailoringResearchBundle3,resourceClothT3,flagThick44BlockVariantHelper"/>				
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="modArmorDoubleStoragePocket"/>	
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="35,100" value="1" tags="modArmorPlatingBasic"/>				
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="TailoringResearchBundle4,resourceClothT4,modArmorImpactBracing"/>	
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,100" value="1" tags="modArmorTripleStoragePocket,modRoboticDroneMoraleBoosterMod"/>	
-					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="55,100" value="1" tags="modArmorPlatingReinforced"/>								
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="modArmorDoubleStoragePocket"/>          
+          <passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="TailoringResearchBundle4,resourceClothT4,modArmorImpactBracing"/>	
+					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,100" value="1" tags="modArmorTripleStoragePocket,modRoboticDroneMoraleBoosterMod"/>						
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="65,100" value="1" tags="TailoringResearchBundle5,resourceClothT5"/>	
 					<passive_effect name="RecipeTagUnlocked" operation="base_set" level="85,100" value="1" tags="TailoringResearchBundle6,resourceClothT6"/>	
 				</effect_group>

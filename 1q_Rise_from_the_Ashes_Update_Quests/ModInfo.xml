@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xml>
-	<ModInfo>
-		<Name value="Rise From The Ashes_Update_Quests" />
-		<Description value="This modlet updates the vanilla Quests." />
-		<Author value="Dayhawk" />
-		<Version value="1.0.0" />
-	</ModInfo>
+	<Name value="Rise From The Ashes_Update_Quests" />
+	<Description value="This modlet updates the vanilla Quests." />
+	<Author value="Dayhawk" />
+	<Version value="1.0.0" />
 </xml>

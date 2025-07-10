@@ -47,15 +47,6 @@ public class RiseBuilding : RiseMasterBlock
         
     }
 
-    public override void OnBlockAdded(WorldBase world, Chunk _chunk, Vector3i _blockPos, BlockValue _blockValue)
-    {
-        #region OnBlockAdded
-            base.OnBlockAdded(world, _chunk, _blockPos, _blockValue);
-        #endregion
-
-        //Log.Out($"OnBlockAdded");
-    }
-
     public override void OnBlockValueChanged(WorldBase _world, Chunk _chunk, int _clrIdx, Vector3i _blockPos, BlockValue _oldBlockValue, BlockValue _newBlockValue)
     {
         //Log.Out($"OnBlockValueChanged");
@@ -70,6 +61,7 @@ public class RiseBuilding : RiseMasterBlock
 
     public override int OnBlockDamaged(WorldBase _world, int _clrIdx, Vector3i _blockPos, BlockValue _blockValue, int _damagePoints, int _entityIdThatDamaged, ItemActionAttack.AttackHitInfo _attackHitInfo, bool _bUseHarvestTool, bool _bBypassMaxDamage, int _recDepth = 0)
     {
+      
         int result = base.OnBlockDamaged(_world, _clrIdx, _blockPos, _blockValue, _damagePoints, _entityIdThatDamaged, _attackHitInfo, _bUseHarvestTool, _bBypassMaxDamage, _recDepth);
 
         return result;  
@@ -89,8 +81,8 @@ public class RiseBuilding : RiseMasterBlock
     {        
         if (AllowPickup > 0)
         {
-            cmds[1].enabled = true;
-            cmds[2].enabled = TakeDelay > 0f;
+            cmds[0].enabled = true;
+            cmds[1].enabled = TakeDelay > 0f;
         }
         else
         {
@@ -127,11 +119,13 @@ public class RiseBuilding : RiseMasterBlock
         {
             if (_commandName == "take")
             {
+                Log.Out("RiseBuilding - Trying to pick up a block.");
                 TakeItemWithTimer(_cIdx, _blockPos, _blockValue, _player);
                 return true;
             }
             else if (_commandName == "search")
             {
+                Log.Out("RiseBlockLoot - Trying to search.");
                 Log.Out("Trigger Selected");
                 return OnBlockActivated(_world, _cIdx, _blockPos, _blockValue, _player);
             }

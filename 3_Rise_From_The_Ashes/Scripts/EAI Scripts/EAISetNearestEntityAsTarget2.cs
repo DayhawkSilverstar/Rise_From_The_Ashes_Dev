@@ -143,7 +143,7 @@ public class EAISetNearestEntityAsTarget2 : EAITarget
                 {
                     if ((bool)closeTargetEntity)
                     {
-                        if (theEntity.noisePlayerVolume >= theEntity.noiseWake)
+                        if (theEntity.noisePlayerVolume >= theEntity.sleeperNoiseToWake)
                         {
                             Vector3 position = theEntity.noisePlayer.position;
                             float magnitude = (theEntity.position - position).magnitude;
@@ -262,14 +262,10 @@ public class EAISetNearestEntityAsTarget2 : EAITarget
             bool flag = false;
             if (theEntity.noisePlayer != null)
             {
-                if (theEntity.noisePlayerVolume >= theEntity.noiseWake)
+                if (theEntity.noisePlayerVolume >= theEntity.sleeperNoiseToWake)
                 {
                     entityPlayer = theEntity.noisePlayer;
                     num = theEntity.noisePlayerDistance;
-                }
-                else if (theEntity.noisePlayerVolume >= theEntity.noiseGroan)
-                {
-                    flag = true;
                 }
             }
 

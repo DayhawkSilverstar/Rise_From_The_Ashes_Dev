@@ -128,19 +128,6 @@ public class RiseSecureLoot : BlockSecureLoot
         return cmds;
     }
 
-    public override void OnBlockAdded(WorldBase world, Chunk _chunk, Vector3i _blockPos, BlockValue _blockValue)
-    {
-        base.OnBlockAdded(world, _chunk, _blockPos, _blockValue);
-        if (!_blockValue.ischild && !(world.GetTileEntity(_chunk.ClrIdx, _blockPos) is TileEntitySecureLootContainer))
-        {
-            TileEntitySecureLootContainer tileEntitySecureLootContainer = new TileEntitySecureLootContainer(_chunk);
-            tileEntitySecureLootContainer.localChunkPos = World.toBlock(_blockPos);
-            tileEntitySecureLootContainer.lootListName = lootList;
-            tileEntitySecureLootContainer.SetContainerSize(LootContainer.GetLootContainer(lootList).size);
-            _chunk.AddTileEntity(tileEntitySecureLootContainer);
-        }
-    }
-
     public override void OnBlockRemoved(WorldBase world, Chunk _chunk, Vector3i _blockPos, BlockValue _blockValue)
     {
         base.OnBlockRemoved(world, _chunk, _blockPos, _blockValue);
@@ -173,6 +160,7 @@ public class RiseSecureLoot : BlockSecureLoot
         switch (_commandName)
         {
             case "Search":
+                Log.Out("RiseSecureLoot - Trying to search.");
                 if (!tileEntitySecureLootContainer.IsLocked() || tileEntitySecureLootContainer.IsUserAllowed(PlatformManager.InternalLocalUserIdentifier))
                 {
                     TileEntityLootContainer tileEntityLootContainer = _world.GetTileEntity(_cIdx, _blockPos) as TileEntityLootContainer;

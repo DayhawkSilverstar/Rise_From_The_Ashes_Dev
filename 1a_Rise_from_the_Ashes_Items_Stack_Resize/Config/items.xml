@@ -7,14 +7,14 @@
 		-->
 
 <configs>
-	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='meleeToolSalvageT3ImpactDriver']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='meleeToolFlashlight02']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='meleeToolTorch']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='meleeToolWireTool']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='meleeToolPaintTool']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='meleeToolRepairT3Nailgun']/property[@name='Stacknumber']/@value">1</set>
+	<set xpath="/items/item[@name='meleeToolSalvageT3ImpactDriver']/property[@name='Stacknumber']/@value">1</set>
+	<set xpath="/items/item[@name='meleeToolFlashlight02']/property[@name='Stacknumber']/@value">1</set>
+	<set xpath="/items/item[@name='meleeToolTorch']/property[@name='Stacknumber']/@value">1</set>
+	<set xpath="/items/item[@name='meleeToolWireTool']/property[@name='Stacknumber']/@value">1</set>
+	<set xpath="/items/item[@name='meleeToolPaintTool']/property[@name='Stacknumber']/@value">1</set>
 	<set xpath="/items/item[@name='gunBotT2JunkTurret']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='meleeHandMaster']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='meleeHandMaster']/property[@name='Stacknumber']/@value">1</set>
 	<set xpath="/items/item[@name='ammo9mmBulletBall']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='ammo762mmBulletBall']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='ammoShotgunShell']/property[@name='Stacknumber']/@value">1000</set>
@@ -22,7 +22,7 @@
 	<set xpath="/items/item[@name='ammoShotgunBreachingSlug']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='ammoJunkTurretRegular']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='ammoRocketHE']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='ammoGasCan']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='ammoGasCan']/property[@name='Stacknumber']/@value">10000</set>
 	<set xpath="/items/item[@name='ammoArrowStone']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='ammoArrowExploding']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='ammoCrossbowBoltStone']/property[@name='Stacknumber']/@value">1000</set>
@@ -35,13 +35,13 @@
 	<set xpath="/items/item[@name='ammoBundle44MagnumBulletBall']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='ammoBundle44MagnumBulletHP']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='ammoBundle44MagnumBulletAP']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceRockSmallBundle']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='resourceRockSmallBundle']/property[@name='Stacknumber']/@value">100</set>
 	<set xpath="/items/item[@name='thrownAmmoPipeBomb']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='thrownGrenadeContact']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='thrownTimedCharge']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='thrownDynamite']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='thrownAmmoMolotovCocktail']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='ammoDartIron']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='ammoDartIron']/property[@name='Stacknumber']/@value">6000</set>
 	<set xpath="/items/item[@name='partsMaster']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='gunMGT1AK47Parts']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='vehicleMinibikePlaceable']/property[@name='Stacknumber']/@value">1000</set>
@@ -111,21 +111,20 @@
 	<set xpath="/items/item[@name='blankNoteMaster']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='questMaster']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='adminQuestTicketMaster']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceRockSmall']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='resourceRockSmall']/property[@name='Stacknumber']/@value">6000</set>
 	<set xpath="/items/item[@name='resourceSnowBall']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceAcid']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceYuccaFibers']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceWood']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceCrushedSand']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceBrokenGlass']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceScrapIron']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='resourceAcid']/property[@name='Stacknumber']/@value">100</set>
+	<set xpath="/items/item[@name='resourceYuccaFibers']/property[@name='Stacknumber']/@value">6000</set>	
+	<set xpath="/items/item[@name='resourceCrushedSand']/property[@name='Stacknumber']/@value">6000</set>
+	<set xpath="/items/item[@name='resourceBrokenGlass']/property[@name='Stacknumber']/@value">6000</set>
+	<set xpath="/items/item[@name='resourceScrapIron']/property[@name='Stacknumber']/@value">6000</set>
 	<set xpath="/items/item[@name='resourceForgedIron']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='resourceMetalPipe']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='resourceForgedSteel']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceScrapPolymers']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceScopeLens']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceSewingKit']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceOilShale']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='resourceScrapPolymers']/property[@name='Stacknumber']/@value">6000</set>
+	<set xpath="/items/item[@name='resourceScopeLens']/property[@name='Stacknumber']/@value">500</set>
+	<set xpath="/items/item[@name='resourceSewingKit']/property[@name='Stacknumber']/@value">500</set>
+	<set xpath="/items/item[@name='resourceOilShale']/property[@name='Stacknumber']/@value">6000</set>
 	<set xpath="/items/item[@name='resourceBone']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='resourceLeather']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='resourceAnimalFat']/property[@name='Stacknumber']/@value">1000</set>
@@ -136,77 +135,77 @@
 	<set xpath="/items/item[@name='resourceCropCottonPlant']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='resourceCropGoldenrodPlant']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='resourceCropCoffeeBeans']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceScrapBrass']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceScrapLead']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceClayLump']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceCobblestones']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='resourceScrapBrass']/property[@name='Stacknumber']/@value">6000</set>
+	<set xpath="/items/item[@name='resourceScrapLead']/property[@name='Stacknumber']/@value">6000</set>
+	<set xpath="/items/item[@name='resourceClayLump']/property[@name='Stacknumber']/@value">6000</set>
+	<set xpath="/items/item[@name='resourceCobblestones']/property[@name='Stacknumber']/@value">6000</set>
 	<set xpath="/items/item[@name='resourceCement']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='resourceConcreteMix']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='resourceCloth']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourcePaper']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='resourcePaper']/property[@name='Stacknumber']/@value">6000</set>
 	<set xpath="/items/item[@name='resourceElectricParts']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='resourceHeadlight']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='resourceMechanicalParts']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='resourceSpring']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='resourceGlue']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceDuctTape']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceFeather']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='resourceDuctTape']/property[@name='Stacknumber']/@value">100</set>
+	<set xpath="/items/item[@name='resourceFeather']/property[@name='Stacknumber']/@value">6000</set>
 	<set xpath="/items/item[@name='resourceArrowHeadIron']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='resourceArrowHeadSteelAP']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceCoal']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourcePotassiumNitratePowder']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceGunPowder']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceBuckshot']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='resourceCoal']/property[@name='Stacknumber']/@value">6000</set>
+	<set xpath="/items/item[@name='resourcePotassiumNitratePowder']/property[@name='Stacknumber']/@value">6000</set>
+	<set xpath="/items/item[@name='resourceGunPowder']/property[@name='Stacknumber']/@value">6000</set>
+	<set xpath="/items/item[@name='resourceBuckshot']/property[@name='Stacknumber']/@value">6000</set>
 	<set xpath="/items/item[@name='resourceBulletCasing']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='resourceBulletTip']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceNail']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='resourceNail']/property[@name='Stacknumber']/@value">6000</set>
 	<set xpath="/items/item[@name='resourceRocketTip']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='resourceRocketCasing']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceWaterFilter']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceRepairKit']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='resourceWaterFilter']/property[@name='Stacknumber']/@value">1</set>
+	<set xpath="/items/item[@name='resourceRepairKit']/property[@name='Stacknumber']/@value">100</set>
 	<set xpath="/items/item[@name='resourceArmorCraftingKit']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='resourceLegendaryParts']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceOil']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourcePaint']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceDoorKnob']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='resourceOil']/property[@name='Stacknumber']/@value">500</set>
+	<set xpath="/items/item[@name='resourcePaint']/property[@name='Stacknumber']/@value">6000</set>
+	<set xpath="/items/item[@name='resourceDoorKnob']/property[@name='Stacknumber']/@value">500</set>
 	<set xpath="/items/item[@name='resourceCandleStick']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceRadiator']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceFishingWeight']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceTrophy1']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceTrophy2']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='resourceRadiator']/property[@name='Stacknumber']/@value">105000</set>
+	<set xpath="/items/item[@name='resourceFishingWeight']/property[@name='Stacknumber']/@value">6000</set>
+	<set xpath="/items/item[@name='resourceTrophy1']/property[@name='Stacknumber']/@value">500</set>
+	<set xpath="/items/item[@name='resourceTrophy2']/property[@name='Stacknumber']/@value">500</set>
 	<set xpath="/items/item[@name='resourceSilverNugget']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='candle']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='smallEngine']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='carBattery']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='casinoCoin']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='oldCash']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='candle']/property[@name='Stacknumber']/@value">100</set>
+	<set xpath="/items/item[@name='smallEngine']/property[@name='Stacknumber']/@value">1</set>
+	<set xpath="/items/item[@name='carBattery']/property[@name='Stacknumber']/@value">1</set>
+	<set xpath="/items/item[@name='casinoCoin']/property[@name='Stacknumber']/@value">30000</set>
+	<set xpath="/items/item[@name='oldCash']/property[@name='Stacknumber']/@value">6000</set>
 	<set xpath="/items/item[@name='solarCell']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='toolCookingGrill']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='toolCookingGrill']/property[@name='Stacknumber']/@value">1</set>
 	<set xpath="/items/item[@name='toolCookingPot']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='toolBeaker']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='toolBellows']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='toolAnvil']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='toolForgeCrucible']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='toolDewGatherer']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='toolDewTarp']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='toolDewFilter']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='unit_iron']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='toolBeaker']/property[@name='Stacknumber']/@value">1</set>
+	<set xpath="/items/item[@name='toolBellows']/property[@name='Stacknumber']/@value">1</set>
+	<set xpath="/items/item[@name='toolAnvil']/property[@name='Stacknumber']/@value">1</set>
+	<set xpath="/items/item[@name='toolForgeCrucible']/property[@name='Stacknumber']/@value">1</set>
+	<set xpath="/items/item[@name='toolDewGatherer']/property[@name='Stacknumber']/@value">1</set>
+	<set xpath="/items/item[@name='toolDewTarp']/property[@name='Stacknumber']/@value">1</set>
+	<set xpath="/items/item[@name='toolDewFilter']/property[@name='Stacknumber']/@value">1</set>
+	<set xpath="/items/item[@name='unit_iron']/property[@name='Stacknumber']/@value">30000</set>
 	<set xpath="/items/item[@name='questItem']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='resourceLockPick']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='resourceLockPickBundle']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='resourceLockPickBundle']/property[@name='Stacknumber']/@value">100</set>
 	<set xpath="/items/item[@name='bookFiremansAlmanacHeat']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='masterSkillMagazine']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='questRewardBundleMaster']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='twitchTurd']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='meleeToolPaintToolAdmin']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='meleeToolBlockReplaceTool']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='gunToolDiggerAdmin']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='gunHandgunPistolAdmin']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='meleeToolHammerOfGodAdmin']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='pimpMiningHelmetAdmin']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='ringOfFireAdmin']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='meleeToolPaintToolAdmin']/property[@name='Stacknumber']/@value">1</set>
+	<set xpath="/items/item[@name='meleeToolBlockReplaceTool']/property[@name='Stacknumber']/@value">1</set>
+	<set xpath="/items/item[@name='gunToolDiggerAdmin']/property[@name='Stacknumber']/@value">1</set>
+	<set xpath="/items/item[@name='gunHandgunPistolAdmin']/property[@name='Stacknumber']/@value">1</set>
+	<set xpath="/items/item[@name='meleeToolHammerOfGodAdmin']/property[@name='Stacknumber']/@value">1</set>
+	<set xpath="/items/item[@name='pimpMiningHelmetAdmin']/property[@name='Stacknumber']/@value">1</set>
+	<set xpath="/items/item[@name='ringOfFireAdmin']/property[@name='Stacknumber']/@value">1</set>
 	<set xpath="/items/item[@name='rocketBootsAdmin']/property[@name='Stacknumber']/@value">1000</set>
-	<set xpath="/items/item[@name='drinkJarFullRespecAdmin']/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[@name='drinkJarFullRespecAdmin']/property[@name='Stacknumber']/@value">100</set>
 	<set xpath="/items/item[@name='noteTestersDelightAdmin']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='noteTestingAdmin']/property[@name='Stacknumber']/@value">1000</set>
 	<set xpath="/items/item[@name='noteAchievementAdmin']/property[@name='Stacknumber']/@value">1000</set>

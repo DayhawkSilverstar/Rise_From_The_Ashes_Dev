@@ -1,0 +1,7 @@
+<Config>
+    <set xpath="//window[@name='menuBackground']/texture[@name='bgTexture']/@texture">@modfolder:Textures/UI/RiseFromTheAshesMainMenu.jpeg</set>
+    <set xpath="//backgrounds">
+        <tex file="@modfolder:Textures/UI/Loading_01.jpeg" />
+        <tex file="@modfolder:Textures/UI/Loading_02.jpeg" />
+    </set>
+</Config>

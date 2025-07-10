@@ -23,15 +23,22 @@ public class RiseRadio : RiseMasterBlock
 
     EntityPlayer localPlayer;
 
+    bool radioOn = false;
+    private RadioManager radioManager;
+    public Vector3 blockPosition { get; set; }
+    public string RadioName { get; set; }
+
     public RiseRadio()
     {
         HasTileEntity = true;
+
     }
 
     public override void Init()
     {
         base.Init();
 
+        radioManager = RadioManager.Instance;
         TakeDelay = 2f;
         Properties.ParseFloat("AllowPickup", ref AllowPickup);
         Properties.ParseFloat("TakeDelay", ref TakeDelay);
@@ -43,20 +50,33 @@ public class RiseRadio : RiseMasterBlock
     public override void OnBlockLoaded(WorldBase _world, int _clrIdx, Vector3i _blockPos, BlockValue _blockValue)
     {
         base.OnBlockLoaded(_world, _clrIdx, _blockPos, _blockValue);
+        this.blockPosition = _blockPos.ToVector3();        
+        RadioName = blockID.ToString() + blockPosition.ToString();
+        Log.Out("blockPosition : {0}", this.blockPosition);
+        radioManager.AddRadio(this);
+        if (this.radioOn)
+        {
+            radioManager.PlayRadio(this);
+        }
     }
 
     // Only fires if IsNotifyOnLoadUnload is set to true
     public override void OnBlockUnloaded(WorldBase _world, int _clrIdx, Vector3i _blockPos, BlockValue _blockValue)
     {
         base.OnBlockUnloaded(_world, _clrIdx, _blockPos, _blockValue);
+        //radioManager.RemoveRadio(this);
     }
 
-    public override void OnBlockAdded(WorldBase world, Chunk _chunk, Vector3i _blockPos, BlockValue _blockValue)
-    {
-        #region OnBlockAdded
-        base.OnBlockAdded(world, _chunk, _blockPos, _blockValue);
-        #endregion
-    }
+    //public override void OnBlockAdded(WorldBase world, Chunk _chunk, Vector3i _blockPos, BlockValue _blockValue)
+    //{
+    //    #region OnBlockAdded
+    //    base.OnBlockAdded(world, _chunk, _blockPos, _blockValue);
+    //    this.blockPosition = _blockPos.ToVector3();
+    //    RadioName = blockID.ToString() + blockPosition.ToString();
+    //    Log.Out("blockPosition : {0}", this.blockPosition);
+    //    radioManager.AddRadio(this);
+    //    #endregion
+    //}
 
     // Display custom messages for turning on and off the music box, based on the block's name.
     public override string GetActivationText(WorldBase _world, BlockValue _blockValue, int _clrIdx, Vector3i _blockPos,
@@ -98,7 +118,14 @@ public class RiseRadio : RiseMasterBlock
                 TakeItemWithTimer(_cIdx, _blockPos, _blockValue, _player);
                 return true;
             case "Turn On":
-                GameManager.Instance.PlaySoundAtPositionServer(_blockPos.ToVector3(), "riseRadio", AudioRolloffMode.Linear, 50);
+                this.blockPosition = _blockPos.ToVector3();
+                Log.Out("Turn On blockPosition : {0}", this.blockPosition);                
+                radioManager.PlayRadio(this);             
+                return true;
+            case "Turn Off":
+                this.blockPosition = _blockPos.ToVector3();
+                Log.Out("Turn Off blockPosition : {0}", this.blockPosition);                
+                radioManager.StopRadio(this);
                 return true;
         }
 

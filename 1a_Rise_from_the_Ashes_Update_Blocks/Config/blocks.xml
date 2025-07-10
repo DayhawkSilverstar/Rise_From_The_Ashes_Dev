@@ -2,7 +2,556 @@
     <!-- ******************* RISE PROPERTIES ******************** -->    
 
     <!-- Remove Blocks -->
+    <remove xpath="//block/property[@name='TakeDelay' and @value='-1']"/>
+    <remove xpath="//block[@name='candleWallLight']/property[@name='Class']"/>
+    <remove xpath="//block[@name='wallTorchLight']/property[@name='Class']"/>
     
+  <remove xpath="/blocks/block[@name='cntVendingMachine']/property[@name='Buff']"/>
+    
+    <!-- Allow blocks to be picked up -->
+
+  
+  <append xpath="/blocks/block[@name='endTable']">
+    <property name="Class" value="RiseDeco, Rise_From_The_Ashes" />
+    <property name="CanPickUp" value="true" />
+    <property name="AllowPickup" value="1"/>
+    <property name="CanPickUp" value="true"/>
+    <property name="TakeDelay" value="5"/>
+    <property name="UnlockedBy" value="skillCarpentry"/>
+  </append>
+
+    <append xpath="/blocks/block[@name='gurneyBed']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes" />
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+    <append xpath="/blocks/block[@name='signOpenWallMountChain']">
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='cntUtilityCartEmpty']">
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>   
+
+    <append xpath="/blocks/block[@name='palletBrownBoxesBase']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <set xpath="/blocks/block[@name='palletBricksBase']/drop[@event='Harvest' and @name='resourceRockSmall']/@count">50</set>
+    <set xpath="/blocks/block[@name='palletBricksBase']/drop[@event='Harvest' and @name='resourceRockSmall']/@name">resourceBrick</set>
+    <append xpath="/blocks/block[@name='palletBricksBase']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='palletTarpBaseWhite']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='palletCompressedCardboard']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='palletEmptyStack']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='OSBWoodStack']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='dryWallStack']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='metalPipeStack']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='palletCartonMilitaryBase']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='palletBagCowFeedBaseFull']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='palletBagFlourBaseFull']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='palletBagSandBaseFull']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='palletBagConcreteBaseFull']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='palletBagFertilizerBaseFull']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='palletBagBlankBaseFullWhite']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='cntStoreElectronicsPalletTvFallen']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='paintingBen']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='pictureCanvas_01a']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+    
+    <append xpath="/blocks/block[@name='pictureFrame_01a']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='pictureFramedMedalsLrg']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='pictureRobertDishongPlaque']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+
+    <append xpath="/blocks/block[@name='decoCarBackBumperUpright']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='horseshoe_01']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='decoWildWestWagonWheelBack']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='hayBaleSquare']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>  
+
+    <append xpath="/blocks/block[@name='cinderBlocks01']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>  
+
+    <append xpath="/blocks/block[@name='barStool']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>  
+
+    <append xpath="/blocks/block[@name='sectionalPlaidCouchSofaMiddle']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>  
+
+    <append xpath="/blocks/block[@name='sectionalLeatherCouchSofaArm']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append> 
+
+    <append xpath="/blocks/block[@name='couchUglySingleWhite']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append> 
+
+    <append xpath="/blocks/block[@name='couchModernArm']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append> 
+
+    <append xpath="/blocks/block[@name='tableCommunion']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append> 
+
+    <append xpath="/blocks/block[@name='churchPewLeftWhite']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>
+      <property name="UnlockedBy" value="skillCarpentry"/>
+    </append> 
+
+    <append xpath="/blocks/block[@name='churchBell']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='parkBenchA']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='wineBarrel']">
+      <property name="Class" value="RiseBlockLoot, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>
+      <property name="LootList" value="playerStorageExtraLarge" />
+    </append>
+
+    <append xpath="/blocks/block[@name='decoWineBottle']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='piano']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <set xpath="/blocks/block[@name='decoPoolTable']/drop[@event='Harvest' and @name='resourceWood']/@name">resourceWoodT1</set>
+    <append xpath="/blocks/block[@name='decoPoolTable']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <set xpath="/blocks/block[@name='decoReptileTerrarium']/property[@name='EconomicValue']/@value">5</set>
+    <append xpath="/blocks/block[@name='decoReptileTerrarium']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='decoClassicDogHouse']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='decoLargePetCage']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='decoMetalSlide']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='decoBasketBallHoop']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='trophy']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='decoStationaryBike']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+    
+    <append xpath="/blocks/block[@name='decoTreadmill']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='decoWeightBar']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='signCamping']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='signNoParkingHanging']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='signRoadPrivate']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='signRoadPrivate']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='signYardSign01']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='signTraderHughExterior']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='signTraderHughInterior']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='signShopGas']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='signShopGunStore']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='signShopBookStore']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='decoCowSkull']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='utilitySink']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>
+
+    <append xpath="/blocks/block[@name='glassBulletproofBlockVariantHelper']">      
+      <property name="UnlockedBy" value="skillBlacksmithing"/>
+    </append>
+
+  
+
+  <!-- Update all light classes to use the RisePoweredLight -->
+    <set xpath="//block/property[@name='Class' and @value='PoweredLight']/@value">RisePoweredLight, Rise_From_The_Ashes</set>
+    <set xpath="//block/property[@name='Class' and @value='Light']/@value">RisePoweredLight, Rise_From_The_Ashes</set>
+    <append xpath="//block/property[@name='Class' and @value='RisePoweredLight, Rise_From_The_Ashes']">
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append>  
+
+    <!-- Make torches and candles back to RiseLight -->
+    <append xpath="/blocks/block[@name='wallTorchLight']">
+      <property name="Class" value="RiseLight, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </append> 
 
     <!--  UPDATE THE TAGS, UNLOCKBY, AND ECONOMIC VALUES  -->
     
@@ -35,19 +584,46 @@
     <set xpath="/blocks/block[@name='terrOrePotassiumNitrate']/property[@name='Tags']/@value">ore,deepOre,miningPerk</set>
     <set xpath="/blocks/block[@name='terrOreOilDeposit']/property[@name='Tags']/@value">ore,deepOre,miningPerk</set>
 
+    <!-- Change blocks to use the Rise Block classes -->
+    <set xpath="//block/property[@name='Class' and @value='SecureLoot']/@value">RiseSecureLoot, Rise_From_The_Ashes</set>
+    <set xpath="//block/property[@name='Class' and @value='Loot']/@value">RiseBlockLoot, Rise_From_The_Ashes</set>
+    <insertAfter xpath="//block/property[@name='Class' and @value='RiseBlockLoot, Rise_From_The_Ashes']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="5" />    
+      <!-- **************************************** -->
+    </insertAfter>
+
     <!-- WOOD SHAPES -->
     <insertAfter xpath="/blocks/block[@name='woodShapes']/property[@name='Material']"><property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/></insertAfter>
-    <insertAfter xpath="/blocks/block[@name='woodShapes']/property[@name='DescriptionKey']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='woodShapes']/property[@name='DescriptionKey']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="0" />
+      <property name="CanPickUp" value="false" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
     <append xpath="/blocks/block[@name='woodShapes']"><property name="UnlockedBy" value="skillCarpentry"/></append>
     <set xpath="/blocks/block[@name='woodShapes']/property[@name='EconomicValue']/@value">10</set>
-    <set xpath="/blocks/block[@name='woodShapes']/property[@name='Tags']/@value">wood,construction,skillConstruction</set>
+    <set xpath="/blocks/block[@name='woodShapes']/property[@name='Tags']/@value">wood,construction,skillConstruction</set>    
     
     <!-- COBBLESTONE SHAPES -->
     <insertAfter xpath="/blocks/block[@name='cobblestoneShapes']/property[@name='Material']"><property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/></insertAfter>
-    <insertAfter xpath="/blocks/block[@name='cobblestoneShapes']/property[@name='DescriptionKey']"><property name="DamageResist" value="10"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='cobblestoneShapes']/property[@name='DescriptionKey']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="0" />
+      <property name="CanPickUp" value="false" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
     <append xpath="/blocks/block[@name='cobblestoneShapes']"><property name="UnlockedBy" value="skillCivilEngineer"/></append>
     <set xpath="/blocks/block[@name='cobblestoneShapes']/property[@name='EconomicValue']/@value">14</set>
-    <append xpath="/blocks/block[@name='cobblestoneShapes']"><property name="Tags" value="stone,construction,skillConstruction"/></append>    
+    <append xpath="/blocks/block[@name='cobblestoneShapes']"><property name="Tags" value="stone,construction,skillConstruction"/></append>
+    <set xpath="/blocks/block[@name='cobblestoneShapes']/property[@class='UpgradeBlock']/property[@name='ToBlock']/@value">brickShapes</set>
+    <set xpath="/blocks/block[@name='cobblestoneShapes']/property[@class='UpgradeBlock']/property[@name='Item']/@value">resourceBrick</set>
 
     <!-- BRICK SHAPES -->
     <insertAfter xpath="/blocks/block[@name='brickShapes']/property[@name='Material']"><property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/></insertAfter>
@@ -55,21 +631,43 @@
     <append xpath="/blocks/block[@name='brickShapes']"><property name="UnlockedBy" value="skillCivilEngineer"/></append>
     <set xpath="/blocks/block[@name='brickShapes']/property[@name='EconomicValue']/@value">8</set>
     <append xpath="/blocks/block[@name='brickShapes']"><property name="Tags" value="brick,construction,skillConstruction"/></append>
+    <set xpath="/blocks/block[@name='brickShapes']/property[@class='RepairItems']/property[@name='resourceCobblestones']/@name">resourceBrick</set>
+    <set xpath="/blocks/block[@name='brickShapes']/property[@class='UpgradeBlock']/property[@name='ToBlock']/@value">concreteShapes</set>
+    <set xpath="/blocks/block[@name='brickShapes']/property[@class='UpgradeBlock']/property[@name='Item']/@value">resourceConcreteMix</set>
     
     <!-- CONCRETE SHAPES -->
     <insertAfter xpath="/blocks/block[@name='concreteShapes']/property[@name='Material']"><property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/></insertAfter>
-    <insertAfter xpath="/blocks/block[@name='concreteShapes']/property[@name='DescriptionKey']"><property name="DamageResist" value="25"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='concreteShapes']/property[@name='DescriptionKey']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="0" />
+      <property name="CanPickUp" value="false" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="25" />
+      <!-- **************************************** -->
+    </insertAfter>
     <append xpath="/blocks/block[@name='concreteShapes']"><property name="UnlockedBy" value="skillCivilEngineer"/></append>
     <set xpath="/blocks/block[@name='concreteShapes']/property[@name='EconomicValue']/@value">50</set>
     <append xpath="/blocks/block[@name='concreteShapes']"><property name="Tags" value="concrete,construction,skillConstruction"/></append>
+    <set xpath="/blocks/block[@name='concreteShapes']/property[@class='UpgradeBlock']/property[@name='ToBlock']/@value">ironShapes</set>
+    <set xpath="/blocks/block[@name='concreteShapes']/property[@class='UpgradeBlock']/property[@name='Item']/@value">resourceForgedIron</set>
 
     <!-- STEEL SHAPES -->
     <insertAfter xpath="/blocks/block[@name='steelShapes']/property[@name='Material']"><property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/></insertAfter>
-    <insertAfter xpath="/blocks/block[@name='concreteShapes']/property[@name='DescriptionKey']"><property name="DamageResist" value="42"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='steelShapes']/property[@name='DescriptionKey']">
+      <property name="DamageResist" value="42"/>
+    </insertAfter>
     <append xpath="/blocks/block[@name='steelShapes']"><property name="UnlockedBy" value="skillCivilEngineer"/></append>
     <set xpath="/blocks/block[@name='steelShapes']/property[@name='EconomicValue']/@value">160</set>
     <append xpath="/blocks/block[@name='steelShapes']"><property name="Tags" value="steel,construction,skillConstruction"/></append>
-
+    <append xpath="/blocks/block[@name='steelShapes']">
+      <property class="UpgradeBlock">
+		    <property name="ToBlock" value="stainLessSteelShapes"/>
+		    <property name="Item" value="resourceForgedStainlessSteel"/>
+		    <property name="ItemCount" value="10"/>
+		    <property name="UpgradeHitCount" value="4"/>
+	    </property>
+    </append>
+    
     <!-- AWNING SHAPES -->
     <insertAfter xpath="/blocks/block[@name='awningShapes']/property[@name='Material']"><property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/></insertAfter>
     <insertAfter xpath="/blocks/block[@name='awningShapes']/property[@name='DescriptionKey']"><property name="DamageResist" value="2"/></insertAfter>
@@ -78,81 +676,186 @@
 
     <!-- CORRUGATED METAL SHAPES -->
     <insertAfter xpath="/blocks/block[@name='corrugatedMetalShapes']/property[@name='Material']"><property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/></insertAfter>
-    <insertAfter xpath="/blocks/block[@name='corrugatedMetalShapes']/property[@name='DescriptionKey']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='corrugatedMetalShapes']/property[@name='DescriptionKey']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="0" />
+      <property name="CanPickUp" value="false" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <property name="UnlockedBy" value="skillBlacksmithing"/>
+      <!-- **************************************** -->
+    </insertAfter>
     <set xpath="/blocks/block[@name='corrugatedMetalShapes']/property[@name='EconomicValue']/@value">15</set>
 
     <!-- FRAME SHAPES -->    
-    <insertAfter xpath="/blocks/block[@name='frameShapes']/property[@name='DescriptionKey']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='frameShapes']/property[@name='DescriptionKey']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="0" />
+      <property name="CanPickUp" value="false" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
     <set xpath="/blocks/block[@name='frameShapes']/property[@name='EconomicValue']/@value">10</set>
     <set xpath="/blocks/block[@name='frameShapes']/property[@name='Tags']/@value">wood</set>
 
     <!-- BULLETPROOF SHAPES -->
-    <insertAfter xpath="/blocks/block[@name='bulletproofShapes']/property[@name='Material']"><property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/></insertAfter>
-    <insertAfter xpath="/blocks/block[@name='bulletproofShapes']/property[@name='DescriptionKey']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='bulletproofShapes']/property[@name='Material']">
+      <property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/>
+    </insertAfter>
+    <insertAfter xpath="/blocks/block[@name='bulletproofShapes']/property[@name='DescriptionKey']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="0" />
+      <property name="CanPickUp" value="false" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
     <set xpath="/blocks/block[@name='bulletproofShapes']/property[@name='EconomicValue']/@value">150</set>
 
     <!-- WEAKWOOD SHAPES -->
     <insertAfter xpath="/blocks/block[@name='woodWeakNoUpgradeMaster']/property[@name='Material']"><property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/></insertAfter>
-    <insertAfter xpath="/blocks/block[@name='woodWeakNoUpgradeMaster']/property[@name='DescriptionKey']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='woodWeakNoUpgradeMaster']/property[@name='DescriptionKey']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="0" />
+      <property name="CanPickUp" value="false" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
     <set xpath="/blocks/block[@name='woodWeakNoUpgradeMaster']/property[@name='EconomicValue']/@value">5</set>
     <set xpath="/blocks/block[@name='woodWeakNoUpgradeMaster']/property[@name='Tags']/@value">wood,construction,skillConstruction</set>
 
     <!-- WOOD NO UPGRADE SHAPES -->
     <insertAfter xpath="/blocks/block[@name='woodNoUpgradeMaster']/property[@name='Material']"><property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/></insertAfter>
-    <insertAfter xpath="/blocks/block[@name='woodNoUpgradeMaster']/property[@name='DescriptionKey']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='woodNoUpgradeMaster']/property[@name='DescriptionKey']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="0" />
+      <property name="CanPickUp" value="false" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
     <set xpath="/blocks/block[@name='woodNoUpgradeMaster']/property[@name='EconomicValue']/@value">10</set>
     <set xpath="/blocks/block[@name='woodNoUpgradeMaster']/property[@name='Tags']/@value">wood,construction,skillConstruction</set>
     
     <!-- WOOD MASTER -->    
-    <insertAfter xpath="/blocks/block[@name='woodShapes']/property[@name='Material']"><property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/></insertAfter>
-    <append xpath="/blocks/block[@name='woodMaster']"><property name="Tags" value="wood,construction,skillConstruction"/></append>
+    <insertAfter xpath="/blocks/block[@name='woodMaster']/property[@name='CreativeMode']">
+      <property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/>
+      <property name="Tags" value="wood,construction,skillConstruction"/>
+    </insertAfter>
 
     <!-- rWOOD MASTER -->
     <insertAfter xpath="/blocks/block[@name='rWoodMaster']/property[@name='Material']"><property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/></insertAfter>
-    <insertAfter xpath="/blocks/block[@name='rWoodMaster']/property[@name='DescriptionKey']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='rWoodMaster']/property[@name='DescriptionKey']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
     <set xpath="/blocks/block[@name='rWoodMaster']/property[@name='Tags']/@value">wood</set>
 
     <!-- SCRAP IRON MASTER -->
     <insertAfter xpath="/blocks/block[@name='scrapIronNoUpgradeMaster']/property[@name='Material']"><property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/></insertAfter>
-    <insertAfter xpath="/blocks/block[@name='scrapIronNoUpgradeMaster']/property[@name='DescriptionKey']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='scrapIronNoUpgradeMaster']/property[@name='DescriptionKey']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
     <set xpath="/blocks/block[@name='scrapIronNoUpgradeMaster']/property[@name='EconomicValue']/@value">20</set>
 
     <!-- rSCRAP IRON MASTER -->
     <insertAfter xpath="/blocks/block[@name='rScrapIronMaster']/property[@name='Material']"><property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/></insertAfter>
-    <insertAfter xpath="/blocks/block[@name='rScrapIronMaster']/property[@name='DescriptionKey']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='rScrapIronMaster']/property[@name='DescriptionKey']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
     <set xpath="/blocks/block[@name='rScrapIronMaster']/property[@name='EconomicValue']/@value">40</set>
 
     <!-- CONCRETE NO UPGRADE MASTER -->
     <insertAfter xpath="/blocks/block[@name='concreteNoUpgradeMaster']/property[@name='Material']"><property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/></insertAfter>
-    <insertAfter xpath="/blocks/block[@name='concreteNoUpgradeMaster']/property[@name='DescriptionKey']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='concreteNoUpgradeMaster']/property[@name='DescriptionKey']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
     <set xpath="/blocks/block[@name='concreteNoUpgradeMaster']/property[@name='EconomicValue']/@value">50</set>
 
     <!-- STEEL MASTER -->
     <insertAfter xpath="/blocks/block[@name='steelMaster']/property[@name='Material']"><property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/></insertAfter>
-    <insertAfter xpath="/blocks/block[@name='steelMaster']/property[@name='DescriptionKey']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='steelMaster']/property[@name='DescriptionKey']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
     <set xpath="/blocks/block[@name='steelMaster']/property[@name='EconomicValue']/@value">160</set>
-    <append xpath="/blocks/block[@name='steelMaster']"><property name="Tags" value="steel,construction,skillConstruction"/></append>
+    <append xpath="/blocks/block[@name='steelMaster']">
+      <property name="Tags" value="steel,construction,skillConstruction"/>
+    </append>
 
     <!-- STONE NO UPGRADE MASTER -->
     <insertAfter xpath="/blocks/block[@name='stoneNoUpgradeMaster']/property[@name='Material']"><property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/></insertAfter>
-    <insertAfter xpath="/blocks/block[@name='stoneNoUpgradeMaster']/property[@name='CreativeMode']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='stoneNoUpgradeMaster']/property[@name='CreativeMode']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
     <set xpath="/blocks/block[@name='stoneNoUpgradeMaster']/property[@name='EconomicValue']/@value">5</set>
 
     <!-- COBBLESTONE MASTER -->
     <insertAfter xpath="/blocks/block[@name='cobblestoneMaster']/property[@name='Material']"><property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/></insertAfter>
-    <insertAfter xpath="/blocks/block[@name='cobblestoneMaster']/property[@name='DescriptionKey']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='cobblestoneMaster']/property[@name='DescriptionKey']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
     <set xpath="/blocks/block[@name='cobblestoneMaster']/property[@name='EconomicValue']/@value">14</set>
     <append xpath="/blocks/block[@name='cobblestoneMaster']"><property name="Tags" value="stone,construction,skillConstruction"/></append>
 
     <!-- BRICK NO UPGRADE MASTER -->
     <insertAfter xpath="/blocks/block[@name='brickNoUpgradeMaster']/property[@name='Material']"><property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/></insertAfter>
-    <insertAfter xpath="/blocks/block[@name='brickNoUpgradeMaster']/property[@name='DescriptionKey']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='brickNoUpgradeMaster']/property[@name='DescriptionKey']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
     <set xpath="/blocks/block[@name='brickNoUpgradeMaster']/property[@name='EconomicValue']/@value">8</set>
     <append xpath="/blocks/block[@name='brickNoUpgradeMaster']"><property name="Tags" value="brick,construction,skillConstruction"/></append>
 
     <!-- CORRUGATED NO UPGRADE MASTER -->
     <insertAfter xpath="/blocks/block[@name='corrugatedMetalNoUpgradeMaster']/property[@name='Material']"><property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/></insertAfter>
-    <insertAfter xpath="/blocks/block[@name='corrugatedMetalNoUpgradeMaster']/property[@name='DescriptionKey']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='corrugatedMetalNoUpgradeMaster']/property[@name='DescriptionKey']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
     <set xpath="/blocks/block[@name='corrugatedMetalNoUpgradeMaster']/property[@name='EconomicValue']/@value">12</set>
     <append xpath="/blocks/block[@name='corrugatedMetalNoUpgradeMaster']"><property name="Tags" value="metal,construction,skillConstruction"/></append>
 
@@ -164,13 +867,28 @@
 
     <!-- CORRUGATED NO UPGRADE MASTER -->
     <insertAfter xpath="/blocks/block[@name='glassBulletproofMaster']/property[@name='Material']"><property name="Class" value="RiseBuilding, Rise_From_The_Ashes"/></insertAfter>
-    <insertAfter xpath="/blocks/block[@name='glassBulletproofMaster']/property[@name='DescriptionKey']"><property name="DamageResist" value="15"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='glassBulletproofMaster']/property[@name='DescriptionKey']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="15" />
+      <property name="UnlockedBy" value="skillBlacksmithing"/>
+      <!-- **************************************** -->
+    </insertAfter>
     <set xpath="/blocks/block[@name='glassBulletproofMaster']/property[@name='EconomicValue']/@value">150</set>
     <append xpath="/blocks/block[@name='glassBulletproofMaster']"><property name="Tags" value="metal,construction,skillConstruction"/></append>
 
     <!-- DECO ENTITY WOOD MASTER -->
     <insertAfter xpath="/blocks/block[@name='decoEntityWoodMaster']/property[@name='CreativeMode']"><property name="Class" value="RiseDeco, Rise_From_The_Ashes"/></insertAfter>
-    <insertAfter xpath="/blocks/block[@name='decoEntityWoodMaster']/property[@name='Model']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='decoEntityWoodMaster']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
     <set xpath="/blocks/block[@name='decoEntityWoodMaster']/property[@name='EconomicValue']/@value">5</set>
     <set xpath="/blocks/block[@name='decoEntityWoodMaster']/property[@name='Tags']/@value">wood</set>
     <append xpath="/blocks/block[@name='decoEntityWoodMaster']"><property name="Tags" value=",construction,skillConstruction"/></append>
@@ -178,156 +896,572 @@
 
     <!-- DECO ENTITY METAL MASTER -->
     <insertAfter xpath="/blocks/block[@name='decoEntityMetalMaster']/property[@name='CreativeMode']"><property name="Class" value="RiseDeco, Rise_From_The_Ashes"/></insertAfter>
-    <insertAfter xpath="/blocks/block[@name='decoEntityMetalMaster']/property[@name='Model']"><property name="DamageResist" value="15"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='decoEntityMetalMaster']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="15" />
+      <!-- **************************************** -->
+    </insertAfter>
     <set xpath="/blocks/block[@name='decoEntityMetalMaster']/property[@name='EconomicValue']/@value">5</set>
     <append xpath="/blocks/block[@name='decoEntityMetalMaster']"><property name="Tags" value="metal,construction,skillConstruction"/></append>
 
     <!-- CNT GAS PUMP LOOT HELPER -->
-    <insertAfter xpath="/blocks/block[@name='cntGasPumpRandomLootHelper']/property[@name='Model']"><property name="DamageResist" value="10"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='cntGasPumpRandomLootHelper']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
     <set xpath="/blocks/block[@name='cntGasPumpRandomLootHelper']/property[@name='EconomicValue']/@value">400</set>
     <set xpath="/blocks/block[@name='cntGasPumpRandomLootHelper']/property[@name='Tags']/@value">electricianSkill,mechanicalSkill</set>
 
     <!-- OFFICE DESK -->
-    <insertAfter xpath="/blocks/block[@name='officeDesk']/property[@name='Model']"><property name="DamageResist" value="10"/></insertAfter>
+  <append xpath="/blocks/block[@name='officeChair01']">
+    <property name="UnlockedBy" value="skillMechanicalEngineer"/>
+  </append>
+  <set xpath="/blocks/block[@name='officeChair01']/property[@name='EconomicValue']/@value">65</set>
+  <set xpath="/blocks/block[@name='officeChair01']/property[@name='Tags']/@value">mechanicalSkill</set>
+  <set xpath="/blocks/block[@name='officeChair01']/property[@class='RepairItems']/property[@name='resourceLeather']/@name">LeatherSheetT1</set>
+  <set xpath="/blocks/block[@name='officeChair01']/property[@class='RepairItems']/property[@name='resourceMechanicalParts']/@name">resourceMechanicalPartsT1</set>
+  <set xpath="/blocks/block[@name='officeChair01']/drop[@event='Harvest' and @name='resourceMechanicalParts']/@name">resourceMechanicalPartsT1</set>  
+  <set xpath="/blocks/block[@name='officeChair01']/drop[@event='Destroy' and @name='resourceLeather']/@name">resourceClothT1</set>  
+  <insertAfter xpath="/blocks/block[@name='officeChair01']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <drop event="Destroy" name="LeatherSheetT2" count="1,2"/>
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- CNT FILE CABINET SHORT HELPER -->
-    <insertAfter xpath="/blocks/block[@name='cntFileCabinetShortRandomLootHelper']/property[@name='DescriptionKey']"><property name="DamageResist" value="10"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='cntFileCabinetShortRandomLootHelper']/property[@name='DescriptionKey']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- SCHOOL DESK WHITE -->
-    <insertAfter xpath="/blocks/block[@name='schoolDesk01White']/property[@name='Model']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='schoolDesk01White']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- FACTORY CONVEYOR BELT -->
-    <insertAfter xpath="/blocks/block[@name='factoryConveyorBelt']/property[@name='Model']"><property name="DamageResist" value="10"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='factoryConveyorBelt']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- CONE CONSTRUCTION -->
-    <insertAfter xpath="/blocks/block[@name='coneConstruction']/property[@name='Model']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='coneConstruction']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- CNT MUNITIONS BOX ARMY -->
-    <insertAfter xpath="/blocks/block[@name='cntMunitionsBoxArmy']/property[@name='Model']"><property name="DamageResist" value="10"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='cntMunitionsBoxArmy']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- BARRIER PLASTIC WHITE -->
-    <insertAfter xpath="/blocks/block[@name='barrierPlasticWhite']/property[@name='Model']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='barrierPlasticWhite']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- BARRIER MILITARY -->
-    <insertAfter xpath="/blocks/block[@name='barrierMilitary']/property[@name='Model']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='barrierMilitary']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- PORTA POTTY WHITE -->
-    <insertAfter xpath="/blocks/block[@name='portaPottyWhite']/property[@name='Model']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='portaPottyWhite']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- PORTA POTTY DAMAGED WHITE -->
-    <insertAfter xpath="/blocks/block[@name='portaPottyDamagedWhite']/property[@name='Model']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='portaPottyDamagedWhite']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- PORTA POTTY BACK WHITE -->
-    <insertAfter xpath="/blocks/block[@name='portaPottyBackWhite']/property[@name='Model']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='portaPottyBackWhite']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- PORTA POTTY TOP SIDE WHITE -->
-    <insertAfter xpath="/blocks/block[@name='portaPottyTopSidesWhite']/property[@name='Model']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='portaPottyTopSidesWhite']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- PORTA POTTY DOOR WHITE -->
-    <insertAfter xpath="/blocks/block[@name='portaPottyDoorWhite']/property[@name='Model']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='portaPottyDoorWhite']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- RUBBLE PILE BRICKS -->
-    <insertAfter xpath="/blocks/block[@name='rubblePileBricks']/property[@name='Model']"><property name="DamageResist" value="10"/></insertAfter>
+  <set xpath="/blocks/block[@name='rubblePileBricks']/drop[@event='Harvest' and @name='resourceRockSmall']/@count">10,20</set>
+  <set xpath="/blocks/block[@name='rubblePileBricks']/drop[@event='Harvest' and @name='resourceRockSmall']/@name">resourceBrick</set>
+  <insertAfter xpath="/blocks/block[@name='rubblePileBricks']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- RUBBLE PILE WOOD -->
-    <insertAfter xpath="/blocks/block[@name='rubblePileWoodLarge']/property[@name='Model']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='rubblePileWoodLarge']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="5" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- CAP CHIMNEY -->
-    <insertAfter xpath="/blocks/block[@name='capChimney']/property[@name='Model']"><property name="DamageResist" value="15"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='capChimney']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="15" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- CHIMNEY POI -->
-    <insertAfter xpath="/blocks/block[@name='chimneyPOI']/property[@name='Model']"><property name="DamageResist" value="10"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='chimneyPOI']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- DUCT STRAIGHT CENTERED -->
-    <insertAfter xpath="/blocks/block[@name='ductStraightCentered']/property[@name='Model']"><property name="DamageResist" value="10"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='ductStraightCentered']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- TANK PROPANE WHITE -->
-    <insertAfter xpath="/blocks/block[@name='tankPropaneWhite']/property[@name='Model']"><property name="DamageResist" value="10"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='tankPropaneWhite']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- FIRE HYDRANT -->
-    <insertAfter xpath="/blocks/block[@name='fireHydrant']/property[@name='Model']"><property name="DamageResist" value="10"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='fireHydrant']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- SIGN ROAD ARROW HEAD APACHE -->
-    <insertAfter xpath="/blocks/block[@name='signRoadArrowheadApache']/property[@name='Model']"><property name="DamageResist" value="10"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='signRoadArrowheadApache']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- SIGN TRADER HUGH INTERIOR -->
-    <insertAfter xpath="/blocks/block[@name='signTraderHughInterior']/property[@name='Model']"><property name="DamageResist" value="10"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='signTraderHughInterior']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- SIGN TRADER BOB EXTERIOR BIG -->
-    <insertAfter xpath="/blocks/block[@name='signTraderBobExteriorBig']/property[@name='Model']"><property name="DamageResist" value="10"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='signTraderBobExteriorBig']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- SIGN TRADER BOB INTERIOR -->
-    <insertAfter xpath="/blocks/block[@name='signTraderBobInterior']/property[@name='Model']"><property name="DamageResist" value="10"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='signTraderBobInterior']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- SIGN TRADER REKT EXTERIOR SMALL -->
-    <insertAfter xpath="/blocks/block[@name='signTraderRektExteriorSmall']/property[@name='Model']"><property name="DamageResist" value="10"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='signTraderRektExteriorSmall']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- SIGN TRADER REKT EXTERIOR LARGE -->
-    <insertAfter xpath="/blocks/block[@name='signTraderRektExteriorLarge']/property[@name='Model']"><property name="DamageResist" value="10"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='signTraderRektExteriorLarge']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- SIGN SHOP GAS -->
-    <insertAfter xpath="/blocks/block[@name='signShopGas']/property[@name='Model']"><property name="DamageResist" value="10"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='signShopGas']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- SIGN SHOP GUN STORE -->
-    <insertAfter xpath="/blocks/block[@name='signShopGunStore']/property[@name='Model']"><property name="DamageResist" value="10"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='signShopGunStore']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- SIGN SHOP BOOK STORE -->
-    <insertAfter xpath="/blocks/block[@name='signShopBookStore']/property[@name='Model']"><property name="DamageResist" value="10"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='signShopBookStore']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- SIGN SHOP PHARMACY -->
-    <insertAfter xpath="/blocks/block[@name='signShopPharmacy']/property[@name='Model']"><property name="DamageResist" value="10"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='signShopPharmacy']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
     
     <!-- SIGN SHOP TOOL STORE -->
-    <insertAfter xpath="/blocks/block[@name='signShopToolStore']/property[@name='Model']"><property name="DamageResist" value="10"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='signShopToolStore']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- SIGN SHOP GROCERY -->
-    <insertAfter xpath="/blocks/block[@name='signShopGrocery']/property[@name='Model']"><property name="DamageResist" value="10"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='signShopGrocery']/property[@name='Model']">
+      <!-- ********* Rise Properties ********** -->
+      <property name="AllowPickup" value="1" />
+      <property name="CanPickUp" value="true" />
+      <property name="TakeDelay" value="10" />
+      <property name="DamageResist" value="10" />
+      <!-- **************************************** -->
+    </insertAfter>
 
     <!-- DECO ENTITY POLYMER MASTER -->
-    <insertAfter xpath="/blocks/block[@name='decoEntityPolymerMaster']/property[@name='CreativeMode']"><property name="Class" value="RiseDeco, Rise_From_The_Ashes"/></insertAfter>
-    <insertAfter xpath="/blocks/block[@name='decoEntityPolymerMaster']/property[@name='Model']"><property name="DamageResist" value="5"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='decoEntityPolymerMaster']/property[@name='CreativeMode']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>
+      <property name="CanPickUp" value="true"/>
+      <property name="TakeDelay" value="5"/> 
+    </insertAfter>
+
     <set xpath="/blocks/block[@name='decoEntityPolymerMaster']/property[@name='EconomicValue']/@value">5</set>
     
     <!-- DECO ENTITY CLOTH MASTER -->
-    <insertAfter xpath="/blocks/block[@name='decoEntityClothMaster']/property[@name='CreativeMode']"><property name="Class" value="RiseDeco, Rise_From_The_Ashes"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='decoEntityClothMaster']/property[@name='CreativeMode']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>
+      <property name="CanPickUp" value="true"/>
+      <property name="TakeDelay" value="5"/> 
+    </insertAfter>
     <insertAfter xpath="/blocks/block[@name='decoEntityClothMaster']/property[@name='Model']"><property name="DamageResist" value="2"/></insertAfter>
     <set xpath="/blocks/block[@name='decoEntityClothMaster']/property[@name='EconomicValue']/@value">5</set>
 
     <!-- DECO ENTITY GLASS MASTER -->
-    <insertAfter xpath="/blocks/block[@name='decoEntityGlassMaster']/property[@name='CreativeMode']"><property name="Class" value="RiseDeco, Rise_From_The_Ashes"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='decoEntityGlassMaster']/property[@name='CreativeMode']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>
+      <property name="CanPickUp" value="true"/>
+      <property name="TakeDelay" value="5"/> 
+    </insertAfter>
     <insertAfter xpath="/blocks/block[@name='decoEntityGlassMaster']/property[@name='Model']"><property name="DamageResist" value="2"/></insertAfter>
     <set xpath="/blocks/block[@name='decoEntityGlassMaster']/property[@name='EconomicValue']/@value">5</set>
 
     <!-- LAUNDRY CART EMPTY -->
-    <insertAfter xpath="/blocks/block[@name='laundryCartEmpty']/property[@name='Model']"><property name="Class" value="RiseDeco, Rise_From_The_Ashes"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='laundryCartEmpty']/property[@name='Model']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>
+      <property name="CanPickUp" value="true"/>
+      <property name="TakeDelay" value="5"/> 
+    </insertAfter>
     <insertAfter xpath="/blocks/block[@name='laundryCartEmpty']/property[@name='Model']"><property name="DamageResist" value="2"/></insertAfter>    
     <set xpath="/blocks/block[@name='laundryCartEmpty']/property[@name='Tags']/@value">mechanicalSkill</set>
 
-    <!-- LAUNDRY CART EMPTY -->
-    <insertAfter xpath="/blocks/block[@name='scrapMetalPile']/property[@name='Model']"><property name="Class" value="RiseDeco, Rise_From_The_Ashes"/></insertAfter>
+    <!-- SCRAP METAL PILE -->
+    <insertAfter xpath="/blocks/block[@name='scrapMetalPile']/property[@name='Model']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>
+      <property name="CanPickUp" value="true"/>
+      <property name="TakeDelay" value="5"/> 
+    </insertAfter>
     <set xpath="/blocks/block[@name='scrapMetalPile']/property[@name='Tags']/@value">twitchReplace,foliage</set>
 
     <!-- ELECTRICAL BOX01 -->
-    <insertAfter xpath="/blocks/block[@name='electricalBox01']/property[@name='Model']"><property name="Class" value="RiseDeco, Rise_From_The_Ashes"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='electricalBox01']/property[@name='Model']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>
+      <property name="CanPickUp" value="true"/>
+      <property name="TakeDelay" value="5"/> 
+    </insertAfter>
+      
     <set xpath="/blocks/block[@name='electricalBox01']/property[@name='Tags']/@value">electricianSkill</set>
 
     <!-- UTILITY INSULATOR -->
-    <insertAfter xpath="/blocks/block[@name='utilityInsulator']/property[@name='Material']"><property name="Class" value="RiseDeco, Rise_From_The_Ashes"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='utilityInsulator']/property[@name='Material']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>
+      <property name="CanPickUp" value="true"/>
+      <property name="TakeDelay" value="5"/> 
+    </insertAfter>
     <append xpath="/blocks/block[@name='utilityInsulator']"><property name="Tags" value="electricianSkill"/></append>
 
     <!-- AIR CONDITIONER -->
-    <insertAfter xpath="/blocks/block[@name='airConditioner']/property[@name='Material']"><property name="Class" value="RiseDeco, Rise_From_The_Ashes"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='airConditioner']/property[@name='Material']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>
+      <property name="CanPickUp" value="true"/>
+      <property name="TakeDelay" value="5"/> 
+    </insertAfter>
     <set xpath="/blocks/block[@name='airConditioner']/property[@name='EconomicValue']/@value">450</set>
     <set xpath="/blocks/block[@name='airConditioner']/property[@name='Tags']/@value">electricianSkill,mechanicalSkill</set>
 
-    <!-- AIR CONDITIONER -->
-    <insertAfter xpath="/blocks/block[@name='satelliteUnitLarge']/property[@name='Material']"><property name="Class" value="RiseDeco, Rise_From_The_Ashes"/></insertAfter>
+    <!-- Satellite Unit Large -->
+    <insertAfter xpath="/blocks/block[@name='satelliteUnitLarge']/property[@name='Material']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>
+      <property name="CanPickUp" value="true"/>
+      <property name="TakeDelay" value="5"/> 
+    </insertAfter>
     <set xpath="/blocks/block[@name='satelliteUnitLarge']/property[@name='EconomicValue']/@value">175</set>
     <set xpath="/blocks/block[@name='satelliteUnitLarge']/property[@name='Tags']/@value">electricianSkill</set>
 
     <!-- CONTROL PANEL BASE01 -->
-    <insertAfter xpath="/blocks/block[@name='controlPanelBase01']/property[@name='Material']"><property name="Class" value="RiseDeco, Rise_From_The_Ashes"/></insertAfter>
+    <insertAfter xpath="/blocks/block[@name='controlPanelBase01']/property[@name='Material']">
+      <property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>          
+      <property name="CanPickUp" value="true"/>      
+      <property name="TakeDelay" value="5"/>      
+    </insertAfter>
 
+    <set xpath="/blocks/block[@name='cntWoodWritableCrate']/property[@name='EconomicValue']/@value">100</set>
+    <set xpath="/blocks/block[@name='cntWoodWritableCrate']/property[@name='Tags']/@value">timecharge</set>
+    <insertAfter xpath="/blocks/block[@name='cntWoodWritableCrate']/property[@name='Material']">
+      <property name="UnlockedBy" value="skillCarpentry"/>
+    </insertAfter>
+
+    <set xpath="/blocks/block[@name='cntIronWritableCrate']/property[@name='EconomicValue']/@value">6</set>
+    <set xpath="/blocks/block[@name='cntIronWritableCrate']/property[@name='Tags']/@value">timecharge</set>
+    <insertAfter xpath="/blocks/block[@name='cntIronWritableCrate']/property[@name='Material']">
+      <property name="UnlockedBy" value="skillBlacksmithing"/>
+    </insertAfter>
+  
+    <set xpath="/blocks/block[@name='cntSteelWritableCrate']/property[@name='EconomicValue']/@value">6</set>
+    <set xpath="/blocks/block[@name='cntSteelWritableCrate']/property[@name='Tags']/@value">timecharge</set>
+    <insertAfter xpath="/blocks/block[@name='cntSteelWritableCrate']/property[@name='Material']">
+      <property name="UnlockedBy" value="skillBlacksmithing"/>
+    </insertAfter>
+
+  <!-- Church Pew -->
+  <set xpath="/blocks/block[@name='churchPewLeftWhite']/drop[@event='Harvest' and @name='resourceWood']/@name">resourceWoodT2</set>
+  <set xpath="/blocks/block[@name='churchPewLeftWhite']/drop[@event='Destroy' and @name='resourceCloth']/@name">resourceClothT2</set>
+  <append xpath="/blocks/block[@name='churchPewLeftWhite']">
+    <property name="EconomicValue" value="100"/>
+  </append>
+  <set xpath="/blocks/block[@name='churchPewLeftWhite']/property[@class='RepairItems']/property[@name='resourceWood']/@name">resourceWoodT3</set>
+  <set xpath="/blocks/block[@name='churchPewLeftWhite']/property[@class='RepairItems']/property[@name='resourceCloth']/@name">resourceClothT3</set>
+
+  <!-- Wooden Furniture Variable block 1 -->
+  <append xpath="/blocks/block[@name='cntWoodFurnitureBlockVariantHelper']">
+    <property name="UnlockedBy" value="skillCarpentry"/>
+  </append>
+  <set xpath="/blocks/block[@name='cntWoodFurnitureBlockVariantHelper']/property[@name='EconomicValue']/@value">8</set>
+
+  <!-- Wooden Furniture Variable block 2 -->
+  <append xpath="/blocks/block[@name='cntWoodFurnitureBlockVariantHelper2']">
+    <property name="UnlockedBy" value="skillCarpentry"/>
+  </append>
+  <set xpath="/blocks/block[@name='cntWoodFurnitureBlockVariantHelper2']/property[@name='EconomicValue']/@value">8</set>
+
+  <set xpath="/blocks/block[@name='woodenBear']/property[@name='Tags']/@value">wood</set>
+  <set xpath="/blocks/block[@name='woodenBear']/drop[@event='Destroy' and @name='resourceWood']/@name">resourceWoodT4</set>
+  <set xpath="/blocks/block[@name='woodenBear']/property[@class='RepairItems']/property[@name='resourceWood']/@name">resourceWoodT5</set>
+  <append xpath="/blocks/block[@name='woodenBear']">
+    <property name="UnlockedBy" value="skillCarpentry"/>
+  </append>
+
+  <!-- Grubs -->
+  <append xpath="/blocks/block[@name='driftwood']">
+    <property name="Class" value="GameEvent" />
+    <property name="DamageEvent" value="forage_grubs"/>
+  </append>
+
+  <append xpath="/blocks/block[@name='treeStump']">
+    <property name="Class" value="GameEvent" />
+    <property name="DamageEvent" value="forage_grubs"/>
+  </append>
+
+  <append xpath="/blocks/block[@name='treeStumpPOI']">
+    <property name="Class" value="GameEvent" />
+    <property name="DamageEvent" value="forage_grubs"/>
+  </append>
+
+  <!-- Wild Seeds -->
+  <append xpath="/blocks/block[@name='treeAzalea']">
+    <property name="Class" value="GameEvent" />
+    <property name="DamageEvent" value="forage_seeds"/>
+  </append>
+
+  <append xpath="/blocks/block[@name='plantHedge']">
+    <property name="Class" value="GameEvent" />
+    <property name="DamageEvent" value="forage_seeds"/>
+  </append>
+  
+  <!-- Rubber from tires -->
+  <set xpath="/blocks/block[@name='decoCarTireSmallFlat']/drop[@event='Destroy' and @name='resourceScrapPolymers']/@name">Rubber</set>
+  <set xpath="/blocks/block[@name='decoCarTireFlat']/drop[@event='Destroy' and @name='resourceScrapPolymers']/@name">Rubber</set>
+  <set xpath="/blocks/block[@name='decoCarTirePile']/drop[@event='Destroy' and @name='resourceScrapPolymers']/@name">Rubber</set>
+  <set xpath="/blocks/block[@name='decoCarTireStack']/drop[@event='Destroy' and @name='resourceScrapPolymers']/@name">Rubber</set>
+  <set xpath="/blocks/block[@name='decoCarWheelFlat']/drop[@event='Destroy' and @name='resourceScrapPolymers']/@name">Rubber</set>
+  <set xpath="/blocks/block[@name='decoCarTireSmallFlat02']/drop[@event='Destroy' and @name='resourceScrapPolymers']/@name">Rubber</set>
+  <set xpath="/blocks/block[@name='decoCarTireFlat02']/drop[@event='Destroy' and @name='resourceScrapPolymers']/@name">Rubber</set>
+  <set xpath="/blocks/block[@name='decoCarTirePile02']/drop[@event='Destroy' and @name='resourceScrapPolymers']/@name">Rubber</set>
+  <set xpath="/blocks/block[@name='decoCarTireStack02']/drop[@event='Destroy' and @name='resourceScrapPolymers']/@name">Rubber</set>
+  <set xpath="/blocks/block[@name='decoCarWheelFlat02']/drop[@event='Destroy' and @name='resourceScrapPolymers']/@name">Rubber</set>
+  <set xpath="/blocks/block[@name='decoCarWheelOffset01']/drop[@event='Destroy' and @name='resourceScrapPolymers']/@name">Rubber</set>
+  <set xpath="/blocks/block[@name='decoCarWheelOffset02']/drop[@event='Destroy' and @name='resourceScrapPolymers']/@name">Rubber</set>
+  <set xpath="/blocks/block[@name='decoCarWheelOffset03']/drop[@event='Destroy' and @name='resourceScrapPolymers']/@name">Rubber</set>
+  
+  <set xpath="/blocks/block[@name='plantHydroponicAloe']/property[@class='RepairItems']/property[@name='resourceElectricParts']/@name">resourceElectricPartsT3</set>    
     <set xpath="/blocks/block[@name='cropsGrowingMaster']/property[@name='EconomicValue']/@value">20</set>
     <set xpath="/blocks/block[@name='cropsHarvestableMaster']/property[@name='Tags']/@value">foliage</set>
     <set xpath="/blocks/block[@name='treeGrassMaster']/property[@name='Tags']/@value">twitchReplace,foliage</set>
@@ -378,13 +1512,7 @@
     <set xpath="/blocks/block[@name='cntBuriedLootStashChestInsecure']/property[@name='Tags']/@value">buriedTreasure</set>
     <append xpath="/blocks/block[@name='cntTestTreasureChest']"><property name="Tags" value="buriedTreasure,timecharge"/></append>
     <set xpath="/blocks/block[@name='cntTestTreasureChestInsecure']/property[@name='Tags']/@value">buriedTreasure</set>
-    <set xpath="/blocks/block[@name='cntQuestInfestedT1']/property[@name='EconomicValue']/@value">250</set>
-    <set xpath="/blocks/block[@name='cntWoodWritableCrate']/property[@name='EconomicValue']/@value">100</set>
-    <set xpath="/blocks/block[@name='cntWoodWritableCrate']/property[@name='Tags']/@value">timecharge</set>
-    <set xpath="/blocks/block[@name='cntIronWritableCrate']/property[@name='EconomicValue']/@value">6</set>
-    <set xpath="/blocks/block[@name='cntIronWritableCrate']/property[@name='Tags']/@value">timecharge</set>
-    <set xpath="/blocks/block[@name='cntSteelWritableCrate']/property[@name='EconomicValue']/@value">6</set>
-    <set xpath="/blocks/block[@name='cntSteelWritableCrate']/property[@name='Tags']/@value">timecharge</set>
+    <set xpath="/blocks/block[@name='cntQuestInfestedT1']/property[@name='EconomicValue']/@value">250</set>    
     <append xpath="/blocks/block[@name='cntCabinetBottomFiller']"><property name="UnlockedBy" value="skillCarpentry"/></append>
     <set xpath="/blocks/block[@name='cntCabinetBottomFiller']/property[@name='EconomicValue']/@value">17</set>
     <set xpath="/blocks/block[@name='cntCabinetGraniteSinkHoleRound']/property[@name='EconomicValue']/@value">80</set>
@@ -601,6 +1729,10 @@
     <append xpath="/blocks/block[@name='goreBlockHumanBones']"><property name="Tags" value="animal"/></append>
     <set xpath="/blocks/block[@name='birdBathPlanter']/property[@name='EconomicValue']/@value">56</set>
     <set xpath="/blocks/block[@name='driftwood']/property[@name='Tags']/@value">twitchReplace,foliage2,skillWoodCutting</set>
+    <append xpath="/blocks/block[@name='driftwood']">
+      <property name="Class" value="GameEvent" />
+      <drop event="Destroy" name="foodGrub" count="1,2" prob="0.03"/>
+    </append>
     <set xpath="/blocks/block[@name='hayBaleSquare']/property[@name='EconomicValue']/@value">5</set>
     <set xpath="/blocks/block[@name='cntTroughPigEmpty']/property[@name='EconomicValue']/@value">60</set>
     <append xpath="/blocks/block[@name='decoWildWestWagon']"><property name="Tags" value="mechanicalSkill"/></append>
@@ -827,16 +1959,14 @@
     <set xpath="/blocks/block[@name='cntDeskMetalFullWhite_Player']/property[@name='EconomicValue']/@value">570</set>
     <set xpath="/blocks/block[@name='rustyIronTable']/property[@name='EconomicValue']/@value">42</set>
     <set xpath="/blocks/block[@name='umbrellaTableDownWhite']/property[@name='EconomicValue']/@value">20</set>
-    <append xpath="/blocks/block[@name='officeChair01']"><property name="UnlockedBy" value="skillMechanicalEngineer"/></append>
-    <set xpath="/blocks/block[@name='officeChair01']/property[@name='EconomicValue']/@value">65</set>
-    <set xpath="/blocks/block[@name='officeChair01']/property[@name='Tags']/@value">mechanicalSkill</set>
+    
     <append xpath="/blocks/block[@name='oldChair1VariantHelper']"><property name="UnlockedBy" value="skillCarpentry"/></append>
     <set xpath="/blocks/block[@name='barStool']/property[@name='EconomicValue']/@value">60</set>
     <set xpath="/blocks/block[@name='sectionalPlaidCouchSofaMiddle']/property[@name='EconomicValue']/@value">18</set>
     <set xpath="/blocks/block[@name='sectionalLeatherCouchSofaArm']/property[@name='EconomicValue']/@value">18</set>
     <set xpath="/blocks/block[@name='couchUglySingleWhite']/property[@name='EconomicValue']/@value">18</set>
     <set xpath="/blocks/block[@name='couchModernArm']/property[@name='EconomicValue']/@value">18</set>
-    <append xpath="/blocks/block[@name='churchPewLeftWhite']"><property name="EconomicValue" value="100"/></append>
+    
     <set xpath="/blocks/block[@name='churchBell']/property[@name='EconomicValue']/@value">125</set>
     <set xpath="/blocks/block[@name='churchBell1x2x1']/property[@name='EconomicValue']/@value">125</set>
     <set xpath="/blocks/block[@name='churchBellHanging1x2x1']/property[@name='EconomicValue']/@value">125</set>
@@ -845,8 +1975,7 @@
     <set xpath="/blocks/block[@name='wineBarrelPlayerSecure']/property[@name='Tags']/@value">timecharge</set>
     <set xpath="/blocks/block[@name='wineBarrelSetPlayerSecure']/property[@name='Tags']/@value">timecharge</set>
     <append xpath="/blocks/block[@name='wineBarrelPlainPlayerSecure']"><property name="UnlockedBy" value="skillCarpentry"/></append>
-    <set xpath="/blocks/block[@name='wineBarrelPlainPlayerSecure']/property[@name='Tags']/@value">timecharge</set>
-    <set xpath="/blocks/block[@name='decoReptileTerrarium']/property[@name='EconomicValue']/@value">5</set>
+    <set xpath="/blocks/block[@name='wineBarrelPlainPlayerSecure']/property[@name='Tags']/@value">timecharge</set>    
     <set xpath="/blocks/block[@name='decoMetalSlide']/property[@name='Tags']/@value">mechanicalSkill</set>
     <set xpath="/blocks/block[@name='decoSwingSet']/property[@name='Tags']/@value">mechanicalSkill</set>
     <set xpath="/blocks/block[@name='decoStationaryBike']/property[@name='Tags']/@value">mechanicalSkill</set>
@@ -878,7 +2007,15 @@
     <set xpath="/blocks/block[@name='cntVendingMachine2Broken']/property[@name='EconomicValue']/@value">2000</set>
     <set xpath="/blocks/block[@name='cntVendingMachine2Broken']/property[@name='Tags']/@value">electricianSkill,mechanicalSkill</set>
     <set xpath="/blocks/block[@name='cntIceMachine']/property[@name='Tags']/@value">electricianSkill,mechanicalSkill</set>
-    <set xpath="/blocks/block[@name='woodenBear']/property[@name='Tags']/@value">wood</set>
+    <insertAfter xpath="/blocks/block[@name='electricalBox01']/property[@name='Model']">
+      <property name="Class" value="RiseBlockLoot, Rise_From_The_Ashes"/>
+      <property name="CanPickUp" value="true" />
+      <property name="AllowPickup" value="1"/>
+      <property name="CanPickUp" value="true"/>
+      <property name="TakeDelay" value="5"/> 
+    </insertAfter>
+
+    
     <set xpath="/blocks/block[@name='cntStoreShelfSingleBottomEmpty']/property[@name='EconomicValue']/@value">18</set>
     <set xpath="/blocks/block[@name='cntStoreProduceBasketCornerRandomLootHelper']/property[@name='EconomicValue']/@value">18</set>
     <set xpath="/blocks/block[@name='cntStoreProduceBasketCornerEmpty1_Player']/property[@name='EconomicValue']/@value">18</set>
@@ -1068,9 +2205,13 @@
     <set xpath="/blocks/block[@name='treeDeadPineLeaf']/property[@name='Tags']/@value">twitchReplace,foliage,skillWoodCutting</set>
     <set xpath="/blocks/block[@name='treeSnowyDeadBush']/property[@name='Tags']/@value">twitchReplace,foliage,skillWoodCutting</set>
     <set xpath="/blocks/block[@name='treeAzalea']/property[@name='EconomicValue']/@value">20</set>
-    <append xpath="/blocks/block[@name='treeAzalea']"><property name="Tags" value="foliage2,skillWoodCutting"/></append>
+    <append xpath="/blocks/block[@name='treeAzalea']">
+      <property name="Tags" value="foliage2,skillWoodCutting"/>
+    </append>
     <set xpath="/blocks/block[@name='plantHedge']/property[@name='EconomicValue']/@value">20</set>
-    <append xpath="/blocks/block[@name='plantHedge']"><property name="Tags" value="foliage2,skillWoodCutting"/></append>
+    <append xpath="/blocks/block[@name='plantHedge']">
+      <property name="Tags" value="foliage2,skillWoodCutting"/>
+    </append>
     <set xpath="/blocks/block[@name='plantShrub']/property[@name='Tags']/@value">twitchReplace,foliage2,skillWoodCutting</set>
     <set xpath="/blocks/block[@name='plantShrubSnow']/property[@name='Tags']/@value">twitchReplace,foliage2,skillWoodCutting</set>
     <set xpath="/blocks/block[@name='plantShrubDead']/property[@name='Tags']/@value">twitchReplace,foliage,skillWoodCutting</set>
@@ -1103,13 +2244,9 @@
     <append xpath="/blocks/block[@name='sectionalLeatherCouchSofaBlockVariantHelper']"><property name="UnlockedBy" value="skillCarpentry"/></append>
     <append xpath="/blocks/block[@name='sectionalPlaidCouchSofaBlockVariantHelper']"><property name="UnlockedBy" value="skillCarpentry"/></append>
     <append xpath="/blocks/block[@name='couchModernBlockVariantHelper']"><property name="UnlockedBy" value="skillCarpentry"/></append>
-    <append xpath="/blocks/block[@name='sandbagBlockVariantHelper']"><property name="UnlockedBy" value="skillTailoring"/></append>
-    <set xpath="/blocks/block[@name='sandbagBlockVariantHelper']/property[@name='EconomicValue']/@value">8</set>
+    
     <append xpath="/blocks/block[@name='metalTrussingIBeamBlockVariantHelper']"><property name="UnlockedBy" value="skillBlacksmithing"/></append>
-    <append xpath="/blocks/block[@name='cntWoodFurnitureBlockVariantHelper']"><property name="UnlockedBy" value="skillCarpentry"/></append>
-    <set xpath="/blocks/block[@name='cntWoodFurnitureBlockVariantHelper']/property[@name='EconomicValue']/@value">8</set>
-    <append xpath="/blocks/block[@name='cntWoodFurnitureBlockVariantHelper2']"><property name="UnlockedBy" value="skillCarpentry"/></append>
-    <set xpath="/blocks/block[@name='cntWoodFurnitureBlockVariantHelper2']/property[@name='EconomicValue']/@value">8</set>
+
     <append xpath="/blocks/block[@name='woodSignBlockVariantHelper']"><property name="UnlockedBy" value="skillCarpentry"/></append>
     <set xpath="/blocks/block[@name='woodSignBlockVariantHelper']/property[@name='EconomicValue']/@value">8</set>
     <append xpath="/blocks/block[@name='sinksToiletsBlockVariantHelper']"><property name="UnlockedBy" value="skillMechanicalEngineer"/></append>
@@ -1392,6 +2529,11 @@
 
     <!-- Wood Logs become fire wood stacks -->
     <set xpath="/blocks/block[@name='woodLogPillar100']/drop[@event='Harvest' and @name='resourceWood']/@name">modularFireWoodStackA</set>
+    <set xpath="/blocks/block[@name='woodLogPillar100']/drop[@event='Harvest' and @name='modularFireWoodStackA']/@count">1</set>
+    <set xpath="/blocks/block[@name='woodLogPillar100']/drop[@event='Harvest' and @name='modularFireWoodStackA']/@tag">allHarvest</set>
+    <insertAfter xpath="/blocks/block[@name='woodLogPillar100']/drop[@event='Harvest' and @name='modularFireWoodStackA']">
+	    <drop event="Harvest" name="resourceWoodT1" count="1" tag="allHarvest"/>
+	  </insertAfter>
 
     <!-- T1 HARVESTED ITEMS T1 -->    
     <set xpath="/blocks/block[@name='palletBagFertilizerBaseFull']/drop[@event='Harvest' and @name='resourceWood']/@name">resourceWoodT1</set>
@@ -1453,9 +2595,8 @@
     <set xpath="/blocks/block[@name='sectionalLeatherCouchSofaArm']/drop[@event='Harvest' and @name='resourceWood']/@name">resourceWoodT1</set>
     <set xpath="/blocks/block[@name='couchUglySingleWhite']/drop[@event='Harvest' and @name='resourceWood']/@name">resourceWoodT1</set>
     <set xpath="/blocks/block[@name='couchModernArm']/drop[@event='Harvest' and @name='resourceWood']/@name">resourceWoodT1</set>
-    <set xpath="/blocks/block[@name='churchPewLeftWhite']/drop[@event='Harvest' and @name='resourceWood']/@name">resourceWoodT1</set>    
-    <set xpath="/blocks/block[@name='piano']/drop[@event='Harvest' and @name='resourceWood']/@name">resourceWoodT1</set>
-    <set xpath="/blocks/block[@name='decoPoolTable']/drop[@event='Harvest' and @name='resourceWood']/@name">resourceWoodT1</set>
+    
+    <set xpath="/blocks/block[@name='piano']/drop[@event='Harvest' and @name='resourceWood']/@name">resourceWoodT1</set>    
     <set xpath="/blocks/block[@name='decoBasketBallHoop']/drop[@event='Harvest' and @name='resourceWood']/@name">resourceWoodT1</set>    
     <set xpath="/blocks/block[@name='cntShelvesWoodFullA']/drop[@event='Harvest' and @name='resourceWood']/@name">resourceWoodT1</set>
     <set xpath="/blocks/block[@name='cntStoreProduceBasketCornerRandomLootHelper']/drop[@event='Harvest' and @name='resourceWood']/@name">resourceWoodT1</set>    
@@ -1531,7 +2672,7 @@
     <set xpath="/blocks/block[@name='cntModularClosetOpen']/drop[@event='Destroy' and @name='resourceWood']/@name">resourceWoodT1</set>
     <set xpath="/blocks/block[@name='cntModularClosetClosed']/drop[@event='Destroy' and @name='resourceWood']/@name">resourceWoodT1</set>
     <set xpath="/blocks/block[@name='cntArmoireDrawerFullWhite']/drop[@event='Destroy' and @name='resourceWood']/@name">resourceWoodT1</set>
-    <set xpath="/blocks/block[@name='woodenBear']/drop[@event='Destroy' and @name='resourceWood']/@name">resourceWoodT1</set>
+    
     <set xpath="/blocks/block[@name='cntStoreProduceBasketCornerEmpty1']/drop[@event='Destroy' and @name='resourceWood']/@name">resourceWoodT1</set>
     <set xpath="/blocks/block[@name='cntStoreProduceBasketEmpty2']/drop[@event='Destroy' and @name='resourceWood']/@name">resourceWoodT1</set>
     <set xpath="/blocks/block[@name='cntCabinetBottomFiller']/drop[@event='Destroy' and @name='resourceWood']/@name">resourceWoodT1</set>
@@ -1616,11 +2757,11 @@
     <set xpath="/blocks/block[@name='cntBookcaseEmpty']/property[@class='RepairItems']/property[@name='resourceWood']/@name">resourceWoodT1</set>
     <set xpath="/blocks/block[@name='cntStoreProduceBasketCornerEmpty1_Player']/property[@class='RepairItems']/property[@name='resourceWood']/@name">resourceWoodT1</set>
     <set xpath="/blocks/block[@name='cntShelvesWoodFullA']/property[@class='RepairItems']/property[@name='resourceWood']/@name">resourceWoodT1</set>
-    <set xpath="/blocks/block[@name='woodenBear']/property[@class='RepairItems']/property[@name='resourceWood']/@name">resourceWoodT1</set>
+    
     <set xpath="/blocks/block[@name='bed02']/property[@class='RepairItems']/property[@name='resourceWood']/@name">resourceWoodT1</set>
     <set xpath="/blocks/block[@name='decoPoolTable']/property[@class='RepairItems']/property[@name='resourceWood']/@name">resourceWoodT1</set>
     <set xpath="/blocks/block[@name='piano']/property[@class='RepairItems']/property[@name='resourceWood']/@name">resourceWoodT1</set>
-    <set xpath="/blocks/block[@name='churchPewLeftWhite']/property[@class='RepairItems']/property[@name='resourceWood']/@name">resourceWoodT1</set>
+    
     <set xpath="/blocks/block[@name='couchModernArm']/property[@class='RepairItems']/property[@name='resourceWood']/@name">resourceWoodT1</set>
     <set xpath="/blocks/block[@name='couchUglySingleWhite']/property[@class='RepairItems']/property[@name='resourceWood']/@name">resourceWoodT1</set>
     <set xpath="/blocks/block[@name='sectionalLeatherCouchSofaArm']/property[@class='RepairItems']/property[@name='resourceWood']/@name">resourceWoodT1</set>
@@ -1800,7 +2941,7 @@
     <set xpath="/blocks/block[@name='churchBellHanging1x2x1']/drop[@event='Harvest' and @name='resourceMechanicalParts']/@name">resourceMechanicalPartsT1</set>
     <set xpath="/blocks/block[@name='churchBell1x2x1']/drop[@event='Harvest' and @name='resourceMechanicalParts']/@name">resourceMechanicalPartsT1</set>
     <set xpath="/blocks/block[@name='churchBell']/drop[@event='Harvest' and @name='resourceMechanicalParts']/@name">resourceMechanicalPartsT1</set>
-    <set xpath="/blocks/block[@name='officeChair01']/drop[@event='Harvest' and @name='resourceMechanicalParts']/@name">resourceMechanicalPartsT1</set>
+    
     <set xpath="/blocks/block[@name='cellarDoorDoubleSteel']/drop[@event='Harvest' and @name='resourceMechanicalParts']/@name">resourceMechanicalPartsT1</set>
     <set xpath="/blocks/block[@name='cntCollapsedCementMixer']/drop[@event='Harvest' and @name='resourceMechanicalParts']/@name">resourceMechanicalPartsT1</set>
     <set xpath="/blocks/block[@name='cementMixer']/drop[@event='Harvest' and @name='resourceMechanicalParts']/@name">resourceMechanicalPartsT1</set>
@@ -1845,8 +2986,7 @@
      <set xpath="/blocks/block[@name='cashRegisterConveyorMiddle']/property[@class='RepairItems']/property[@name='resourceMechanicalParts']/@name">resourceMechanicalPartsT1</set>
      <set xpath="/blocks/block[@name='cntIceMachine']/property[@class='RepairItems']/property[@name='resourceMechanicalParts']/@name">resourceMechanicalPartsT1</set>
      <set xpath="/blocks/block[@name='cntToolBoxOffsetOpenWhite']/property[@class='RepairItems']/property[@name='resourceMechanicalParts']/@name">resourceMechanicalPartsT1</set>
-     <set xpath="/blocks/block[@name='cntToolBoxOpenWhite']/property[@class='RepairItems']/property[@name='resourceMechanicalParts']/@name">resourceMechanicalPartsT1</set>
-     <set xpath="/blocks/block[@name='officeChair01']/property[@class='RepairItems']/property[@name='resourceMechanicalParts']/@name">resourceMechanicalPartsT1</set>
+     <set xpath="/blocks/block[@name='cntToolBoxOpenWhite']/property[@class='RepairItems']/property[@name='resourceMechanicalParts']/@name">resourceMechanicalPartsT1</set>     
      <set xpath="/blocks/block[@name='cntCollapsedCementMixer']/property[@class='RepairItems']/property[@name='resourceMechanicalParts']/@name">resourceMechanicalPartsT1</set>
      <set xpath="/blocks/block[@name='cementMixer']/property[@class='RepairItems']/property[@name='resourceMechanicalParts']/@name">resourceMechanicalPartsT1</set>
      <set xpath="/blocks/block[@name='cntCollapsedWorkbenchEmpty']/property[@class='RepairItems']/property[@name='resourceMechanicalParts']/@name">resourceMechanicalPartsT1</set>
@@ -1905,7 +3045,7 @@
     <set xpath="/blocks/block[@name='cntStoreShelfDoubleTopHardware02Rags']/drop[@event='Destroy' and @name='resourceCloth']/@name">resourceClothT1</set>
     <set xpath="/blocks/block[@name='cntStoreShelfDoubleBottomHardware03Rags']/drop[@event='Destroy' and @name='resourceCloth']/@name">resourceClothT1</set>
     <set xpath="/blocks/block[@name='bunkBedMade']/drop[@event='Destroy' and @name='resourceCloth']/@name">resourceClothT1</set>
-    <set xpath="/blocks/block[@name='churchPewLeftWhite']/drop[@event='Destroy' and @name='resourceCloth']/@name">resourceClothT1</set>
+    
     <set xpath="/blocks/block[@name='theaterSeatUpTileArmUpWhite']/drop[@event='Destroy' and @name='resourceCloth']/@name">resourceClothT1</set>
     <set xpath="/blocks/block[@name='theaterSeatUpFullArmsUpWhite']/drop[@event='Destroy' and @name='resourceCloth']/@name">resourceClothT1</set>
     <set xpath="/blocks/block[@name='theaterSeatDownTileArmUpWhite']/drop[@event='Destroy' and @name='resourceCloth']/@name">resourceClothT1</set>
@@ -2030,7 +3170,7 @@
     <set xpath="/blocks/block[@name='flagWallHungUSA']/property[@class='RepairItems']/property[@name='resourceCloth']/@name">resourceClothT1</set>
     <set xpath="/blocks/block[@name='bunkBedMade']/property[@class='RepairItems']/property[@name='resourceCloth']/@name">resourceClothT1</set>
     <set xpath="/blocks/block[@name='bed02']/property[@class='RepairItems']/property[@name='resourceCloth']/@name">resourceClothT1</set>
-    <set xpath="/blocks/block[@name='churchPewLeftWhite']/property[@class='RepairItems']/property[@name='resourceCloth']/@name">resourceClothT1</set>
+    
     <set xpath="/blocks/block[@name='theaterSeatUpTileArmUpWhite']/property[@class='RepairItems']/property[@name='resourceCloth']/@name">resourceClothT1</set>
     <set xpath="/blocks/block[@name='theaterSeatUpFullArmsUpWhite']/property[@class='RepairItems']/property[@name='resourceCloth']/@name">resourceClothT1</set>
     <set xpath="/blocks/block[@name='theaterSeatDownTileArmUpWhite']/property[@class='RepairItems']/property[@name='resourceCloth']/@name">resourceClothT1</set>
@@ -2053,16 +3193,14 @@
     <set xpath="/blocks/block[@name='cntCar03SedanDamage0Master']/drop[@event='Harvest' and @name='resourceLeather']/@name">LeatherSheetT1</set>
 
     <!-- PROPERTIES LEATHER REPAIR ITEMS T1 -->
-    <set xpath="/blocks/block[@name='cntLootChestHeroInsecureT2']/property[@class='RepairItems']/property[@name='resourceLeather']/@name">LeatherSheetT1</set>
-    <set xpath="/blocks/block[@name='officeChair01']/property[@class='RepairItems']/property[@name='resourceLeather']/@name">LeatherSheetT1</set>
+    <set xpath="/blocks/block[@name='cntLootChestHeroInsecureT2']/property[@class='RepairItems']/property[@name='resourceLeather']/@name">LeatherSheetT1</set>    
     <set xpath="/blocks/block[@name='sectionalLeatherCouchSofaArm']/property[@class='RepairItems']/property[@name='resourceLeather']/@name">LeatherSheetT1</set>
     <set xpath="/blocks/block[@name='restaurantBooth']/property[@class='RepairItems']/property[@name='resourceLeather']/@name">LeatherSheetT1</set>
 
      <!-- DESTROY LEATHER T1 -->  
      <set xpath="/blocks/block[@name='sectionalLeatherCouchSofaArm']/drop[@event='Destroy' and @name='resourceLeather']/@name">resourceClothT1</set>
      <set xpath="/blocks/block[@name='rugBear']/drop[@event='Destroy' and @name='resourceLeather']/@name">resourceClothT1</set>
-     <set xpath="/blocks/block[@name='cntLootChestHeroInsecureT2']/drop[@event='Destroy' and @name='resourceLeather']/@name">resourceClothT1</set>
-     <set xpath="/blocks/block[@name='officeChair01']/drop[@event='Destroy' and @name='resourceLeather']/@name">resourceClothT1</set>     
+     <set xpath="/blocks/block[@name='cntLootChestHeroInsecureT2']/drop[@event='Destroy' and @name='resourceLeather']/@name">resourceClothT1</set>     
      <set xpath="/blocks/block[@name='cntShoesPileSandals']/drop[@event='Destroy' and @name='resourceLeather']/@name">resourceClothT1</set>    
 
     <!-- ************** ELECTRICAL PARTS **************** -->
@@ -2307,5 +3445,41 @@
     <!-- ************** Mechanical Parts **************** -->
 
     <!-- PROPERTIES MECHANICAL PARTS REPAIR ITEMS T3 -->    
-    <set xpath="/blocks/block[@name='autoTurret']/property[@class='RepairItems']/property[@name='resourceMechanicalParts']/@name">resourceMechanicalPartsT3</set>  
+    <set xpath="/blocks/block[@name='autoTurret']/property[@class='RepairItems']/property[@name='resourceMechanicalParts']/@name">resourceMechanicalPartsT3</set>
+
+    <!-- ************** Tailoring **************** -->
+    <append xpath="/blocks/block[@name='sandbagBlockVariantHelper']">
+      <property name="UnlockedBy" value="skillTailoring"/>
+    </append>
+    <set xpath="/blocks/block[@name='sandbagBlockVariantHelper']/property[@name='EconomicValue']/@value">8</set>
+    <set xpath="/blocks/block[@name='sandbagStraight01']/property[@name='Group']/@value">Tailoring</set>
+
+  <!-- Set the vehicle blocks to use the custom class -->
+  <set xpath="/blocks/block[@name='cntCar03SedanDamage0Master']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntCar03SedanDamage1Master']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntSedan01White']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntSedan3Wide01White']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntFrontCrumpledSedan01White']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntMinivan01White']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntMinivan3Wide01White']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntSUV01White']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntSUV3Wide01White']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntPickupTruck01White']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntPickupTruck3Wide01White']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntSemiTruck01White']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntPoliceCar01PickedLockBonus']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntFireTruck01White']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntBusSchool']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntPoliceCar01AlarmUnlocked']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntCar03SedanDamage2RandomHelper']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntSedan01AirRandomHelper']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntMinivan01AirRandomHelper']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntSUV01AirRandomHelper']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntPickupTruck01AirRandomHelper']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntSemiTruck01AirRandomHelper']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntPoliceCar01AirRandomHelper']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntFireTruck01AirRandomHelper']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='riseVehicleGasPoweredMaster']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntGasPumpRandomLootHelper']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>
+  <set xpath="/blocks/block[@name='cntGasPumpFull']/property[@name='Class']/@value">RiseBlockCarExplodeLoot, Rise_From_The_Ashes</set>  
 </configs>

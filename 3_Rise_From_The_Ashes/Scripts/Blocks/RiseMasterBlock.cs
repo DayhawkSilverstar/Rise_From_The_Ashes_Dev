@@ -47,13 +47,6 @@ public class RiseMasterBlock : Block
         base.OnBlockUnloaded(_world, _clrIdx, _blockPos, _blockValue);
     }
 
-    public override void OnBlockAdded(WorldBase world, Chunk _chunk, Vector3i _blockPos, BlockValue _blockValue)
-    {
-        #region OnBlockAdded
-            base.OnBlockAdded(world, _chunk, _blockPos, _blockValue);
-        #endregion
-    }
-
     // Display custom messages for turning on and off the music box, based on the block's name.
     public override string GetActivationText(WorldBase _world, BlockValue _blockValue, int _clrIdx, Vector3i _blockPos,
         EntityAlive _entityFocusing)
@@ -100,21 +93,26 @@ public class RiseMasterBlock : Block
                     {
                         ItemValue itemValue = ItemClass.GetItem(item.ItemName);
                         double cnt = Math.Floor(item.Count / 2.0);
+                        Log.Out("Item count : (" + cnt.ToString() + ")");
                         if (cnt == 0)
                         {
                             cnt = 1;
                         }
                         // Create an item stack containing the damaged block
                         var itemStack = new ItemStack(itemValue, (int)cnt);
+
+                        Log.Out("Item Stack count " + itemStack.count.ToString());
+                        
                         // Add it to the players inventory. 
                         if (player.bag.AddItem(itemStack))
                         {
-                            player.AddUIHarvestingItem(itemStack,true);
+                            
+                            //player.AddUIHarvestingItem(itemStack, false);
                             Log.Out("Item added to players bag : " + item.ItemName + " (" + cnt.ToString() + ")");
                         }
                         else if (player.inventory.AddItem(itemStack))
                         {
-                            player.AddUIHarvestingItem(itemStack,true);
+                            //player.AddUIHarvestingItem(itemStack,false);
                             Log.Out("Item added to players toolbar : " + item.ItemName + " (" + cnt.ToString() + ")");
                         }
                         else
@@ -189,8 +187,8 @@ public class RiseMasterBlock : Block
     {        
         if (AllowPickup > 0)
         {
-            cmds[1].enabled = true;
-            cmds[2].enabled = TakeDelay > 0f;
+            cmds[0].enabled = true;
+            cmds[1].enabled = TakeDelay > 0f;
         }
         else
         {
@@ -214,11 +212,13 @@ public class RiseMasterBlock : Block
         {
             if (_commandName == "take")
             {
+                Log.Out("RiseMasterBlock - Trying to pick up a block.");
                 TakeItemWithTimer(_cIdx, _blockPos, _blockValue, _player);
                 return true;
             }
             else if (_commandName == "Search")
             {
+                Log.Out("RiseMasterBlock - Trying to search.");
                 Log.Out("Trigger Selected");
                 return OnBlockActivated(_world, _cIdx, _blockPos, _blockValue, _player);
             }

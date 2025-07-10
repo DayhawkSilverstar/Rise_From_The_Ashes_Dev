@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>	
+	<set xpath="/materials/material[@id='Mcobblestone_shapes']/property[@name='MaxDamage']/@value">1000</set>
+</configs>

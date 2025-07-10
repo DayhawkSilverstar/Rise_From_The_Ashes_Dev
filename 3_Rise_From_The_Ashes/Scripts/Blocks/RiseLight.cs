@@ -3,11 +3,10 @@ using Platform;
 
 public class RiseLight : BlockLight
 {
-    private readonly BlockActivationCommand[] cmds =
+    public new BlockActivationCommand[] cmds = new BlockActivationCommand[2]
     {
-        new BlockActivationCommand("Search", "search", false),
-        new BlockActivationCommand("Search", "search", false),
-        new BlockActivationCommand("Take", "hand", false)
+        new BlockActivationCommand("light", "electric_switch", _enabled: true),
+        new BlockActivationCommand("take", "hand", _enabled: true),
     };
 
     private float TakeDelay = 0;
@@ -44,13 +43,6 @@ public class RiseLight : BlockLight
         base.OnBlockUnloaded(_world, _clrIdx, _blockPos, _blockValue);
     }
 
-    public override void OnBlockAdded(WorldBase world, Chunk _chunk, Vector3i _blockPos, BlockValue _blockValue)
-    {
-        #region OnBlockAdded
-        base.OnBlockAdded(world, _chunk, _blockPos, _blockValue);
-        #endregion
-    }
-
     // Display custom messages for turning on and off the music box, based on the block's name.
     public override string GetActivationText(WorldBase _world, BlockValue _blockValue, int _clrIdx, Vector3i _blockPos,
         EntityAlive _entityFocusing)
@@ -67,8 +59,8 @@ public class RiseLight : BlockLight
         // TODO : Check to see if the person is in someone elses claim and not a friend. Don't allow them to pick it up then.
         if (AllowPickup > 0)
         {
-            cmds[1].enabled = true;
-            cmds[2].enabled = TakeDelay > 0f;
+            cmds[0].enabled = true;
+            cmds[1].enabled = TakeDelay > 0f;
         }
         else
         {
@@ -83,13 +75,35 @@ public class RiseLight : BlockLight
         Log.Out("Command : {0}", _commandName);
 
         switch (_commandName)
-        {          
-            case "trigger":
-                XUiC_TriggerProperties.Show(((EntityPlayerLocal)_player).PlayerUI.xui, _cIdx, _blockPos, _showTriggers: false, _showTriggeredBy: true);
+        {
+            case "take":
+                {
+                    Log.Out("RiseLight - Trying to pick up a light block.");
+                    TakeItemWithTimer(_cIdx, _blockPos, _blockValue, _player);
+                    return true;
+                }
+
+            case "light":
+                if (_world.IsEditor() && updateLightState(_world, _cIdx, _blockPos, _blockValue, _bSwitchLight: true, _enableState: false))
+                {
+                    return true;
+                }
+
                 break;
-            case "Take":
-                TakeItemWithTimer(_cIdx, _blockPos, _blockValue, _player);
-                return true;
+            case "edit":
+                {
+                    TileEntityLight te = (TileEntityLight)_world.GetTileEntity(_cIdx, _blockPos);
+                    if (_world.IsEditor())
+                    {
+                        XUiC_LightEditor.Open(_player.PlayerUI, te, _blockPos, _world as World, _cIdx, this);
+                        return true;
+                    }
+
+                    break;
+                }
+            case "trigger":
+                XUiC_TriggerProperties.Show(_player.PlayerUI.xui, _cIdx, _blockPos, _showTriggers: false, _showTriggeredBy: true);
+                break;
         }
 
         return false;

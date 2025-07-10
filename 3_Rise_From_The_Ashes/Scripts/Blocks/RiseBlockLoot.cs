@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using UnityEngine.Scripting;
 
 public class RiseBlockLoot : BlockLoot
 {   
-    private readonly BlockActivationCommand[] cmds =
+    private new readonly BlockActivationCommand[] cmds =
     {
-        new BlockActivationCommand("Search", "search",_enabled: false),
-        new BlockActivationCommand("Search", "search",_enabled: false),
+        new BlockActivationCommand("Search", "search",_enabled: false),        
         new BlockActivationCommand("Take", "hand",_enabled: false)
     };
 
@@ -32,55 +32,34 @@ public class RiseBlockLoot : BlockLoot
 
     public override bool OnBlockActivated(string _commandName, WorldBase _world, int _cIdx, Vector3i _blockPos, BlockValue _blockValue, EntityPlayerLocal _player)
     {
-#if DEBUG
-        Log.Out("Command : {0}", _commandName);
-#endif
-        if (AllowPickup > 0)
-        {
-            if (_commandName == "Take")
-            {
-                TileEntityLootContainer tileEntityLootContainer = _world.GetTileEntity(_cIdx, _blockPos) as TileEntityLootContainer;
-                if (tileEntityLootContainer == null)
-                {
-                    return false;
-                }
 
-                if (tileEntityLootContainer.IsEmpty())
-                {
-                    TakeItemWithTimer(_cIdx, _blockPos, _blockValue, _player);
-                }
-                else
-                {
-                    GameManager.ShowTooltip(_player as EntityPlayerLocal, Localization.Get("ttRepairBeforePickup"), string.Empty, "ui_denied");
-                }
+        Log.Out("RiseBlockLoot - OnBlockActivated");
+        // If there's no transform, no sense on keeping going for this class.
+        //var _ebcd = _world.GetChunkFromWorldPos(_blockPos).GetBlockEntity(_blockPos);
+        //if (_ebcd == null || _ebcd.transform == null)
+        //    return false;
+
+        switch (_commandName)
+        {
+            case "Take":
+                Log.Out("RiseBlockLoot - Trying to pick up a block.");
+                TakeItemWithTimer(_cIdx, _blockPos, _blockValue, _player);
                 return true;
-            }
-            else if (_commandName == "Search" | _commandName == "Open")
-            {
-#if DEBUG
-                Log.Out("Open or Search");
-#endif
+            case "Search":
+                Log.Out("RiseBlockLoot - Trying to loot a loot block.");
                 TileEntityLootContainer tileEntityLootContainer = _world.GetTileEntity(_cIdx, _blockPos) as TileEntityLootContainer;
                 if (tileEntityLootContainer != null)
-                {
+                {                    
                     if (!tileEntityLootContainer.bWasTouched)
                     {
                         _player.SetCVar(".lootedContainer", 1f);
                     }
                 }
-                
-                _commandName = "Search";
-                
+                Log.Out("RiseBlockLoot - Command:" + _commandName);
                 base.OnBlockActivated(_commandName, _world, _cIdx, _blockPos, _blockValue, _player);
-            }
+                return true;
         }
-        else
-        {
-#if DEBUG
-            Log.Out("Allow Pickup = false");
-#endif                  
-            base.OnBlockActivated(_commandName,_world,_cIdx,_blockPos,_blockValue,_player);
-        }
+
 
         return false;
     }
@@ -88,22 +67,8 @@ public class RiseBlockLoot : BlockLoot
 
     public override BlockActivationCommand[] GetBlockActivationCommands(WorldBase _world, BlockValue _blockValue, int _clrIdx, Vector3i _blockPos, EntityAlive _entityFocusing)
     {
-        // TODO : Check to see if the person is in someone elses claim and not a friend. Don't allow them to pick it up then.
-#if DEBUG
-        Log.Out("Commands = " + cmds.Count().ToString());
-#endif
-        if (AllowPickup > 0)
-        {
-            cmds[1].enabled = true;
-            cmds[2].enabled = TakeDelay > 0f;
-        }
-        else
-        {
-            cmds[0].enabled = true;
-            cmds[1].enabled = false;
-            _blockValue.Block.CanPickup = false;
-        }
-
+        cmds[0].enabled = true;        
+        cmds[1].enabled = TakeDelay > 0f;
         return cmds;
     }
 

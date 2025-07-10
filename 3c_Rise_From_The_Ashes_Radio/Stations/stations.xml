@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Table_of_Contents -->
+<!-- Search_Find_All_for *** -->
+
+<stations>
+    <station name="ZMBE">        
+        <track name="Blood_Moon_Rising" file="riseRadio" category="music" days="1-500"/>
+        <track name="Chasing_Slumber" file="riseRadio" category="music" days="1-500"/>
+        <!-- 
+        <track name="Break_Through_The_Night" file="riseRadio" category="music" days="1-500"/>        
+        <track name="Dreaming_of_Showers" file="riseRadio" category="music" days="1-500"/>
+        <track name="Fist_Fighting" file="riseRadio" category="music" days="1-500"/>
+        <track name="FlamingShaft" file="riseRadio" category="music" days="1-500"/>
+        <track name="Gotta_keep_moving" file="riseRadio" category="music" days="1-500"/>
+        <track name="Horde_Base" file="riseRadio" category="music" days="1-500"/>
+        <track name="Machete_Betty" file="riseRadio" category="music" days="1-500"/>
+        <track name="Night_of_the_undead" file="riseRadio" category="music" days="1-500"/>
+        <track name="Restock_my_heart" file="riseRadio" category="music" days="1-500"/>
+        <track name="Rise" file="riseRadio" category="music" days="1-500"/>
+        <track name="Shadows_of_the_apocalypse" file="riseRadio" category="music" days="1-500"/>
+        <track name="Soggy_Bottom_Zombois" file="riseRadio" category="music" days="1-500"/>
+        <track name="Survival_by_pages" file="riseRadio" category="music" days="1-500"/>
+        <track name="Survivors_Now" file="riseRadio" category="music" days="1-500"/>
+        <track name="Zombie_Beatdown" file="riseRadio" category="music" days="1-500"/>
+        -->
+    </station>
+</stations>

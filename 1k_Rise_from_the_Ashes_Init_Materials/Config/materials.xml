@@ -11,7 +11,7 @@
 			<property name="stability_glue" value="300"/>
 			<property name="Mass" type="int" value="20"/>
 			<property name="explosionresistance" value="1.4"/>
-			<property name="MaxDamage" value="3000"/>
+			<property name="MaxDamage" value="10000"/>
 			<property name="Experience" value="2"/>
 		</material>		
 
@@ -28,5 +28,31 @@
 			<property name="MaxDamage" value="5"/>
 			<property name="Experience" value="4"/>
 		</material>
-	</append>
+
+		<material id="MmetalForgedStainlessSteel">
+			<property name="damage_category" value="metal"/>
+			<property name="surface_category" value="metal"/>
+			<property name="forge_category" value="iron"/>
+			<property name="Hardness" type="float" value="1"/>
+			<property name="stepsound" value="metal"/>
+			<property name="stability_glue" value="300"/>
+			<property name="Mass" type="int" value="20"/>
+			<property name="explosionresistance" value="1.6"/>
+			<property name="MaxDamage" value="15000"/>
+			<property name="Experience" value="2"/>
+		</material>		
+
+		<material id="MmetalForgedTungsten">
+			<property name="damage_category" value="metal"/>
+			<property name="surface_category" value="metal"/>
+			<property name="forge_category" value="iron"/>
+			<property name="Hardness" type="float" value="1"/>
+			<property name="stepsound" value="metal"/>
+			<property name="stability_glue" value="300"/>
+			<property name="Mass" type="int" value="20"/>
+			<property name="explosionresistance" value="1.6"/>
+			<property name="MaxDamage" value="20000"/>
+			<property name="Experience" value="2"/>
+		</material>		
+	</append>	
 </configs>

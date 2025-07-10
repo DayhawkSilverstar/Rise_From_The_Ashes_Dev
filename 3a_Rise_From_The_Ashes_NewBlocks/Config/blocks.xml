@@ -1,5 +1,5 @@
 <configs>
-	<append xpath="/blocks" >		
+	<append xpath="/blocks" >			
 		<block name="GoldIngotStack">
 			<property name="Shape" value="ModelEntity" />
 			<property name="Model" value="#@modfolder:Resources/GoldIngotStack.unity3d?GoldStackPrefab"/>
@@ -60,36 +60,6 @@
 			<property name="FilterTags" value="MC_Shapes"/>
 		</block>
 
-		<block name="Radio">
-			<property name="Class" value="RiseRadio, Rise_From_The_Ashes"/>			
-			<property name="AllowPickup" value="1"/>
-			<property name="CanPickUp" value="true"/>
-			<property name="TakeDelay" value="1" /> 
-			<property name="LootList" value="Buddy5"/>			
-			<property name="Shape" value="ModelEntity" />	
-			<property name="Model" value="#@modfolder:Resources/Radio2.unity3d?RiseRadio"/>			 
-			<property name="CustomIcon" value="Buddy5" />
-			<property name="CreativeMode" value="Player" />		
-			<property name="UnlockedBy" value="skillMechanicalEngineer"/>	
-			<property name="Collide" value="sight,movement,melee,bullet,arrow,rocket"/>			
-			<property name="DescriptionKey" value="steelBlockGroupDesc"/>
-			<property name="DisplayType" value="blockHardened"/>
-			<property name="Material" value="Mwood_weak"/>
-			<property name="EconomicValue" value="160"/>
-			<property name="ModelOffset" value="0,.1,0"/>			
-			<property class="RepairItems">
-				<property name="resourceForgedSteel" value="8"/>
-			</property>
-			<drop event="Harvest" name="resourceScrapIron" count="15" tag="allHarvest"/>
-			<drop event="Destroy" count="0"/>
-			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
-			<property name="UpgradeSound" value="place_block_metal"/>
-			<property name="SortOrder1" value="S040"/>
-			<!-- SortOrder2 is assigned in code to keep all of the shapes in the same order for each material -->
-			<property name="Group" value="Building,advBuilding"/>
-			<property name="FilterTags" value="MC_Shapes"/>
-		</block>
-
 		<block name="AleniaCS">
 			<property name="Shape" value="ModelEntity" />
 			<property name="Model" value="#@modfolder:Resources/DnD.unity3d?AleniaCharacterSheet"/>
@@ -121,7 +91,7 @@
 
 		<!-- *** BIRDNESTS -->
 		<block name="cntBirdnestWithEggs">
-			<property name="Class" value="Loot"/>
+			<property name="Class" value="RiseBlockLoot, Rise_From_The_Ashes"/>			
 			<property name="LootList" value="birdNestWithEggs"/>
 			<property name="IndexName" value="quest_feather"/>
 			<property name="Material" value="Mwood_weak"/>
@@ -148,7 +118,7 @@
 
 		<!-- *** BIRDNESTS -->
 		<block name="cntBirdnest">
-			<property name="Class" value="Loot"/>
+			<property name="Class" value="RiseBlockLoot, Rise_From_The_Ashes"/>
 			<property name="LootList" value="birdNestFeathers"/>
 			<property name="IndexName" value="quest_feather"/>
 			<property name="Material" value="Mwood_weak"/>
@@ -262,6 +232,20 @@
 			<property name="Extends" value="paintingBen"/>
 			<property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
 			<property name="Model" value="#@modfolder:Resources/Paintings.unity3d?CyberGirl1" param1="main_mesh"/>
+			<property name="AllowPickup" value="1"/>
+			<property name="CanPickUp" value="true"/>				
+			<property name="TakeDelay" value="10" /> 
+			<property name="Collide" value="melee"/>
+			<property name="IsDecoration" value="true"/>
+			<property name="CreativeMode" value="Player"/>				
+			<property name="SortOrder1" value="B259"/>
+			<property name="SortOrder2" value="0002"/>
+		</block>
+
+		<block name="paintingHouseOfDingus">
+			<property name="Extends" value="paintingBen"/>
+			<property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>
+			<property name="Model" value="#@modfolder:Resources/Paintings.unity3d?HouseOfDingus" param1="main_mesh"/>
 			<property name="AllowPickup" value="1"/>
 			<property name="CanPickUp" value="true"/>				
 			<property name="TakeDelay" value="10" /> 
@@ -484,7 +468,7 @@
 		</block>
 
 		<block name="chickenCoopWithEggs">
-			<property name="Class" value="Loot"/>
+			<property name="Class" value="RiseBlockLoot, Rise_From_The_Ashes"/>
 			<property name="LootList" value="chickenCoopWithEggs"/>								
 			<property name="Shape" value="ModelEntity" />
 			<property name="Model" value="#@modfolder:Resources/RiseChickenCoop.unity3d?ChickenCoopWithEggs"/>
@@ -764,6 +748,8 @@
 			<property name="CustomIcon" value="CottonT1"/>
 			<property name="UnlockedBy" value="skillFarming"/>
 			<property name="Texture" value="392"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCottonSproutPrefab"/>
 			<property name="PlaceAsRandomRotation" value="true"/>
 			<drop event="Destroy" name="plantedCottonT1-1" count="1"/>
 			<property name="SortOrder1" value="B953"/>
@@ -775,6 +761,8 @@
 		<block name="plantedCottonT1-2">
 			<property name="Extends" value="cropsGrowingMaster"/>
 			<property name="CreativeMode" value="None"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCottonGrowthPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCotton3HarvestPlayerT1"/>
 			<property name="CustomIcon" value="plantedCottonT1-1"/>
 			<property name="Texture" value="20"/>
@@ -787,7 +775,9 @@
 		<block name="plantedCotton3HarvestPlayerT1">
 			<property name="Extends" value="cropsHarvestableMaster"/>
 			<property name="Texture" value="363"/>
-			<property name="CreativeMode" value="None"/>			
+			<property name="CreativeMode" value="None"/>	
+			<property name="Shape" value="ModelEntity" />		
+			<property name="Model" value="Entities/Plants/plantCottonHarvestPrefab"/>
 			<property name="DescriptionKey" value="plantedCotton3HarvestDescT1"/>
 			<drop event="Harvest" name="resourceCropCottonPlant" count="1" tag="cropHarvest"/>			
 			<drop event="Destroy" name="plantedCottonT1-1" count="1"/>			
@@ -803,6 +793,8 @@
 			<property name="PlantGrowing.Next" value="plantedCoffeeT1-2"/>
 			<property name="UnlockedBy" value="skillFarming"/>
 			<property name="CustomIcon" value="CoffeeT1"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCoffee_SproutPrefab"/>
 			<property name="Texture" value="393"/>
 			<property name="PlaceAsRandomRotation" value="true"/>
 			<property name="CraftingIngredientTime" value="5"/>
@@ -816,6 +808,8 @@
 		<block name="plantedCoffeeT1-2">
 			<property name="Extends" value="cropsGrowingMaster"/>
 			<property name="CreativeMode" value="None"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCoffee_GrowingPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCoffee3HarvestPlayerT1"/>			
 			<property name="Texture" value="394"/>
 			<drop event="Destroy" name="plantedCoffeeT1-1" count="1"/>
@@ -827,7 +821,9 @@
 		<block name="plantedCoffee3HarvestPlayerT1">
 			<property name="Extends" value="cropsHarvestableMaster"/>
 			<property name="Texture" value="395"/>
-			<property name="CreativeMode" value="None"/>			
+			<property name="CreativeMode" value="Player"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCoffeePlant_Prefab"/>	
 			<property name="DescriptionKey" value="plantedCoffee3HarvestDescT1"/>
 			<drop event="Harvest" name="resourceCropCoffeeBeans" count="1" tag="cropHarvest"/>			
 			<drop event="Destroy" name="plantedCoffeeT1-1" count="1"/>			
@@ -1122,7 +1118,7 @@
 		<block name="plantedPumpkinT1-2">
 			<property name="Extends" value="cropsGrowingMaster"/>
 			<property name="CreativeMode" value="None"/>
-			<property name="PlantGrowing.Next" value="plantedPumpkin3HarvestPlayer"/>
+			<property name="PlantGrowing.Next" value="plantedPumpkin3HarvestPlayerT1"/>
 			<property name="CustomIcon" value="plantedPumpkinT1-1"/>
 			<property name="Shape" value="ModelEntity"/>
 			<property name="Model" value="Entities/Plants/pumpkinGrowthPrefab"/>
@@ -1264,6 +1260,8 @@
 		<block name="plantedCottonT2-1">
 			<property name="Extends" value="cropsGrowingMaster" param1="CustomIcon"/>
 			<property name="CreativeMode" value="Player"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCottonSproutPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCottonT2-2"/>
 			<property name="CustomIcon" value="CottonT2"/>
 			<property name="UnlockedBy" value="skillFarming"/>
@@ -1280,6 +1278,8 @@
 		<block name="plantedCottonT2-2">
 			<property name="Extends" value="cropsGrowingMaster"/>
 			<property name="CreativeMode" value="None"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCottonGrowthPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCotton3HarvestPlayerT1"/>			
 			<property name="Texture" value="20"/>
 			<drop event="Destroy" name="plantedCottonT2-1" count="1"/>			
@@ -1291,6 +1291,8 @@
 		<block name="plantedCotton3HarvestPlayerT2">
 			<property name="Extends" value="cropsHarvestableMaster"/>
 			<property name="Texture" value="363"/>
+			<property name="Shape" value="ModelEntity" />		
+			<property name="Model" value="Entities/Plants/plantCottonHarvestPrefab"/>
 			<property name="CreativeMode" value="Player"/>			
 			<property name="DescriptionKey" value="plantedCotton3HarvestDescT2"/>
 			<drop event="Harvest" name="resourceCropCottonPlant" count="3" tag="cropHarvest"/>			
@@ -1304,6 +1306,8 @@
 		<block name="plantedCoffeeT2-1">
 			<property name="Extends" value="cropsGrowingMaster" param1="CustomIcon"/>
 			<property name="CreativeMode" value="Player"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCoffee_SproutPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCoffeeT2-2"/>
 			<property name="UnlockedBy" value="skillFarming"/>
 			<property name="CustomIcon" value="CoffeeT2"/>
@@ -1321,6 +1325,8 @@
 		<block name="plantedCoffeeT2-2">
 			<property name="Extends" value="cropsGrowingMaster"/>
 			<property name="CreativeMode" value="None"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCoffee_GrowingPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCoffee3HarvestPlayerT2"/>			
 			<property name="Texture" value="394"/>
 			<drop event="Destroy" name="plantedCoffeeT2-1" count="1"/>
@@ -1332,7 +1338,9 @@
 		<block name="plantedCoffee3HarvestPlayerT2">
 			<property name="Extends" value="cropsHarvestableMaster"/>
 			<property name="Texture" value="395"/>
-			<property name="CreativeMode" value="Player"/>			
+			<property name="CreativeMode" value="Player"/>		
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCoffeePlant_Prefab"/>		
 			<property name="DescriptionKey" value="plantedCoffee3HarvestDescT2"/>
 			<drop event="Harvest" name="resourceCropCoffeeBeans" count="3" tag="cropHarvest"/>			
 			<drop event="Destroy" name="plantedCoffeeT2-1" count="1"/>			
@@ -1860,6 +1868,8 @@
 		<block name="plantedCottonT3-1">
 			<property name="Extends" value="cropsGrowingMaster" param1="CustomIcon"/>
 			<property name="CreativeMode" value="Player"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCottonSproutPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCottonT3-2"/>
 			<property name="CustomIcon" value="CottonT3"/>
 			<property name="UnlockedBy" value="skillFarming"/>
@@ -1876,6 +1886,8 @@
 		<block name="plantedCottonT3-2">
 			<property name="Extends" value="cropsGrowingMaster"/>
 			<property name="CreativeMode" value="None"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCottonGrowthPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCotton3HarvestPlayerT3"/>			
 			<property name="Texture" value="20"/>
 			<drop event="Destroy" name="plantedCottonT3-1" count="1"/>			
@@ -1887,6 +1899,8 @@
 		<block name="plantedCotton3HarvestPlayerT3">
 			<property name="Extends" value="cropsHarvestableMaster"/>
 			<property name="Texture" value="363"/>
+			<property name="Shape" value="ModelEntity" />		
+			<property name="Model" value="Entities/Plants/plantCottonHarvestPrefab"/>
 			<property name="CreativeMode" value="Player"/>			
 			<property name="DescriptionKey" value="plantedCotton3HarvestDescT3"/>
 			<drop event="Harvest" name="resourceCropCottonPlant" count="6" tag="cropHarvest"/>			
@@ -1900,6 +1914,8 @@
 		<block name="plantedCoffeeT3-1">
 			<property name="Extends" value="cropsGrowingMaster" param1="CustomIcon"/>
 			<property name="CreativeMode" value="Player"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCoffee_SproutPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCoffeeT3-2"/>
 			<property name="UnlockedBy" value="skillFarming"/>
 			<property name="CustomIcon" value="CoffeeT3"/>
@@ -1917,6 +1933,8 @@
 		<block name="plantedCoffeeT3-2">
 			<property name="Extends" value="cropsGrowingMaster"/>
 			<property name="CreativeMode" value="None"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCoffee_GrowingPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCoffee3HarvestPlayerT3"/>			
 			<property name="Texture" value="394"/>
 			<drop event="Destroy" name="plantedCoffeeT3-1" count="1"/>
@@ -1928,7 +1946,9 @@
 		<block name="plantedCoffee3HarvestPlayerT3">
 			<property name="Extends" value="cropsHarvestableMaster"/>
 			<property name="Texture" value="395"/>
-			<property name="CreativeMode" value="Player"/>			
+			<property name="CreativeMode" value="Player"/>	
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCoffeePlant_Prefab"/>			
 			<property name="DescriptionKey" value="plantedCoffee3HarvestDescT3"/>
 			<drop event="Harvest" name="resourceCropCoffeeBeans" count="6" tag="cropHarvest"/>			
 			<drop event="Destroy" name="plantedCoffeeT3-1" count="1"/>			
@@ -2456,6 +2476,8 @@
 		<block name="plantedCottonT4-1">
 			<property name="Extends" value="cropsGrowingMaster" param1="CustomIcon"/>
 			<property name="CreativeMode" value="Player"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCottonSproutPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCottonT4-2"/>
 			<property name="CustomIcon" value="CottonT4"/>
 			<property name="EconomicValue" value="240"/>
@@ -2472,6 +2494,8 @@
 		<block name="plantedCottonT4-2">
 			<property name="Extends" value="cropsGrowingMaster"/>
 			<property name="CreativeMode" value="None"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCottonGrowthPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCotton3HarvestPlayerT4"/>			
 			<property name="Texture" value="20"/>
 			<drop event="Destroy" name="plantedCottonT4-1" count="1"/>			
@@ -2483,6 +2507,8 @@
 		<block name="plantedCotton3HarvestPlayerT4">
 			<property name="Extends" value="cropsHarvestableMaster"/>
 			<property name="Texture" value="363"/>
+			<property name="Shape" value="ModelEntity" />		
+			<property name="Model" value="Entities/Plants/plantCottonHarvestPrefab"/>
 			<property name="CreativeMode" value="Player"/>			
 			<property name="DescriptionKey" value="plantedCotton3HarvestDescT4"/>
 			<drop event="Harvest" name="resourceCropCottonPlant" count="9" tag="cropHarvest"/>			
@@ -2496,6 +2522,8 @@
 		<block name="plantedCoffeeT4-1">
 			<property name="Extends" value="cropsGrowingMaster" param1="CustomIcon"/>
 			<property name="CreativeMode" value="Player"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCoffee_SproutPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCoffeeT4-2"/>
 			<property name="UnlockedBy" value="skillFarming"/>
 			<property name="CustomIcon" value="CoffeeT4"/>
@@ -2513,6 +2541,8 @@
 		<block name="plantedCoffeeT4-2">
 			<property name="Extends" value="cropsGrowingMaster"/>
 			<property name="CreativeMode" value="None"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCoffee_GrowingPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCoffee3HarvestPlayerT4"/>			
 			<property name="Texture" value="394"/>
 			<drop event="Destroy" name="plantedCoffeeT4-1" count="1"/>
@@ -2524,7 +2554,9 @@
 		<block name="plantedCoffee3HarvestPlayerT4">
 			<property name="Extends" value="cropsHarvestableMaster"/>
 			<property name="Texture" value="395"/>
-			<property name="CreativeMode" value="Player"/>			
+			<property name="CreativeMode" value="Player"/>	
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCoffeePlant_Prefab"/>			
 			<property name="DescriptionKey" value="plantedCoffee3HarvestDescT4"/>
 			<drop event="Harvest" name="resourceCropCoffeeBeans" count="9" tag="cropHarvest"/>			
 			<drop event="Destroy" name="plantedCoffeeT4-1" count="1"/>			
@@ -2829,7 +2861,7 @@
 			<property name="ModelOffset" value="0,0,0"/>
 			<property name="Model" value="Entities/OutdoorDecor/cornStalkSuperMediumPrefab"/>
 			<property name="MultiBlockDim" value="1,3,1"/>
-			<drop event="Destroy" name="plantedGraceCornT1-1" count="1"/>
+			<drop event="Destroy" name="plantedGraceCornT4-1" count="1"/>
 			<property name="SortOrder1" value="B961"/>
 			<property name="SortOrder2" value="0001"/>
 			<property name="Tags" value="seedSkill2"/>
@@ -2975,7 +3007,7 @@
 			<property name="DescriptionKey" value="plantedAloe3HarvestDescT5"/>
 			<property name="Shape" value="ModelEntity"/>
 			<property name="Model" value="Entities/Plants/plant_aloe_harvestPrefab"/>
-			<drop event="Harvest" name="resourceCropAloeLeaf" count="1" tag="cropHarvest"/>
+			<drop event="Harvest" name="resourceCropAloeLeaf" count="12" tag="cropHarvest"/>
 			<drop event="Destroy" name="plantedAloeT5-1" count="1"/>			
 			<property name="SortOrder1" value="B956"/>
 			<property name="SortOrder2" value="0004"/>
@@ -3017,7 +3049,7 @@
 			<property name="DescriptionKey" value="plantedBlueberry3HarvestDescT5"/>
 			<property name="Shape" value="ModelEntity"/>
 			<property name="Model" value="Entities/Plants/blueberry_plant_harvestPrefab"/>
-			<drop event="Harvest" name="foodCropBlueberries" count="1" tag="cropHarvest"/>			
+			<drop event="Harvest" name="foodCropBlueberries" count="12" tag="cropHarvest"/>			
 			<drop event="Destroy" name="plantedBlueberryT5-1" count="1"/>			
 			<property name="SortOrder1" value="B957"/>
 			<property name="SortOrder2" value="0004"/>
@@ -3082,7 +3114,7 @@
 			<property name="DescriptionKey" value="plantedMushroom3HarvestDescT5"/>	
 			<property name="Shape" value="ModelEntity"/>		
 			<property name="Model" value="Entities/OutdoorDecor/mushroomHarvestPrefab"/>
-			<drop event="Harvest" name="foodCropMushrooms" count="1" tag="cropHarvest"/>			
+			<drop event="Harvest" name="foodCropMushrooms" count="12" tag="cropHarvest"/>			
 			<drop event="Destroy" name="plantedMushroomT5-1" count="1"/>			
 			<property name="SortOrder1" value="B951"/>
 			<property name="SortOrder2" value="0005"/>
@@ -3127,7 +3159,7 @@
 			<property name="DescriptionKey" value="plantedYucca3HarvestDescT5"/>
 			<property name="Shape" value="ModelEntity"/>
 			<property name="Model" value="Entities/Plants/plant_yucca_harvestPrefab"/>
-			<drop event="Harvest" name="foodCropYuccaFruit" count="1" tag="cropHarvest"/>			
+			<drop event="Harvest" name="foodCropYuccaFruit" count="12" tag="cropHarvest"/>			
 			<drop event="Destroy" name="plantedYuccaT5-1" count="1"/>
 			<property name="SortOrder1" value="B952"/>
 			<property name="SortOrder2" value="0004"/>
@@ -3138,6 +3170,8 @@
 		<block name="plantedCottonT5-1">
 			<property name="Extends" value="cropsGrowingMaster" param1="CustomIcon"/>
 			<property name="CreativeMode" value="Player"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCottonSproutPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCottonT5-2"/>
 			<property name="CustomIcon" value="CottonT5"/>
 			<property name="UnlockedBy" value="skillFarming"/>
@@ -3153,6 +3187,8 @@
 		<block name="plantedCottonT5-2">
 			<property name="Extends" value="cropsGrowingMaster"/>
 			<property name="CreativeMode" value="None"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCottonGrowthPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCotton3HarvestPlayerT5"/>
 			<property name="CustomIcon" value="plantedCottonT5-1"/>
 			<property name="Texture" value="20"/>
@@ -3165,9 +3201,11 @@
 		<block name="plantedCotton3HarvestPlayerT5">
 			<property name="Extends" value="cropsHarvestableMaster"/>
 			<property name="Texture" value="363"/>
+			<property name="Shape" value="ModelEntity" />		
+			<property name="Model" value="Entities/Plants/plantCottonHarvestPrefab"/>
 			<property name="CreativeMode" value="Player"/>			
 			<property name="DescriptionKey" value="plantedCotton3HarvestDescT5"/>
-			<drop event="Harvest" name="resourceCropCottonPlant" count="1" tag="cropHarvest"/>			
+			<drop event="Harvest" name="resourceCropCottonPlant" count="12" tag="cropHarvest"/>			
 			<drop event="Destroy" name="plantedCottonT5-1" count="1"/>			
 			<property name="SortOrder1" value="B953"/>
 			<property name="SortOrder2" value="0004"/>
@@ -3178,6 +3216,8 @@
 		<block name="plantedCoffeeT5-1">
 			<property name="Extends" value="cropsGrowingMaster" param1="CustomIcon"/>
 			<property name="CreativeMode" value="Player"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCoffee_SproutPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCoffeeT5-2"/>
 			<property name="UnlockedBy" value="skillFarming"/>
 			<property name="CustomIcon" value="CoffeeT5"/>
@@ -3194,6 +3234,8 @@
 		<block name="plantedCoffeeT5-2">
 			<property name="Extends" value="cropsGrowingMaster"/>
 			<property name="CreativeMode" value="None"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCoffee_GrowingPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCoffee3HarvestPlayerT5"/>			
 			<property name="Texture" value="394"/>
 			<drop event="Destroy" name="plantedCoffeeT5-1" count="1"/>
@@ -3205,9 +3247,11 @@
 		<block name="plantedCoffee3HarvestPlayerT5">
 			<property name="Extends" value="cropsHarvestableMaster"/>
 			<property name="Texture" value="395"/>
-			<property name="CreativeMode" value="Player"/>			
+			<property name="CreativeMode" value="Player"/>	
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCoffeePlant_Prefab"/>			
 			<property name="DescriptionKey" value="plantedCoffee3HarvestDescT5"/>
-			<drop event="Harvest" name="resourceCropCoffeeBeans" count="1" tag="cropHarvest"/>			
+			<drop event="Harvest" name="resourceCropCoffeeBeans" count="12" tag="cropHarvest"/>			
 			<drop event="Destroy" name="plantedCoffeeT5-1" count="1"/>			
 			<property name="SortOrder1" value="B954"/>
 			<property name="SortOrder2" value="0004"/>
@@ -3247,7 +3291,7 @@
 			<property name="CreativeMode" value="Player"/>
 			<property name="CustomIcon" value="plantedGoldenrod3HarvestPlayer"/>
 			<property name="DescriptionKey" value="plantedGoldenrod3HarvestDescT5"/>
-			<drop event="Harvest" name="resourceCropGoldenrodPlant" count="1" tag="cropHarvest"/>			
+			<drop event="Harvest" name="resourceCropGoldenrodPlant" count="12" tag="cropHarvest"/>			
 			<drop event="Destroy" name="plantedGoldenrodT5-1" count="1"/>			
 			<property name="SortOrder1" value="B955"/>
 			<property name="SortOrder2" value="0004"/>
@@ -3289,7 +3333,7 @@
 			<property name="DescriptionKey" value="plantedPotato3HarvestDescT5"/>
 			<property name="Shape" value="ModelEntity"/>
 			<property name="Model" value="Entities/Plants/potato_plant_harvestPrefab"/>
-			<drop event="Harvest" name="foodCropPotato" count="1" tag="cropHarvest"/>		
+			<drop event="Harvest" name="foodCropPotato" count="12" tag="cropHarvest"/>		
 			<drop event="Destroy" name="plantedPotatoT5-1" count="1"/>			
 			<property name="SortOrder1" value="B958"/>
 			<property name="SortOrder2" value="0004"/>
@@ -3328,7 +3372,7 @@
 			<property name="Texture" value="244"/>
 			<property name="CreativeMode" value="Player"/>			
 			<property name="DescriptionKey" value="plantedChrysanthemum3HarvestDescT5"/>
-			<drop event="Harvest" name="resourceCropChrysanthemumPlant" count="1" tag="cropHarvest"/>			
+			<drop event="Harvest" name="resourceCropChrysanthemumPlant" count="12" tag="cropHarvest"/>			
 			<drop event="Destroy" name="plantedChrysanthemumT5-1" count="1"/>			
 			<property name="SortOrder1" value="B959"/>
 			<property name="SortOrder2" value="0004"/>
@@ -3379,7 +3423,7 @@
 			<property name="ModelOffset" value="0,0,0"/>
 			<property name="Shape" value="ModelEntity"/>
 			<property name="Model" value="Entities/OutdoorDecor/cornStalkGreenPrefab"/>
-			<drop event="Harvest" name="foodCropCorn" count="1" tag="cropHarvest"/>			
+			<drop event="Harvest" name="foodCropCorn" count="12" tag="cropHarvest"/>			
 			<drop event="Destroy" name="plantedCornT5-1" count="1"/>			
 			<property name="SortOrder1" value="B960"/>
 			<property name="SortOrder2" value="0004"/>
@@ -3433,7 +3477,7 @@
 			<property name="ModelOffset" value="0,0,0"/>
 			<property name="Shape" value="ModelEntity"/>
 			<property name="Model" value="Entities/OutdoorDecor/cornStalkSuperPrefab"/>
-			<drop event="Harvest" name="foodCropGraceCorn" count="1" tag="cropHarvest"/>			
+			<drop event="Harvest" name="foodCropGraceCorn" count="12" tag="cropHarvest"/>			
 			<drop event="Destroy" name="plantedGraceCornT5-1" count="1"/>
 			<property name="SortOrder1" value="B961"/>
 			<property name="SortOrder2" value="0004"/>
@@ -3472,7 +3516,7 @@
 			<property name="Texture" value="449"/>
 			<property name="CreativeMode" value="Player"/>
 			<property name="DescriptionKey" value="plantedHop3HarvestDescT5"/>
-			<drop event="Harvest" name="resourceCropHopsFlower" count="1" tag="cropHarvest"/>			
+			<drop event="Harvest" name="resourceCropHopsFlower" count="12" tag="cropHarvest"/>			
 			<drop event="Destroy" name="plantedHopT5-1" count="1"/>			
 			<property name="SortOrder1" value="B962"/>
 			<property name="SortOrder2" value="0004"/>
@@ -3500,7 +3544,7 @@
 		<block name="plantedPumpkinT5-2">
 			<property name="Extends" value="cropsGrowingMaster"/>
 			<property name="CreativeMode" value="None"/>
-			<property name="PlantGrowing.Next" value="plantedPumpkin3HarvestPlayer"/>
+			<property name="PlantGrowing.Next" value="plantedPumpkin3HarvestPlayerT5"/>
 			<property name="CustomIcon" value="plantedPumpkinT5-1"/>
 			<property name="Shape" value="ModelEntity"/>
 			<property name="Model" value="Entities/Plants/pumpkinGrowthPrefab"/>
@@ -3517,7 +3561,7 @@
 			<property name="DescriptionKey" value="plantedPumpkin3HarvestDescT5"/>
 			<property name="Shape" value="ModelEntity"/>
 			<property name="Model" value="Entities/Plants/pumpkinHarvestPrefab"/>
-			<drop event="Harvest" name="foodCropPumpkin" count="1" tag="cropHarvest"/>			
+			<drop event="Harvest" name="foodCropPumpkin" count="12" tag="cropHarvest"/>			
 			<drop event="Destroy" name="plantedPumpkinT5-1" count="1"/>
 			<property name="SortOrder1" value="B964"/>
 			<property name="SortOrder2" value="0004"/>
@@ -3728,6 +3772,8 @@
 		<block name="plantedCottonT6-1">
 			<property name="Extends" value="cropsGrowingMaster" param1="CustomIcon"/>
 			<property name="CreativeMode" value="Player"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCottonSproutPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCottonT6-2"/>
 			<property name="CustomIcon" value="CottonT6"/>
 			<property name="UnlockedBy" value="skillFarming"/>
@@ -3743,6 +3789,8 @@
 		<block name="plantedCottonT6-2">
 			<property name="Extends" value="cropsGrowingMaster"/>
 			<property name="CreativeMode" value="None"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCottonGrowthPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCotton3HarvestPlayerT6"/>
 			<property name="CustomIcon" value="plantedCottonT6-1"/>
 			<property name="Texture" value="20"/>
@@ -3755,6 +3803,8 @@
 		<block name="plantedCotton3HarvestPlayerT6">
 			<property name="Extends" value="cropsHarvestableMaster"/>
 			<property name="Texture" value="363"/>
+			<property name="Shape" value="ModelEntity" />		
+			<property name="Model" value="Entities/Plants/plantCottonHarvestPrefab"/>
 			<property name="CreativeMode" value="Player"/>			
 			<property name="DescriptionKey" value="plantedCotton3HarvestDescT6"/>
 			<drop event="Harvest" name="resourceCropCottonPlant" count="15" tag="cropHarvest"/>			
@@ -3768,6 +3818,8 @@
 		<block name="plantedCoffeeT6-1">
 			<property name="Extends" value="cropsGrowingMaster" param1="CustomIcon"/>
 			<property name="CreativeMode" value="Player"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCoffee_SproutPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCoffeeT6-2"/>
 			<property name="UnlockedBy" value="skillFarming"/>
 			<property name="CustomIcon" value="CoffeeT6"/>
@@ -3784,6 +3836,8 @@
 		<block name="plantedCoffeeT6-2">
 			<property name="Extends" value="cropsGrowingMaster"/>
 			<property name="CreativeMode" value="None"/>
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCoffee_GrowingPrefab"/>
 			<property name="PlantGrowing.Next" value="plantedCoffee3HarvestPlayerT6"/>			
 			<property name="Texture" value="394"/>
 			<drop event="Destroy" name="plantedCoffeeT6-1" count="1"/>
@@ -3795,7 +3849,9 @@
 		<block name="plantedCoffee3HarvestPlayerT6">
 			<property name="Extends" value="cropsHarvestableMaster"/>
 			<property name="Texture" value="395"/>
-			<property name="CreativeMode" value="Player"/>			
+			<property name="CreativeMode" value="Player"/>		
+			<property name="Shape" value="ModelEntity" />
+			<property name="Model" value="Entities/Plants/plantCoffeePlant_Prefab"/>		
 			<property name="DescriptionKey" value="plantedCoffee3HarvestDescT6"/>
 			<drop event="Harvest" name="resourceCropCoffeeBeans" count="15" tag="cropHarvest"/>			
 			<drop event="Destroy" name="plantedCoffeeT6-1" count="1"/>			
@@ -4090,7 +4146,7 @@
 		<block name="plantedPumpkinT6-2">
 			<property name="Extends" value="cropsGrowingMaster"/>
 			<property name="CreativeMode" value="None"/>
-			<property name="PlantGrowing.Next" value="plantedPumpkin3HarvestPlayer"/>
+			<property name="PlantGrowing.Next" value="plantedPumpkin3HarvestPlayerT6"/>
 			<property name="CustomIcon" value="plantedPumpkinT6-1"/>
 			<property name="Shape" value="ModelEntity"/>
 			<property name="Model" value="Entities/Plants/pumpkinGrowthPrefab"/>
@@ -4130,7 +4186,7 @@
 			<property name="CustomIcon" value="ComputerStation" />
 			<property name="CreativeMode" value="Player"/>
 			<property name="DescriptionKey" value="forgeDesc"/>
-			<property name="WorkstationIcon" value="ui_game_symbol_forge"/>
+			<property name="WorkstationIcon" value="ui_game_symbol_computer"/>
 			<property name="WorkstationJournalTip" value="forgeTip"/>
 			<property name="Stacknumber" value="1"/>
 			<!-- Visual -->
@@ -4188,7 +4244,7 @@
 			<property name="CustomIcon" value="TailorWorkstation" />
 			<property name="CreativeMode" value="Player"/>
 			<property name="DescriptionKey" value="forgeDesc"/>
-			<property name="WorkstationIcon" value="ui_game_symbol_forge"/>
+			<property name="WorkstationIcon" value="ui_game_symbol_tailoring"/>
 			<property name="WorkstationJournalTip" value="forgeTip"/>
 			<property name="Stacknumber" value="1"/>
 			<!-- Visual -->
@@ -4235,7 +4291,10 @@
 		</block>
 
 		<block name="cntFootlockerWhite">
-			<property name="Class" value="Loot"/>
+			<property name="Class" value="RiseBlockLoot, Rise_From_The_Ashes"/>
+			<property name="AllowPickup" value="1"/>
+			<property name="CanPickUp" value="true"/>
+			<property name="TakeDelay" value="10" /> 
 			<property name="LootList" value="playerStorageSmall"/>
 			<property name="Material" value="MwoodReinforced"/>
 			<property name="Shape" value="ModelEntity"/>
@@ -4258,7 +4317,10 @@
 		<block name="cntPillCase">
 			<property name="Extends" value="cntPillCaseEmpty"/>
 			<property name="CreativeMode" value="Player"/>
-			<property name="Class" value="Loot"/>
+			<property name="Class" value="RiseBlockLoot, Rise_From_The_Ashes"/>
+			<property name="AllowPickup" value="1"/>
+			<property name="CanPickUp" value="true"/>
+			<property name="TakeDelay" value="10" /> 
 			<property name="LootList" value="playerStorageSmall"/>
 			<property name="Shape" value="ModelEntity"/>
 			<property name="Model" value="@:Entities/LootContainers/pill_case_closedPrefab.prefab"/>
@@ -4286,7 +4348,10 @@
 		<block name="cntBruteStyleTrashCan">
 			<property name="CreativeMode" value="Player"/>
 			<property name="DescriptionKey" value="furnitureGroupDesc"/>
-			<property name="Class" value="Loot"/>
+			<property name="Class" value="RiseBlockLoot, Rise_From_The_Ashes"/>
+			<property name="AllowPickup" value="1"/>
+			<property name="CanPickUp" value="true"/>
+			<property name="TakeDelay" value="10" /> 
 			<property name="LootList" value="playerStorageMed"/>
 			<property name="Material" value="Mplastics"/>
 			<property name="Shape" value="ModelEntity"/>			
@@ -4313,7 +4378,10 @@
 		<!-- White -->
 		<block name="cntUtilityCart">
 			<property name="CreativeMode" value="Player"/>
-			<property name="Class" value="Loot"/>
+			<property name="Class" value="RiseBlockLoot, Rise_From_The_Ashes"/>
+			<property name="AllowPickup" value="1"/>
+			<property name="CanPickUp" value="true"/>
+			<property name="TakeDelay" value="10" /> 
 			<property name="CustomIcon" value="cntUtilityCartFullWhite"/>
 			<property name="LootList" value="playerStorageMed"/>
 			<property name="CustomIconTint" value="CCCCCC"/>
@@ -4343,7 +4411,10 @@
 
 		<block name="keyRackWood">
 			<property name="CreativeMode" value="Dev"/>
-			<property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>		
+			<property name="Class" value="RiseDeco, Rise_From_The_Ashes"/>	
+			<property name="AllowPickup" value="1"/>
+			<property name="CanPickUp" value="true"/>
+			<property name="TakeDelay" value="10" /> 	
 			<property name="UnlockedBy" value="skillCarpentry"/>	
 			<property name="Material" value="Mwood"/>
 			<property name="Shape" value="ModelEntity"/>
@@ -4401,7 +4472,7 @@
 		<block name="cntFootlockerVariantHelper">
 			<property name="Extends" value="cntFootlockerWhite"/>
 			<property name="CreativeMode" value="Player"/>
-			<property name="CustomIcon" value="cntFootlockerWhite"/>
+			<property name="CustomIcon" value="cntFootlockerVariantHelper"/>
 			<property name="CustomIconTint" value="404040"/>
 			<property name="UnlockedBy" value="skillCarpentry"/>
 			<property name="ItemTypeIcon" value="all_blocks"/>
@@ -4420,7 +4491,7 @@
 			<property name="DamageResist" value="52"/>    <!-- Hardness Rating -->
 			<property name="DescriptionKey" value="steelBlockGroupDesc"/>
 			<property name="DisplayType" value="blockHardened"/>
-			<property name="Material" value="Msteel_shapes"/>
+			<property name="Material" value="MmetalForgedStainlessSteel"/>
 			<property name="Shape" value="New"/>
 			<property name="CustomIcon" value="StainlessSteel"/>	
 			<property name="Texture" value="531"/>
@@ -4452,7 +4523,7 @@
 			<property name="DamageResist" value="65"/>    <!-- Hardness Rating -->
 			<property name="DescriptionKey" value="steelBlockGroupDesc"/>
 			<property name="DisplayType" value="blockHardened"/>
-			<property name="Material" value="Msteel_shapes"/>
+			<property name="Material" value="MmetalForgedTungsten"/>
 			<property name="Shape" value="New"/>
 			<property name="Texture" value="267"/>
 			<property name="UiBackgroundTexture" value="267"/>
@@ -4504,5 +4575,65 @@
 			<property name="FilterTags" value="MC_Shapes"/>
 			<property name="Tags" value="iron,construction,skillConstruction"/>
 		</block>
+
+    <block name="LargeGenerator">
+      <property name="CreativeMode" value="Player" />
+      <property name="Class" value="Generator" />
+      <property name="SlotItem" value="smallEngine" />
+      <property name="MaxFuel" value="10000" />
+      <property name="MaxPower" value="24500" />
+      <property name="OutputPerFuel" value="24500" />
+      <property name="OutputPerStack" value="500" />
+      <property name="UnlockedBy" value="skillElectricalEngineer">
+        <!--Attribute "value" replaced by: "1a_Rise_from_the_Ashes_Blocks_Rise_Update"-->
+      </property>
+      <property name="CustomIcon" value="questGeneratorLarge" />
+      <property name="DescriptionKey" value="powerSourceDesc" />
+      <property name="DisplayType" value="blockElectricalHardened" />
+      <property name="Stacknumber" value="1" />
+      <property name="Material" value="Mmetal_medium" />
+      <property name="Shape" value="ModelEntity" />
+      <property name="Model" value="Entities/Electrical/bigGeneratorPrefab" />
+      <property name="MultiBlockDim" value="3,2,2" />
+      <property name="ImposterDontBlock" value="true" />
+      <property name="WaterFlow" value="permitted" />
+      <property name="HandleFace" value="Bottom" />
+      <property name="Collide" value="movement,melee,bullet,arrow,rocket" />
+      <property name="Path" value="solid" />
+      <property name="StabilitySupport" value="false" />
+      <property name="EconomicValue" value="1500">
+        <!--Attribute "value" replaced by: "1a_Rise_from_the_Ashes_Blocks_Rise_Update"-->
+      </property>
+      <property name="TraderStageTemplate" value="electricTier1" />
+      <!-- generatorbank -->
+      <property name="TakeDelay" value="15" />
+      <property class="RepairItems">
+        <property name="resourceForgedIron" value="8" />
+        <property name="resourceMechanicalPartsT1" value="8">
+          <!--Attribute "name" replaced by: "1a_Rise_from_the_Ashes_Blocks_Rise_Update"-->
+        </property>
+        <property name="resourceElectricPartsT1" value="11">
+          <!--Attribute "name" replaced by: "1a_Rise_from_the_Ashes_Blocks_Rise_Update"-->
+        </property>
+      </property>
+      <drop event="Harvest" name="resourceScrapIron" count="192" tag="allHarvest" />
+      <drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble" />
+      <drop event="Harvest" name="resourceForgedIron" count="3" tag="salvageHarvest" />
+      <drop event="Harvest" name="resourceMechanicalPartsT1" count="3" tag="salvageHarvest">
+        <!--Attribute "name" replaced by: "1a_Rise_from_the_Ashes_Blocks_Rise_Update"-->
+      </drop>
+      <drop event="Harvest" name="resourceElectricPartsT1" count="3,4" tag="salvageHarvest">
+        <!--Attribute "name" replaced by: "1a_Rise_from_the_Ashes_Blocks_Rise_Update"-->
+      </drop>
+      <drop event="Destroy" count="0" />
+      <drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1" />
+      <property name="SortOrder1" value="B155" />
+      <property name="SortOrder2" value="0000" />
+      <property name="Group" value="Science,TCScience" />
+      <property name="Tags" value="electricianSkill,mechanicalSkill,generatorbank">
+        <!--Attribute "value" replaced by: "1a_Rise_from_the_Ashes_Blocks_Rise_Update"-->
+      </property>
+      <property name="FilterTags" value="MC_playerBlocks,SC_electrical" />
+    </block>
 	</append>
 </configs>

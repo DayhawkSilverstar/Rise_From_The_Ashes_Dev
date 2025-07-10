@@ -8,10 +8,10 @@ using UnityEngine;
 
 public class RisePoweredLight : BlockPoweredLight
 {
-    private readonly BlockActivationCommand[] cmds =
+    public new BlockActivationCommand[] cmds = new BlockActivationCommand[2]
     {
-        new BlockActivationCommand("light", "electric_switch", _enabled: true),                
-        new BlockActivationCommand("Take", "hand", true)        
+        new BlockActivationCommand("light", "electric_switch", _enabled: true),
+        new BlockActivationCommand("take", "hand", _enabled: true)
     };
 
     private float TakeDelay = 0;
@@ -49,13 +49,6 @@ public class RisePoweredLight : BlockPoweredLight
         base.OnBlockUnloaded(_world, _clrIdx, _blockPos, _blockValue);
     }
 
-    public override void OnBlockAdded(WorldBase world, Chunk _chunk, Vector3i _blockPos, BlockValue _blockValue)
-    {
-        #region OnBlockAdded
-        base.OnBlockAdded(world, _chunk, _blockPos, _blockValue);
-        #endregion
-    }
-
     // Display custom messages for turning on and off the music box, based on the block's name.
     public override string GetActivationText(WorldBase _world, BlockValue _blockValue, int _clrIdx, Vector3i _blockPos, EntityAlive _entityFocusing)
     {
@@ -85,6 +78,9 @@ public class RisePoweredLight : BlockPoweredLight
     public override BlockActivationCommand[] GetBlockActivationCommands(WorldBase _world, BlockValue _blockValue,
         int _clrIdx, Vector3i _blockPos, EntityAlive _entityFocusing)
     {
+        Log.Out("RisePoweredLight BlockComand");
+        cmds[0].enabled = true;
+        cmds[1].enabled = TakeDelay > 0f;
         return cmds;
     }
 
@@ -93,29 +89,26 @@ public class RisePoweredLight : BlockPoweredLight
 
     public override bool OnBlockActivated(string _commandName, WorldBase _world, int _cIdx, Vector3i _blockPos, BlockValue _blockValue, EntityPlayerLocal _player)
     {
-       // Log.Out("Command : {0}", _commandName);
-
-        switch (_commandName)
+        Log.Out("RisePoweredLight Command : {0}", _commandName);
+        if (!(_commandName == "light"))
         {
-            case "light":
-                TileEntityPoweredBlock tileEntityPoweredBlock = (TileEntityPoweredBlock)_world.GetTileEntity(_cIdx, _blockPos);
-                if (!_world.IsEditor() && tileEntityPoweredBlock != null)
-                {
-                    tileEntityPoweredBlock.IsToggled = !tileEntityPoweredBlock.IsToggled;
-                    updateLightState(_world, _cIdx, _blockPos, _blockValue);
-                }
-
-                return false;
-            case "trigger":
-                XUiC_TriggerProperties.Show(((EntityPlayerLocal)_player).PlayerUI.xui, _cIdx, _blockPos, _showTriggers: false, _showTriggeredBy: true);
-                break;
-            case "Take":
+            if (_commandName == "take")
+            {
+                Log.Out("RisePoweredLight - Trying to pick up a powered light block.");
                 TakeItemWithTimer(_cIdx, _blockPos, _blockValue, _player);
                 return true;
+            }
+        }
+        else
+        {
+            TileEntityPoweredBlock tileEntityPoweredBlock = (TileEntityPoweredBlock)_world.GetTileEntity(_cIdx, _blockPos);
+            if (!_world.IsEditor() && tileEntityPoweredBlock != null)
+            {
+                tileEntityPoweredBlock.IsToggled = !tileEntityPoweredBlock.IsToggled;
+            }
         }
 
         return false;
-
     }
 
     public override void OnBlockPlaceBefore(WorldBase _world, ref BlockPlacement.Result _bpResult, EntityAlive _ea, GameRandom _rnd)
@@ -166,7 +159,7 @@ public class RisePoweredLight : BlockPoweredLight
             LightLOD component = transform.GetComponent<LightLOD>();
             if ((bool)component)
             {
-                component.SwitchOnOff(flag, _blockPos);
+                component.SwitchOnOff(flag);
             }
         }
 
@@ -176,7 +169,7 @@ public class RisePoweredLight : BlockPoweredLight
             LightLOD component2 = transform.GetComponent<LightLOD>();
             if (component2 != null)
             {
-                component2.SwitchOnOff(flag, _blockPos);
+                component2.SwitchOnOff(flag);
             }
         }
 
