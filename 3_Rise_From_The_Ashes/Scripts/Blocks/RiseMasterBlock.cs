@@ -166,10 +166,20 @@ public class RiseMasterBlock : Block
                 if (maxDamage < finalDamage)
                 {
                     Log.Out("Final Damage :" + finalDamage.ToString() + " is greater than " + maxDamage.ToString());
-                    finalDamage = maxDamage;
+                    finalDamage = maxDamage;                  
                 }
             }
-            
+
+            if (ea.Buffs.CVars.ContainsKey("$blockDamageDone"))
+            {
+                Log.Out("Setting $blockDamageDone :" + finalDamage.ToString());
+                ea.Buffs.CVars["$blockDamageDone"] = finalDamage;
+            }
+            else
+            {
+                Log.Out("$blockDamageDone is not found.");
+            }
+
             Log.Out("Entity : " + ea.EntityName + " Damages : " + _blockValue.Block.GetBlockName() + " For : " + finalDamage.ToString() + "(" + initialDamage.ToString() + ") damage after damage resist value of (" + damageResist.ToString() + ")");
         }  
         else

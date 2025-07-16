@@ -100,6 +100,7 @@
     <Compile Include="Harmony\Init.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\Blocks\RiseBlockCarExplodeLoot.cs" />
+    <Compile Include="Scripts\Blocks\RiseBlockExposiveLoot.cs" />
     <Compile Include="Scripts\Blocks\RiseBlockLoot.cs" />
     <Compile Include="Scripts\Blocks\RiseBuddyBlock.cs" />
     <Compile Include="Scripts\Blocks\RiseLight.cs" />
