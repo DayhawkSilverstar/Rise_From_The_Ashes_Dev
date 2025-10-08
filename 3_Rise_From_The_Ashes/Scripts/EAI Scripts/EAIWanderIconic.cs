@@ -1,117 +1,143 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Scripting;
 
-public class EAIWanderIconic : EAIWander
+[Preserve]
+public class EAIWanderIconic : EAIBase
 {
-    
-    
-    public IconicZombie zombie;
-    private const float cLookTimeMax = 3f;
-    private Vector3 position;
-    private float time;
+    [PublicizedFrom(EAccessModifier.Private)]
+    public float fade = 1f;
 
-    public override void Start()
-    {
-#if DEBUG
-        Log.Out("EAIWanderIconic : Start");
-#endif
-        time = 0f;
-        position = zombie.position;
-    }
+    [PublicizedFrom(EAccessModifier.Private)]
+    public float lookMin = 0.5f;
+
+    [PublicizedFrom(EAccessModifier.Private)]
+    public float lookMax = 5f;
+
+    [PublicizedFrom(EAccessModifier.Private)]
+    public float executePercent = 0.2f;
+
+    [PublicizedFrom(EAccessModifier.Private)]
+    public Vector3 position;
+
+    [PublicizedFrom(EAccessModifier.Private)]
+    public float time;
+
+    private string TaskName => nameof(EAIWanderIconic);
 
     public override void Init(EntityAlive _theEntity)
     {
-#if DEBUG
-        Log.Out("EAIWanderIconic : Init");
-#endif
         base.Init(_theEntity);
         MutexBits = 1;
-        zombie = _theEntity as IconicZombie;
+        IconicLog.Info(theEntity, TaskName, $"Init: mutex={MutexBits}");
     }
 
+    public override void SetData(DictionarySave<string, string> data)
+    {
+        base.SetData(data);
+        GetData(data, "exePer", ref executePercent);
+        GetData(data, "fade", ref fade);
+        GetData(data, "lookMin", ref lookMin);
+        GetData(data, "lookMax", ref lookMax);
+        IconicLog.Info(theEntity, TaskName, $"SetData: exePer={executePercent} fade={fade} lookMin={lookMin} lookMax={lookMax}");
+    }
 
     public override bool CanExecute()
     {
-#if DEBUG
-        Log.Out("EAIWanderIconic : CanExecute");
-#endif
-        if (zombie.sleepingOrWakingUp)
+        if (theEntity.sleepingOrWakingUp)
         {
-            //Log.Out("EAIWanderIconic : CanExecute - false");
-            return false;
-        }
-     
-        if (zombie.bodyDamage.CurrentStun != 0)
-        {
-           // Log.Out("EAIWanderIconic : CanExecute - false");
+            IconicLog.Trace(theEntity, TaskName, "CanExecute=false: sleepingOrWakingUp");
             return false;
         }
 
-        foreach (EntityPlayer entity in zombie.GetEntities())
+        if (manager.lookTime > 0f)
         {
-            zombie.SeekNoise(entity);
-        }        
-        
-        if (zombie.Target == null)
-        {
+            IconicLog.Trace(theEntity, TaskName, $"CanExecute=false: lookTime={manager.lookTime:0.00}");
             return false;
         }
-              
+
+        if (fade == 1f && theEntity.GetTicksNoPlayerAdjacent() >= 120)
+        {
+            IconicLog.Trace(theEntity, TaskName, "CanExecute=false: no player adjacent long enough");
+            return false;
+        }
+
+        if (theEntity.bodyDamage.CurrentStun != 0)
+        {
+            IconicLog.Trace(theEntity, TaskName, "CanExecute=false: stunned");
+            return false;
+        }
+
+        bool isAlert = theEntity.IsAlert;
+        if (!isAlert && executePercent * executeWaitTime <= base.RandomFloat)
+        {
+            IconicLog.Trace(theEntity, TaskName, $"CanExecute=false: random gate exePer={executePercent} wait={executeWaitTime:0.00}");
+            return false;
+        }
+
+        int minXZ = 1;
+        int num = (int)manager.interestDistance;
+        if (isAlert)
+        {
+            minXZ = 2;
+            num *= 2;
+        }
+
+        Vector3 dirV = ((base.RandomFloat < 0.6f) ? theEntity.GetForwardVector() : base.Random.RandomOnUnitCircleXZ);
+        Vector3 vector = RandomPositionGenerator.CalcInDir(theEntity, minXZ, num, num, dirV, 90f);
+        if (vector.y == 0f)
+        {
+            IconicLog.Trace(theEntity, TaskName, "CanExecute=false: CalcInDir returned y=0");
+            return false;
+        }
+
+        position = vector;
+        IconicLog.Debug(theEntity, TaskName, $"CanExecute=true: wanderPos={position}");
         return true;
+    }
+
+    public override void Start()
+    {
+        time = 0f;
+        theEntity.FindPath(position, theEntity.GetMoveSpeed(), canBreak: false, this);
+        theEntity.renderFadeMax = fade;
+        IconicLog.Info(theEntity, TaskName, $"Start: path to {position} fade={fade}");
     }
 
     public override bool Continue()
     {
-#if DEBUG
-        Log.Out("EAIWanderIconic : Continue");
-#endif
-        if (zombie.sleepingOrWakingUp || zombie.bodyDamage.CurrentStun != 0)
+        if (theEntity.bodyDamage.CurrentStun != 0)
         {
+            IconicLog.Trace(theEntity, TaskName, "Continue=false: stunned");
             return false;
         }
 
-        if (zombie.Target != null)
+        if (theEntity.moveHelper.BlockedTime > 0.3f)
         {
+            IconicLog.Trace(theEntity, TaskName, $"Continue=false: blockedTime={theEntity.moveHelper.BlockedTime:0.00}");
             return false;
-        }        
+        }
 
-        return true;
+        if (time > 30f)
+        {
+            IconicLog.Trace(theEntity, TaskName, "Continue=false: time exceeded");
+            return false;
+        }
+
+        bool cont = !theEntity.navigator.noPathAndNotPlanningOne();
+        if (!cont) IconicLog.Trace(theEntity, TaskName, "Continue=false: no path and not planning one");
+        return cont;
     }
 
     public override void Update()
-    {      
-        if (zombie.GetDistanceSq(position) < 2f)
-        {
-            float distance = UnityEngine.Random.Range(3f, 10f);
-            float angle = UnityEngine.Random.Range(0f, 360f);
-            Vector3 direction = new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle));
-            position = zombie.position + direction * distance;
-        }
-
-        if (zombie.Target != null)
-        {
-            return;
-        }   
-
-        // if the zombie has limbs and is not stunned then rotate to the target position.
-        if (zombie.bodyDamage.HasLimbs && zombie.bodyDamage.CurrentStun == 0)
-        {
-            zombie.RotateTo(position.x, position.y, position.z, 8f, 5f);
-        }
-
-        zombie.SleeperSupressLivingSounds = false;
-
-        zombie.SetMoveTo(position, true);
+    {
+        time += 0.05f;
     }
 
     public override void Reset()
     {
-#if DEBUG
-        Log.Out("EAIWanderIconic : Reset");
-#endif
-        manager.lookTime = base.RandomFloat * 3f;
-        zombie.moveHelper.Stop();
+        manager.lookTime = base.Random.RandomRange(lookMin, lookMax);
+        theEntity.moveHelper.Stop();
+        theEntity.renderFadeMax = 1f;
+        IconicLog.Info(theEntity, TaskName, $"Reset: nextLookTime={manager.lookTime:0.00}");
     }
 }
-

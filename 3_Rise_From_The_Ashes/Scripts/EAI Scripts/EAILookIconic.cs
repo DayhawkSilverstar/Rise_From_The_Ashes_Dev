@@ -1,65 +1,93 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Scripting;
 
-public class EAILookIconic : EAILook
+[Preserve]
+public class EAILookIconic : EAIBase
 {
-    public IconicZombie zombie;
+    [PublicizedFrom(EAccessModifier.Private)]
+    public int waitTicks;
 
-    public override void Init(EntityAlive _theEntity)
+    [PublicizedFrom(EAccessModifier.Private)]
+    public int lookAtTicks;
+
+    [PublicizedFrom(EAccessModifier.Private)]
+    public int turnTicks;
+
+    private string TaskName => nameof(EAILookIconic);
+
+    public EAILookIconic()
     {
-#if DEBUG
-        Log.Out("EAILookIconic : Init");
-#endif
-        base.Init(_theEntity);
         MutexBits = 1;
-        zombie = _theEntity as IconicZombie;
-    }
-
-    public override void Start()
-    {
-#if DEBUG
-        Log.Out("EAILookIconic : Start");
-#endif
-        base.Start();
     }
 
     public override bool CanExecute()
     {
-#if DEBUG
-        Log.Out("EAILookIconic : CanExecute");
-#endif
-        bool result;        
-        if (zombie.Target != null)
+        if (manager.lookTime > 0f)
         {
-            result = false;
-        }
-        
-        if (zombie.IsBreakingBlocks)
-        {
-            result = false;
+            bool can = !theEntity.Jumping;
+            if (!can) IconicLog.Trace(theEntity, TaskName, "CanExecute=false: jumping");
+            return can;
         }
 
         return false;
     }
 
+    public override void Start()
+    {
+        waitTicks = (int)(manager.lookTime * 20f);
+        manager.lookTime = 0f;
+        theEntity.GetEntitySenses().Clear();
+        lookAtTicks = 0;
+        turnTicks = 0;
+        theEntity.moveHelper.Stop();
+        IconicLog.Info(theEntity, TaskName, $"Start: waitTicks={waitTicks}");
+    }
+
     public override bool Continue()
     {
-#if DEBUG
-        Log.Out("EAILookIconic : Continue");   
-#endif
-        return CanExecute();
+        if (theEntity.bodyDamage.CurrentStun != 0)
+        {
+            IconicLog.Trace(theEntity, TaskName, "Continue=false: stunned");
+            return false;
+        }
+
+        if (theEntity.IsAlert)
+        {
+            waitTicks--;
+            lookAtTicks -= 2;
+            if (--turnTicks <= 0)
+            {
+                turnTicks = 14;
+                theEntity.SeekYaw(theEntity.rotation.y + (base.RandomFloat * 120f - 60f), 0f, 35f);
+            }
+        }
+
+        if (--waitTicks <= 0)
+        {
+            IconicLog.Trace(theEntity, TaskName, "Continue=false: wait over");
+            return false;
+        }
+
+        if (--lookAtTicks <= 0)
+        {
+            lookAtTicks = 40;
+            Vector3 headPosition = theEntity.getHeadPosition();
+            Vector3 vector = theEntity.GetForwardVector() * 20f;
+            vector = Quaternion.Euler(base.RandomFloat * 60f - 30f, base.RandomFloat * 120f - 60f, 0f) * vector;
+            theEntity.SetLookPosition(headPosition + vector);
+        }
+
+        return true;
     }
 
-    public override void Update()
+    public override void Reset()
     {
-#if DEBUG
-        Log.Out("EAILookIconic : Update");
-#endif
-        base.Update();
+        theEntity.SetLookPosition(Vector3.zero);
+        IconicLog.Info(theEntity, TaskName, "Reset");
     }
 
+    public override string ToString()
+    {
+        return $"{base.ToString()}, wait {((float)waitTicks / 20f).ToCultureInvariantString()}";
+    }
 }

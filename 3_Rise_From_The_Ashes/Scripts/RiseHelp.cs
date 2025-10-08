@@ -65,7 +65,9 @@ public class RiseHelp
     {
         DamagedBlocks,
         Storage,
-        Any
+        Any,
+        NotAir,
+        Breakable  // NEW: Blocks that CAN be damaged (not terrain/decorations)
     }
 
     public static List<Vector3> GetBlocks(Vector3i startPos, string _targetTypes = "",
@@ -141,9 +143,21 @@ public class RiseHelp
         List<Vector3i> positions = new List<Vector3i>();
         Vector3i vector3i = default(Vector3i);
         Vector3i newVector3i = default(Vector3i);
-        for (int i = -8; i < 8; i++)
+        
+        // Debug counters
+        int totalScanned = 0;
+        int airBlocks = 0;
+        int nullBlocks = 0;
+        int zeroDamageBlocks = 0;
+        int validBlocks = 0;
+        
+        // Log the chunk and search parameters
+        Log.Out($"[RiseHelp] GetBlocks: chunk at world pos {startPos}, chunk ({chunk.X}, {chunk.Z}), searchXZ={searchSizeXZ}, searchY={searchSizeY}, check={Check}");
+        
+        // **FIX**: Use searchSizeXZ parameter instead of hardcoded -8 to 8
+        for (int i = -searchSizeXZ; i < searchSizeXZ; i++)
         {
-            for (int j = -8; j < 8; j++)
+            for (int j = -searchSizeXZ; j < searchSizeXZ; j++)
             {
                 for (int k = -searchSizeY; k < searchSizeY; k++)
                 {
@@ -152,9 +166,27 @@ public class RiseHelp
                     vector3i.z = j;
                     newVector3i = startPos + vector3i;
                     BlockValue blockValue = GameManager.Instance.World.GetBlock(newVector3i);
+                    totalScanned++;
 
                     switch (Check)
                     {
+                        case Check.NotAir:
+                            if (!blockValue.isair)
+                            {
+                                positions.Add(World.worldToBlockPos(newVector3i));
+                            }
+                            break;
+                        case Check.Breakable:
+                            // Track why blocks are rejected
+                            if (blockValue.Block.IsCollideMelee)
+                            {                                
+                                // This is a valid breakable block!
+                                validBlocks++;
+                                Vector3i worldPos = World.worldToBlockPos(newVector3i);
+                                positions.Add(worldPos);
+                                    Log.Out($"[RiseHelp] ✓ VALID breakable block #{validBlocks} at world {newVector3i} -> {worldPos}: {blockValue.Block.GetBlockName()} (Damage={blockValue.Block.Damage})");
+                            }
+                            break;
                         case Check.DamagedBlocks:
                             if (!blockValue.Block.shape.IsTerrain() && !blockValue.isair)
                             {
@@ -177,6 +209,9 @@ public class RiseHelp
                 }
             }
         }
+        
+        // Log summary for all checks (not just Breakable)
+        Log.Out($"[RiseHelp] GetBlocks summary: scanned={totalScanned}, air={airBlocks}, null={nullBlocks}, zeroDamage={zeroDamageBlocks}, valid={validBlocks}, returned={positions.Count}");
 
         return positions;
     }    
@@ -193,6 +228,13 @@ public class RiseHelp
         positions.Add(World.worldToBlockPos(blockPos));
     }   
 }
+
+
+
+
+
+
+
 
 
 

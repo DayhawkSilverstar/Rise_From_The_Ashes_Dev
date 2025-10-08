@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-
 public class RiseDrone : EntityDrone
 {
     bool radioOn = false;
@@ -170,6 +169,12 @@ public class RiseDrone : EntityDrone
 
         processRequest(entityPlayer, requestType);
         return false;
+    }
+    
+    // Method to set the radio state (for RadioManager)
+    public void SetRadioOn(bool isOn)
+    {
+        radioOn = isOn;
     }
 }
 

@@ -1,68 +1,94 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Audio;
 using HarmonyLib;
 using UnityEngine;
 
 namespace RiseFromTheAshes.Harmony
 {
+    // This class replaces the main menu music with our custom track
     [HarmonyPatch(typeof(XUiC_MainMenu))]
     [HarmonyPatch("OnOpen")]
-    public class SampleProjectPrefix
+    public class MainMenuMusicPatch
     {
-        // The __instance is a reference to the class you are patching. 
-        // To access a private field of the class, add it to the parameter line, adding three underscore (___) to the variable name.
-        // To access a private field, and to change its value, pass it by reference by adding ref to it.
-        private static bool Prefix(XUiC_MainMenu __instance, XUiC_SimpleButton ___btnNewGame, ref XUiC_SimpleButton ___btnContinueGame)
-        { 
-            Log.Out($"SampleProject Prefix Example: Am I opened? {__instance.IsOpen}");
-            Log.Out($"btnNewGame's Label: {___btnNewGame.Label}");
-            Log.Out("OnOpenPrefix(): I happen before the method starts.");
+        // Audio resource path - adjust this to your actual file path in your mod folder
+        private const string CustomMenuMusicPath = "#@modfolder(Rise_From_The_Ashes):Resources/RiseFromTheAshes.unity3d?Rise_from_the_Ashes";
+        
+        // Keep a reference to our loaded audio clip
+        public static AudioClip CustomMenuMusic = null;
+        
+        // Store the original music clip so we can restore it if needed
+        public static AudioClip OriginalMenuMusic = null;
+        
+        // The prefix runs before the original method
+        // We'll use this to replace the default menu music with our custom track
+        private static void Prefix(XUiC_MainMenu __instance)
+        {
+            LoadAndApplyCustomMusic();
+        }
+        
+        // Helper method to load and apply our custom music
+        public static void LoadAndApplyCustomMusic()
+        {
+            // Only load the audio clip once and cache it
+            if (CustomMenuMusic == null)
+            {
+                try
+                {
+                    CustomMenuMusic = DataLoader.LoadAsset<AudioClip>(CustomMenuMusicPath);
 
-            // If I did not want the method we are patching to run at all, we would return false.
-            return true;
+                    if (CustomMenuMusic == null)
+                    {
+                        Log.Warning("[RFTA] Failed to load custom music from path");
+                        return; // Exit if we couldn't load the music
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("[RFTA] Exception when loading custom menu music: " + ex.Message);
+                    return; // Exit if we encountered an exception
+                }
+            }
+            
+            // Only proceed if we have a valid audio clip
+            if (CustomMenuMusic != null && GameManager.Instance != null)
+            {
+                try
+                {
+                    // Store the original clip for restoration if needed (only once)
+                    if (OriginalMenuMusic == null)
+                    {
+                        OriginalMenuMusic = GameManager.Instance.BackgroundMusicClip;
+                    }
+                    
+                    // Replace the game's background music with our custom track
+                    GameManager.Instance.BackgroundMusicClip = CustomMenuMusic;
+                                       
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("[RFTA] Exception when applying custom menu music: " + ex.Message);
+                }
+            }
         }
     }
-
-    [HarmonyPatch(typeof(XUiC_MainMenu))]
-    [HarmonyPatch("OnOpen")]
-    public class SampleProjectPostfix
+    
+    // This patch ensures our custom music is loaded at game startup
+    [HarmonyPatch(typeof(GameManager))]
+    [HarmonyPatch("Awake")]
+    public class GameManagerAwakePatch
     {
-        // A Postfix can have a return type of void, or it can have a return type of the method you are patching.
-        private static void Postfix(XUiC_MainMenu __instance)
+        private static void Postfix(GameManager __instance)
         {
-            Log.Out($"SampleProject Postfix Example: Am I opened? {__instance.IsOpen}");
-            Log.Out("OnOpenPostfix(): I happen after the method is done!");
-        }
-    }
-
-  
-    // If there's overloaded methods, you need to specify the parameter list. Here's one for Client.Play(), which is overloaded.
-    [HarmonyPatch(typeof(Client))]
-    [HarmonyPatch("Play")]
-    // Target the Client.Play() which takes an int, a string, and a float as parameter.
-    [HarmonyPatch(new[] { typeof(int), typeof(string), typeof(float) })]
-    public class AudioClientPlay
-    {
-        // the parameter list must match vanilla, typos included!
-        private static bool Prefix(int playOnEntityId, string soundGoupName, float _occlusion)
-        {
-            return true;
-        }
-    }
-
-    [HarmonyPatch(typeof(Client))]
-    [HarmonyPatch("Play")]
-    [HarmonyPatch(new[] { typeof(Vector3), typeof(string), typeof(float), typeof(int) })]
-    public class AudioClientPlay2
-    {
-        private static bool Prefix(Vector3 position, string soundGoupName)
-        {
-            return true;
+            try
+            {
+                // Load our custom music
+                MainMenuMusicPatch.LoadAndApplyCustomMusic();
+            }
+            catch (Exception ex)
+            {
+                Log.Warning("[RFTA] Error in GameManagerAwakePatch: " + ex.Message);
+            }
         }
     }
 }

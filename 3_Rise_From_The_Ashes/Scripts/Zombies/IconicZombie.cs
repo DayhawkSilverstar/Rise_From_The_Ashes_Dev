@@ -1,82 +1,33 @@
-﻿using Audio;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-using static LightingAround;
 using static ReflectionManager;
 
 
-public class IconicZombie : EntityAlive
+public class IconicZombie : EntityZombie
 {
-
-    // Structure to hold target class information
-    private struct TargetClass
-    {
-        public Type type; // Type of the target entity
-        public float hearDistMax; // Maximum hearing distance
-        public float seeDistMax; // Maximum seeing distance
-    }
-
-    private List<TargetClass> targetClasses; // List of target classes
-    private float senseSoundTime; // Time for sensing sound
-    private int playerTargetClassIndex = -1; // Index of player target class in the list
-
-    // The reach distance of the zombie for melee attacks
     public float ZombieReach = 2f;
-    // The current target entity of the zombie
     public Entity Target { get; set; }
 
-    // A static list to hold entities for various operations
     private static List<Entity> list = new List<Entity>();
 
-    // A sorter to set the nearest entity as the target
     private EAISetNearestEntityAsTargetSorter sorter;
 
-    // The distance to the closest target
     private float closeTargetDist;
 
-    private Vector3 lastPosition;
-
-    // A flag indicating whether the zombie needs to see the target
     private bool bNeedToSee = true;
 
-    private float blocktime;
+    private Vector3 LastTargetPos;
 
-    // Override the method to determine if the zombie can jump
     public override bool CanEntityJump()
-    {
-        return false; // Zombies cannot jump
-    }
+    {        
+        return false;
+    }    
 
-    public float blockedTime
-    {
-        get
-        {            
-            return blocktime;
-        }
-        set
-        {
-            blocktime = value;
-            SetCVar("blockedTime", blockedTime);
-        }
-    }
-
-    public override void Init(int _entityClass)
-    {
-#if DEBUG       
-        // Log the adjusted position for debugging purposes
-        Log.Out("Iconic Zombie - Init");
-#endif
-        base.Init(_entityClass);
-        switchModelView(EnumEntityModelView.ThirdPerson);
-        InitPostCommon();
-    }
-
-    // Property to get or set whether the zombie can climb ladders
     public bool CanClimbLadders
     {
         get
@@ -89,7 +40,6 @@ public class IconicZombie : EntityAlive
         }
     }
 
-    // A set of animal names to identify animals in the game
     HashSet<string> animalNames = new HashSet<string>
         {
             "animalChicken",
@@ -105,12 +55,11 @@ public class IconicZombie : EntityAlive
             "animalBoar"
         };
 
-    // Check if the target is within melee range
     public bool InMeleeRange(Entity target)
     {
         if (target == null)
         {
-            return false; // Return false if there is no target
+            return false;
         }
 
         // Get the distance between this entity and the target
@@ -123,83 +72,34 @@ public class IconicZombie : EntityAlive
             distance -= target.GetComponent<Collider>().bounds.extents.magnitude;
         }
 
-#if DEBUG
-        // Log the adjusted position for debugging purposes
-        Log.Out("Iconic Zombie - InMeleeRange Distance :" + distance.ToString());
-        Log.Out("Iconic Zombie - InMeleeRange Reach :" + ZombieReach.ToString());
-#endif
-
         // Check if the adjusted distance is less than the zombie's reach
-        if (distance  < ZombieReach - 1.3f)
+        if (distance < ZombieReach)
         {
-#if DEBUG
-            // Log the adjusted position for debugging purposes
-            Log.Out("Iconic Zombie - InMeleeRange");
-#endif
-            return true; // Return true if the target is within melee range
+            return true;
         }
 
-#if DEBUG
-        // Log the adjusted position for debugging purposes
-        Log.Out("Iconic Zombie - Not In Range");
-#endif
-        return false; // Return false if the target is not within melee range
+        return false;
     }
 
-    // Set the position to move to
     public void SetMoveTo(Vector3 _pos, bool _canBreakBlocks)
     {
-
 #if DEBUG
-        // Log the position for debugging purposes
         Log.Out("Iconic Zombie - SetMoveToPOS " + _pos.ToString());
 #endif
-
-        // Adjust the position if the target is above or below
+        
         if (TargetAbove() | TargetBelow())
         {
             _pos = new Vector3(_pos.x, position.y, _pos.z);
 #if DEBUG
-            // Log the adjusted position for debugging purposes
             Log.Out("Iconic Zombie - SetMoveToPOS Adjusted" + _pos.ToString());
 #endif
         }
 
-        lastPosition = this.position;
-
-        // Set the move position and whether the zombie can break blocks
-        this.moveHelper.SetMoveTo(_pos, _canBreakBlocks);
-    }
-
-    public void CheckMovement()
-    {
-#if DEBUG
-        // Log the position for debugging purposes
-        Log.Out("Iconic Zombie - Vector Distance " + Vector3.Distance(this.position, lastPosition).ToString());
-#endif
-        if (Vector3.Distance(this.position, lastPosition) < 0.05)
-        {
-            blockedTime += Time.deltaTime;
-        }
-        else
-        {
-            blockedTime = 0;
-        }
-    }
-
-    public List<Entity> GetEntities()
-    {
-        float seeDist = 10;
-        // Get all players within the see distance
-        return world.GetEntitiesInBounds(typeof(EntityPlayer), BoundsUtils.ExpandBounds(boundingBox, seeDist, seeDist, seeDist), list);
+        this.moveHelper.SetMoveTo(_pos, _canBreakBlocks);       
     }
 
     public void FindTargetPlayer(float seeDist)
     {
-#if DEBUG
-        // Log the adjusted position for debugging purposes
-        Log.Out("Iconic Zombie - FindTargetPlayer");
-#endif
         // If it's a blood moon, increase the see distance
         if (IsBloodMoon)
         {
@@ -234,6 +134,12 @@ public class IconicZombie : EntityAlive
                 // Set the closest player and distance to the noise player and distance
                 closestPlayer = noisePlayer;
                 closestDistance = noisePlayerDistance;
+            }
+            // If the volume is above the groan threshold
+            else if (noisePlayerVolume >= sleeperNoiseToSense)
+            {
+                // Set the flag for whether the zombie should groan
+                shouldGroan = true;
             }
 
             // For each player in the list
@@ -312,10 +218,6 @@ public class IconicZombie : EntityAlive
 
     public void FindTarget()
     {
-#if DEBUG
-        // Log the adjusted position for debugging purposes
-        Log.Out("Iconic Zombie - FindTarget");
-#endif
         // Initialize the closest target distance to the maximum possible value
         closeTargetDist = float.MaxValue;
 
@@ -346,8 +248,7 @@ public class IconicZombie : EntityAlive
                     LastTargetPos = entityAlive.position;
                 }
 
-                // Break the loop
-                break;
+                // Do not break here; continue to scan all candidates to find the closest
             }
         }
 
@@ -357,10 +258,6 @@ public class IconicZombie : EntityAlive
 
     protected bool check(EntityAlive entity)
     {
-#if DEBUG
-        // Log the adjusted position for debugging purposes
-        Log.Out("Iconic Zombie - check");
-#endif
         // If the entity is null, this entity, not alive, or ignored by AI, return false
         if (entity == null || entity == this || !entity.IsAlive() || entity.IsIgnoredByAI())
         {
@@ -394,10 +291,6 @@ public class IconicZombie : EntityAlive
 
     public void FindTargetLivingAnimal()
     {
-#if DEBUG
-        // Log the adjusted position for debugging purposes
-        Log.Out("Iconic Zombie - FindTargetLivingAnimal");
-#endif
         // Initialize the closest target distance to the maximum possible value
         closeTargetDist = float.MaxValue;
 
@@ -422,8 +315,7 @@ public class IconicZombie : EntityAlive
                     LastTargetPos = entityAlive.position;
                 }
 
-                // Break the loop
-                break;
+                // Do not break here; continue to scan all candidates to find the closest
             }
         }
 
@@ -431,159 +323,66 @@ public class IconicZombie : EntityAlive
         list.Clear();
     }
 
-    // Check if the given entity is a zombie animal
     public bool IsZombieAnimal(EntityAlive entityAnimal)
     {
-#if DEBUG
-        // Log the adjusted position for debugging purposes
-        Log.Out("Iconic Zombie - IsZombieAnimal");
-#endif
         string entityName = entityAnimal.EntityName;
-        // Log the entity name for debugging purposes
         // Log.Out("EAISingleTask : IsZombieAnimal - " +  entityName);
         switch (entityName)
         {
             case "animalZombieDog":
             case "animalZombieBear":
                 {
-                    return true; // Return true if the entity is a zombie dog or bear
+                    return true;
                 }
-        }
-
-        return false; // Return false if the entity is not a zombie animal
-    }
-
-    // Check if the given entity is an animal
-    public bool IsAnimal(Entity entity)
-    {
-#if DEBUG
-        // Log the adjusted position for debugging purposes
-        Log.Out("Iconic Zombie - IsAnimal");
-#endif
-        string entityName = entity.GetDebugName();
-        // Check if the entity name is in the list of animal names
-        if (animalNames.Contains(entityName))
-        {
-            return true; // Return true if the entity is an animal
-        }
-
-        return false; // Return false if the entity is not an animal
-    }
-
-    // Check if the target is within a certain distance in the X and Z axes
-    public bool TargetXZCheck()
-    {
-#if DEBUG
-        // Log the adjusted position for debugging purposes
-        Log.Out("Iconic Zombie - TargetXZCheck");
-#endif
-        if (this.Target != null)
-        {
-            // Check if the target is within 1.5 units in the X and Z axes
-            if (Math.Abs(this.position.x - this.Target.position.x) < 1.5f & Math.Abs(this.position.z - this.Target.position.z) < 1.5f)
-            {
-                return true; // Return true if the target is within the specified distance
-            }
-        }
-        return false; // Return false if there is no target or the target is not within the specified distance
-    }
-
-    // Check if the target is above the current entity
-    public bool TargetAbove()
-    {
-#if DEBUG
-        // Log the adjusted position for debugging purposes
-        Log.Out("Iconic Zombie - TargetAbove Check");
-#endif
-        if (this.Target != null)
-        {
-            // Return false if the target is an animal
-            if (animalNames.Contains(Target.GetDebugName()))
-            {
-                return false;
-            }
-        }
-        // Return true if the target is above the current entity and within the specified distance in the X and Z axes
-        if (this.Target != null)
-        {
-            if (TargetXZCheck() && this.Target.position.y - 0.5f > this.position.y)
-            {
-#if DEBUG
-                // Log the adjusted position for debugging purposes
-                Log.Out("Iconic Zombie - Target pos Y :" + this.Target.position.y);
-                Log.Out("Iconic Zombie - Zombie pos Y :" + this.position.y);
-#endif
-                return true;
-            }
         }
 
         return false;
     }
 
-    // Check if the target is below the current entity
-    public bool TargetBelow()
+    public bool IsAnimal(Entity entity)
     {
-#if DEBUG
-        // Log the adjusted position for debugging purposes
-        Log.Out("Iconic Zombie - TargetBelow Check");
-#endif
+       string entityName = entity.GetDebugName();
+       if (animalNames.Contains(entityName))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool TargetXZCheck()
+    {
         if (this.Target != null)
         {
-            // Return false if the target is an animal
+            if (Math.Abs(this.position.x - this.Target.position.x) < 1.5f & Math.Abs(this.position.z - this.Target.position.z) < 1.5f)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool TargetAbove()
+    {
+        if (this.Target != null)
+        {
             if (animalNames.Contains(Target.GetDebugName()))
             {
                 return false;
             }
         }
-        // Return true if the target is below the current entity and within the specified distance in the X and Z axes
-        return this.Target != null && TargetXZCheck() && this.Target.position.y <= this.position.y;
+        return this.Target != null && TargetXZCheck() && this.Target.position.y >= this.position.y;
     }
 
-    public void AttackBlock()
+    public bool TargetBelow()
     {
-#if DEBUG
-        // Log the adjusted position for debugging purposes
-        Log.Out("Iconic Zombie - Attacking Block");
-#endif
-        Attack(true);
-    }
-
-    // Seek the noise made by a player
-    public void SeekNoise(EntityPlayer player)
-    {
-        float magnitude = (player.position - this.position).magnitude;
-        if (playerTargetClassIndex >= 0)
+        if (this.Target != null)
         {
-            float hearDistMax = targetClasses[playerTargetClassIndex].hearDistMax;
-            hearDistMax *= this.senseScale;
-            hearDistMax *= player.DetectUsScale(this);
-            if (magnitude > hearDistMax)
+            if (animalNames.Contains(Target.GetDebugName()))
             {
-                return;
+                return false;
             }
         }
-
-        magnitude *= 0.9f;
-        if (magnitude > aiManager.noiseSeekDist)
-        {
-            magnitude = aiManager.noiseSeekDist;
-        }
-
-        if (this.IsBloodMoon)
-        {
-            magnitude = aiManager.noiseSeekDist * 0.25f;
-        }
-
-        Vector3 breadcrumbPos = player.GetBreadcrumbPos(magnitude * aiManager.random.RandomFloat);
-        int ticks = this.CalcInvestigateTicks((int)(30f + aiManager.random.RandomFloat * 30f) * 20, player);
-        this.SetInvestigatePosition(breadcrumbPos, ticks);
-        float time = Time.time;
-        if (senseSoundTime - time < 0f)
-        {
-            senseSoundTime = time + 10f + aiManager.random.RandomFloat * 10f;
-            this.PlayOneShot(this.soundSense);
-        }
+        return this.Target != null && TargetXZCheck() && this.Target.position.y <= this.position.y;
     }
 }
-
-

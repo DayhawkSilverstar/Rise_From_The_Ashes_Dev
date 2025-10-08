@@ -34,30 +34,34 @@ public class RiseBlockLoot : BlockLoot
     {
 
         Log.Out("RiseBlockLoot - OnBlockActivated");
-        // If there's no transform, no sense on keeping going for this class.
-        //var _ebcd = _world.GetChunkFromWorldPos(_blockPos).GetBlockEntity(_blockPos);
-        //if (_ebcd == null || _ebcd.transform == null)
-        //    return false;
 
-        switch (_commandName)
+        try
         {
-            case "Take":
-                Log.Out("RiseBlockLoot - Trying to pick up a block.");
-                TakeItemWithTimer(_cIdx, _blockPos, _blockValue, _player);
-                return true;
-            case "Search":
-                Log.Out("RiseBlockLoot - Trying to loot a loot block.");
-                TileEntityLootContainer tileEntityLootContainer = _world.GetTileEntity(_cIdx, _blockPos) as TileEntityLootContainer;
-                if (tileEntityLootContainer != null)
-                {                    
-                    if (!tileEntityLootContainer.bWasTouched)
+
+            switch (_commandName)
+            {
+                case "Take":
+                    Log.Out("RiseBlockLoot - Trying to pick up a block.");
+                    TakeItemWithTimer(_cIdx, _blockPos, _blockValue, _player);
+                    return true;
+                case "Search":  
+                    Log.Out("RiseBlockLoot - Trying to loot a loot block.");
+                    TileEntityLootContainer tileEntityLootContainer = _world.GetTileEntity(_cIdx, _blockPos) as TileEntityLootContainer;
+                    if (tileEntityLootContainer != null)
                     {
-                        _player.SetCVar(".lootedContainer", 1f);
+                        if (!tileEntityLootContainer.bWasTouched)
+                        {
+                            _player.SetCVar(".lootedContainer", 1f);
+                        }
                     }
-                }
-                Log.Out("RiseBlockLoot - Command:" + _commandName);
-                base.OnBlockActivated(_commandName, _world, _cIdx, _blockPos, _blockValue, _player);
-                return true;
+                    Log.Out("RiseBlockLoot - Command:" + _commandName);
+                    base.OnBlockActivated(_commandName, _world, _cIdx, _blockPos, _blockValue, _player);
+                    return true;
+            }
+        }
+        catch (Exception e)
+        { 
+                Log.Out("RiseBlockLoot - Exception in OnBlockActivated: {0}", e);
         }
 
 
