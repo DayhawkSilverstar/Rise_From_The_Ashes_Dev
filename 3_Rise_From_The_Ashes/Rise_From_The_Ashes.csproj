@@ -140,7 +140,6 @@
     <Compile Include="Scripts\Radio\RadioSource.cs" />
     <Compile Include="Scripts\Radio\RadioTrackData.cs" />
     <Compile Include="Scripts\SelfDestruct.cs" />
-    <Compile Include="Scripts\Utils\IconicLog.cs" />
     <Compile Include="Scripts\WorldEvents\DynamicEventManager.cs" />
     <Compile Include="Scripts\WorldEvents\EventBundle.cs" />
     <Compile Include="Scripts\Zombies\EntitySeeCacheIconic.cs" />
@@ -153,9 +152,11 @@
   <ItemGroup>
     <Folder Include="Config\" />
     <Folder Include="Docs\" />
+    <Folder Include="Documentation\" />
     <Folder Include="Scripts\EAI Iconic\Contracts\" />
     <Folder Include="Scripts\EAI Iconic\Services\" />
     <Folder Include="Scripts\TileEntities\" />
+    <Folder Include="Scripts\Utils\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Harmony\Old Harmony Scripts.txt" />
@@ -166,6 +167,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Logs\zombie_id_4908.log" />
     <None Include="Scripts\Radio\EntityRadioSource.zip" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

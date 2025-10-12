@@ -28,7 +28,7 @@ public class EAIWanderIconic : EAIBase
     {
         base.Init(_theEntity);
         MutexBits = 1;
-        IconicLog.Info(theEntity, TaskName, $"Init: mutex={MutexBits}");
+        Log.Out($"[{TaskName}] id={_theEntity.entityId} Init: mutex={MutexBits}");
     }
 
     public override void SetData(DictionarySave<string, string> data)
@@ -38,39 +38,34 @@ public class EAIWanderIconic : EAIBase
         GetData(data, "fade", ref fade);
         GetData(data, "lookMin", ref lookMin);
         GetData(data, "lookMax", ref lookMax);
-        IconicLog.Info(theEntity, TaskName, $"SetData: exePer={executePercent} fade={fade} lookMin={lookMin} lookMax={lookMax}");
+        Log.Out($"[{TaskName}] SetData: exePer={executePercent} fade={fade} lookMin={lookMin} lookMax={lookMax}");
     }
 
     public override bool CanExecute()
     {
         if (theEntity.sleepingOrWakingUp)
         {
-            IconicLog.Trace(theEntity, TaskName, "CanExecute=false: sleepingOrWakingUp");
             return false;
         }
 
         if (manager.lookTime > 0f)
         {
-            IconicLog.Trace(theEntity, TaskName, $"CanExecute=false: lookTime={manager.lookTime:0.00}");
             return false;
         }
 
         if (fade == 1f && theEntity.GetTicksNoPlayerAdjacent() >= 120)
         {
-            IconicLog.Trace(theEntity, TaskName, "CanExecute=false: no player adjacent long enough");
             return false;
         }
 
         if (theEntity.bodyDamage.CurrentStun != 0)
         {
-            IconicLog.Trace(theEntity, TaskName, "CanExecute=false: stunned");
             return false;
         }
 
         bool isAlert = theEntity.IsAlert;
         if (!isAlert && executePercent * executeWaitTime <= base.RandomFloat)
         {
-            IconicLog.Trace(theEntity, TaskName, $"CanExecute=false: random gate exePer={executePercent} wait={executeWaitTime:0.00}");
             return false;
         }
 
@@ -86,51 +81,70 @@ public class EAIWanderIconic : EAIBase
         Vector3 vector = RandomPositionGenerator.CalcInDir(theEntity, minXZ, num, num, dirV, 90f);
         if (vector.y == 0f)
         {
-            IconicLog.Trace(theEntity, TaskName, "CanExecute=false: CalcInDir returned y=0");
             return false;
         }
 
         position = vector;
-        IconicLog.Debug(theEntity, TaskName, $"CanExecute=true: wanderPos={position}");
+        Log.Out($"[{TaskName}] id={theEntity?.entityId ?? -1} CanExecute=true: position={position} alert={isAlert}");
         return true;
     }
 
     public override void Start()
     {
         time = 0f;
-        theEntity.FindPath(position, theEntity.GetMoveSpeed(), canBreak: false, this);
         theEntity.renderFadeMax = fade;
-        IconicLog.Info(theEntity, TaskName, $"Start: path to {position} fade={fade}");
+        Log.Out($"[{TaskName}] id={theEntity?.entityId ?? -1} Start: direct move to {position}");
     }
 
     public override bool Continue()
     {
         if (theEntity.bodyDamage.CurrentStun != 0)
         {
-            IconicLog.Trace(theEntity, TaskName, "Continue=false: stunned");
             return false;
         }
 
         if (theEntity.moveHelper.BlockedTime > 0.3f)
         {
-            IconicLog.Trace(theEntity, TaskName, $"Continue=false: blockedTime={theEntity.moveHelper.BlockedTime:0.00}");
             return false;
         }
 
         if (time > 30f)
         {
-            IconicLog.Trace(theEntity, TaskName, "Continue=false: time exceeded");
             return false;
         }
 
-        bool cont = !theEntity.navigator.noPathAndNotPlanningOne();
-        if (!cont) IconicLog.Trace(theEntity, TaskName, "Continue=false: no path and not planning one");
-        return cont;
+        // Check if we've reached the destination (within 2 blocks horizontal distance)
+        Vector3 diff = position - theEntity.position;
+        diff.y = 0f; // Only check horizontal distance
+        
+        bool shouldContinue = diff.sqrMagnitude > 4f; // 2 blocks squared
+        
+        if (!shouldContinue)
+        {
+            Log.Out($"[{TaskName}] id={theEntity?.entityId ?? -1} Continue=false: reached destination");
+        }
+        
+        return shouldContinue;
     }
 
     public override void Update()
     {
         time += 0.05f;
+        
+        // Calculate direction to target (horizontal only)
+        Vector3 direction = position - theEntity.position;
+        direction.y = 0f; // Ignore vertical component for truly dumb movement
+        
+        if (direction.sqrMagnitude > 0.01f)
+        {
+            direction.Normalize();
+            
+            // Apply movement directly without pathfinding
+            theEntity.MoveEntityHeaded(direction, true);
+        }
+
+        // Calculate if position is unreachable (blocked)
+        theEntity.moveHelper.CalcIfUnreachablePos();
     }
 
     public override void Reset()
@@ -138,6 +152,12 @@ public class EAIWanderIconic : EAIBase
         manager.lookTime = base.Random.RandomRange(lookMin, lookMax);
         theEntity.moveHelper.Stop();
         theEntity.renderFadeMax = 1f;
-        IconicLog.Info(theEntity, TaskName, $"Reset: nextLookTime={manager.lookTime:0.00}");
+        Log.Out($"[{TaskName}] id={theEntity?.entityId ?? -1} Reset: lookTime={manager.lookTime:0.00}");
+    }
+
+    public override string ToString()
+    {
+        float distance = (theEntity.position - position).magnitude;
+        return string.Format("{0}, (direct) dist {1} time {2:0.0}", base.ToString(), distance.ToCultureInvariantString("0.00"), time);
     }
 }
