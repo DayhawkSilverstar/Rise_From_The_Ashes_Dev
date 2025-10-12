@@ -59,7 +59,7 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
         Init(_theEntity, 25f, _bNeedToSee: true);
         MutexBits = 1;
         sorter = new EAISetNearestEntityAsTargetSorter(_theEntity);
-        IconicLog.Info(theEntity, TaskName, $"Init: seeDist={25f} needToSee={true}");
+        Log.Out($"[{TaskName}] Init - EntityID: {_theEntity.entityId}, Name: {_theEntity.EntityName}");
     }
 
     public override void SetData(DictionarySave<string, string> data)
@@ -68,7 +68,6 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
         targetClasses = new List<TargetClass>();
         if (!data.TryGetValue("class", out var _value))
         {
-            IconicLog.Warn(theEntity, TaskName, "SetData: no 'class' specified");
             return;
         }
 
@@ -101,7 +100,6 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
 
             targetClasses.Add(item);
         }
-        IconicLog.Info(theEntity, TaskName, $"SetData: targetClasses={targetClasses.Count} playerIndex={playerTargetClassIndex}");
     }
 
     public void SetTargetOnlyPlayers(float _distance)
@@ -113,39 +111,45 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
         item.seeDistMax = 0f - _distance;
         targetClasses.Add(item);
         playerTargetClassIndex = 0;
-        IconicLog.Info(theEntity, TaskName, $"SetTargetOnlyPlayers: dist={_distance}");
     }
 
     public override bool CanExecute()
     {
+        Log.Out($"[{TaskName}] id={theEntity.entityId} CanExecute called");
+
         if (theEntity.distraction != null)
         {
-            IconicLog.Trace(theEntity, TaskName, "CanExecute=false: distraction present");
+            Log.Out($"[{TaskName}] id={theEntity.entityId} CanExecute=FALSE - Entity has distraction");
             return false;
         }
 
         FindTarget();
         if (!closeTargetEntity)
         {
-            IconicLog.Trace(theEntity, TaskName, "CanExecute=false: no closeTargetEntity");
+            Log.Out($"[{TaskName}] id={theEntity.entityId} CanExecute=FALSE - No target found");
             return false;
         }
 
         targetEntity = closeTargetEntity;
         targetPlayer = closeTargetEntity as EntityPlayer;
-        IconicLog.Debug(theEntity, TaskName, $"CanExecute=true: target={targetEntity?.EntityName} dist={closeTargetDist:0.00}");
+        Log.Out($"[{TaskName}] id={theEntity.entityId} CanExecute=TRUE - Target: {targetEntity.EntityName} (id={targetEntity.entityId}), Distance: {closeTargetDist:F2}");
         return true;
     }
 
     [PublicizedFrom(EAccessModifier.Private)]
     public void FindTarget()
     {
+        Log.Out($"[{TaskName}] id={theEntity.entityId} FindTarget START");
         closeTargetDist = float.MaxValue;
         closeTargetEntity = null;
         float seeDistance = theEntity.GetSeeDistance();
+        Log.Out($"[{TaskName}] id={theEntity.entityId} SeeDistance: {seeDistance:F2}, TargetClasses count: {targetClasses.Count}");
+        
         for (int i = 0; i < targetClasses.Count; i++)
         {
             TargetClass targetClass = targetClasses[i];
+            Log.Out($"[{TaskName}] id={theEntity.entityId} Checking target class {i}: {targetClass.type.Name}");
+            
             float num = seeDistance;
             if (targetClass.seeDistMax != 0f)
             {
@@ -216,7 +220,15 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
                 list.Clear();
             }
         }
-        IconicLog.Trace(theEntity, TaskName, $"FindTarget: result target={closeTargetEntity?.EntityName} dist={closeTargetDist:0.00}");
+        
+        if (closeTargetEntity != null)
+        {
+            Log.Out($"[{TaskName}] id={theEntity.entityId} FindTarget END - Found: {closeTargetEntity.EntityName}, Distance: {closeTargetDist:F2}");
+        }
+        else
+        {
+            Log.Out($"[{TaskName}] id={theEntity.entityId} FindTarget END - No target found");
+        }
     }
 
     [PublicizedFrom(EAccessModifier.Private)]
@@ -229,8 +241,7 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
             hearDistMax *= theEntity.senseScale;
             hearDistMax *= player.DetectUsScale(theEntity);
             if (magnitude > hearDistMax)
-            {
-                IconicLog.Trace(theEntity, TaskName, $"SeekNoise: too far magnitude={magnitude:0.0} max={hearDistMax:0.0}");
+            {                
                 return;
             }
         }
@@ -249,8 +260,7 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
         Vector3 breadcrumbPos = player.GetBreadcrumbPos(magnitude * base.RandomFloat);
         int ticks = theEntity.CalcInvestigateTicks((int)(30f + base.RandomFloat * 30f) * 20, player);
         theEntity.SetInvestigatePosition(breadcrumbPos, ticks);
-        PlaySoundSenseNoise();
-        IconicLog.Debug(theEntity, TaskName, $"SeekNoise: breadcrumb={breadcrumbPos} ticks={ticks}");
+        PlaySoundSenseNoise();        
     }
 
     [PublicizedFrom(EAccessModifier.Private)]
@@ -260,21 +270,24 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
         if (senseSoundTime - time < 0f)
         {
             senseSoundTime = time + 10f + base.RandomFloat * 10f;
-            theEntity.PlayOneShot(theEntity.soundSense);
-            IconicLog.Trace(theEntity, TaskName, $"PlaySoundSenseNoise: nextTime={senseSoundTime:0.00}");
+            theEntity.PlayOneShot(theEntity.soundSense);            
         }
     }
 
     [PublicizedFrom(EAccessModifier.Private)]
     public void FindTargetPlayer(float seeDist)
     {
+        Log.Out($"[{TaskName}] id={theEntity.entityId} FindTargetPlayer - seeDist: {seeDist:F2}, IsSleeping: {theEntity.IsSleeping}");
+        
         if (theEntity.IsSleeperPassive)
         {
-            IconicLog.Trace(theEntity, TaskName, "FindTargetPlayer: sleeper passive");
+            Log.Out($"[{TaskName}] id={theEntity.entityId} FindTargetPlayer - Is sleeper passive, exiting");
             return;
         }
 
         theEntity.world.GetEntitiesInBounds(typeof(EntityPlayer), BoundsUtils.ExpandBounds(theEntity.boundingBox, seeDist, seeDist, seeDist), list);
+        Log.Out($"[{TaskName}] id={theEntity.entityId} FindTargetPlayer - Found {list.Count} players in bounds");
+        
         if (theEntity.IsSleeping)
         {
             list.Sort(sorter);
@@ -332,8 +345,7 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
             {
                 theEntity.Snore();
             }
-
-            IconicLog.Trace(theEntity, TaskName, $"FindTargetPlayer(sleep): target={(entityPlayer!=null ? entityPlayer.EntityName : "<none>")} dist={num:0.00} flag={flag}");
+            
             return;
         }
 
@@ -351,29 +363,38 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
             }
         }
 
-        list.Clear();
-        IconicLog.Trace(theEntity, TaskName, $"FindTargetPlayer: result={(closeTargetEntity!=null ? closeTargetEntity.EntityName : "<none>")} dist={closeTargetDist:0.00}");
+        list.Clear();        
     }
 
     public override void Start()
     {
+        Log.Out($"[{TaskName}] id={theEntity.entityId} START - Setting attack target: {targetEntity.EntityName}");
         theEntity.SetAttackTarget(targetEntity, 200);
         theEntity.ConditionalTriggerSleeperWakeUp();
         PlaySoundSenseNoise();
-        IconicLog.Info(theEntity, TaskName, $"Start: target={targetEntity?.EntityName}");
         base.Start();
     }
 
     public override bool Continue()
     {
-        if (targetEntity.IsDead() || theEntity.distraction != null)
+        // Add early validation
+        if (targetEntity == null || targetEntity.IsMarkedForUnload())
         {
+            Log.Out($"[{TaskName}] id={theEntity.entityId} Continue=FALSE - Target entity is null or unloaded");
             if (theEntity.GetAttackTarget() == targetEntity)
             {
                 theEntity.SetAttackTarget(null, 0);
             }
-
-            IconicLog.Trace(theEntity, TaskName, "Continue=false: target dead or distraction");
+            return false;
+        }
+        
+        if (targetEntity.IsDead() || theEntity.distraction != null)
+        {
+            Log.Out($"[{TaskName}] id={theEntity.entityId} Continue=FALSE - Target dead or has distraction");
+            if (theEntity.GetAttackTarget() == targetEntity)
+            {
+                theEntity.SetAttackTarget(null, 0);
+            }
             return false;
         }
 
@@ -384,14 +405,14 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
             FindTarget();
             if ((bool)closeTargetEntity && closeTargetEntity != targetEntity)
             {
-                IconicLog.Trace(theEntity, TaskName, "Continue=false: switched to closer target");
+                Log.Out($"[{TaskName}] id={theEntity.entityId} Continue=FALSE - Found better target");
                 return false;
             }
         }
 
         if (theEntity.GetAttackTarget() != targetEntity)
         {
-            IconicLog.Trace(theEntity, TaskName, "Continue=false: attack target mismatch");
+            Log.Out($"[{TaskName}] id={theEntity.entityId} Continue=FALSE - Attack target mismatch");
             return false;
         }
 
@@ -402,6 +423,7 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
             return true;
         }
 
+        Log.Out($"[{TaskName}] id={theEntity.entityId} Continue=FALSE - Lost sight of target");
         if (theEntity.GetDistanceSq(lastSeenPos) < 2.25f)
         {
             lastSeenPos = Vector3.zero;
@@ -414,15 +436,14 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
             theEntity.SetInvestigatePosition(lastSeenPos, ticks);
         }
 
-        IconicLog.Trace(theEntity, TaskName, "Continue=false: lost target, set investigate position");
         return false;
     }
 
     public override void Reset()
     {
+        Log.Out($"[{TaskName}] id={theEntity.entityId} RESET");
         targetEntity = null;
         targetPlayer = null;
-        IconicLog.Info(theEntity, TaskName, "Reset: cleared target references");
     }
 
     public override string ToString()
