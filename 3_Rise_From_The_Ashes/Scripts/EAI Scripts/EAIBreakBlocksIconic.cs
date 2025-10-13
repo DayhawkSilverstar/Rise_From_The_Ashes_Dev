@@ -50,12 +50,8 @@ public class EAIBreakBlocksIconic : EAIBase
         if (IsEntityStunned())
             return false;
 
-        // Continue if we already have a valid block target
-        if (HandleExistingBlockTargetContinuation())
-            return true;
-
-        //if (CheckVerticalBlockBreaking())
-        //    return true;
+        if (EarlyOutIfTargetIsOnSameLevel())
+            return false;
 
         // Check if we have an attack target
         if (!MovementPrereqsSatisfied())
@@ -64,6 +60,10 @@ public class EAIBreakBlocksIconic : EAIBase
         // Check if we should break blocks to reach the target
         if (IsJumpingAbort())
             return false;
+
+        // Continue if we already have a valid block target
+        if (HandleExistingBlockTargetContinuation())
+            return true;
 
         SelectNearestBlock();
 
@@ -106,6 +106,9 @@ public class EAIBreakBlocksIconic : EAIBase
 
     public override bool Continue()
     {
+        if (EarlyOutIfTargetIsOnSameLevel())
+            return false;
+
         if (!IsOnGroundOrElevator())
             return false;
 
@@ -207,6 +210,22 @@ private bool HandleExistingBlockTargetContinuation()
         Log.Out($"[{TaskName}] id={theEntity.entityId} CheckIfUnderThePlayer=TRUE - Horizontal dx={dx:F2}, dz={dz:F2} <= 10 (vertical ignored)");
         return true;
         
+    }
+
+    private bool EarlyOutIfTargetIsOnSameLevel()
+    {
+        EntityAlive attackTarget = theEntity.GetAttackTarget();
+        if (attackTarget == null || !attackTarget.IsAlive())
+        {
+            return false;
+        }
+        float verticalDiff = Mathf.Abs(attackTarget.position.y - theEntity.position.y);
+        if (verticalDiff < 2f)
+        {
+            Log.Out($"[{TaskName}] id={theEntity.entityId} CanExecute=FALSE - Target is on same level (verticalDiff={verticalDiff:F2})");
+            return true;
+        }
+        return false;
     }
 
     private bool EvaluateBlockAndMaybeSelect()
@@ -339,34 +358,6 @@ private bool HandleExistingBlockTargetContinuation()
                     moveHelper.HitInfo.hit.blockPos = checkPos;
                     moveHelper.HitInfo.hit.pos = new Vector3(checkPos.x + 0.5f, checkPos.y + 0.5f, checkPos.z + 0.5f);
                     moveHelper.HitInfo.bHitValid = true;
-
-                    // Also check blocks around zombie's position for accessibility
-                    Vector3i[] adjacentOffsets = new Vector3i[]
-                    {
-                        new Vector3i(1, yDirection, 0),
-                        new Vector3i(-1, yDirection, 0),
-                        new Vector3i(0, yDirection, 1),
-                        new Vector3i(0, yDirection, -1),
-                        new Vector3i(0, yDirection, 0)
-                    };
-
-                    foreach (var offset in adjacentOffsets)
-                    {
-                        Vector3i adjacentPos = scanPos + offset;
-                        BlockValue adjacentBlock = world.GetBlock(adjacentPos);
-
-                        if (!adjacentBlock.isair && adjacentBlock.Block.IsMovementBlocked(world, adjacentPos, adjacentBlock, BlockFace.None))
-                        {
-                            if (adjacentBlock.Block.MaxDamage > 0 && !adjacentBlock.Block.IsTerrainDecoration)
-                            {
-                                // This block is closer and also breakable
-                                moveHelper.HitInfo.hit.blockPos = adjacentPos;
-                                moveHelper.HitInfo.hit.pos = new Vector3(adjacentPos.x + 0.5f, adjacentPos.y + 0.5f, adjacentPos.z + 0.5f);
-                                Log.Out($"[{TaskName}] id={theEntity.entityId} Using closer adjacent block: {adjacentBlock.Block.GetBlockName()} at {adjacentPos}");
-                                return true;
-                            }
-                        }
-                    }
 
                     return true;
                 }
@@ -721,8 +712,16 @@ private bool HandleExistingBlockTargetContinuation()
             moveHelper.HitInfo.bHitValid = true;
         }
 
+        // SAFETY: Vanilla ItemAction.GetDismemberChance calls Extensions.ContainsCaseInsensitive on hitInfo.tag.
+        // If the tag is null, it can throw a NullReferenceException. Ensure it's always populated for block attacks.
+        if (string.IsNullOrEmpty(moveHelper.HitInfo.tag))
+        {
+            moveHelper.HitInfo.tag = "B_Mesh"; // consistent with Voxel.BlockHit tagging for blocks
+            Log.Out($"[{TaskName}] id={theEntity.entityId} GetHitInfo - tag was null/empty; set to 'B_Mesh' to avoid NRE in ItemAction.GetDismemberChance");
+        }
+
         Log.Out($"[{TaskName}] id={theEntity.entityId} GetHitInfo - DamageScale: {damageScale:F2} (Base: {moveHelper.DamageScale:F2} + Boost: {damageBoostPercent:F2})");
-        Log.Out($"[{TaskName}] id={theEntity.entityId} GetHitInfo - Target: {moveHelper.HitInfo.hit.blockPos}");
+        Log.Out($"[{TaskName}] id={theEntity.entityId} GetHitInfo - Target: {moveHelper.HitInfo.hit.blockPos}, Tag:'{moveHelper.HitInfo.tag}'");
 
         return moveHelper.HitInfo;
     }
@@ -743,7 +742,13 @@ private bool HandleExistingBlockTargetContinuation()
         theEntity.moveHelper.HitInfo.hit.pos = GetBlockCenter(blockPos);
         theEntity.moveHelper.HitInfo.bHitValid = true;
 
-        Log.Out($"[{TaskName}] id={theEntity.entityId} SetBlockTarget - {blockPos}, approach=({blockApproachPos.x:F1},{blockApproachPos.y:F1},{blockApproachPos.z:F1})");
+        // Also ensure tag is populated for safety
+        if (string.IsNullOrEmpty(theEntity.moveHelper.HitInfo.tag))
+        {
+            theEntity.moveHelper.HitInfo.tag = "B_Mesh";
+        }
+
+        Log.Out($"[{TaskName}] id={theEntity.entityId} SetBlockTarget - {blockPos}, approach=({blockApproachPos.x:F1},{blockApproachPos.y:F1},{blockApproachPos.z:F1}), Tag:'{theEntity.moveHelper.HitInfo.tag}'");
     }
 
     private Vector3 ComputeApproachPosition(Vector3i blockPos)

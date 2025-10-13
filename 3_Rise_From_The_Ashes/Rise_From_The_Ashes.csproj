@@ -97,6 +97,8 @@
     <Compile Include="Scripts\Console\ConsoleCmdRadioForceStop.cs" />
     <Compile Include="Scripts\Console\ConsoleCmdRadioSkip.cs" />
     <Compile Include="Scripts\Console\ConsoleCmdRadioStatus.cs" />
+    <Compile Include="Scripts\ItemActions\ItemActionSpawnEntityClientOnly.cs" />
+    <Compile Include="Scripts\ItemActions\ItemActionSpawnEntityNetworked.cs" />
     <Compile Include="Scripts\MinEventActions\MinActionEventAutoDrive.cs" />
     <Compile Include="Scripts\MinEventActions\MinEventActionSetCVarFromPassive .cs" />
     <Compile Include="Harmony\SkillCraftingScrollWindowPatch.cs" />

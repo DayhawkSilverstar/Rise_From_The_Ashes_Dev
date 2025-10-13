@@ -30,6 +30,15 @@ public class EAIApproachAndAttackIconic : EAIBase
     private float loiterTimer;
     private bool isLoitering;
 
+    // Ally spawn call after sustained targeting
+    private float allyCallTimer;           // seconds of having a valid attack target
+    private float allyCallThresholdSeconds; // dynamic threshold so it can fire before going home
+
+    // Resilience to resets
+    private int allyTargetEntityId = -1;        // last logical target id we were timing against
+    private float allyTimerLastValidTime = -999f; // last time we had a valid target
+    private const float AllyTimerGraceWindow = 5f; // seconds to preserve timer through brief resets
+
     [PublicizedFrom(EAccessModifier.Private)]
     public List<TargetClass> targetClasses;
 
@@ -249,8 +258,32 @@ public class EAIApproachAndAttackIconic : EAIBase
         loiterStartPosition = theEntity.position;
         loiterTimer = 0f;
         isLoitering = false;
+
+        // Resilient ally call timer handling
+        int newTargetId = entityTarget != null ? entityTarget.entityId : -1;
+        bool sameTargetWithinGrace = (newTargetId == allyTargetEntityId) && (Time.time - allyTimerLastValidTime <= AllyTimerGraceWindow);
+        if (!sameTargetWithinGrace)
+        {
+            // New or different target, or grace expired -> reset
+            allyCallTimer = 0f;
+        }
+        allyTargetEntityId = newTargetId;
+
+        // Compute a dynamic ally-call threshold so it can actually fire before we give up and go home.
+        // We aim for 60s, but clamp to be <= homeTimeout (if any) and not less than 10s.
+        if (hasHome)
+        {
+            float desired = 20;
+            // Leave a small margin before going home so the event can fire
+            float maxBeforeHome = Mathf.Max(0f, homeTimeout - 1.5f);
+            allyCallThresholdSeconds = Mathf.Max(10f, Mathf.Min(desired, maxBeforeHome));
+        }
+        else
+        {
+            allyCallThresholdSeconds = 20f;
+        }
         
-        Log.Out($"[{TaskName}] id={theEntity.entityId} START - isTargetToEat={isTargetToEat}, hasHome={hasHome}");
+        Log.Out($"[{TaskName}] id={theEntity.entityId} START - isTargetToEat={isTargetToEat}, hasHome={hasHome}, homeTimeout={homeTimeout:F1}s, allyCallThreshold={allyCallThresholdSeconds:F1}s (timerCarry={allyCallTimer:F1}s, sameTargetWithinGrace={sameTargetWithinGrace})");
     }
 
     public override bool Continue()
@@ -260,6 +293,9 @@ public class EAIApproachAndAttackIconic : EAIBase
             Log.Out($"[{TaskName}] id={theEntity.entityId} Continue=FALSE - sleeping/stunned");
             return false;
         }
+
+
+
 
         EntityAlive attackTarget = theEntity.GetAttackTarget();
         
@@ -291,8 +327,16 @@ public class EAIApproachAndAttackIconic : EAIBase
 
         if (attackTarget != entityTarget)
         {
-            Log.Out($"[{TaskName}] id={theEntity.entityId} Continue=FALSE - Attack target changed");
-            return false;
+            // Be resilient: if the logical target is the same (entityId), keep going and update reference
+            if (entityTarget != null && attackTarget.entityId == entityTarget.entityId)
+            {
+                entityTarget = attackTarget;
+            }
+            else
+            {
+                Log.Out($"[{TaskName}] id={theEntity.entityId} Continue=FALSE - Attack target changed ({entityTarget?.entityId} -> {attackTarget?.entityId})");
+                return false;
+            }
         }
 
         if (attackTarget.IsDead() != isTargetToEat)
@@ -317,10 +361,67 @@ public class EAIApproachAndAttackIconic : EAIBase
         // Reset loiter detection
         isLoitering = false;
         loiterTimer = 0f;
+
+        // Preserve ally timer through brief resets; record last valid time to honor grace window
+        allyTimerLastValidTime = Mathf.Max(allyTimerLastValidTime, Time.time);
     }
 
     public override void Update()
     {
+        // Track ally call timer based on target validity regardless of movement updates
+        var currentTarget = theEntity.GetAttackTarget();
+        if (currentTarget != null && !currentTarget.IsDead() && !currentTarget.IsMarkedForUnload())
+        {
+            // Tick using deltaTime for resilience to any executeDelay irregularities
+            allyCallTimer += Time.deltaTime;
+            allyTimerLastValidTime = Time.time;
+            // Track the logical target id we are timing against
+            allyTargetEntityId = currentTarget.entityId;
+
+            Log.Out($"[{TaskName}] id={theEntity.entityId} Ally call timer: {allyCallTimer:F1}s / {allyCallThresholdSeconds:F1}s");
+
+            if (allyCallTimer >= allyCallThresholdSeconds)
+            {
+                // Fire a MinEvent. Hook your XML triggered_effect to onSelfAction2Start to spawn allies.
+                float firedAfter = allyCallTimer; // capture before reset for accurate logging
+                theEntity.FireEvent(MinEventTypes.onSelfAction2Start, true);
+                allyCallTimer = 0f; // reset to allow repeated calls after each threshold interval
+                allyTimerLastValidTime = Time.time;
+                Log.Out($"[{TaskName}] id={theEntity.entityId} Ally call fired after {firedAfter:F1}s - timer reset to 0.0s");
+            }
+        }
+        else
+        {
+            // Target invalid -> preserve timer within the grace window; reset only if exceeded
+            if (Time.time - allyTimerLastValidTime > AllyTimerGraceWindow)
+            {
+                if (allyCallTimer > 0f)
+                {
+                    Log.Out($"[{TaskName}] id={theEntity.entityId} Ally call timer RESET (exceeded grace {AllyTimerGraceWindow:F1}s) - target lost/invalid");
+                }
+                allyCallTimer = 0f;
+                allyTargetEntityId = -1;
+            }
+            else
+            {
+                // Within grace period, keep timer as-is
+                if (UnityEngine.Time.frameCount % 20 == 0)
+                {
+                    Log.Out($"[{TaskName}] id={theEntity.entityId} Ally call timer PAUSED (within {AllyTimerGraceWindow:F1}s grace), current={allyCallTimer:F1}s");
+                }
+            }
+        }
+
+        // If we are actively breaking blocks, let the breaking task fully control movement/look
+        if (theEntity.IsBreakingBlocks)
+        {
+            if (UnityEngine.Time.frameCount % 120 == 0)
+            {
+                Log.Out($"[{TaskName}] id={theEntity.entityId} Update skipped - IsBreakingBlocks active");
+            }
+            return;
+        }
+
         // Log every 2 seconds
         if (UnityEngine.Time.frameCount % 120 == 0)
         {
@@ -547,7 +648,7 @@ public class EAIApproachAndAttackIconic : EAIBase
         }
 
         // Look at target when stopped or close
-        if (shouldStop || isCloseHorizontally)
+        if ((shouldStop || isCloseHorizontally) && !theEntity.IsBreakingBlocks)
         {
             theEntity.SetLookPosition(entityTarget.getHeadPosition());
         }
@@ -581,8 +682,12 @@ public class EAIApproachAndAttackIconic : EAIBase
             return;
         }
 
-        theEntity.IsBreakingBlocks = false;
-        theEntity.IsBreakingDoors = false;
+        // Only clear breaking flags if we are not actively breaking (avoid fighting EAIBreakBlocks)
+        if (!theEntity.IsBreakingBlocks)
+        {
+            theEntity.IsBreakingBlocks = false;
+            theEntity.IsBreakingDoors = false;
+        }
         if (theEntity.bodyDamage.HasLimbs && !theEntity.Electrocuted)
         {
             theEntity.RotateTo(vector2.x, vector2.y, vector2.z, 30f, 30f);

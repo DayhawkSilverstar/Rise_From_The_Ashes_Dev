@@ -11,39 +11,81 @@ public class MinActionEvent_SpawnEntityAroundPlayer : MinEventActionRemoveBuff
 
     public override void Execute(MinEventParams _params)
     {
-        if (SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer)
+        var world = GameManager.Instance.World;
+        if (world == null)
+            return;
+
+        // Anchor: prefer the AI holder's player target; otherwise closest player at params position
+        EntityPlayer anchorPlayer = null;
+        if (_params.Self is EntityAlive selfAlive)
         {
-            var position = _params.Position;
-            if (targetType != TargetTypes.positionAOE)
+            anchorPlayer = selfAlive.GetAttackTarget() as EntityPlayer;
+            if (anchorPlayer == null)
             {
-                if (Voxel.voxelRayHitInfo.bHitValid)
-                {
-                    var hitInfo = Voxel.voxelRayHitInfo;
-                    if (hitInfo == null) return;
-                    position = hitInfo.hit.blockPos;
-                }
+                anchorPlayer = world.GetClosestPlayer(selfAlive.position, 200f, false);
             }
-            position += Vector3i.up;
+        }
 
-            int EntityID = -1;
+        // Fall back to player near the event position
+        if (anchorPlayer == null)
+        {
+            anchorPlayer = world.GetClosestPlayer(_params.Position, 200f, false);
+        }
 
-            // If the group is set, then use it.
-            if (!string.IsNullOrEmpty(strSpawnGroup))
+        // If no player anchor could be found, use original behavior's position
+        Vector3 originPos = anchorPlayer != null ? anchorPlayer.position : _params.Position;
+
+        // Compute spawn position: 50m in a random horizontal direction from the anchor
+        float angleRad = UnityEngine.Random.Range(0f, Mathf.PI * 2f);
+        Vector3 dirXZ = new Vector3(Mathf.Cos(angleRad), 0f, Mathf.Sin(angleRad));
+        Vector3 targetXZ = originPos + dirXZ * 50f;
+
+        // Snap Y to ground and nudge up
+        float groundY = world.GetHeightAt(targetXZ.x, targetXZ.z);
+        Vector3 spawnPos = new Vector3(targetXZ.x, groundY + 1f, targetXZ.z);
+
+        // Decide what to spawn from group
+        int entityClassId = -1;
+        if (!string.IsNullOrEmpty(strSpawnGroup))
+        {
+            int classIdTmp = 0;
+            entityClassId = EntityGroups.GetRandomFromGroup(strSpawnGroup, ref classIdTmp);
+        }
+        if (entityClassId == -1)
+            return;
+
+        // Face the anchor player if we have one
+        float yaw = 0f;
+        if (anchorPlayer != null)
+        {
+            Vector3 toPlayer = anchorPlayer.position - spawnPos;
+            toPlayer.y = 0f;
+            if (toPlayer.sqrMagnitude > 0.0001f)
             {
-                var ClassID = 0;
-                EntityID = EntityGroups.GetRandomFromGroup(strSpawnGroup, ref ClassID);
+                yaw = Mathf.Atan2(toPlayer.x, toPlayer.z) * Mathf.Rad2Deg;
             }
+        }
 
-            if (EntityID == -1) return;
+        var newEntity = EntityFactory.CreateEntity(entityClassId, spawnPos, new Vector3(0f, yaw, 0f)) as EntityAlive;
+        if (newEntity == null)
+            return;
 
-            var NewEntity = EntityFactory.CreateEntity(EntityID, position) as EntityAlive;
-            if (NewEntity)
+        newEntity.SetSpawnerSource(EnumSpawnerSource.StaticSpawner);
+
+        bool isServer = SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer;
+        if (isServer)
+        {
+            world.SpawnEntityInWorld(newEntity);
+            if (anchorPlayer != null)
             {
-                var entityCreationData = new EntityCreationData(NewEntity);
-                entityCreationData.id = -1;
-                GameManager.Instance.RequestToSpawnEntityServer(entityCreationData);
-                NewEntity.OnEntityUnload();
+                newEntity.SetAttackTarget(anchorPlayer, 600);
             }
+        }
+        else
+        {
+            var ecd = new EntityCreationData(newEntity) { id = -1 };
+            GameManager.Instance.RequestToSpawnEntityServer(ecd);
+            newEntity.OnEntityUnload();
         }
     }
 
