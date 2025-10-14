@@ -100,6 +100,7 @@
     <Compile Include="Scripts\ItemActions\ItemActionSpawnEntityClientOnly.cs" />
     <Compile Include="Scripts\ItemActions\ItemActionSpawnEntityNetworked.cs" />
     <Compile Include="Scripts\MinEventActions\MinActionEventAutoDrive.cs" />
+    <Compile Include="Scripts\MinEventActions\MinActionEvent_SpawnEntityAroundPlayerClientOnly.cs" />
     <Compile Include="Scripts\MinEventActions\MinEventActionSetCVarFromPassive .cs" />
     <Compile Include="Harmony\SkillCraftingScrollWindowPatch.cs" />
     <Compile Include="Harmony\WorldEvents.cs" />
