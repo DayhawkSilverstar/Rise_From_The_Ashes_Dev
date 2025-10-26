@@ -7,6 +7,7 @@ public class ItemActionSpawnEntityClientOnly : ItemActionSpawnEntityNetworked
 {
     protected override void DoSpawn(ItemActionData _actionData)
     {
+        Log.Out("ItemActionSpawnEntityClientOnly: DoSpawn called");
         EntityAlive holdingEntity = _actionData.invData.holdingEntity;
         if (!holdingEntity || !holdingEntity.IsAttackValid())
             return;

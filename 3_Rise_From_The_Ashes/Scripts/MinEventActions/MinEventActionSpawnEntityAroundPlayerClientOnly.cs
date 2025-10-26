@@ -1,19 +1,24 @@
-﻿using System.Xml;
+using System.Xml;
 using System.Xml.Linq;
 using UnityEngine;
+using UnityEngine.Scripting;
 
-
-//        <triggered_effect trigger="onProjectileImpact" action="SpawnEntityAtPoint, SCore" SpawnGroup="ZombiesBurntForest" />
-public class MinActionEvent_SpawnEntityAroundPlayer : MinEventActionRemoveBuff
+// Client-only variant: spawns entities locally on the client without networking
+[Preserve]
+public class MinEventActionSpawnEntityAroundPlayerClientOnly : MinEventActionRemoveBuff
 {
     private string strCvar;
     private string strSpawnGroup = "";
 
     public override void Execute(MinEventParams _params)
     {
+        Log.Out("MinEventActionSpawnEntityAroundPlayerClientOnly: DoSpawn called");
         var world = GameManager.Instance.World;
         if (world == null)
+        {
+            Log.Out("MinEventActionSpawnEntityAroundPlayerClientOnly: World Null");
             return;
+        }
 
         // Anchor: prefer the AI holder's player target; otherwise closest player at params position
         EntityPlayer anchorPlayer = null;
@@ -44,6 +49,7 @@ public class MinActionEvent_SpawnEntityAroundPlayer : MinEventActionRemoveBuff
         float groundY = world.GetHeightAt(targetXZ.x, targetXZ.z);
         Vector3 spawnPos = new Vector3(targetXZ.x, groundY + 1f, targetXZ.z);
 
+        Log.Out("MinEventActionSpawnEntityAroundPlayerClientOnly: Get Spawn Group : " + strSpawnGroup);
         // Decide what to spawn from group
         int entityClassId = -1;
         if (!string.IsNullOrEmpty(strSpawnGroup))
@@ -52,7 +58,10 @@ public class MinActionEvent_SpawnEntityAroundPlayer : MinEventActionRemoveBuff
             entityClassId = EntityGroups.GetRandomFromGroup(strSpawnGroup, ref classIdTmp);
         }
         if (entityClassId == -1)
+        {
+            Log.Out("MinEventActionSpawnEntityAroundPlayerClientOnly: Entity Class ID -1");
             return;
+        }
 
         // Face the anchor player if we have one
         float yaw = 0f;
@@ -68,24 +77,21 @@ public class MinActionEvent_SpawnEntityAroundPlayer : MinEventActionRemoveBuff
 
         var newEntity = EntityFactory.CreateEntity(entityClassId, spawnPos, new Vector3(0f, yaw, 0f)) as EntityAlive;
         if (newEntity == null)
+        {
+            Log.Out("MinEventActionSpawnEntityAroundPlayerClientOnly: New Entity Null");
             return;
+        }
 
         newEntity.SetSpawnerSource(EnumSpawnerSource.StaticSpawner);
 
-        bool isServer = SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer;
-        if (isServer)
+        // Spawn locally on client only (no server request)
+        world.SpawnEntityInWorld(newEntity);
+        Log.Out("MinEventActionSpawnEntityAroundPlayerClientOnly: Spawned Entity ID " + entityClassId);
+
+        if (anchorPlayer != null)
         {
-            world.SpawnEntityInWorld(newEntity);
-            if (anchorPlayer != null)
-            {
-                newEntity.SetAttackTarget(anchorPlayer, 600);
-            }
-        }
-        else
-        {
-            var ecd = new EntityCreationData(newEntity) { id = -1 };
-            GameManager.Instance.RequestToSpawnEntityServer(ecd);
-            newEntity.OnEntityUnload();
+            Log.Out("MinEventActionSpawnEntityAroundPlayerClientOnly: Set Attack Target to Anchor Player");
+            newEntity.SetAttackTarget(anchorPlayer, 600);
         }
     }
 

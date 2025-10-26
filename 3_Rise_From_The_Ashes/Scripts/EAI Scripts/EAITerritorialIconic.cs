@@ -19,8 +19,7 @@ public class EAITerritorialIconic : EAIBase
 
     public override void SetData(DictionarySave<string, string> data)
     {
-        base.SetData(data);
-        Log.Out($"[{TaskName}] SetData: (no extra fields)");
+        base.SetData(data);        
     }
 
     public override bool CanExecute()
@@ -37,8 +36,7 @@ public class EAITerritorialIconic : EAIBase
             return false;
         }
 
-        movePos = vector;
-        Log.Out($"[{TaskName}] id={theEntity?.entityId ?? -1} CanExecute=true: movePos={movePos}");
+        movePos = vector;        
         return true;
     }
 
@@ -49,19 +47,14 @@ public class EAITerritorialIconic : EAIBase
         diff.y = 0f; // Only check horizontal distance
         
         bool shouldContinue = diff.sqrMagnitude > 4f; // 2 blocks squared
-        
-        if (!shouldContinue)
-        {
-            Log.Out($"[{TaskName}] id={theEntity?.entityId ?? -1} Continue=false: reached destination");
-        }
+               
         
         return shouldContinue;
     }
 
     public override void Start()
     {
-        moveUpdateTicks = 0;
-        Log.Out($"[{TaskName}] id={theEntity?.entityId ?? -1} Start: direct move to {movePos}");
+        moveUpdateTicks = 0;        
     }
 
     public override void Update()
@@ -85,8 +78,7 @@ public class EAITerritorialIconic : EAIBase
 
     public override void Reset()
     {
-        theEntity.moveHelper.Stop();
-        Log.Out($"[{TaskName}] id={theEntity?.entityId ?? -1} Reset: stopped movement");
+        theEntity.moveHelper.Stop();        
     }
 
     public override string ToString()

@@ -1,11 +1,10 @@
 using System.Xml;
 using System.Xml.Linq;
 using UnityEngine;
-using UnityEngine.Scripting;
 
-// Client-only variant: spawns entities locally on the client without networking
-[Preserve]
-public class MinActionEvent_SpawnEntityAroundPlayerClientOnly : MinEventActionRemoveBuff
+
+//        <triggered_effect trigger="onProjectileImpact" action="SpawnEntityAtPoint, SCore" SpawnGroup="ZombiesBurntForest" />
+public class MinEventActionSpawnEntityAroundPlayer : MinEventActionRemoveBuff
 {
     private string strCvar;
     private string strSpawnGroup = "";
@@ -15,13 +14,6 @@ public class MinActionEvent_SpawnEntityAroundPlayerClientOnly : MinEventActionRe
         var world = GameManager.Instance.World;
         if (world == null)
             return;
-
-        // Only operate on clients; do nothing on server to avoid network propagation
-        var cm = SingletonMonoBehaviour<ConnectionManager>.Instance;
-        if (cm != null && cm.IsServer)
-        {
-            return;
-        }
 
         // Anchor: prefer the AI holder's player target; otherwise closest player at params position
         EntityPlayer anchorPlayer = null;
@@ -80,12 +72,20 @@ public class MinActionEvent_SpawnEntityAroundPlayerClientOnly : MinEventActionRe
 
         newEntity.SetSpawnerSource(EnumSpawnerSource.StaticSpawner);
 
-        // Spawn locally on client only (no server request)
-        world.SpawnEntityInWorld(newEntity);
-
-        if (anchorPlayer != null)
+        bool isServer = SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer;
+        if (isServer)
         {
-            newEntity.SetAttackTarget(anchorPlayer, 600);
+            world.SpawnEntityInWorld(newEntity);
+            if (anchorPlayer != null)
+            {
+                newEntity.SetAttackTarget(anchorPlayer, 600);
+            }
+        }
+        else
+        {
+            var ecd = new EntityCreationData(newEntity) { id = -1 };
+            GameManager.Instance.RequestToSpawnEntityServer(ecd);
+            newEntity.OnEntityUnload();
         }
     }
 

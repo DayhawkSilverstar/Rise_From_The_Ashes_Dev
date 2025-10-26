@@ -24,8 +24,7 @@ public class EAILookIconic : EAIBase
     {
         if (manager.lookTime > 0f)
         {
-            bool can = !theEntity.Jumping;
-            Log.Out($"[{TaskName}] id={theEntity?.entityId ?? -1} CanExecute={can}: lookTime={manager.lookTime:0.00}");
+            bool can = !theEntity.Jumping;            
             return can;
         }
 
@@ -39,15 +38,13 @@ public class EAILookIconic : EAIBase
         theEntity.GetEntitySenses().Clear();
         lookAtTicks = 0;
         turnTicks = 0;
-        theEntity.moveHelper.Stop();
-        Log.Out($"[{TaskName}] id={theEntity?.entityId ?? -1} Start: waitTicks={waitTicks}");
+        theEntity.moveHelper.Stop();        
     }
 
     public override bool Continue()
     {
         if (theEntity.bodyDamage.CurrentStun != 0)
-        {
-            Log.Out($"[{TaskName}] id={theEntity?.entityId ?? -1} Continue=false: stunned");
+        {            
             return false;
         }
 
@@ -63,8 +60,7 @@ public class EAILookIconic : EAIBase
         }
 
         if (--waitTicks <= 0)
-        {
-            Log.Out($"[{TaskName}] id={theEntity?.entityId ?? -1} Continue=false: wait time expired");
+        {            
             return false;
         }
 
@@ -81,8 +77,7 @@ public class EAILookIconic : EAIBase
     }
 
     public override void Reset()
-    {
-        Log.Out($"[{TaskName}] id={theEntity?.entityId ?? -1} Reset");
+    {        
         theEntity.SetLookPosition(Vector3.zero);
     }
 

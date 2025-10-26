@@ -54,6 +54,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>F:\Rise from the ashes\7 Days To Die\7DaysToDie_Data\Managed\LogLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="SCore">
+      <HintPath>F:\Rise from the ashes\7 Days To Die\Mods\z2-SCore\SCore.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml">
       <HintPath>..\..\7DaysToDie_Data\Managed\System.Xml.dll</HintPath>
       <Private>False</Private>
@@ -93,14 +96,18 @@
   <ItemGroup>
     <Compile Include="Harmony\GameStagePatch.cs" />
     <Compile Include="Harmony\MainMenuMusic.cs" />
+    <Compile Include="Scripts\Blocks\RiseBlockAOEDeco.cs" />
+    <Compile Include="Scripts\Blocks\RiseBlockLandClaim.cs" />
+    <Compile Include="Scripts\Blocks\RiseBlockSleepingBag.cs" />
     <Compile Include="Scripts\Console\ConsoleCmdAutoDrive.cs" />
     <Compile Include="Scripts\Console\ConsoleCmdRadioForceStop.cs" />
     <Compile Include="Scripts\Console\ConsoleCmdRadioSkip.cs" />
     <Compile Include="Scripts\Console\ConsoleCmdRadioStatus.cs" />
     <Compile Include="Scripts\ItemActions\ItemActionSpawnEntityClientOnly.cs" />
     <Compile Include="Scripts\ItemActions\ItemActionSpawnEntityNetworked.cs" />
-    <Compile Include="Scripts\MinEventActions\MinActionEventAutoDrive.cs" />
-    <Compile Include="Scripts\MinEventActions\MinActionEvent_SpawnEntityAroundPlayerClientOnly.cs" />
+    <Compile Include="Scripts\MinEventActions\MinEventActionAutoDrive.cs" />
+    <Compile Include="Scripts\MinEventActions\MinEventActionDamageInspection.cs" />
+    <Compile Include="Scripts\MinEventActions\MinEventActionSpawnEntityAroundPlayer.cs" />
     <Compile Include="Scripts\MinEventActions\MinEventActionSetCVarFromPassive .cs" />
     <Compile Include="Harmony\SkillCraftingScrollWindowPatch.cs" />
     <Compile Include="Harmony\WorldEvents.cs" />
@@ -126,9 +133,8 @@
     <Compile Include="Scripts\EAI Scripts\EAITerritorialIconic.cs" />
     <Compile Include="Scripts\EAI Scripts\EAIWanderIconic.cs" />
     <Compile Include="Scripts\ItemAction\ItemActionAttackIconic.cs" />
-    <Compile Include="Scripts\MinEventActions\MinActionEvent_DamageInspection.cs" />
-    <Compile Include="Scripts\MinEventActions\MinActionEvent_SpawnEntityAroundPlayer.cs" />
     <Compile Include="Scripts\MinEventActions\MinEventActionSetCVarFromPlayerLootStage .cs" />
+    <Compile Include="Scripts\MinEventActions\MinEventActionSpawnEntityAroundPlayerClientOnly.cs" />
     <Compile Include="Scripts\Quests\RewardTraderFaction.cs" />
     <Compile Include="Scripts\Quests\TraderSupplyQuest.cs" />
     <Compile Include="Scripts\Quests\TraderSuppyKeepQuest.cs" />

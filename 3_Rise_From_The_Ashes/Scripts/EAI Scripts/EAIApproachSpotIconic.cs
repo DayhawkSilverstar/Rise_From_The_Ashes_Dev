@@ -31,8 +31,7 @@ public class EAIApproachSpotIconic : EAIBase
     {
         base.Init(_theEntity);
         MutexBits = 3;
-        executeDelay = 0.1f;
-        Log.Out($"[{TaskName}] id={_theEntity.entityId} Init: mutex={MutexBits} execDelay={executeDelay}");
+        executeDelay = 0.1f;        
     }
 
     public override bool CanExecute()
@@ -48,15 +47,13 @@ public class EAIApproachSpotIconic : EAIBase
         }
 
         investigatePos = theEntity.InvestigatePosition;
-        seekPos = theEntity.world.FindSupportingBlockPos(investigatePos);
-        Log.Out($"[{TaskName}] id={theEntity.entityId} CanExecute=true: investigatePos={investigatePos} seekPos={seekPos}");
+        seekPos = theEntity.world.FindSupportingBlockPos(investigatePos);        
         return true;
     }
 
     public override void Start()
     {
-        investigateTicks = 0;
-        Log.Out($"[{TaskName}] id={theEntity.entityId} Start: direct move to seekPos={seekPos}");
+        investigateTicks = 0;        
     }
 
     public override bool Continue()
@@ -128,8 +125,7 @@ public class EAIApproachSpotIconic : EAIBase
         theEntity.moveHelper.Stop();
         theEntity.SetLookPosition(Vector3.zero);
         manager.lookTime = 5f + base.RandomFloat * 3f;
-        manager.interestDistance = 2f;
-        Log.Out($"[{TaskName}] id={theEntity.entityId} Reset: stopped movement");
+        manager.interestDistance = 2f;        
     }
 
     public override string ToString()

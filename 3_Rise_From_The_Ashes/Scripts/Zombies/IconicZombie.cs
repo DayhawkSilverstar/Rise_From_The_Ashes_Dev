@@ -164,21 +164,16 @@ public class IconicZombie : EntityZombie
     {
         bool targetAbove = TargetAbove();
         bool targetBelow = TargetBelow();
-        
-        Log.Out($"[IconicZombie] id={entityId} SetMoveTo - Original position: {_pos}, CanBreakBlocks: {_canBreakBlocks}");
-        Log.Out($"[IconicZombie] id={entityId} Current zombie pos: {position}, Target: {(Target != null && !Target.IsMarkedForUnload() ? Target.position.ToString() : "NULL/INVALID")}");
-        Log.Out($"[IconicZombie] id={entityId} TargetAbove: {targetAbove}, TargetBelow: {targetBelow}");
+
         
         if (targetAbove | targetBelow)
         {
             Vector3 originalPos = _pos;
             _pos = new Vector3(_pos.x, position.y, _pos.z);
-            Log.Out($"[IconicZombie] id={entityId} SetMoveTo ADJUSTED - From Y={originalPos.y} to Y={_pos.y} (zombie's Y level)");
-            Log.Out($"[IconicZombie] id={entityId} This means zombie will move HORIZONTALLY toward target, not vertically");
+
         }
 
         this.moveHelper.SetMoveTo(_pos, _canBreakBlocks);
-        Log.Out($"[IconicZombie] id={entityId} MoveHelper.SetMoveTo called with pos={_pos}, canBreak={_canBreakBlocks}");
     }
 
     public void FindTargetPlayer(float seeDist)
@@ -542,7 +537,6 @@ public class IconicZombie : EntityZombie
     public bool IsZombieAnimal(EntityAlive entityAnimal)
     {
         string entityName = entityAnimal.EntityName;
-        // Log.Out("EAISingleTask : IsZombieAnimal - " +  entityName);
         switch (entityName)
         {
             case "animalZombieDog":
@@ -573,13 +567,11 @@ public class IconicZombie : EntityZombie
             float xDiff = Math.Abs(this.position.x - this.Target.position.x);
             float zDiff = Math.Abs(this.position.z - this.Target.position.z);
             bool result = xDiff < 1.5f && zDiff < 1.5f;
-            
-            Log.Out($"[IconicZombie] id={entityId} TargetXZCheck - X diff: {xDiff:F2}, Z diff: {zDiff:F2}, Result: {result}");
+
             
             return result;
         }
-        
-        Log.Out($"[IconicZombie] id={entityId} TargetXZCheck - No valid target, returning false");
+
         return false;
     }
 
@@ -589,7 +581,6 @@ public class IconicZombie : EntityZombie
         {
             if (animalNames.Contains(Target.GetDebugName()))
             {
-                Log.Out($"[IconicZombie] id={entityId} TargetAbove - Target is animal, returning false");
                 return false;
             }
             
@@ -598,12 +589,10 @@ public class IconicZombie : EntityZombie
             bool result = xzCheck && yCheck;
             
             float yDiff = this.Target.position.y - this.position.y;
-            Log.Out($"[IconicZombie] id={entityId} TargetAbove - XZ close: {xzCheck}, Target Y diff: {yDiff:F2}, Result: {result}");
             
             return result;
         }
         
-        Log.Out($"[IconicZombie] id={entityId} TargetAbove - No valid target, returning false");
         return false;
     }
 
@@ -613,7 +602,6 @@ public class IconicZombie : EntityZombie
         {
             if (animalNames.Contains(Target.GetDebugName()))
             {
-                Log.Out($"[IconicZombie] id={entityId} TargetBelow - Target is animal, returning false");
                 return false;
             }
             
@@ -622,12 +610,10 @@ public class IconicZombie : EntityZombie
             bool result = xzCheck && yCheck;
             
             float yDiff = this.position.y - this.Target.position.y;
-            Log.Out($"[IconicZombie] id={entityId} TargetBelow - XZ close: {xzCheck}, Target Y diff: {yDiff:F2}, Result: {result}");
             
             return result;
         }
         
-        Log.Out($"[IconicZombie] id={entityId} TargetBelow - No valid target, returning false");
         return false;
     }
 }
