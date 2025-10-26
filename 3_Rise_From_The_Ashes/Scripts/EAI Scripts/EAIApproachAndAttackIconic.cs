@@ -30,6 +30,18 @@ public class EAIApproachAndAttackIconic : EAIBase
     private float loiterTimer;
     private bool isLoitering;
 
+    // Ally spawn call after sustained targeting
+    private float allyCallTimer;           // seconds of having a valid attack target
+    private float allyCallThresholdSeconds; // dynamic threshold so it can fire before going home
+
+    // Resilience to resets
+    private int allyTargetEntityId = -1;        // last logical target id we were timing against
+    private float allyTimerLastValidTime = -999f; // last time we had a valid target
+    private const float AllyTimerGraceWindow = 5f; // seconds to preserve timer through brief resets
+
+    private int zombiesSpawned = 0;
+    private int maxZombiesToSpawn = 2;
+
     [PublicizedFrom(EAccessModifier.Private)]
     public List<TargetClass> targetClasses;
 
@@ -83,20 +95,17 @@ public class EAIApproachAndAttackIconic : EAIBase
     private string TaskName => nameof(EAIApproachAndAttackIconic);
 
     public EAIApproachAndAttackIconic()
-    {
-        Log.Out("EAIApproachAndAttackIconic Constructor");
+    {        
         chaseTimeMax = 30f;
         seekPosOffset = Vector2.zero;
         targetClasses = new List<TargetClass>();
     }
 
     public override void Init(EntityAlive _theEntity)
-    {
-        Log.Out("EAIApproachAndAttackIconic Init");
+    {        
         base.Init(_theEntity);
         MutexBits = 3;
-        executeDelay = 0.1f;
-        Log.Out($"[{TaskName}] id={_theEntity.entityId} Init: mutex={MutexBits} execDelay={executeDelay}");
+        executeDelay = 0.1f;        
     }
 
     public override void SetData(DictionarySave<string, string> data)
@@ -126,8 +135,7 @@ public class EAIApproachAndAttackIconic : EAIBase
                 item.type = typeof(EntityAnimalSnake);
                 targetClasses.Add(item);
             }
-        }
-        Log.Out($"[{TaskName}] id={theEntity?.entityId ?? -1} SetData: targetClasses={targetClasses.Count}");
+        }        
     }
 
     public void SetTargetOnlyPlayers()
@@ -135,35 +143,29 @@ public class EAIApproachAndAttackIconic : EAIBase
         targetClasses.Clear();
         TargetClass item = default(TargetClass);
         item.type = typeof(EntityPlayer);
-        targetClasses.Add(item);
-        Log.Out($"[{TaskName}] id={theEntity?.entityId ?? -1} SetTargetOnlyPlayers");
+        targetClasses.Add(item);        
     }
 
     public override bool CanExecute()
-    {
-        Log.Out($"[{TaskName}] id={theEntity.entityId} CanExecute called");
+    {        
         
         if (theEntity.sleepingOrWakingUp || theEntity.bodyDamage.CurrentStun != 0 || (theEntity.Jumping && !theEntity.isSwimming))
-        {
-            Log.Out($"[{TaskName}] id={theEntity.entityId} CanExecute=FALSE - sleeping/stunned/jumping");
+        {     
             return false;
         }
 
         entityTarget = theEntity.GetAttackTarget();
         if (entityTarget == null)
-        {
-            Log.Out($"[{TaskName}] id={theEntity.entityId} No attack target set, trying auto-acquire");
+        {            
             // Fallback: if no EAITarget task has set an attack target, try to auto-acquire a valid player target
             if (!TryAutoAcquireTarget())
-            {
-                Log.Out($"[{TaskName}] id={theEntity.entityId} CanExecute=FALSE - No target and auto-acquire failed");
+            {                
                 return false;
             }
             entityTarget = theEntity.GetAttackTarget();
         }
 
-        Type type = entityTarget.GetType();
-        Log.Out($"[{TaskName}] id={theEntity.entityId} Target: {entityTarget.EntityName} ({type.Name})");
+        Type type = entityTarget.GetType();        
         
         if (targetClasses != null && targetClasses.Count > 0)
         {
@@ -172,18 +174,14 @@ public class EAIApproachAndAttackIconic : EAIBase
                 TargetClass targetClass = targetClasses[i];
                 if (targetClass.type != null && targetClass.type.IsAssignableFrom(type))
                 {
-                    chaseTimeMax = targetClass.chaseTimeMax;
-                    Log.Out($"[{TaskName}] id={theEntity.entityId} CanExecute=TRUE - Target matches class {targetClass.type.Name}");
+                    chaseTimeMax = targetClass.chaseTimeMax;                    
                     return true;
                 }
             }
-
-            Log.Out($"[{TaskName}] id={theEntity.entityId} CanExecute=FALSE - Target type doesn't match any configured classes");
+            
             return false;
         }
 
-        // No target classes configured -> accept any target we acquired (default behavior)
-        Log.Out($"[{TaskName}] id={theEntity.entityId} CanExecute=TRUE - No target classes configured");
         return true;
     }
 
@@ -217,8 +215,7 @@ public class EAIApproachAndAttackIconic : EAIBase
         TmpEntities.Clear();
         if (best != null)
         {
-            theEntity.SetAttackTarget(best, 200);
-            Log.Out($"[{TaskName}] id={theEntity.entityId} Auto-acquired target: {best.EntityName} dist={bestDist:0.00}");
+            theEntity.SetAttackTarget(best, 200);            
             return true;
         }
 
@@ -226,8 +223,7 @@ public class EAIApproachAndAttackIconic : EAIBase
     }
 
     public override void Start()
-    {
-        Log.Out($"[{TaskName}] id={theEntity.entityId} START - Target: {entityTarget.EntityName}");
+    {        
         entityTargetPos = entityTarget.position;
         entityTargetVel = Vector3.zero;
         isTargetToEat = entityTarget.IsDead();
@@ -249,24 +245,47 @@ public class EAIApproachAndAttackIconic : EAIBase
         loiterStartPosition = theEntity.position;
         loiterTimer = 0f;
         isLoitering = false;
-        
-        Log.Out($"[{TaskName}] id={theEntity.entityId} START - isTargetToEat={isTargetToEat}, hasHome={hasHome}");
+
+        // Resilient ally call timer handling
+        int newTargetId = entityTarget != null ? entityTarget.entityId : -1;
+        bool sameTargetWithinGrace = (newTargetId == allyTargetEntityId) && (Time.time - allyTimerLastValidTime <= AllyTimerGraceWindow);
+        if (!sameTargetWithinGrace)
+        {
+            // New or different target, or grace expired -> reset
+            allyCallTimer = 0f;
+        }
+        allyTargetEntityId = newTargetId;
+
+        // Compute a dynamic ally-call threshold so it can actually fire before we give up and go home.
+        // We aim for 60s, but clamp to be <= homeTimeout (if any) and not less than 10s.
+        if (hasHome)
+        {
+            float desired = 30;
+            // Leave a small margin before going home so the event can fire
+            float maxBeforeHome = Mathf.Max(0f, homeTimeout - 1.5f);
+            allyCallThresholdSeconds = Mathf.Max(10f, Mathf.Min(desired, maxBeforeHome));
+        }
+        else
+        {
+            allyCallThresholdSeconds = 30f;
+        }        
     }
 
     public override bool Continue()
     {
         if (theEntity.sleepingOrWakingUp || theEntity.bodyDamage.CurrentStun != 0)
-        {
-            Log.Out($"[{TaskName}] id={theEntity.entityId} Continue=FALSE - sleeping/stunned");
+        {            
             return false;
         }
+
+
+
 
         EntityAlive attackTarget = theEntity.GetAttackTarget();
         
         // Add null check and validation for attack target
         if (attackTarget == null || attackTarget.IsDead() || attackTarget.IsMarkedForUnload())
-        {
-            Log.Out($"[{TaskName}] id={theEntity.entityId} Continue=FALSE - No valid attack target");
+        {            
             return false;
         }
         
@@ -274,30 +293,33 @@ public class EAIApproachAndAttackIconic : EAIBase
         {
             if (!attackTarget)
             {
-                bool shouldContinue = theEntity.ChaseReturnLocation != Vector3.zero;
-                Log.Out($"[{TaskName}] id={theEntity.entityId} Continue={shouldContinue} - Going home");
+                bool shouldContinue = theEntity.ChaseReturnLocation != Vector3.zero;                
                 return shouldContinue;
             }
-
-            Log.Out($"[{TaskName}] id={theEntity.entityId} Continue=FALSE - Was going home but have new target");
+            
             return false;
         }
 
         if (!attackTarget)
-        {
-            Log.Out($"[{TaskName}] id={theEntity.entityId} Continue=FALSE - No attack target");
+        {            
             return false;
         }
 
         if (attackTarget != entityTarget)
         {
-            Log.Out($"[{TaskName}] id={theEntity.entityId} Continue=FALSE - Attack target changed");
-            return false;
+            // Be resilient: if the logical target is the same (entityId), keep going and update reference
+            if (entityTarget != null && attackTarget.entityId == entityTarget.entityId)
+            {
+                entityTarget = attackTarget;
+            }
+            else
+            {                
+                return false;
+            }
         }
 
         if (attackTarget.IsDead() != isTargetToEat)
-        {
-            Log.Out($"[{TaskName}] id={theEntity.entityId} Continue=FALSE - Target death state changed");
+        {            
             return false;
         }
 
@@ -305,8 +327,7 @@ public class EAIApproachAndAttackIconic : EAIBase
     }
 
     public override void Reset()
-    {
-        Log.Out($"[{TaskName}] id={theEntity.entityId} RESET");
+    {        
         theEntity.IsEating = false;
         theEntity.moveHelper.Stop();
         if (blockTargetTask != null)
@@ -317,10 +338,50 @@ public class EAIApproachAndAttackIconic : EAIBase
         // Reset loiter detection
         isLoitering = false;
         loiterTimer = 0f;
+
+        // Preserve ally timer through brief resets; record last valid time to honor grace window
+        allyTimerLastValidTime = Mathf.Max(allyTimerLastValidTime, Time.time);
     }
 
     public override void Update()
     {
+        // Track ally call timer based on target validity regardless of movement updates
+        var currentTarget = theEntity.GetAttackTarget();
+        if (currentTarget != null && !currentTarget.IsDead() && !currentTarget.IsMarkedForUnload())
+        {
+            // Tick using deltaTime for resilience to any executeDelay irregularities
+            allyCallTimer += Time.deltaTime;
+            allyTimerLastValidTime = Time.time;
+            // Track the logical target id we are timing against
+            allyTargetEntityId = currentTarget.entityId;
+            
+
+            if (allyCallTimer >= allyCallThresholdSeconds && zombiesSpawned < maxZombiesToSpawn && !theEntity.IsDead())
+            {
+                // Fire a MinEvent. Hook your XML triggered_effect to onSelfAction2Start to spawn allies.
+                zombiesSpawned++;
+                float firedAfter = allyCallTimer; // capture before reset for accurate logging
+                theEntity.FireEvent(MinEventTypes.onSelfAction2Start, true);
+                allyCallTimer = 0f; // reset to allow repeated calls after each threshold interval
+                allyTimerLastValidTime = Time.time;                
+            }
+        }
+        else
+        {
+            // Target invalid -> preserve timer within the grace window; reset only if exceeded
+            if (Time.time - allyTimerLastValidTime > AllyTimerGraceWindow)
+            {
+                allyCallTimer = 0f;
+                allyTargetEntityId = -1;
+            }
+        }
+
+        // If we are actively breaking blocks, let the breaking task fully control movement/look
+        if (theEntity.IsBreakingBlocks)
+        {
+            return;
+        }
+
         // Log every 2 seconds
         if (UnityEngine.Time.frameCount % 120 == 0)
         {
@@ -328,8 +389,7 @@ public class EAIApproachAndAttackIconic : EAIBase
             {
                 Vector3 targetPos = entityTarget.position;
                 float dist = Vector3.Distance(theEntity.position, targetPos);
-                float yDiff = targetPos.y - theEntity.position.y;
-                Log.Out($"[{TaskName}] id={theEntity.entityId} Update - Target: {entityTarget.EntityName}, Dist: {dist:F2}, YDiff: {yDiff:F2}, IsGoingHome: {isGoingHome}, Loitering: {isLoitering}");
+                float yDiff = targetPos.y - theEntity.position.y;                
             }
         }
         
@@ -519,35 +579,20 @@ public class EAIApproachAndAttackIconic : EAIBase
                 // If loitering, artificially increase BlockedTime to trigger break blocks
                 if (isLoitering)
                 {
-                    theEntity.moveHelper.BlockedTime = Mathf.Max(theEntity.moveHelper.BlockedTime, 0.4f);
-                    
-                    if (UnityEngine.Time.frameCount % 60 == 0)
-                    {
-                        Log.Out($"[{TaskName}] id={theEntity.entityId} LOITERING DETECTED - Forcing BlockedTime={theEntity.moveHelper.BlockedTime:F2}");
-                    }
+                    theEntity.moveHelper.BlockedTime = Mathf.Max(theEntity.moveHelper.BlockedTime, 0.4f);                                        
                 }
                 
                 MoveEntityHeaded(moveDirection, true);
-                
-                if (UnityEngine.Time.frameCount % 60 == 0) // Log every second
-                {
-                    Log.Out($"[{TaskName}] id={theEntity.entityId} DirectMove: xzDist={xzDist:F2} yDiff={num5:F2} target=({targetHorizontalPos.x:F1},{targetHorizontalPos.y:F1},{targetHorizontalPos.z:F1})");
-                }
             }
         }
         else
         {
             theEntity.moveHelper.Stop();
             pathCounter = 0;
-            
-            if (UnityEngine.Time.frameCount % 60 == 0)
-            {
-                Log.Out($"[{TaskName}] id={theEntity.entityId} Stopped: InRange xzDist={xzDist:F2} yDiff={num5:F2}");
-            }
         }
 
         // Look at target when stopped or close
-        if (shouldStop || isCloseHorizontally)
+        if ((shouldStop || isCloseHorizontally) && !theEntity.IsBreakingBlocks)
         {
             theEntity.SetLookPosition(entityTarget.getHeadPosition());
         }
@@ -566,14 +611,12 @@ public class EAIApproachAndAttackIconic : EAIBase
         if (isCloseHorizontally && num6 <= AttackVerticalRange)
         {
             // Close horizontally and target is within vertical attack range (above or below)
-            canAttemptAttack = true;
-            Log.Out($"[{TaskName}] id={theEntity.entityId} CanAttack: vertical | xzDist={xzDist:F2} yDelta={num5:F2}");
+            canAttemptAttack = true;            
         }
         else if (targetXZDistanceSq <= num9 && num5 >= -1.25f && num5 - theEntity.GetHeight() <= 0.65f)
         {
             // Normal attack range (at same level)
-            canAttemptAttack = true;
-            Log.Out($"[{TaskName}] id={theEntity.entityId} CanAttack: normal range");
+            canAttemptAttack = true;            
         }
 
         if (!canAttemptAttack)
@@ -581,8 +624,12 @@ public class EAIApproachAndAttackIconic : EAIBase
             return;
         }
 
-        theEntity.IsBreakingBlocks = false;
-        theEntity.IsBreakingDoors = false;
+        // Only clear breaking flags if we are not actively breaking (avoid fighting EAIBreakBlocks)
+        if (!theEntity.IsBreakingBlocks)
+        {
+            theEntity.IsBreakingBlocks = false;
+            theEntity.IsBreakingDoors = false;
+        }
         if (theEntity.bodyDamage.HasLimbs && !theEntity.Electrocuted)
         {
             theEntity.RotateTo(vector2.x, vector2.y, vector2.z, 30f, 30f);
@@ -662,11 +709,6 @@ public class EAIApproachAndAttackIconic : EAIBase
         // Only track loitering when close to target horizontally and target is above/below
         if (!isCloseHorizontally || !isTargetVerticallyDistant)
         {
-            // Reset if we're not in a loiter scenario
-            if (isLoitering || loiterTimer > 0.1f)
-            {
-                Log.Out($"[{TaskName}] id={theEntity.entityId} Loiter reset - not in scenario");
-            }
             isLoitering = false;
             loiterTimer = 0f;
             loiterStartPosition = theEntity.position;
@@ -686,17 +728,12 @@ public class EAIApproachAndAttackIconic : EAIBase
 
             if (loiterTimer >= LoiterDetectionTime && !isLoitering)
             {
-                isLoitering = true;
-                Log.Out($"[{TaskName}] id={theEntity.entityId} ✓ LOITERING DETECTED - Stayed within {LoiterDetectionRadius:F1}m for {loiterTimer:F2}s at ({loiterStartPosition.x:F1},{loiterStartPosition.y:F1},{loiterStartPosition.z:F1})");
+                isLoitering = true;                
             }
         }
         else
         {
             // Moved too far, reset tracking
-            if (loiterTimer > 0.5f) // Only log if we were tracking for a while
-            {
-                Log.Out($"[{TaskName}] id={theEntity.entityId} Loiter reset - moved {distanceMoved:F2}m from start");
-            }
             loiterStartPosition = currentPos;
             loiterTimer = 0f;
             isLoitering = false;
