@@ -58,8 +58,7 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
     {
         Init(_theEntity, 25f, _bNeedToSee: true);
         MutexBits = 1;
-        sorter = new EAISetNearestEntityAsTargetSorter(_theEntity);
-        Log.Out($"[{TaskName}] Init - EntityID: {_theEntity.entityId}, Name: {_theEntity.EntityName}");
+        sorter = new EAISetNearestEntityAsTargetSorter(_theEntity);        
     }
 
     public override void SetData(DictionarySave<string, string> data)
@@ -114,41 +113,34 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
     }
 
     public override bool CanExecute()
-    {
-        Log.Out($"[{TaskName}] id={theEntity.entityId} CanExecute called");
+    {        
 
         if (theEntity.distraction != null)
-        {
-            Log.Out($"[{TaskName}] id={theEntity.entityId} CanExecute=FALSE - Entity has distraction");
+        {            
             return false;
         }
 
         FindTarget();
         if (!closeTargetEntity)
-        {
-            Log.Out($"[{TaskName}] id={theEntity.entityId} CanExecute=FALSE - No target found");
+        {            
             return false;
         }
 
         targetEntity = closeTargetEntity;
-        targetPlayer = closeTargetEntity as EntityPlayer;
-        Log.Out($"[{TaskName}] id={theEntity.entityId} CanExecute=TRUE - Target: {targetEntity.EntityName} (id={targetEntity.entityId}), Distance: {closeTargetDist:F2}");
+        targetPlayer = closeTargetEntity as EntityPlayer;        
         return true;
     }
 
     [PublicizedFrom(EAccessModifier.Private)]
     public void FindTarget()
-    {
-        Log.Out($"[{TaskName}] id={theEntity.entityId} FindTarget START");
+    {        
         closeTargetDist = float.MaxValue;
         closeTargetEntity = null;
-        float seeDistance = theEntity.GetSeeDistance();
-        Log.Out($"[{TaskName}] id={theEntity.entityId} SeeDistance: {seeDistance:F2}, TargetClasses count: {targetClasses.Count}");
+        float seeDistance = theEntity.GetSeeDistance();        
         
         for (int i = 0; i < targetClasses.Count; i++)
         {
-            TargetClass targetClass = targetClasses[i];
-            Log.Out($"[{TaskName}] id={theEntity.entityId} Checking target class {i}: {targetClass.type.Name}");
+            TargetClass targetClass = targetClasses[i];            
             
             float num = seeDistance;
             if (targetClass.seeDistMax != 0f)
@@ -185,8 +177,7 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
                 {
                     EntityPlayer entityPlayer = (EntityPlayer)closeTargetEntity;
                     if (entityPlayer.IsBloodMoonDead && entityPlayer.currentLife >= 0.5f)
-                    {
-                        Log.Out("Player {0}, living {1}, lost BM immunity", entityPlayer.GetDebugName(), entityPlayer.currentLife * 60f);
+                    {                        
                         entityPlayer.IsBloodMoonDead = false;
                     }
                 }
@@ -219,16 +210,7 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
 
                 list.Clear();
             }
-        }
-        
-        if (closeTargetEntity != null)
-        {
-            Log.Out($"[{TaskName}] id={theEntity.entityId} FindTarget END - Found: {closeTargetEntity.EntityName}, Distance: {closeTargetDist:F2}");
-        }
-        else
-        {
-            Log.Out($"[{TaskName}] id={theEntity.entityId} FindTarget END - No target found");
-        }
+        }       
     }
 
     [PublicizedFrom(EAccessModifier.Private)]
@@ -276,17 +258,13 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
 
     [PublicizedFrom(EAccessModifier.Private)]
     public void FindTargetPlayer(float seeDist)
-    {
-        Log.Out($"[{TaskName}] id={theEntity.entityId} FindTargetPlayer - seeDist: {seeDist:F2}, IsSleeping: {theEntity.IsSleeping}");
-        
+    {                
         if (theEntity.IsSleeperPassive)
-        {
-            Log.Out($"[{TaskName}] id={theEntity.entityId} FindTargetPlayer - Is sleeper passive, exiting");
+        {            
             return;
         }
 
-        theEntity.world.GetEntitiesInBounds(typeof(EntityPlayer), BoundsUtils.ExpandBounds(theEntity.boundingBox, seeDist, seeDist, seeDist), list);
-        Log.Out($"[{TaskName}] id={theEntity.entityId} FindTargetPlayer - Found {list.Count} players in bounds");
+        theEntity.world.GetEntitiesInBounds(typeof(EntityPlayer), BoundsUtils.ExpandBounds(theEntity.boundingBox, seeDist, seeDist, seeDist), list);        
         
         if (theEntity.IsSleeping)
         {
@@ -367,8 +345,7 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
     }
 
     public override void Start()
-    {
-        Log.Out($"[{TaskName}] id={theEntity.entityId} START - Setting attack target: {targetEntity.EntityName}");
+    {        
         theEntity.SetAttackTarget(targetEntity, 200);
         theEntity.ConditionalTriggerSleeperWakeUp();
         PlaySoundSenseNoise();
@@ -379,8 +356,7 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
     {
         // Add early validation
         if (targetEntity == null || targetEntity.IsMarkedForUnload())
-        {
-            Log.Out($"[{TaskName}] id={theEntity.entityId} Continue=FALSE - Target entity is null or unloaded");
+        {            
             if (theEntity.GetAttackTarget() == targetEntity)
             {
                 theEntity.SetAttackTarget(null, 0);
@@ -389,8 +365,7 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
         }
         
         if (targetEntity.IsDead() || theEntity.distraction != null)
-        {
-            Log.Out($"[{TaskName}] id={theEntity.entityId} Continue=FALSE - Target dead or has distraction");
+        {            
             if (theEntity.GetAttackTarget() == targetEntity)
             {
                 theEntity.SetAttackTarget(null, 0);
@@ -404,15 +379,13 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
             findTime = 0f;
             FindTarget();
             if ((bool)closeTargetEntity && closeTargetEntity != targetEntity)
-            {
-                Log.Out($"[{TaskName}] id={theEntity.entityId} Continue=FALSE - Found better target");
+            {                
                 return false;
             }
         }
 
         if (theEntity.GetAttackTarget() != targetEntity)
-        {
-            Log.Out($"[{TaskName}] id={theEntity.entityId} Continue=FALSE - Attack target mismatch");
+        {            
             return false;
         }
 
@@ -422,8 +395,7 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
             lastSeenPos = targetEntity.position;
             return true;
         }
-
-        Log.Out($"[{TaskName}] id={theEntity.entityId} Continue=FALSE - Lost sight of target");
+        
         if (theEntity.GetDistanceSq(lastSeenPos) < 2.25f)
         {
             lastSeenPos = Vector3.zero;
@@ -440,8 +412,7 @@ public class EAISetNearestEntityAsTargetIconic : EAITarget
     }
 
     public override void Reset()
-    {
-        Log.Out($"[{TaskName}] id={theEntity.entityId} RESET");
+    {        
         targetEntity = null;
         targetPlayer = null;
     }
