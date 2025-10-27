@@ -7,8 +7,7 @@ namespace Harmony
     public class RiseFromTheAshes : IModApi
     {
         public void InitMod(Mod _modInstance)
-        {
-            Log.Out(" Loading Patch: " + GetType());
+        {            
 
             var harmony = new HarmonyLib.Harmony(GetType().ToString());
             harmony.PatchAll(Assembly.GetExecutingAssembly());
@@ -33,8 +32,7 @@ namespace Harmony
         }
 
         private void LoadMenuMusic()
-        {
-            Log.Out("[RFTA] Loading menu music from Init.cs");
+        {            
             
             // Use the shared method from MainMenuMusicPatch
             MainMenuMusicPatch.LoadAndApplyCustomMusic();
@@ -43,14 +41,12 @@ namespace Harmony
         private void InitializeRadioSystem()
         {
             try
-            {
-                Log.Out("[RFTA] Initializing Radio System...");
+            {                
                 
                 // Initialize RadioManager instance
                 var radioManager = RadioManager.Instance;
                 if (radioManager != null)
-                {
-                    Log.Out("[RFTA] RadioManager instance created successfully");
+                {                    
                     
                     // Create RadioManagerUpdater component for track progression
                     CreateRadioManagerUpdater();
@@ -70,15 +66,13 @@ namespace Harmony
         private void CreateRadioManagerUpdater()
         {
             try
-            {
-                Log.Out("[RFTA] Creating RadioManagerUpdater for automatic track progression");
+            {                
                 
                 // Create GameObject for RadioManager updates
                 GameObject radioUpdaterObject = new GameObject("RadioManagerUpdater");
                 radioUpdaterObject.AddComponent<RadioManagerUpdater>();
                 UnityEngine.Object.DontDestroyOnLoad(radioUpdaterObject);
-                
-                Log.Out("[RFTA] RadioManagerUpdater created successfully - track progression enabled");
+                                
             }
             catch (System.Exception e)
             {

@@ -37,8 +37,7 @@ namespace Rise.Radio
         public override void Play(string soundGroup)
         {
             try
-            {
-                Log.Out("EntityRadioSource Playing Radio : " + soundGroup);
+            {                
                 RadioDebug.D("ERS", $"Play '{soundGroup}'");
                 ClipName = soundGroup;
                 
@@ -66,8 +65,7 @@ namespace Rise.Radio
                 }
             }
             catch (Exception e)
-            {
-                Log.Out("Error playing entity radio source.");
+            {                
                 Log.Out($"Exception : {e.Message}");
                 RadioDebug.E("ERS", "Play error", e);
                 IsOn = false;

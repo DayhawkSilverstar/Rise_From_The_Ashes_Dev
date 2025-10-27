@@ -97,15 +97,12 @@ public class RiseRadio : RiseMasterBlock
 
         blockPosition = _blockPos.ToVector3();        
         RadioName = BuildRadioKey(blockPosition); // Use consistent world position key
-        
-        Log.Out($"RiseRadio OnBlockLoaded called - blockID: {blockID}, blockPosition: {blockPosition}");
-        Log.Out($"RadioName: {RadioName}");
+
         
         // Ensure we have a RadioManager instance
         if (radioManager == null)
         {
             radioManager = RadioManager.Instance;
-            Log.Out("RadioManager instance obtained in OnBlockLoaded");
         }
         
         // Restore radio state from RadioManager persistence
@@ -116,11 +113,9 @@ public class RiseRadio : RiseMasterBlock
             {
                 radioOn = isOn;
                 currentPlayingClip = clip;
-                Log.Out($"Restored radio state via RadioManager: {(radioOn ? "ON" : "OFF")}, clip: '{currentPlayingClip}' time={t:F2}s pos={pos}");
             }
             else
             {
-                Log.Out("No persisted state found in RadioManager, using default radio state (OFF)");
                 radioOn = false;
             }
         }
@@ -152,10 +147,7 @@ public class RiseRadio : RiseMasterBlock
         Vector3 unloadPosition = _blockPos.ToVector3();
         string unloadRadioName = BuildRadioKey(unloadPosition); // Use consistent world position key
         
-        Log.Out($"OnBlockUnloaded called for radio: {unloadRadioName}");
-        Log.Out($"Current block position: {blockPosition}");
-        Log.Out($"Unload position: {unloadPosition}");
-        
+       
         bool isOurBlock = (blockPosition == unloadPosition) || 
                          (Vector3.Distance(blockPosition, unloadPosition) < 0.1f);
         Log.Out($"Is our block: {isOurBlock}");
@@ -188,8 +180,7 @@ public class RiseRadio : RiseMasterBlock
             
             try
             {
-                radioManager.SaveBlockPersistentState(blockPosition, radioOn, clip, currentPlaybackTime, currentPlaylistPosition);
-                Log.Out($"Persisted via RadioManager: on={radioOn} clip='{clip}' t={currentPlaybackTime:F1}s pos={currentPlaylistPosition}");
+                radioManager.SaveBlockPersistentState(blockPosition, radioOn, clip, currentPlaybackTime, currentPlaylistPosition);                
             }
             catch (Exception ex)
             {
@@ -315,9 +306,7 @@ public class RiseRadio : RiseMasterBlock
     public void SetRadioOn(bool isOn)
     {
         bool stateChanged = (radioOn != isOn);
-        radioOn = isOn;
-        
-        Log.Out($"Radio {blockID} state set to: {(isOn ? "ON" : "OFF")}");
+        radioOn = isOn;               
         
         if (stateChanged)
         {
@@ -344,8 +333,7 @@ public class RiseRadio : RiseMasterBlock
                 catch { }
                 
                 if (radioManager == null) radioManager = RadioManager.Instance;
-                radioManager.SaveBlockPersistentState(blockPosition, isOn, clip, currentTime, playlistPos);
-                Log.Out($"Radio state persisted via RadioManager: {(isOn ? "ON" : "OFF")} clip='{clip}' t={currentTime:F2}s pos={playlistPos}");
+                radioManager.SaveBlockPersistentState(blockPosition, isOn, clip, currentTime, playlistPos);                
             }
             catch (Exception e)
             {
@@ -431,9 +419,7 @@ public class RiseRadio : RiseMasterBlock
     }
 
     public override bool OnBlockActivated(string _commandName, WorldBase _world, int _cIdx, Vector3i _blockPos, BlockValue _blockValue, EntityPlayerLocal _player)
-    {
-        Log.Out("Command : {0}", _commandName);
-
+    {        
         switch (_commandName)
         {
             case "trigger":
@@ -478,8 +464,6 @@ public class RiseRadio : RiseMasterBlock
         blockPosition = _bpResult.blockPos.ToVector3();
         RadioName = BuildRadioKey(blockPosition); // Use consistent world position key
         
-        Log.Out($"RiseRadio OnBlockPlaceBefore called - blockID: {blockID}, blockPosition: {blockPosition}");
-        Log.Out($"RadioName: {RadioName}");
         
         // Ensure we have a RadioManager instance
         if (radioManager == null)
@@ -494,8 +478,7 @@ public class RiseRadio : RiseMasterBlock
         try { radioManager.ClearPersistentState(blockPosition); } catch { }
         
         // Register the newly placed radio with RadioManager (BlockRadioSource will create its AudioSource)
-        radioManager.AddRadio(this);
-        Log.Out($"Radio {blockID} registered via OnBlockPlaceBefore");
+        radioManager.AddRadio(this);        
     }
 
     private void EnsureRadioIsRegistered()
@@ -504,8 +487,7 @@ public class RiseRadio : RiseMasterBlock
         {
             if (radioManager == null)
             {
-                radioManager = RadioManager.Instance;
-                Log.Out("RadioManager instance obtained in EnsureRadioIsRegistered");
+                radioManager = RadioManager.Instance;                
             }
             
             // Check if this radio is already registered using world position key

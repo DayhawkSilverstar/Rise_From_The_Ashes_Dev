@@ -38,8 +38,7 @@ namespace Rise.Radio
         public void OnBlockLoadedHook()
         {
             try
-            {
-                Log.Out($"[BRS] OnBlockLoadedHook called for {Name} at {Position}");
+            {                
                 RadioDebug.D("BRS", $"LoadedHook {Name} pos={Position}");
 
                 // Extra diagnostics about block validity/type
@@ -50,8 +49,7 @@ namespace Rise.Radio
                     if (world != null)
                     {
                         var pos = new Vector3i(Position);
-                        var bv = world.GetBlock(pos);
-                        Log.Out($"[BRS] World block at {pos}: type={bv.type} raw={bv}");
+                        var bv = world.GetBlock(pos);                        
                     }
                 }
                 catch (Exception exB)
@@ -66,8 +64,7 @@ namespace Rise.Radio
                 CreateDedicatedAudioSource();
 
                 // Mark initialized BEFORE attempting playback/resume
-                _isInitialized = true;
-                Log.Out($"[BRS] Marked initialized=true for {Name}");
+                _isInitialized = true;                
                 
                 // Prefer persisted state from the block if available; fall back to RadioManager central store
                 bool savedIsOn = false;
@@ -80,8 +77,7 @@ namespace Rise.Radio
                 {
                     if (Block != null)
                     {
-                        hasSavedState = Block.TryGetPersistentState(out savedIsOn, out savedClip, out savedTime, out savedPos);
-                        Log.Out($"[BRS] Block.TryGetPersistentState => has={hasSavedState} on={savedIsOn} clip='{savedClip}' time={savedTime:F2} pos={savedPos}");
+                        hasSavedState = Block.TryGetPersistentState(out savedIsOn, out savedClip, out savedTime, out savedPos);                        
                     }
                 }
                 catch (Exception exPS)
@@ -101,8 +97,7 @@ namespace Rise.Radio
                             savedIsOn = rmOn;
                             savedClip = rmClip;
                             savedTime = rmTime;
-                            savedPos = rmPos;
-                            Log.Out($"[BRS] Loaded state from RadioManager: on={savedIsOn} clip='{savedClip}' t={savedTime:F2} pos={savedPos}");
+                            savedPos = rmPos;                            
                         }
                         else
                         {
@@ -118,8 +113,7 @@ namespace Rise.Radio
                 // Determine if this radio should be ON from block state or saved state
                 bool blockReportsOn = (Block != null && Block.IsRadioOn());
                 bool shouldBeOn = blockReportsOn || this.IsOn || (hasSavedState && savedIsOn);
-                
-                Log.Out($"[BRS] Decision: blockReportsOn={blockReportsOn} this.IsOn={this.IsOn} hasSaved={hasSavedState} savedOn={savedIsOn} => shouldBeOn={shouldBeOn}");
+                               
                 
                 // If radio should be on at load, attempt to resume saved clip/time, otherwise current playlist
                 if (shouldBeOn)
@@ -156,13 +150,11 @@ namespace Rise.Radio
                     // If playlist advanced or saved clip differs from current, prefer current playlist + sync
                     if (!string.IsNullOrEmpty(currentTrack) && (playlistPosDiffers || (savedClipValid && !matchesCurrent) || !savedClipValid))
                     {
-                        float syncTime = GetSyncTimeFromOtherRadios(currentTrack);
-                        Log.Out($"[BRS] Adopting current playlist track on load: '{currentTrack}' (sync {syncTime:F2}s), savedClip='{savedClip}' pos(saved={savedPos},cur={currentPos})");
+                        float syncTime = GetSyncTimeFromOtherRadios(currentTrack);                        
                         PlayInternal(currentTrack, Mathf.Max(0f, syncTime));
                     }
                     else if (savedClipValid)
                     {
-                        Log.Out($"[BRS] Resuming from saved state: clip='{savedClip}', time={savedTime:F2}s");
                         RadioDebug.D("BRS", $"resume saved '{savedClip}' t={savedTime:F2}");
                         PlayInternal(savedClip, Mathf.Max(0f, savedTime));
                     }
@@ -171,8 +163,7 @@ namespace Rise.Radio
                         // Fallback: try current track if available
                         if (!string.IsNullOrEmpty(currentTrack))
                         {
-                            float syncTime = GetSyncTimeFromOtherRadios(currentTrack);
-                            Log.Out($"[BRS] Fallback resume to current track: {currentTrack} (sync {syncTime:F2}s)");
+                            float syncTime = GetSyncTimeFromOtherRadios(currentTrack);                            
                             PlayInternal(currentTrack, Mathf.Max(0f, syncTime));
                         }
                         else
@@ -185,8 +176,7 @@ namespace Rise.Radio
                 {
                     Log.Out("[BRS] Decision: shouldBeOn=false; not attempting resume");
                 }
-                
-                Log.Out($"[BRS] Block radio initialized successfully: {Name}");
+                                
             }
             catch (Exception e)
             {
@@ -202,20 +192,17 @@ namespace Rise.Radio
         public void OnBlockUnloadedHook()
         {
             try
-            {
-                Log.Out($"[BRS] OnBlockUnloadedHook called for {Name}");
+            {                
                 RadioDebug.D("BRS", $"UnloadHook {Name}");
                 
                 // Mark as temporarily unloaded so the reaper doesn't permanently remove us
-                TemporarilyUnloaded = true;
-                Log.Out($"[BRS] TemporarilyUnloaded set=true for {Name}");
+                TemporarilyUnloaded = true;                
                 
                 // Before tearing down, persist state centrally to ensure resume upon reload
                 try
                 {
                     float t = GetCurrentTime();
-                    int pos = 0; try { pos = RadioPlaylistManager.Instance.PlaylistPosition; } catch {}
-                    Log.Out($"[BRS] Persist-on-unload snapshot: IsOn={IsOn} Clip='{ClipName}' t={t:F2} playlistPos={pos}");
+                    int pos = 0; try { pos = RadioPlaylistManager.Instance.PlaylistPosition; } catch {}                    
                     RadioManager.Instance.SaveBlockPersistentState(Position, IsOn, ClipName, t, pos);
                 }
                 catch (Exception persistEx)
@@ -225,8 +212,7 @@ namespace Rise.Radio
                 
                 // Stop any currently playing audio but DO NOT flip persistent power state
                 if (!string.IsNullOrEmpty(ClipName))
-                {
-                    Log.Out($"[BRS] Stopping audio on unload without power-off: '{ClipName}'");
+                {                    
                     StopInternal(persistPowerOff: false);
                 }
 
@@ -235,8 +221,7 @@ namespace Rise.Radio
                 
                 // Do not clear IsOn/ClipName here; preserve state for resume
                 _isInitialized = false;
-                
-                Log.Out($"[BRS] Block radio cleanup completed (state preserved): {Name}");
+                                
             }
             catch (Exception e)
             {
@@ -251,8 +236,7 @@ namespace Rise.Radio
         public void OnBlockDestroyedHook()
         {
             try
-            {
-                Log.Out($"[BRS] OnBlockDestroyedHook called for {Name}");
+            {                
 
                 // Unset temporary flag; this is a permanent removal
                 TemporarilyUnloaded = false;
@@ -284,8 +268,7 @@ namespace Rise.Radio
                 IsOn = false;
                 ClipName = string.Empty;
                 _isInitialized = false;
-
-                Log.Out($"[BRS] Destroy cleanup completed for {Name}");
+                
             }
             catch (Exception e)
             {
@@ -310,17 +293,13 @@ namespace Rise.Radio
                     
                     // Attach lifecycle logger to help diagnose unexpected destruction/disable
                     _audioObject.AddComponent<RadioAnchorLifecycle>().Init(Name, Position);
-                    
-                    Log.Out($"[BRS] Created anchor GameObject: {name} at {Position}");
+                                       
                 }
                 else
                 {
                     Log.Out($"[BRS] Anchor already exists for {Name} at {_audioObject.transform.position}");
                 }
 
-                // Note: We no longer create our own AudioSource here
-                // Instead, we'll use the AudioSource created by the game's Manager.Play system
-                Log.Out($"[BRS] Anchor ready for game audio system integration");
             }
             catch (Exception e)
             {
@@ -341,8 +320,7 @@ namespace Rise.Radio
                     try
                     {
                         if (AudioSourceObject.isPlaying)
-                        {
-                            Log.Out($"[BRS] Destroy cleanup: stopping Manager audio '{ClipName}' at {Position}");
+                        {                            
                             Manager.Stop(Position, ClipName);
                         }
                     }
@@ -355,8 +333,7 @@ namespace Rise.Radio
                 if (_audioObject != null)
                 {
                     UnityEngine.Object.Destroy(_audioObject);
-                    _audioObject = null;
-                    Log.Out("[BRS] Anchor GameObject destroyed");
+                    _audioObject = null;                    
                 }
 
                 // Clear references
@@ -376,8 +353,7 @@ namespace Rise.Radio
         {
             try
             {
-                var existingSources = GetAudioSources(trackName);
-                Log.Out($"[BRS] GetSyncTimeFromOtherRadios('{trackName}') -> found={existingSources.Count}");
+                var existingSources = GetAudioSources(trackName);                
                 if (existingSources.Count > 0)
                 {
                     foreach (var s in existingSources)
@@ -385,16 +361,14 @@ namespace Rise.Radio
                         if (s == null) continue;
                         string c = s.clip != null ? s.clip.name : "<null>";
                         float t = (s.clip != null) ? s.time : -1f;
-                        Vector3 p = s.gameObject != null ? s.gameObject.transform.position : Vector3.zero;
-                        Log.Out($"[BRS]   Src clip='{c}' isPlaying={s.isPlaying} time={t:F2} at={p}");
+                        Vector3 p = s.gameObject != null ? s.gameObject.transform.position : Vector3.zero;                        
                     }
 
                     var primary = existingSources.Where(s => s != null && s.isPlaying && s.clip != null)
                                                  .OrderByDescending(s => s.time)
                                                  .FirstOrDefault();
                     if (primary != null && primary.time > 0f)
-                    {
-                        Log.Out($"[BRS] Found sync time from other radio: {primary.time:F2}s");
+                    {                        
                         return primary.time;
                     }
                 }
@@ -453,20 +427,16 @@ namespace Rise.Radio
             try
             {
                 if (!_isInitialized)
-                {
-                    Log.Out($"[BRS] SwapClip ignored; not initialized for {Name}");
+                {                    
                     return;
-                }
-
-                Log.Out($"[BRS] SwapClip request: '{clipName}' startT={startTimeSeconds:F2} dspStart={dspStart:F3}");
+                }                
 
                 // Stop and unregister previous clip if different to avoid overlap
                 string previousClip = ClipName;
                 if (!string.IsNullOrEmpty(previousClip) && previousClip != clipName)
                 {
                     try { RadioCoordinator.Instance.UnregisterRadioForTrack(previousClip, this); } catch {}
-                    try { Manager.Stop(Position, previousClip); } catch {}
-                    Log.Out($"[BRS] SwapClip stopped previous clip '{previousClip}'");
+                    try { Manager.Stop(Position, previousClip); } catch {}                    
                 }
 
                 // Request playback via game system (ensures source exists/pooled correctly)
@@ -512,8 +482,7 @@ namespace Rise.Radio
             }
 
             if (src == null)
-            {
-                Log.Out($"[BRS] SwapClipCo could not find AudioSource for {Name} after {attempts} attempts");
+            {                
                 yield break;
             }
 
@@ -521,8 +490,7 @@ namespace Rise.Radio
             _dedicatedAudioSource = src;
 
             try
-            {
-                Log.Out($"[BRS] SwapClipCo acquired source: clip='{(src.clip!=null?src.clip.name:"<null>")}' len={(src.clip!=null?src.clip.length:0f):F2}");
+            {                
                 // Update RadioManager centralized length if this is the current clip
                 if (src.clip != null)
                 {
@@ -542,8 +510,7 @@ namespace Rise.Radio
                 src.PlayScheduled(dspStart);
                 IsOn = true;
                 // Register with coordinator after scheduling to enable sync
-                try { RadioCoordinator.Instance.RegisterRadioForTrack(clipName, this); } catch {}
-                Log.Out($"[BRS] SwapClipCo scheduled play for '{clipName}' at DSP={dspStart:F3} startT={startTimeSeconds:F2}");
+                try { RadioCoordinator.Instance.RegisterRadioForTrack(clipName, this); } catch {}                
             }
             catch (Exception e)
             {
@@ -557,8 +524,7 @@ namespace Rise.Radio
         public override void ReinitAndRestart(string clipName, float startTimeSeconds)
         {
             try
-            {
-                Log.Out($"[BRS] ReinitAndRestart clip='{clipName}' t={startTimeSeconds:F2} for {Name}");
+            {                
                 if (!_isInitialized)
                 {
                     CreateDedicatedAudioSource();
@@ -569,8 +535,7 @@ namespace Rise.Radio
                 if (!string.IsNullOrEmpty(ClipName) && ClipName != clipName)
                 {
                     try { RadioCoordinator.Instance.UnregisterRadioForTrack(ClipName, this); } catch {}
-                    try { Manager.Stop(Position, ClipName); } catch {}
-                    Log.Out($"[BRS] ReinitAndRestart stopped previous clip '{ClipName}'");
+                    try { Manager.Stop(Position, ClipName); } catch {}                    
                 }
 
                 PlayInternal(clipName, startTimeSeconds);
@@ -588,8 +553,7 @@ namespace Rise.Radio
         private void PlayInternal(string soundGroup, float syncTime = 0f)
         {
             try
-            {
-                Log.Out($"[BRS] PlayInternal called: {soundGroup} with syncTime: {syncTime:F2}s");
+            {                
                 RadioDebug.D("BRS", $"Play '{soundGroup}' syncT={syncTime:F2}");
                 
                 if (!_isInitialized)
@@ -602,8 +566,7 @@ namespace Rise.Radio
                 if (!string.IsNullOrEmpty(ClipName) && ClipName != soundGroup)
                 {
                     try { RadioCoordinator.Instance.UnregisterRadioForTrack(ClipName, this); } catch {}
-                    try { Manager.Stop(Position, ClipName); } catch {}
-                    Log.Out($"[BRS] PlayInternal stopped previous clip '{ClipName}'");
+                    try { Manager.Stop(Position, ClipName); } catch {}                    
                 }
 
                 ClipName = soundGroup;
@@ -618,8 +581,7 @@ namespace Rise.Radio
                     if (syncTime > 0f)
                     {
                         float clamped = Mathf.Clamp(syncTime, 0f, existingSrc.clip.length - 0.1f);
-                        existingSrc.time = clamped;
-                        Log.Out($"[BRS] Applied sync time on existing source: {clamped:F2}s");
+                        existingSrc.time = clamped;                        
                     }
                     // Update RadioManager length if this is the central clip
                     string central = RadioManager.Instance.CurrentClipName;
@@ -631,14 +593,12 @@ namespace Rise.Radio
                             RadioManager.Instance.UpdateCurrentClipLength(existingSrc.clip.length);
                         }
                     }
-                    try { RadioCoordinator.Instance.RegisterRadioForTrack(soundGroup, this); } catch {}
-                    Log.Out($"[BRS] Took control of existing game AudioSource for '{soundGroup}'");
+                    try { RadioCoordinator.Instance.RegisterRadioForTrack(soundGroup, this); } catch {}                    
                 }
                 else
                 {
                     // Use the game's audio system directly
-                    Manager.Play(Position, soundGroup);
-                    Log.Out($"[BRS] Manager.Play issued at {Position} for '{soundGroup}'");
+                    Manager.Play(Position, soundGroup);                    
                     
                     // Wait for the game to create the AudioSource, then take control of it (with retries)
                     GameManager gm = GameManager.Instance;
@@ -677,16 +637,14 @@ namespace Rise.Radio
                     // Trace all sources the system sees for this clip (first attempts only)
                     if (attempts == 0)
                     {
-                        var allForClip = GetAudioSources(clipName);
-                        Log.Out($"[BRS] TakeControl: found {allForClip.Count} AudioSources for clip '{clipName}'");
+                        var allForClip = GetAudioSources(clipName);                        
                         int idx = 0;
                         foreach (var s in allForClip)
                         {
                             if (s == null) continue;
                             string c = s.clip != null ? s.clip.name : "<null>";
                             float t = (s.clip != null) ? s.time : -1f;
-                            Vector3 p = s.gameObject != null ? s.gameObject.transform.position : Vector3.zero;
-                            Log.Out($"[BRS]   [{idx++}] clip='{c}' playing={s.isPlaying} t={t:F2} at={p}");
+                            Vector3 p = s.gameObject != null ? s.gameObject.transform.position : Vector3.zero;                            
                         }
                     }
 
@@ -696,15 +654,14 @@ namespace Rise.Radio
                     {
                         // Take control of this AudioSource
                         AudioSourceObject = gameAudioSource;
-                        _dedicatedAudioSource = gameAudioSource;
-                        Log.Out($"[BRS] TakeControl acquired source: clip='{gameAudioSource.clip.name}' len={gameAudioSource.clip.length:F2} pos={gameAudioSource.gameObject.transform.position}");
+                        _dedicatedAudioSource = gameAudioSource;                        
                         
                         // Apply sync time if needed
                         if (syncTime > 0f)
                         {
                             float clampedTime = Mathf.Clamp(syncTime, 0f, gameAudioSource.clip.length - 0.1f);
                             gameAudioSource.time = clampedTime;
-                            Log.Out($"[BRS] Applied sync time: {clampedTime:F2}s");
+                            
                         }
                         
                         IsOn = true;
@@ -729,8 +686,7 @@ namespace Rise.Radio
                         
                         // Register with coordinator for sync/coalescing
                         try { RadioCoordinator.Instance.RegisterRadioForTrack(clipName, this); } catch {}
-                        
-                        Log.Out($"[BRS] Successfully took control of game AudioSource: {clipName}");
+                                                
                         yield break;
                     }
 
@@ -738,8 +694,7 @@ namespace Rise.Radio
                     if (attempts == 10)
                     {
                         try { Manager.Stop(Position, clipName); } catch { }
-                        try { Manager.Play(Position, clipName); } catch { }
-                        Log.Out($"[BRS] TakeControl retry reissued Manager.Play for '{clipName}'");
+                        try { Manager.Play(Position, clipName); } catch { }                        
                     }
                 }
                 catch (Exception e)
@@ -749,8 +704,7 @@ namespace Rise.Radio
 
                 attempts++;
             }
-
-            Log.Out($"[BRS] Deferred playback; no game AudioSource available yet for: {clipName} after {attempts} attempts");
+            
             // Keep logical ON and clip name so proximity/watchdog can reissue playback later
             IsOn = true;
             ClipName = clipName;
@@ -770,20 +724,17 @@ namespace Rise.Radio
         private void StopInternal(bool persistPowerOff)
         {
             try
-            {
-                Log.Out($"[BRS] StopInternal called for: {Name} persistOff={persistPowerOff}");
+            {                
 
                 // Stop using the game's audio system
                 if (!string.IsNullOrEmpty(ClipName))
-                {
-                    Log.Out($"[BRS] StopInternal -> Manager.Stop at {Position} for '{ClipName}'");
+                {                    
                     Manager.Stop(Position, ClipName);
                 }
 
                 // Clear references
                 if (AudioSourceObject != null)
-                {
-                    Log.Out("[BRS] StopInternal clearing AudioSourceObject ref");
+                {                    
                     AudioSourceObject = null;
                 }
                 _dedicatedAudioSource = null;
@@ -799,13 +750,10 @@ namespace Rise.Radio
                     {
                         Block.SetRadioOn(false);
                     }
-                }
-
-                Log.Out($"[BRS] Successfully stopped radio: {Name}");
+                }                
             }
             catch (Exception e)
-            {
-                Log.Out($"[BRS] Error in StopInternal: {e.Message}");
+            {                
                 if (persistPowerOff)
                 {
                     IsOn = false;
@@ -820,12 +768,9 @@ namespace Rise.Radio
         public void UpdateClip(string clipName)
         {
             try
-            {
-                Log.Out($"[BRS] UpdateClip called: {Name} -> '{clipName}'");
-
+            {                
                 if (!_isInitialized)
-                {
-                    Log.Out("[BRS] Radio not initialized for clip update");
+                {                    
                     return;
                 }
 
@@ -839,9 +784,7 @@ namespace Rise.Radio
                 }
 
                 // Start new clip
-                PlayInternal(clipName, syncTime);
-
-                Log.Out($"[BRS] UpdateClip completed: {Name} -> '{clipName}'");
+                PlayInternal(clipName, syncTime);                
             }
             catch (Exception e)
             {
@@ -858,8 +801,7 @@ namespace Rise.Radio
             try
             {
                 if (!IsOn || _dedicatedAudioSource == null || _dedicatedAudioSource.clip == null)
-                {
-                    Log.Out($"[BRS] Sync skipped: IsOn={IsOn} hasAS={_dedicatedAudioSource!=null} hasClip={_dedicatedAudioSource!=null && _dedicatedAudioSource.clip!=null}");
+                {                    
                     return;
                 }
 
@@ -867,8 +809,7 @@ namespace Rise.Radio
                 if (syncTime > 0f && Math.Abs(_dedicatedAudioSource.time - syncTime) > 0.5f)
                 {
                     float clampedTime = Mathf.Clamp(syncTime, 0f, _dedicatedAudioSource.clip.length - 0.1f);
-                    _dedicatedAudioSource.time = clampedTime;
-                    Log.Out($"[BRS] Synced {Name} to time: {clampedTime:F2}s");
+                    _dedicatedAudioSource.time = clampedTime;                    
                 }
             }
             catch (Exception e)
@@ -907,7 +848,6 @@ namespace Rise.Radio
                 {
                     float clampedTime = Mathf.Clamp(time, 0f, _dedicatedAudioSource.clip.length - 0.1f);
                     _dedicatedAudioSource.time = clampedTime;
-                    Log.Out($"[BRS] Set playback time to: {clampedTime:F2}s");
                 }
             }
             catch (Exception e)

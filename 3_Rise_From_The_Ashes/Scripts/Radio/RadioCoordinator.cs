@@ -39,15 +39,13 @@ namespace Rise.Radio
             
             if (!trackToRadiosMap[trackName].Contains(radio))
             {
-                trackToRadiosMap[trackName].Add(radio);
-                Log.Out($"Registered radio {radio.Name} for track {trackName}. Total radios for this track: {trackToRadiosMap[trackName].Count}");
+                trackToRadiosMap[trackName].Add(radio);                
                 RadioDebug.D("COORD", $"Register '{trackName}' radio={radio.Name} count={trackToRadiosMap[trackName].Count}");
 
                 // If there are multiple radios for this track, trigger sync after a brief delay
                 // This allows other radios to register before syncing
                 if (trackToRadiosMap[trackName].Count > 1)
-                {
-                    Log.Out($"Multiple radios detected for {trackName}, scheduling delayed sync");
+                {                    
                     GameManager.Instance.StartCoroutine(DelayedSyncForTrack(trackName, 0.3f));
                 }
             }
@@ -61,8 +59,7 @@ namespace Rise.Radio
                 if (trackToRadiosMap[trackName].Count == 0)
                 {
                     trackToRadiosMap.Remove(trackName);
-                }
-                Log.Out($"Unregistered radio {radio.Name} from track {trackName}");
+                }                
                 RadioDebug.D("COORD", $"Unregister '{trackName}' radio={radio.Name}");
             }
         }
@@ -79,13 +76,11 @@ namespace Rise.Radio
                 if (trackToRadiosMap.ContainsKey(trackName) && trackToRadiosMap[trackName].Count > 1)
                 {
                     // Check how many are actually playing
-                    var validRadios = trackToRadiosMap[trackName].Where(r => r != null && r.IsOn && r.IsParentValid()).ToList();
-                    Log.Out($"Delayed sync for {trackName}: {validRadios.Count}/{trackToRadiosMap[trackName].Count} valid radios");
+                    var validRadios = trackToRadiosMap[trackName].Where(r => r != null && r.IsOn && r.IsParentValid()).ToList();                    
                     
                     if (validRadios.Count > 1)
                     {
-                        RadioSource.SyncAudioSource(trackName);
-                        Log.Out($"Performed delayed sync for {trackName} with {validRadios.Count} radios");
+                        RadioSource.SyncAudioSource(trackName);                        
                     }
                 }
             }
@@ -205,8 +200,7 @@ namespace Rise.Radio
                     
                     if (validRadios.Count > 1)
                     {
-                        RadioSource.SyncAudioSource(trackName);
-                        Log.Out($"Force sync completed for {trackName}");
+                        RadioSource.SyncAudioSource(trackName);                        
                     }
                     else
                     {

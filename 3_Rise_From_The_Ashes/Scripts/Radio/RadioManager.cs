@@ -39,8 +39,7 @@ public class RadioManager
         {
             currentClipName = clipName;
             currentClipStartTime = Time.time;
-            currentClipLength = 0f;
-            Log.Out($"[RM][CURRENT] Now playing='{currentClipName}'");
+            currentClipLength = 0f;            
         }
     }
 
@@ -48,8 +47,7 @@ public class RadioManager
     {
         if (length > 0f && (currentClipLength <= 0f || Math.Abs(currentClipLength - length) > 0.05f))
         {
-            currentClipLength = length;
-            Log.Out($"[RM][CURRENT] Updated clip length {currentClipName} = {currentClipLength:F1}s");
+            currentClipLength = length;            
         }
     }
 
@@ -936,8 +934,7 @@ public class RadioManager
             
             VerifyAndUpdateRadioStates();
             
-            var currentlyOn = radioSources.Where(r => r.IsOn).ToList();
-            Log.Out($"[RM] ActiveRadios={currentlyOn.Count}");
+            var currentlyOn = radioSources.Where(r => r.IsOn).ToList();            
             if (currentlyOn.Count == 0)
             {
                 Log.Out("[RM] No active radios to skip");
@@ -1254,8 +1251,7 @@ public class RadioManager
             VerifyAndUpdateRadioStates();
             
             var activeRadios = radioSources.Where(r => r.IsOn).ToList();
-            string currentTrack = CurrentClipName;
-            Log.Out($"[RM] Update: ActiveRadios={activeRadios.Count} Current='{currentTrack}'");
+            string currentTrack = CurrentClipName;            
             
             if (activeRadios.Count > 0)
             {
@@ -1587,10 +1583,6 @@ public class RadioManager
                 return;
 
             Vector3 playerPos = player.position;
-            
-            // Debug log player's world location
-            Log.Out($"[RM][PLAYER_POS] Player World Location: {playerPos} (X:{playerPos.x:F2}, Y:{playerPos.y:F2}, Z:{playerPos.z:F2})");
-            RadioDebug.D("RM-PLAYER", $"pos={playerPos} x={playerPos.x:F2} y={playerPos.y:F2} z={playerPos.z:F2}");
             
             string currentTrack = CurrentClipName;
 
