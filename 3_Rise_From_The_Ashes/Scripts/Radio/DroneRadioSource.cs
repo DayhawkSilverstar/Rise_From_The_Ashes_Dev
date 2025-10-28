@@ -59,7 +59,18 @@ namespace Rise.Radio
                 if (AudioSourceObject != null)
                 {
                     AudioSourceObject.dopplerLevel = 0;
-                    SyncAudioSource(soundGroup);
+                    
+                    // CRITICAL FIX: Skip sync call for moving entities to prevent stuttering
+                    bool isMoving = entity.motion.sqrMagnitude > 0.01f;
+                    if (!isMoving)
+                    {
+                        SyncAudioSource(soundGroup);
+                    }
+                    else
+                    {
+                        Log.Out($"Drone radio skipping initial sync - entity moving (vel={entity.motion.magnitude:F2})");
+                    }
+                    
                     IsOn = true;
 
                     // Update drone radio state

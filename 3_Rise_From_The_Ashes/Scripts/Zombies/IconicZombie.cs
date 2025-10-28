@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AI;
 using static ReflectionManager;
 
 
@@ -32,7 +32,6 @@ public class IconicZombie : EntityZombie
     {
         
     }
-    
 
     public override bool CanEntityJump()
     {        
@@ -314,119 +313,6 @@ public class IconicZombie : EntityZombie
         return sightRange;
     }
 
-    public new void DefaultMoveEntity(Vector3 _direction, bool _isDirAbsolute)
-    {
-        float num = 0.91f;
-        if (AIDirector.debugFreezePos && aiManager != null)
-        {
-            motion = Vector3.zero;
-        }
-
-        if (onGround)
-        {
-            num = 0.546f;
-            if (!IsDead() && this is EntityPlayer)
-            {
-                BlockValue block = world.GetBlock(Utils.Fastfloor(position.x), Utils.Fastfloor(boundingBox.min.y), Utils.Fastfloor(position.z));
-                if (block.isair || block.Block.blockMaterial.IsGroundCover)
-                {
-                    block = world.GetBlock(Utils.Fastfloor(position.x), Utils.Fastfloor(boundingBox.min.y - 1f), Utils.Fastfloor(position.z));
-                }
-
-                if (!block.isair)
-                {
-                    num = Mathf.Clamp(1f - block.Block.blockMaterial.Friction, 0.01f, 1f);
-                }
-            }
-        }
-
-        if (!RootMotion || (!onGround && jumpTicks > 0))
-        {
-            float num2;
-            if (onGround)
-            {
-                num2 = landMovementFactor;
-                float num3 = 0.163f / (num * num * num);
-                num2 *= num3;
-            }
-            else
-            {
-                num2 = jumpMovementFactor;
-            }
-
-            Move(_direction, _isDirAbsolute, num2, MaxVelocity);
-        }
-
-        if (Climbing)
-        {
-            fallDistance = 0f;
-            entityCollision(motion);
-            distanceClimbed += motion.magnitude;
-            if (distanceClimbed > 0.5f)
-            {
-                internalPlayStepSound(1f);
-                distanceClimbed = 0f;
-            }
-        }
-        else
-        {
-            if (IsInElevator())
-            {
-                if (!RootMotion)
-                {
-                    float num4 = 0.15f;
-                    if (motion.x < 0f - num4)
-                    {
-                        motion.x = 0f - num4;
-                    }
-
-                    if (motion.x > num4)
-                    {
-                        motion.x = num4;
-                    }
-
-                    if (motion.z < 0f - num4)
-                    {
-                        motion.z = 0f - num4;
-                    }
-
-                    if (motion.z > num4)
-                    {
-                        motion.z = num4;
-                    }
-                }
-
-                fallDistance = 0f;
-            }
-
-            if (IsSleeping)
-            {
-                motion.x = 0f;
-                motion.z = 0f;
-            }
-
-            entityCollision(motion);
-        }
-
-        if (isSwimming)
-        {
-            motion.x *= 0.91f;
-            motion.z *= 0.91f;
-            motion.y -= world.Gravity * 0.025f;
-            motion.y *= 0.91f;
-            return;
-        }
-
-        motion.x *= num;
-        motion.z *= num;
-        if (!bInElevator)
-        {
-            motion.y -= world.Gravity;
-        }
-
-        motion.y *= 0.98f;
-    }
-
     public void FindTarget()
     {
         // Initialize the closest target distance to the maximum possible value
@@ -611,7 +497,7 @@ public class IconicZombie : EntityZombie
             
             float yDiff = this.position.y - this.Target.position.y;
             
-            return result;
+            return false;
         }
         
         return false;

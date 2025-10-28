@@ -19,25 +19,25 @@ public class EAIApproachAndAttackIconic : EAIBase
     [PublicizedFrom(EAccessModifier.Private)]
     public const float cSleeperChaseTime = 90f;
 
-    private const float VerticalStopThreshold = 1.25f; // stop moving if height difference is larger than this
-    private const float VerticalXZRange = 1.5f; // how close in X/Z before we consider target above/below
-    private const float AttackVerticalRange = 3.5f; // can attack/break blocks if target is within this vertical range
+    private const float VerticalStopThreshold = 1.25f;
+    private const float VerticalXZRange = 1.5f;
+    private const float AttackVerticalRange = 3.5f;
 
     // Position tracking for loitering detection
-    private const float LoiterDetectionRadius = 3f; // If zombie stays within this radius...
-    private const float LoiterDetectionTime = 2f; // ...for this many seconds, it's loitering
+    private const float LoiterDetectionRadius = 3f;
+    private const float LoiterDetectionTime = 2f;
     private Vector3 loiterStartPosition;
     private float loiterTimer;
     private bool isLoitering;
 
     // Ally spawn call after sustained targeting
-    private float allyCallTimer;           // seconds of having a valid attack target
-    private float allyCallThresholdSeconds; // dynamic threshold so it can fire before going home
+    private float allyCallTimer;
+    private float allyCallThresholdSeconds;
 
     // Resilience to resets
-    private int allyTargetEntityId = -1;        // last logical target id we were timing against
-    private float allyTimerLastValidTime = -999f; // last time we had a valid target
-    private const float AllyTimerGraceWindow = 5f; // seconds to preserve timer through brief resets
+    private int allyTargetEntityId = -1;
+    private float allyTimerLastValidTime = -999f;
+    private const float AllyTimerGraceWindow = 5f;
 
     private int zombiesSpawned = 0;
     private int maxZombiesToSpawn = 2;
@@ -90,6 +90,16 @@ public class EAIApproachAndAttackIconic : EAIBase
     [PublicizedFrom(EAccessModifier.Private)]
     public int relocateTicks;
 
+    // TARGETED LOGGING: Track only essential movement data to identify jitter cause
+    private static bool enableJitterTracking = true;
+    private Vector3 lastFramePosition = Vector3.zero;
+    private int moveCommandsThisFrame = 0;
+    private int currentFrame = -1;
+    
+    // ANIMATOR DIAGNOSTIC: Track animator parameter changes for directional movement issue
+    private float lastSpeedForward = 0f;
+    private float lastSpeedStrafe = 0f;
+
     private static readonly List<Entity> TmpEntities = new List<Entity>();
 
     private string TaskName => nameof(EAIApproachAndAttackIconic);
@@ -105,7 +115,7 @@ public class EAIApproachAndAttackIconic : EAIBase
     {        
         base.Init(_theEntity);
         MutexBits = 3;
-        executeDelay = 0.1f;        
+        executeDelay = 0.1f;
     }
 
     public override void SetData(DictionarySave<string, string> data)
@@ -148,9 +158,8 @@ public class EAIApproachAndAttackIconic : EAIBase
 
     public override bool CanExecute()
     {        
-        
         if (theEntity.sleepingOrWakingUp || theEntity.bodyDamage.CurrentStun != 0 || (theEntity.Jumping && !theEntity.isSwimming))
-        {     
+        {
             return false;
         }
 
@@ -159,7 +168,7 @@ public class EAIApproachAndAttackIconic : EAIBase
         {            
             // Fallback: if no EAITarget task has set an attack target, try to auto-acquire a valid player target
             if (!TryAutoAcquireTarget())
-            {                
+            {
                 return false;
             }
             entityTarget = theEntity.GetAttackTarget();
@@ -174,7 +183,7 @@ public class EAIApproachAndAttackIconic : EAIBase
                 TargetClass targetClass = targetClasses[i];
                 if (targetClass.type != null && targetClass.type.IsAssignableFrom(type))
                 {
-                    chaseTimeMax = targetClass.chaseTimeMax;                    
+                    chaseTimeMax = targetClass.chaseTimeMax;
                     return true;
                 }
             }
@@ -223,7 +232,7 @@ public class EAIApproachAndAttackIconic : EAIBase
     }
 
     public override void Start()
-    {        
+    {
         entityTargetPos = entityTarget.position;
         entityTargetVel = Vector3.zero;
         isTargetToEat = entityTarget.IsDead();
@@ -268,24 +277,24 @@ public class EAIApproachAndAttackIconic : EAIBase
         else
         {
             allyCallThresholdSeconds = 30f;
-        }        
+        }
+        
+        // TARGETED: Initialize position tracking
+        lastFramePosition = theEntity.position;
     }
 
     public override bool Continue()
     {
         if (theEntity.sleepingOrWakingUp || theEntity.bodyDamage.CurrentStun != 0)
-        {            
+        {
             return false;
         }
-
-
-
 
         EntityAlive attackTarget = theEntity.GetAttackTarget();
         
         // Add null check and validation for attack target
         if (attackTarget == null || attackTarget.IsDead() || attackTarget.IsMarkedForUnload())
-        {            
+        {
             return false;
         }
         
@@ -293,7 +302,7 @@ public class EAIApproachAndAttackIconic : EAIBase
         {
             if (!attackTarget)
             {
-                bool shouldContinue = theEntity.ChaseReturnLocation != Vector3.zero;                
+                bool shouldContinue = theEntity.ChaseReturnLocation != Vector3.zero;
                 return shouldContinue;
             }
             
@@ -301,7 +310,7 @@ public class EAIApproachAndAttackIconic : EAIBase
         }
 
         if (!attackTarget)
-        {            
+        {
             return false;
         }
 
@@ -313,13 +322,13 @@ public class EAIApproachAndAttackIconic : EAIBase
                 entityTarget = attackTarget;
             }
             else
-            {                
+            {
                 return false;
             }
         }
 
         if (attackTarget.IsDead() != isTargetToEat)
-        {            
+        {
             return false;
         }
 
@@ -327,7 +336,7 @@ public class EAIApproachAndAttackIconic : EAIBase
     }
 
     public override void Reset()
-    {        
+    {
         theEntity.IsEating = false;
         theEntity.moveHelper.Stop();
         if (blockTargetTask != null)
@@ -345,30 +354,44 @@ public class EAIApproachAndAttackIconic : EAIBase
 
     public override void Update()
     {
-        // Track ally call timer based on target validity regardless of movement updates
+        // TARGETED: Track frame changes and movement commands
+        int frame = Time.frameCount;
+        if (frame != currentFrame)
+        {
+            // TARGETED: Log if multiple movement commands in previous frame
+            if (enableJitterTracking && !theEntity.isEntityRemote && moveCommandsThisFrame > 1)
+            {
+                Log.Warning($"[JITTER] Entity:{theEntity.entityId} Frame:{currentFrame} MultipleMoveCmds:{moveCommandsThisFrame}");
+            }
+            
+            currentFrame = frame;
+            moveCommandsThisFrame = 0;
+        }
+        
+        // Skip AI movement for remote entities
+        if (theEntity.isEntityRemote)
+        {
+            return;
+        }
+
+        // Ally call timer tracking
         var currentTarget = theEntity.GetAttackTarget();
         if (currentTarget != null && !currentTarget.IsDead() && !currentTarget.IsMarkedForUnload())
         {
-            // Tick using deltaTime for resilience to any executeDelay irregularities
             allyCallTimer += Time.deltaTime;
             allyTimerLastValidTime = Time.time;
-            // Track the logical target id we are timing against
             allyTargetEntityId = currentTarget.entityId;
-            
 
             if (allyCallTimer >= allyCallThresholdSeconds && zombiesSpawned < maxZombiesToSpawn && !theEntity.IsDead())
             {
-                // Fire a MinEvent. Hook your XML triggered_effect to onSelfAction2Start to spawn allies.
                 zombiesSpawned++;
-                float firedAfter = allyCallTimer; // capture before reset for accurate logging
                 theEntity.FireEvent(MinEventTypes.onSelfAction2Start, true);
-                allyCallTimer = 0f; // reset to allow repeated calls after each threshold interval
-                allyTimerLastValidTime = Time.time;                
+                allyCallTimer = 0f;
+                allyTimerLastValidTime = Time.time;
             }
         }
         else
         {
-            // Target invalid -> preserve timer within the grace window; reset only if exceeded
             if (Time.time - allyTimerLastValidTime > AllyTimerGraceWindow)
             {
                 allyCallTimer = 0f;
@@ -376,22 +399,12 @@ public class EAIApproachAndAttackIconic : EAIBase
             }
         }
 
-        // If we are actively breaking blocks, let the breaking task fully control movement/look
         if (theEntity.IsBreakingBlocks)
         {
             return;
         }
-
-        // Log every 2 seconds
-        if (UnityEngine.Time.frameCount % 120 == 0)
-        {
-            if (entityTarget != null)
-            {
-                Vector3 targetPos = entityTarget.position;
-                float dist = Vector3.Distance(theEntity.position, targetPos);
-                float yDiff = targetPos.y - theEntity.position.y;                
-            }
-        }
+        
+        bool didMove = false;
         
         if (hasHome && !isTargetToEat)
         {
@@ -413,16 +426,20 @@ public class EAIApproachAndAttackIconic : EAIBase
                 }
                 else
                 {
-                    // Direct movement back home - no pathfinding
                     Vector3 homeDir = theEntity.ChaseReturnLocation - theEntity.position;
-                    homeDir.y = 0f; // Ignore vertical
+                    homeDir.y = 0f;
                     if (homeDir.sqrMagnitude > 0.01f)
                     {
                         homeDir.Normalize();
                         MoveEntityHeaded(homeDir, true);
+                        didMove = true;
                     }
                 }
 
+                if (didMove && theEntity.RootMotion && !theEntity.isEntityRemote)
+                {
+                    theEntity.SetMovementState();
+                }
                 return;
             }
 
@@ -459,7 +476,6 @@ public class EAIApproachAndAttackIconic : EAIBase
 
         if (relocateTicks > 0)
         {
-            // Keep focus on target while relocating directly
             relocateTicks--;
             theEntity.moveHelper.SetFocusPos(entityTarget.position);
             return;
@@ -544,45 +560,44 @@ public class EAIApproachAndAttackIconic : EAIBase
         float num5 = vector2.y - theEntity.position.y;
         float num6 = Utils.FastAbs(num5);
 
-        // Calculate horizontal distance
         Vector3 xzDiff = vector2 - theEntity.position;
         xzDiff.y = 0f;
         float xzDistSq = xzDiff.sqrMagnitude;
-        float xzDist = Mathf.Sqrt(xzDistSq);
 
-        // Check if we're close horizontally and target is above/below
         bool isCloseHorizontally = xzDistSq < (VerticalXZRange * VerticalXZRange);
         bool isTargetVerticallyDistant = num6 > VerticalStopThreshold;
         
-        // LOITER DETECTION: Track if zombie is staying in a small area
         UpdateLoiterDetection(isCloseHorizontally, isTargetVerticallyDistant);
         
-        // SIMPLIFIED MOVEMENT LOGIC: Always move directly toward target's horizontal position
-        // Stop only when we're very close horizontally AND close vertically (normal attack range)
         bool shouldStop = targetXZDistanceSq <= num3 && num6 < 1f;
         
         if (!shouldStop)
         {
-            // Direct horizontal pursuit - moveHelper will detect blocks and trigger EAIBreakBlocksIconic
             Vector3 targetHorizontalPos = GetMoveToLocation(num2, isTargetVerticallyDistant);
             Vector3 moveDirection = targetHorizontalPos - theEntity.position;
-            moveDirection.y = 0f; // Always flatten to horizontal movement
+            moveDirection.y = 0f;
             
             if (moveDirection.sqrMagnitude > 0.01f)
             {
                 moveDirection.Normalize();
                 
-                // Enable block breaking mode when moving - moveHelper will track blocked state
-                // Also enable if loitering (stuck in small area)
-                theEntity.moveHelper.SetMoveTo(targetHorizontalPos, true); // true = can break blocks
+                // JITTER FIX: Rotate to face movement direction BEFORE moving
+                // This ensures zombie always moves "forward" in local space, preventing strafe animation issues
+                if (theEntity.bodyDamage.HasLimbs && !theEntity.Electrocuted)
+                {
+                    Vector3 targetPos = entityTarget.position;
+                    theEntity.RotateTo(targetPos.x, targetPos.y, targetPos.z, 45f, 45f);
+                }
                 
-                // If loitering, artificially increase BlockedTime to trigger break blocks
+                theEntity.moveHelper.SetMoveTo(targetHorizontalPos, true);
+                
                 if (isLoitering)
                 {
-                    theEntity.moveHelper.BlockedTime = Mathf.Max(theEntity.moveHelper.BlockedTime, 0.4f);                                        
+                    theEntity.moveHelper.BlockedTime = Mathf.Max(theEntity.moveHelper.BlockedTime, 0.4f);
                 }
                 
                 MoveEntityHeaded(moveDirection, true);
+                didMove = true;
             }
         }
         else
@@ -599,6 +614,10 @@ public class EAIApproachAndAttackIconic : EAIBase
 
         if (theEntity.Climbing)
         {
+            if (didMove && theEntity.RootMotion && !theEntity.isEntityRemote)
+            {
+                theEntity.SetMovementState();
+            }
             return;
         }
 
@@ -621,6 +640,10 @@ public class EAIApproachAndAttackIconic : EAIBase
 
         if (!canAttemptAttack)
         {
+            if (didMove && theEntity.RootMotion && !theEntity.isEntityRemote)
+            {
+                theEntity.SetMovementState();
+            }
             return;
         }
 
@@ -630,10 +653,9 @@ public class EAIApproachAndAttackIconic : EAIBase
             theEntity.IsBreakingBlocks = false;
             theEntity.IsBreakingDoors = false;
         }
-        if (theEntity.bodyDamage.HasLimbs && !theEntity.Electrocuted)
-        {
-            theEntity.RotateTo(vector2.x, vector2.y, vector2.z, 30f, 30f);
-        }
+        
+        // Rotation is now handled during movement, no need to rotate again here
+        // This prevents fighting between movement direction and attack rotation
 
         if (isTargetToEat)
         {
@@ -641,6 +663,10 @@ public class EAIApproachAndAttackIconic : EAIBase
             theEntity.IsEating = true;
             attackTimeout = 20;
             eatCount = 0;
+            if (didMove && theEntity.RootMotion && !theEntity.isEntityRemote)
+            {
+                theEntity.SetMovementState();
+            }
             return;
         }
 
@@ -661,6 +687,10 @@ public class EAIApproachAndAttackIconic : EAIBase
 
         if (attackTimeout > 0)
         {
+            if (didMove && theEntity.RootMotion && !theEntity.isEntityRemote)
+            {
+                theEntity.SetMovementState();
+            }
             return;
         }
 
@@ -686,9 +716,14 @@ public class EAIApproachAndAttackIconic : EAIBase
                     {
                         relocateDir.Normalize();
                         MoveEntityHeaded(relocateDir, true);
+                        didMove = true;
                     }
                 }
 
+                if (didMove && theEntity.RootMotion && !theEntity.isEntityRemote)
+                {
+                    theEntity.SetMovementState();
+                }
                 return;
             }
         }
@@ -699,14 +734,30 @@ public class EAIApproachAndAttackIconic : EAIBase
             attackTimeout = theEntity.GetAttackTimeoutTicks();
             theEntity.Attack(_isReleased: true);
         }
+        
+        if (didMove && theEntity.RootMotion && !theEntity.isEntityRemote)
+        {
+            theEntity.SetMovementState();
+        }
+        
+        // TARGETED: Log position changes to detect jitter
+        if (enableJitterTracking && !theEntity.isEntityRemote)
+        {
+            Vector3 positionDelta = theEntity.position - lastFramePosition;
+            float deltaDistance = positionDelta.magnitude;
+            
+            // Only log if there's significant unexpected movement (potential jitter)
+            if (deltaDistance > 0.5f && !didMove)
+            {
+                Log.Warning($"[JITTER] Entity:{theEntity.entityId} UnexpectedMove Delta:{positionDelta.ToString("F3")} Dist:{deltaDistance:F3}");
+            }
+            
+            lastFramePosition = theEntity.position;
+        }
     }
 
-    /// <summary>
-    /// Detects if zombie is loitering (stuck in small area) which indicates it needs to break blocks
-    /// </summary>
     private void UpdateLoiterDetection(bool isCloseHorizontally, bool isTargetVerticallyDistant)
     {
-        // Only track loitering when close to target horizontally and target is above/below
         if (!isCloseHorizontally || !isTargetVerticallyDistant)
         {
             isLoitering = false;
@@ -715,7 +766,6 @@ public class EAIApproachAndAttackIconic : EAIBase
             return;
         }
 
-        // Calculate how far zombie has moved from loiter start position (XZ only)
         Vector3 currentPos = theEntity.position;
         Vector3 xzDiff = currentPos - loiterStartPosition;
         xzDiff.y = 0f;
@@ -723,8 +773,7 @@ public class EAIApproachAndAttackIconic : EAIBase
 
         if (distanceMoved <= LoiterDetectionRadius)
         {
-            // Still within loiter radius, accumulate time
-            loiterTimer += 0.05f; // Update is called every 0.05s based on homeTimeout
+            loiterTimer += 0.05f;
 
             if (loiterTimer >= LoiterDetectionTime && !isLoitering)
             {
@@ -733,7 +782,6 @@ public class EAIApproachAndAttackIconic : EAIBase
         }
         else
         {
-            // Moved too far, reset tracking
             loiterStartPosition = currentPos;
             loiterTimer = 0f;
             isLoitering = false;
@@ -758,15 +806,12 @@ public class EAIApproachAndAttackIconic : EAIBase
     [PublicizedFrom(EAccessModifier.Private)]
     public Vector3 GetMoveToLocation(float maxDist, bool targetIsVerticallyDistant = false)
     {
-        // DIRECT PURSUIT: Move to player's horizontal (X/Z) position
         Vector3 pos = entityTarget.position + entityTargetVel * 0.5f;
         if (isTargetToEat)
         {
             pos = entityTarget.getBellyPosition();
         }
 
-        // Always flatten Y to zombie's current level for horizontal pursuit
-        // This makes the zombie move directly under/to the player's XZ position
         pos.y = theEntity.position.y;
         
         return pos;
@@ -774,6 +819,9 @@ public class EAIApproachAndAttackIconic : EAIBase
 
     public virtual void MoveEntityHeaded(Vector3 _direction, bool _isDirAbsolute)
     {
+        // TARGETED: Track movement command count
+        moveCommandsThisFrame++;
+        
         if (theEntity.AttachedToEntity != null)
         {
             return;
@@ -785,31 +833,61 @@ public class EAIApproachAndAttackIconic : EAIBase
             return;
         }
 
+        // TARGETED: Log root motion application
         if (theEntity.RootMotion)
         {
-            if (theEntity.isEntityRemote && theEntity.bodyDamage.CurrentStun == EnumEntityStunType.None && !theEntity.IsDead() && (!(theEntity.emodel != null) || !(theEntity.emodel.avatarController != null) || !theEntity.emodel.avatarController.IsAnimationHitRunning()))
-            {
-                theEntity.accumulatedRootMotion = Vector3.zero;
-                return;
-            }
-
             bool flag = (bool)theEntity.emodel && theEntity.emodel.IsRagdollActive;
-            if (theEntity.isSwimming && !flag)
+            
+            if (enableJitterTracking && !theEntity.isEntityRemote && theEntity.accumulatedRootMotion.magnitude > 0.01f)
             {
-                theEntity.motion += theEntity.accumulatedRootMotion * 0.001f;
-            }
-            else if (theEntity.onGround || theEntity.jumpTicks > 0)
-            {
-                if (flag)
+                // Only log significant root motion changes
+                Vector3 before = theEntity.motion;
+                
+                if (theEntity.isSwimming && !flag)
                 {
-                    theEntity.motion.x = 0f;
-                    theEntity.motion.z = 0f;
+                    theEntity.motion += theEntity.accumulatedRootMotion * 0.001f;
                 }
-                else
+                else if (theEntity.onGround || theEntity.jumpTicks > 0)
                 {
-                    float y = theEntity.motion.y;
-                    theEntity.motion = theEntity.accumulatedRootMotion;
-                    theEntity.motion.y += y;
+                    if (flag)
+                    {
+                        theEntity.motion.x = 0f;
+                        theEntity.motion.z = 0f;
+                    }
+                    else
+                    {
+                        float y = theEntity.motion.y;
+                        theEntity.motion = theEntity.accumulatedRootMotion;
+                        theEntity.motion.y += y;
+                    }
+                }
+                
+                Vector3 motionDelta = theEntity.motion - before;
+                if (motionDelta.magnitude > 0.1f)
+                {
+                    Log.Out($"[JITTER] Entity:{theEntity.entityId} RootMotion Applied:{theEntity.accumulatedRootMotion.ToString("F3")} MotionDelta:{motionDelta.ToString("F3")}");
+                }
+            }
+            else
+            {
+                // Normal path without logging
+                if (theEntity.isSwimming && !flag)
+                {
+                    theEntity.motion += theEntity.accumulatedRootMotion * 0.001f;
+                }
+                else if (theEntity.onGround || theEntity.jumpTicks > 0)
+                {
+                    if (flag)
+                    {
+                        theEntity.motion.x = 0f;
+                        theEntity.motion.z = 0f;
+                    }
+                    else
+                    {
+                        float y = theEntity.motion.y;
+                        theEntity.motion = theEntity.accumulatedRootMotion;
+                        theEntity.motion.y += y;
+                    }
                 }
             }
 
@@ -842,6 +920,7 @@ public class EAIApproachAndAttackIconic : EAIBase
             theEntity.DefaultMoveEntity(_direction, _isDirAbsolute);
         }
 
+        // Remote entities don't need to replicate speeds since they're synced via network
         if (theEntity.isEntityRemote || !theEntity.RootMotion)
         {
             return;
@@ -869,24 +948,62 @@ public class EAIApproachAndAttackIconic : EAIBase
             num3 /= magnitude;
         }
 
-        float num4 = _direction.z * num3;
+        // JITTER FIX: Convert all movement to forward speed
+        // Since zombies always RotateTo() the target, they should never strafe
+        // This fixes the X-axis movement stutter where speedStrafe was being used
+        
+        // Safety check: ensure we have valid direction
+        float dirX = _direction.x;
+        float dirZ = _direction.z;
+        if (float.IsNaN(dirX)) dirX = 0f;
+        if (float.IsNaN(dirZ)) dirZ = 0f;
+        
+        float movementSpeed = Mathf.Sqrt(dirX * dirX + dirZ * dirZ) * num3;
+        
         if (theEntity.lerpForwardSpeed)
         {
-            if (Utils.FastAbs(theEntity.speedForwardTarget - num4) > 0.05f)
+            if (Utils.FastAbs(theEntity.speedForwardTarget - movementSpeed) > 0.05f)
             {
-                theEntity.speedForwardTargetStep = Utils.FastAbs(num4 - theEntity.speedForward) / 0.18f;
+                theEntity.speedForwardTargetStep = Utils.FastAbs(movementSpeed - theEntity.speedForward) / 0.18f;
             }
-
-            theEntity.speedForwardTarget = num4;
+            theEntity.speedForwardTarget = movementSpeed;
         }
         else
         {
-            theEntity.speedForward = num4;
+            theEntity.speedForward = movementSpeed;
         }
 
-        theEntity.speedStrafe = _direction.x * num3;
-        theEntity.SetMovementState();
+        // Always zero strafe - zombie rotates to face direction, then moves forward
+        theEntity.speedStrafe = 0f;
         theEntity.ReplicateSpeeds();
+        
+        // ANIMATOR DIAGNOSTIC: Log to verify fix is working
+        if (enableJitterTracking && !theEntity.isEntityRemote)
+        {
+            float speedForwardDelta = Mathf.Abs(theEntity.speedForward - lastSpeedForward);
+            float speedStrafeDelta = Mathf.Abs(theEntity.speedStrafe - lastSpeedStrafe);
+            
+            // Log when there's significant movement to verify strafe is now always zero
+            if (speedForwardDelta > 0.1f || speedStrafeDelta > 0.01f)
+            {
+                Vector3 worldDirection = _direction;
+                if (!_isDirAbsolute)
+                {
+                    worldDirection = theEntity.transform.TransformDirection(_direction);
+                }
+                
+                // Identify which axis is dominant
+                float absX = Mathf.Abs(_direction.x);
+                float absZ = Mathf.Abs(_direction.z);
+                string dominantAxis = absX > absZ ? "X-AXIS" : "Z-AXIS";
+                
+                Log.Out($"[ANIMATOR-FIXED] Entity:{theEntity.entityId} {dominantAxis} Forward:{theEntity.speedForward:F3} Strafe:{theEntity.speedStrafe:F3} " +
+                       $"LocalDir:({_direction.x:F2},{_direction.z:F2}) Magnitude:{movementSpeed:F3}");
+            }
+            
+            lastSpeedForward = theEntity.speedForward;
+            lastSpeedStrafe = theEntity.speedStrafe;
+        }
     }
 
     public override string ToString()
@@ -907,5 +1024,11 @@ public class EAIApproachAndAttackIconic : EAIBase
         float value = (isTargetToEat ? num : (num - 0.1f));
         float targetXZDistanceSq = GetTargetXZDistanceSq(0f);
         return string.Format("{0}, {1}{2}{3}{4}{5} dist {6} rng {7} timeout {8}", base.ToString(), entityTarget ? entityTarget.EntityName : "", theEntity.CanSee(entityTarget) ? "(see)" : "", "(direct)", isTargetToEat ? "(eat)" : "", isGoingHome ? "(home)" : "", Mathf.Sqrt(targetXZDistanceSq).ToCultureInvariantString("0.000"), value.ToCultureInvariantString("0.000"), homeTimeout.ToCultureInvariantString("0.00"));
+    }
+    
+    // TARGETED: Simple toggle for jitter tracking
+    public static void EnableJitterTracking(bool enable)
+    {
+        enableJitterTracking = enable;
     }
 }

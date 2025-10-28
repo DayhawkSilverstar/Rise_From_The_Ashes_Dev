@@ -54,7 +54,19 @@ namespace Rise.Radio
                 if (AudioSourceObject != null)
                 {
                     AudioSourceObject.dopplerLevel = 0;
-                    SyncAudioSource(soundGroup);
+                    
+                    // CRITICAL FIX: Skip sync call for moving entities to prevent stuttering
+                    // The audio will naturally start in sync since we just called Play
+                    bool isMoving = Entity.motion.sqrMagnitude > 0.01f;
+                    if (!isMoving)
+                    {
+                        SyncAudioSource(soundGroup);
+                    }
+                    else
+                    {
+                        Log.Out($"Entity radio skipping initial sync - entity moving (vel={Entity.motion.magnitude:F2})");
+                    }
+                    
                     IsOn = true;
                     Log.Out("Entity radio successfully started");
                 }

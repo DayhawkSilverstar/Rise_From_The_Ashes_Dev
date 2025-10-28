@@ -243,6 +243,7 @@ namespace Rise.Radio
 
         /// <summary>
         /// Improved synchronization like working version but with better error handling
+        /// IMPORTANT: Skip sync for moving entities to prevent stuttering
         /// </summary>
         /// <param name="ClipName"></param>
         public static void SyncAudioSource(String ClipName)
@@ -304,9 +305,41 @@ namespace Rise.Radio
 
                     try
                     {
+                        // CRITICAL FIX: Check if this audio source is attached to a moving entity
+                        // Skip sync to prevent stuttering from audio time changes during position updates
+                        bool isEntityAttached = false;
+                        Entity attachedEntity = null;
+                        
+                        if (source.transform != null)
+                        {
+                            // Check if parent has Entity component (indicates entity-attached audio)
+                            Transform current = source.transform;
+                            while (current != null && attachedEntity == null)
+                            {
+                                attachedEntity = current.GetComponent<Entity>();
+                                if (attachedEntity != null) break;
+                                current = current.parent;
+                            }
+                            
+                            if (attachedEntity != null)
+                            {
+                                isEntityAttached = true;
+                                // Skip sync if entity is actively moving (velocity check)
+                                if (attachedEntity.motion.sqrMagnitude > 0.01f)
+                                {
+                                    Log.Out($"[RS] skip sync '{source.name}' - entity moving (vel={attachedEntity.motion.magnitude:F2})");
+                                    continue;
+                                }
+                            }
+                        }
+                        
                         // Only sync if the difference is significant
                         float timeDifference = Mathf.Abs(source.time - latestPlayTime);
-                        if (timeDifference > 0.1f) // Only sync if difference is > 0.1 seconds
+                        
+                        // Use larger threshold for entity-attached sources to reduce interference
+                        float syncThreshold = isEntityAttached ? 0.5f : 0.1f;
+                        
+                        if (timeDifference > syncThreshold)
                         {
                             Log.Out($"[RS] sync '{source.name}' from {source.time:F2} -> {latestPlayTime:F2} (diff {timeDifference:F2})");
                             source.time = latestPlayTime;

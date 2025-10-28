@@ -3,27 +3,47 @@
   "WorkspaceRootPath": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\scripts\\radio\\radiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\scripts\\radio\\radiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\docs\\cleanup_analysis.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\docs\\cleanup_analysis.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\scripts\\radio\\radiocoordinator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\scripts\\radio\\radiocoordinator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\scripts\\zombies\\iconiczombie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\scripts\\zombies\\iconiczombie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\scripts\\radio\\entityradiosource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_rise_from_the_ashes\\scripts\\eai scripts\\eaiapproachandattackiconic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\scripts\\eai scripts\\eaiapproachandattackiconic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\docs\\iconiczombie_jitter_fix.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\docs\\iconiczombie_jitter_fix.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_rise_from_the_ashes\\scripts\\radio\\entityradiosource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\scripts\\radio\\entityradiosource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\scripts\\radio\\droneradiosource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_rise_from_the_ashes\\scripts\\radio\\radiosource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\scripts\\radio\\radiosource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_rise_from_the_ashes\\scripts\\radio\\radiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\scripts\\radio\\radiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_rise_from_the_ashes\\scripts\\radio\\radiocoordinator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\scripts\\radio\\radiocoordinator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_rise_from_the_ashes\\scripts\\radio\\droneradiosource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\scripts\\radio\\droneradiosource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\scripts\\radio\\blockradiosource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_rise_from_the_ashes\\scripts\\radio\\blockradiosource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\scripts\\radio\\blockradiosource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\scripts\\blocks\\riseradio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_rise_from_the_ashes\\scripts\\blocks\\riseradio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\scripts\\blocks\\riseradio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -31,15 +51,15 @@
       "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\scripts\\blocks\\riseblockaoedeco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\harmony\\old harmony scripts.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_rise_from_the_ashes\\harmony\\old harmony scripts.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\harmony\\old harmony scripts.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\harmony\\itemactionentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_rise_from_the_ashes\\harmony\\itemactionentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\harmony\\itemactionentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\harmony\\init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_rise_from_the_ashes\\harmony\\init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\harmony\\init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -92,6 +112,54 @@
     {
       "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_rise_from_the_ashes\\scripts\\mineventactions\\mineventactionspawnentityaroundplayerclientonly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\scripts\\mineventactions\\mineventactionspawnentityaroundplayerclientonly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\docs\\iconiczombie_enhanced_logging.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\docs\\iconiczombie_enhanced_logging.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\docs\\iconiczombie_fix_summary.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\docs\\iconiczombie_fix_summary.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\docs\\iconiczombie_enhanced_jitter_logging.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\docs\\iconiczombie_enhanced_jitter_logging.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\docs\\eaiapproachandattackiconic_enhanced_logging.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\docs\\eaiapproachandattackiconic_enhanced_logging.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\docs\\compile_error_fixes.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\docs\\compile_error_fixes.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\docs\\enhanced_logging_improvements.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\docs\\enhanced_logging_improvements.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\docs\\iconiczombie_setmovementstate_fix.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\docs\\iconiczombie_setmovementstate_fix.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\docs\\targeted_jitter_logging.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\docs\\targeted_jitter_logging.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\docs\\animation_stutter_east_west_fix.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\docs\\animation_stutter_east_west_fix.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\docs\\jitter_fix_final_verified.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\docs\\jitter_fix_final_verified.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\docs\\x_axis_strafe_issue.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\docs\\x_axis_strafe_issue.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|h:\\github\\rise_from_the_ashes_dev\\3_rise_from_the_ashes\\docs\\jitter_fix_x_axis_verified.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{8067F976-E450-4127-8C5C-8C2D58F97DE4}|3_Rise_From_The_Ashes\\Rise_From_The_Ashes.csproj|solutionrelative:3_rise_from_the_ashes\\docs\\jitter_fix_x_axis_verified.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -101,138 +169,8 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 8,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RadioManager.cs",
-              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\RadioManager.cs",
-              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\Radio\\RadioManager.cs",
-              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\RadioManager.cs",
-              "RelativeToolTip": "3_Rise_From_The_Ashes\\Scripts\\Radio\\RadioManager.cs",
-              "ViewState": "AgIAAM4EAAAAAAAAAAAuwPAEAABMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T02:36:41.035Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RadioCoordinator.cs",
-              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\RadioCoordinator.cs",
-              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\Radio\\RadioCoordinator.cs",
-              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\RadioCoordinator.cs",
-              "RelativeToolTip": "3_Rise_From_The_Ashes\\Scripts\\Radio\\RadioCoordinator.cs",
-              "ViewState": "AgIAAMcAAAAAAAAAAAAwwMoAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T02:35:44.334Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EntityRadioSource.cs",
-              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\EntityRadioSource.cs",
-              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\Radio\\EntityRadioSource.cs",
-              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\EntityRadioSource.cs",
-              "RelativeToolTip": "3_Rise_From_The_Ashes\\Scripts\\Radio\\EntityRadioSource.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAqwFAAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T02:35:15.159Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DroneRadioSource.cs",
-              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\DroneRadioSource.cs",
-              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\Radio\\DroneRadioSource.cs",
-              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\DroneRadioSource.cs",
-              "RelativeToolTip": "3_Rise_From_The_Ashes\\Scripts\\Radio\\DroneRadioSource.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAA6wCkAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T02:35:11.054Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "BlockRadioSource.cs",
-              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\BlockRadioSource.cs",
-              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\Radio\\BlockRadioSource.cs",
-              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\BlockRadioSource.cs",
-              "RelativeToolTip": "3_Rise_From_The_Ashes\\Scripts\\Radio\\BlockRadioSource.cs",
-              "ViewState": "AgIAAKQDAAAAAAAAAAA7wFEDAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T02:28:34.779Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "RiseRadio.cs",
-              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Blocks\\RiseRadio.cs",
-              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\Blocks\\RiseRadio.cs",
-              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Blocks\\RiseRadio.cs",
-              "RelativeToolTip": "3_Rise_From_The_Ashes\\Scripts\\Blocks\\RiseRadio.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAN0BAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T02:23:30.112Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Old Harmony Scripts.txt",
-              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Harmony\\Old Harmony Scripts.txt",
-              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Harmony\\Old Harmony Scripts.txt",
-              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Harmony\\Old Harmony Scripts.txt",
-              "RelativeToolTip": "3_Rise_From_The_Ashes\\Harmony\\Old Harmony Scripts.txt",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAEwB8AAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-10-27T02:23:01.795Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ItemActionEntry.cs",
-              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Harmony\\ItemActionEntry.cs",
-              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Harmony\\ItemActionEntry.cs",
-              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Harmony\\ItemActionEntry.cs",
-              "RelativeToolTip": "3_Rise_From_The_Ashes\\Harmony\\ItemActionEntry.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAqwCIAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T02:22:56.767Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Init.cs",
-              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Harmony\\Init.cs",
-              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Harmony\\Init.cs",
-              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Harmony\\Init.cs",
-              "RelativeToolTip": "3_Rise_From_The_Ashes\\Harmony\\Init.cs",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAuwE4AAABTAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T02:21:55.215Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "EntityAlive.cs",
-              "DocumentMoniker": "H:\\GitHub\\7daysReconstructed\\Assembly-CSharp\\EntityAlive.cs",
-              "RelativeDocumentMoniker": "..\\7daysReconstructed\\Assembly-CSharp\\EntityAlive.cs",
-              "ToolTip": "H:\\GitHub\\7daysReconstructed\\Assembly-CSharp\\EntityAlive.cs",
-              "RelativeToolTip": "..\\7daysReconstructed\\Assembly-CSharp\\EntityAlive.cs",
-              "ViewState": "AgIAAHsVAAAAAAAAAAAuwJEVAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T02:21:29.349Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
@@ -247,7 +185,347 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "Jitter_Fix_X_Axis_VERIFIED.md",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\Jitter_Fix_X_Axis_VERIFIED.md",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Docs\\Jitter_Fix_X_Axis_VERIFIED.md",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\Jitter_Fix_X_Axis_VERIFIED.md",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Docs\\Jitter_Fix_X_Axis_VERIFIED.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-10-28T14:15:26.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "X_Axis_Strafe_Issue.md",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\X_Axis_Strafe_Issue.md",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Docs\\X_Axis_Strafe_Issue.md",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\X_Axis_Strafe_Issue.md",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Docs\\X_Axis_Strafe_Issue.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-10-28T13:48:52.452Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "Jitter_Fix_FINAL_VERIFIED.md",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\Jitter_Fix_FINAL_VERIFIED.md",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Docs\\Jitter_Fix_FINAL_VERIFIED.md",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\Jitter_Fix_FINAL_VERIFIED.md",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Docs\\Jitter_Fix_FINAL_VERIFIED.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-10-28T13:46:20.854Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "Animation_Stutter_East_West_Fix.md",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\Animation_Stutter_East_West_Fix.md",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Docs\\Animation_Stutter_East_West_Fix.md",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\Animation_Stutter_East_West_Fix.md",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Docs\\Animation_Stutter_East_West_Fix.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-10-28T13:42:28.053Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "TARGETED_Jitter_Logging.md",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\TARGETED_Jitter_Logging.md",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Docs\\TARGETED_Jitter_Logging.md",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\TARGETED_Jitter_Logging.md",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Docs\\TARGETED_Jitter_Logging.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAANkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-10-28T13:22:55.542Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CLEANUP_Analysis.md",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\CLEANUP_Analysis.md",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Docs\\CLEANUP_Analysis.md",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\CLEANUP_Analysis.md",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Docs\\CLEANUP_Analysis.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAMYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-10-28T13:09:02.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "IconicZombie_SetMovementState_Fix.md",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\IconicZombie_SetMovementState_Fix.md",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Docs\\IconicZombie_SetMovementState_Fix.md",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\IconicZombie_SetMovementState_Fix.md",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Docs\\IconicZombie_SetMovementState_Fix.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAG8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-10-28T13:02:35.248Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "Enhanced_Logging_Improvements.md",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\Enhanced_Logging_Improvements.md",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Docs\\Enhanced_Logging_Improvements.md",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\Enhanced_Logging_Improvements.md",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Docs\\Enhanced_Logging_Improvements.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-10-28T05:55:23.87Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Compile_Error_Fixes.md",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\Compile_Error_Fixes.md",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Docs\\Compile_Error_Fixes.md",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\Compile_Error_Fixes.md",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Docs\\Compile_Error_Fixes.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-10-28T05:30:32.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "EAIApproachAndAttackIconic_Enhanced_Logging.md",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\EAIApproachAndAttackIconic_Enhanced_Logging.md",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Docs\\EAIApproachAndAttackIconic_Enhanced_Logging.md",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\EAIApproachAndAttackIconic_Enhanced_Logging.md",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Docs\\EAIApproachAndAttackIconic_Enhanced_Logging.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAN4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-10-28T05:22:12.028Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "IconicZombie_Enhanced_Jitter_Logging.md",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\IconicZombie_Enhanced_Jitter_Logging.md",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Docs\\IconicZombie_Enhanced_Jitter_Logging.md",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\IconicZombie_Enhanced_Jitter_Logging.md",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Docs\\IconicZombie_Enhanced_Jitter_Logging.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAI4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-10-28T05:11:41.821Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IconicZombie.cs",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Zombies\\IconicZombie.cs",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\Zombies\\IconicZombie.cs",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Zombies\\IconicZombie.cs",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Scripts\\Zombies\\IconicZombie.cs",
+              "ViewState": "AgIAACgBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T17:13:25.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EAIApproachAndAttackIconic.cs",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\EAI Scripts\\EAIApproachAndAttackIconic.cs",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\EAI Scripts\\EAIApproachAndAttackIconic.cs",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\EAI Scripts\\EAIApproachAndAttackIconic.cs",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Scripts\\EAI Scripts\\EAIApproachAndAttackIconic.cs",
+              "ViewState": "AgIAAOADAAAAAAAAAAASwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T14:11:14.933Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "IconicZombie_Fix_Summary.md",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\IconicZombie_Fix_Summary.md",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Docs\\IconicZombie_Fix_Summary.md",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\IconicZombie_Fix_Summary.md",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Docs\\IconicZombie_Fix_Summary.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-10-28T05:03:20.662Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IconicZombie_Jitter_Fix.md",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\IconicZombie_Jitter_Fix.md",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Docs\\IconicZombie_Jitter_Fix.md",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\IconicZombie_Jitter_Fix.md",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Docs\\IconicZombie_Jitter_Fix.md",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAewLEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-10-28T04:10:08.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "IconicZombie_Enhanced_Logging.md",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\IconicZombie_Enhanced_Logging.md",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Docs\\IconicZombie_Enhanced_Logging.md",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Docs\\IconicZombie_Enhanced_Logging.md",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Docs\\IconicZombie_Enhanced_Logging.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-10-28T04:51:26.6Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RadioSource.cs",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\RadioSource.cs",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\Radio\\RadioSource.cs",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\RadioSource.cs",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Scripts\\Radio\\RadioSource.cs",
+              "ViewState": "AgIAAC8BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T14:02:28.661Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RadioManager.cs",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\RadioManager.cs",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\Radio\\RadioManager.cs",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\RadioManager.cs",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Scripts\\Radio\\RadioManager.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T02:36:41.035Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RadioCoordinator.cs",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\RadioCoordinator.cs",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\Radio\\RadioCoordinator.cs",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\RadioCoordinator.cs",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Scripts\\Radio\\RadioCoordinator.cs",
+              "ViewState": "AgIAAMcAAAAAAAAAAAAwwMoAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T02:35:44.334Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EntityRadioSource.cs",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\EntityRadioSource.cs",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\Radio\\EntityRadioSource.cs",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\EntityRadioSource.cs",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Scripts\\Radio\\EntityRadioSource.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAASwGQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T02:35:15.159Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DroneRadioSource.cs",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\DroneRadioSource.cs",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\Radio\\DroneRadioSource.cs",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\DroneRadioSource.cs",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Scripts\\Radio\\DroneRadioSource.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAIAzwCkAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T02:35:11.054Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BlockRadioSource.cs",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\BlockRadioSource.cs",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\Radio\\BlockRadioSource.cs",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Radio\\BlockRadioSource.cs",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Scripts\\Radio\\BlockRadioSource.cs",
+              "ViewState": "AgIAAKQDAAAAAAAAAAA7wFEDAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T02:28:34.779Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RiseRadio.cs",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Blocks\\RiseRadio.cs",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\Blocks\\RiseRadio.cs",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Blocks\\RiseRadio.cs",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Scripts\\Blocks\\RiseRadio.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAN0BAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T02:23:30.112Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Old Harmony Scripts.txt",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Harmony\\Old Harmony Scripts.txt",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Harmony\\Old Harmony Scripts.txt",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Harmony\\Old Harmony Scripts.txt",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Harmony\\Old Harmony Scripts.txt",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAEwB8AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-10-27T02:23:01.795Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ItemActionEntry.cs",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Harmony\\ItemActionEntry.cs",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Harmony\\ItemActionEntry.cs",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Harmony\\ItemActionEntry.cs",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Harmony\\ItemActionEntry.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAqwCIAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T02:22:56.767Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 14,
+              "Title": "Init.cs",
+              "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Harmony\\Init.cs",
+              "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Harmony\\Init.cs",
+              "ToolTip": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Harmony\\Init.cs",
+              "RelativeToolTip": "3_Rise_From_The_Ashes\\Harmony\\Init.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAuwE4AAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T02:21:55.215Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "EntityAlive.cs",
+              "DocumentMoniker": "H:\\GitHub\\7daysReconstructed\\Assembly-CSharp\\EntityAlive.cs",
+              "RelativeDocumentMoniker": "..\\7daysReconstructed\\Assembly-CSharp\\EntityAlive.cs",
+              "ToolTip": "H:\\GitHub\\7daysReconstructed\\Assembly-CSharp\\EntityAlive.cs",
+              "RelativeToolTip": "..\\7daysReconstructed\\Assembly-CSharp\\EntityAlive.cs",
+              "ViewState": "AgIAAHsVAAAAAAAAAAAuwJEVAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T02:21:29.349Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
               "Title": "blocks.xml",
               "DocumentMoniker": "C:\\Users\\Christian\\AppData\\Roaming\\7DaysToDie\\Saves\\East Pixoyu Mountains\\RFTA Before Server\\ConfigsDump\\blocks.xml",
               "ToolTip": "C:\\Users\\Christian\\AppData\\Roaming\\7DaysToDie\\Saves\\East Pixoyu Mountains\\RFTA Before Server\\ConfigsDump\\blocks.xml",
@@ -257,7 +535,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 21,
               "Title": "RiseBlockLandClaim.cs",
               "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Blocks\\RiseBlockLandClaim.cs",
               "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\Blocks\\RiseBlockLandClaim.cs",
@@ -269,7 +547,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 22,
               "Title": "RiseBlockSleepingBag.cs",
               "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Blocks\\RiseBlockSleepingBag.cs",
               "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\Blocks\\RiseBlockSleepingBag.cs",
@@ -281,7 +559,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 23,
               "Title": "EntityBuffs.cs",
               "DocumentMoniker": "H:\\GitHub\\7daysReconstructed\\Assembly-CSharp\\EntityBuffs.cs",
               "RelativeDocumentMoniker": "..\\7daysReconstructed\\Assembly-CSharp\\EntityBuffs.cs",
@@ -293,7 +571,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 20,
               "Title": "Player.log",
               "DocumentMoniker": "C:\\Users\\Christian\\AppData\\LocalLow\\The Fun Pimps\\7 Days To Die\\Player.log",
               "ToolTip": "C:\\Users\\Christian\\AppData\\LocalLow\\The Fun Pimps\\7 Days To Die\\Player.log",
@@ -303,7 +581,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 18,
               "Title": "blocks.xml",
               "DocumentMoniker": "F:\\Rise from the ashes\\7 Days To Die\\Mods\\z1c_Rise_from_the_Ashes_Blocks\\Config\\blocks.xml",
               "ToolTip": "F:\\Rise from the ashes\\7 Days To Die\\Mods\\z1c_Rise_from_the_Ashes_Blocks\\Config\\blocks.xml",
@@ -313,7 +591,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "RiseBlockAOEDeco.cs",
               "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Blocks\\RiseBlockAOEDeco.cs",
               "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\Blocks\\RiseBlockAOEDeco.cs",
@@ -321,12 +599,11 @@
               "RelativeToolTip": "3_Rise_From_The_Ashes\\Scripts\\Blocks\\RiseBlockAOEDeco.cs",
               "ViewState": "AgIAADUAAAAAAAAAAAAuwE0AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-25T18:12:21.866Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-25T18:12:21.866Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 17,
               "Title": "buffs.xml",
               "DocumentMoniker": "C:\\Users\\Christian\\AppData\\Roaming\\7DaysToDie\\Saves\\East Pixoyu Mountains\\RFTA Before Server\\ConfigsDump\\buffs.xml",
               "ToolTip": "C:\\Users\\Christian\\AppData\\Roaming\\7DaysToDie\\Saves\\East Pixoyu Mountains\\RFTA Before Server\\ConfigsDump\\buffs.xml",
@@ -336,7 +613,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 24,
               "Title": "RiseMasterBlock.cs",
               "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Blocks\\RiseMasterBlock.cs",
               "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\Blocks\\RiseMasterBlock.cs",
@@ -348,18 +625,17 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 16,
               "Title": "buffs.xml",
               "DocumentMoniker": "F:\\Rise from the ashes\\7 Days To Die\\Mods\\z1e_Rise_from_the_Ashes_Buffs\\Config\\buffs.xml",
               "ToolTip": "F:\\Rise from the ashes\\7 Days To Die\\Mods\\z1e_Rise_from_the_Ashes_Buffs\\Config\\buffs.xml",
               "ViewState": "AgIAAIUWAAAAAAAAAAAmwKYWAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
-              "WhenOpened": "2025-10-22T20:44:37.043Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-22T20:44:37.043Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 28,
               "Title": "RiseDeco.cs",
               "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\Blocks\\RiseDeco.cs",
               "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\Blocks\\RiseDeco.cs",
@@ -371,7 +647,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 27,
               "Title": "entityclasses.xml",
               "DocumentMoniker": "F:\\Rise from the ashes\\7 Days To Die\\Mods\\z4_Rise_from_the_Ashes_Entityclasses\\Config\\entityclasses.xml",
               "ToolTip": "F:\\Rise from the ashes\\7 Days To Die\\Mods\\z4_Rise_from_the_Ashes_Entityclasses\\Config\\entityclasses.xml",
@@ -381,7 +657,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 26,
               "Title": "entitygroups.xml",
               "DocumentMoniker": "F:\\Rise from the ashes\\7 Days To Die\\Mods\\z1n_Rise_from_the_Ashes_EntityGroups\\Config\\entitygroups.xml",
               "ToolTip": "F:\\Rise from the ashes\\7 Days To Die\\Mods\\z1n_Rise_from_the_Ashes_EntityGroups\\Config\\entitygroups.xml",
@@ -391,7 +667,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 25,
               "Title": "MinEventActionSpawnEntityAroundPlayer.cs",
               "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\MinEventActions\\MinEventActionSpawnEntityAroundPlayer.cs",
               "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\MinEventActions\\MinEventActionSpawnEntityAroundPlayer.cs",
@@ -403,7 +679,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 29,
               "Title": "MinEventActionSpawnEntityAroundPlayerClientOnly.cs",
               "DocumentMoniker": "H:\\GitHub\\Rise_From_The_Ashes_Dev\\3_Rise_From_The_Ashes\\Scripts\\MinEventActions\\MinEventActionSpawnEntityAroundPlayerClientOnly.cs",
               "RelativeDocumentMoniker": "3_Rise_From_The_Ashes\\Scripts\\MinEventActions\\MinEventActionSpawnEntityAroundPlayerClientOnly.cs",

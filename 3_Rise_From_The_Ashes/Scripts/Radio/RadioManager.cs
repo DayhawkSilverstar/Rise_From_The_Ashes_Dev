@@ -22,7 +22,6 @@ public class RadioManager
     }
 
     private readonly Dictionary<string, PersistedState> persistedStates = new Dictionary<string, PersistedState>();
-
     // Centralized "what is playing" state (single source of truth)
     private string currentClipName = string.Empty;
     private float currentClipStartTime = 0f;
@@ -64,7 +63,9 @@ public class RadioManager
 
     // Timing for periodic operations
     private float lastSyncTime = 0f;
-    private const float SYNC_INTERVAL = 5f; // Sync every 5 seconds
+    private const float SYNC_INTERVAL = 10f; // Increased from 5s to 10s to reduce interference
+    private const float ENTITY_SYNC_INTERVAL = 20f; // Much longer interval for entity radios (was using same as blocks)
+    private float lastEntitySyncTime = 0f;
     private float lastCleanupTime = 0f;
     private const float CLEANUP_INTERVAL = 30f; // Cleanup every 30 seconds
     private float lastTrackCheckTime = 0f;
