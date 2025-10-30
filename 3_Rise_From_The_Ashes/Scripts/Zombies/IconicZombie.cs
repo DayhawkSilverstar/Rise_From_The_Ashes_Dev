@@ -11,7 +11,27 @@ using static ReflectionManager;
 public class IconicZombie : EntityZombie
 {
     public float ZombieReach = 2f;
-    public Entity Target { get; set; }
+    
+    private Entity targetField;
+    
+    /// <summary>
+    /// Target property with automatic cleanup when target becomes invalid
+    /// </summary>
+    public Entity Target 
+    { 
+        get => targetField;
+        set 
+        {
+            targetField = value;
+            
+            // Automatically clear both our target and attack target if the new value is invalid
+            if (targetField != null && (targetField.IsDead() || targetField.IsMarkedForUnload()))
+            {
+                targetField = null;
+                SetAttackTarget(null, 0);
+            }
+        }
+    }
 
     private static List<Entity> list = new List<Entity>();
 
@@ -64,6 +84,48 @@ public class IconicZombie : EntityZombie
             "animalSnake",
             "animalBoar"
         };
+
+    /// <summary>
+    /// Override to prevent IconicZombies from being saved when spawned dynamically.
+    /// This ensures they can be properly despawned when no players are online.
+    /// </summary>
+    public override bool IsSavedToFile()
+    {
+        // If spawned dynamically (via MinEventAction), don't save to file
+        if (GetSpawnerSource() == EnumSpawnerSource.Dynamic)
+        {
+            return false;
+        }
+        
+        // Otherwise use default behavior
+        return base.IsSavedToFile();
+    }
+
+    /// <summary>
+    /// Override to allow IconicZombies to despawn when no players are on the server.
+    /// This prevents memory leaks when all players log off.
+    /// </summary>
+    public override bool canDespawn()
+    {
+        // If spawned dynamically, allow despawn when no players online
+        if (GetSpawnerSource() == EnumSpawnerSource.Dynamic)
+        {
+            // If no players online, allow despawn immediately
+            if (world.GetPlayers().Count == 0)
+            {
+                return true;
+            }
+            
+            // If dead, allow normal despawn
+            if (IsDead())
+            {
+                return true;
+            }
+        }
+        
+        // Otherwise use default behavior
+        return base.canDespawn();
+    }
 
     /// <summary>
     /// Override GetMoveSpeed to handle bloodmoon speed for walking
@@ -131,6 +193,29 @@ public class IconicZombie : EntityZombie
         
         // Apply passive effects
         return EffectManager.GetValue(PassiveEffects.RunSpeed, null, speed, this);
+    }
+
+    /// <summary>
+    /// Override OnUpdateLive to ensure targets are always valid
+    /// This prevents cycling issues where dead targets are kept
+    /// </summary>
+    public override void OnUpdateLive()
+    {
+        // Check and clear invalid targets BEFORE base update
+        if (Target != null && (Target.IsDead() || Target.IsMarkedForUnload()))
+        {
+            Target = null;
+            SetAttackTarget(null, 0);
+        }
+        
+        // Also ensure attack target matches our target
+        var attackTarget = GetAttackTarget();
+        if (attackTarget != null && (attackTarget.IsDead() || attackTarget.IsMarkedForUnload()))
+        {
+            SetAttackTarget(null, 0);
+        }
+        
+        base.OnUpdateLive();
     }
 
     public bool InMeleeRange(Entity target)
@@ -324,6 +409,9 @@ public class IconicZombie : EntityZombie
         // Get all players within a 30x4x30 box centered on the zombie
         world.GetEntitiesInBounds(typeof(EntityPlayer), BoundsUtils.ExpandBounds(boundingBox, 30f, 4f, 30f), list);
 
+        // Track if we found any valid target
+        bool foundValidTarget = false;
+
         // For each player in the list
         foreach (EntityAlive entityAlive in list)
         {
@@ -343,6 +431,7 @@ public class IconicZombie : EntityZombie
                     closeTargetDist = distance;
                     Target = entityAlive;
                     LastTargetPos = entityAlive.position;
+                    foundValidTarget = true;
                 }
 
                 // Do not break here; continue to scan all candidates to find the closest
@@ -351,6 +440,12 @@ public class IconicZombie : EntityZombie
 
         // Clear the list
         list.Clear();
+        
+        // If we didn't find a valid target, clear our target
+        if (!foundValidTarget)
+        {
+            Target = null;
+        }
     }
 
     protected bool check(EntityAlive entity)
@@ -394,6 +489,9 @@ public class IconicZombie : EntityZombie
         // Get all animals within a 30x4x30 box centered on the zombie
         world.GetEntitiesInBounds(typeof(EntityAnimal), BoundsUtils.ExpandBounds(boundingBox, 30f, 4f, 30f), list);
 
+        // Track if we found any valid target
+        bool foundValidTarget = false;
+
         // For each animal in the list
         foreach (EntityAlive entityAlive in list)
         {
@@ -410,6 +508,7 @@ public class IconicZombie : EntityZombie
                     closeTargetDist = distance;
                     Target = entityAlive;
                     LastTargetPos = entityAlive.position;
+                    foundValidTarget = true;
                 }
 
                 // Do not break here; continue to scan all candidates to find the closest
@@ -418,6 +517,12 @@ public class IconicZombie : EntityZombie
 
         // Clear the list
         list.Clear();
+        
+        // If we didn't find a valid target, clear our target
+        if (!foundValidTarget)
+        {
+            Target = null;
+        }
     }
 
     public bool IsZombieAnimal(EntityAlive entityAnimal)

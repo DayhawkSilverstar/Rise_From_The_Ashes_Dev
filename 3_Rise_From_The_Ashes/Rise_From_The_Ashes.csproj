@@ -99,13 +99,8 @@
     <Compile Include="Scripts\Blocks\RiseBlockAOEDeco.cs" />
     <Compile Include="Scripts\Blocks\RiseBlockLandClaim.cs" />
     <Compile Include="Scripts\Blocks\RiseBlockSleepingBag.cs" />
-    <Compile Include="Scripts\Console\ConsoleCmdAutoDrive.cs" />
-    <Compile Include="Scripts\Console\ConsoleCmdRadioForceStop.cs" />
-    <Compile Include="Scripts\Console\ConsoleCmdRadioSkip.cs" />
-    <Compile Include="Scripts\Console\ConsoleCmdRadioStatus.cs" />
     <Compile Include="Scripts\ItemActions\ItemActionSpawnEntityClientOnly.cs" />
     <Compile Include="Scripts\ItemActions\ItemActionSpawnEntityNetworked.cs" />
-    <Compile Include="Scripts\MinEventActions\MinEventActionAutoDrive.cs" />
     <Compile Include="Scripts\MinEventActions\MinEventActionDamageInspection.cs" />
     <Compile Include="Scripts\MinEventActions\MinEventActionSpawnEntityAroundPlayer.cs" />
     <Compile Include="Scripts\MinEventActions\MinEventActionSetCVarFromPassive .cs" />
@@ -160,7 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Config\" />
-    <Folder Include="Documentation\" />
+    <Folder Include="Scripts\Console\" />
     <Folder Include="Scripts\EAI Iconic\Contracts\" />
     <Folder Include="Scripts\EAI Iconic\Services\" />
     <Folder Include="Scripts\TileEntities\" />
@@ -176,20 +171,28 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Docs\Animation_Stutter_East_West_Fix.md" />
+    <None Include="Docs\Block_Breaking_Jitter_Fix.md" />
+    <None Include="Docs\Block_Breaking_Movement_Conflict_Fix.md" />
     <None Include="Docs\CLEANUP_Analysis.md" />
     <None Include="Docs\Compile_Error_Fixes.md" />
     <None Include="Docs\EAIApproachAndAttackIconic_Enhanced_Logging.md" />
     <None Include="Docs\Enhanced_Logging_Improvements.md" />
+    <None Include="Docs\FINAL_Jitter_Fix_Summary.md" />
+    <None Include="Docs\IconicZombie_Despawn_Memory_Leak_Fix.md" />
     <None Include="Docs\IconicZombie_Enhanced_Jitter_Logging.md" />
     <None Include="Docs\IconicZombie_Enhanced_Logging.md" />
     <None Include="Docs\IconicZombie_Fix_Summary.md" />
     <None Include="Docs\IconicZombie_Jitter_Fix.md" />
     <None Include="Docs\IconicZombie_SetMovementState_Fix.md" />
+    <None Include="Docs\JITTER_FIX_COMPLETE_SOLUTION.md" />
     <None Include="Docs\Jitter_Fix_FINAL_VERIFIED.md" />
     <None Include="Docs\Jitter_Fix_X_Axis_VERIFIED.md" />
+    <None Include="Docs\State_Cycling_Fix.md" />
+    <None Include="Docs\State_Cycling_Visual_Flow.md" />
     <None Include="Docs\TARGETED_Jitter_Logging.md" />
+    <None Include="Docs\Target_Clearing_Root_Cause.md" />
+    <None Include="Docs\Target_Cycling_And_Jitter_Fix.md" />
     <None Include="Docs\X_Axis_Strafe_Issue.md" />
-    <None Include="Logs\zombie_id_4908.log" />
     <None Include="Scripts\Radio\EntityRadioSource.zip" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

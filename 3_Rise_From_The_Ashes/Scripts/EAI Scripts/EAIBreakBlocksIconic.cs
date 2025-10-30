@@ -21,6 +21,9 @@ public class EAIBreakBlocksIconic : EAIBase
     private const float HorizontalRangeThreshold = 10f; // Horizontal distance must be within this
 
     private string TaskName => nameof(EAIBreakBlocksIconic);
+    
+    // STATE TRANSITION TRACKING: Detect if jitter correlates with EAI state changes
+    private static bool enableStateTransitionLogging = true;
 
     // New: state for moving to and breaking a selected block
     private bool hasBlockTarget;
@@ -74,6 +77,12 @@ public class EAIBreakBlocksIconic : EAIBase
 
     public override void Start()
     {
+        // STATE TRANSITION LOG: Starting task
+        if (enableStateTransitionLogging && !theEntity.isEntityRemote)
+        {
+            Log.Out($"[EAI-STATE] Entity:{theEntity.entityId} BreakBlocks STARTING");
+        }
+        
         attackDelay = 1;
         EstablishBlockTargetFromHitInfo();
 
@@ -359,7 +368,13 @@ private bool HandleExistingBlockTargetContinuation()
     }
 
     public override void Reset()
-    {        
+    {
+        // STATE TRANSITION LOG: Task ending
+        if (enableStateTransitionLogging && !theEntity.isEntityRemote)
+        {
+            Log.Out($"[EAI-STATE] Entity:{theEntity.entityId} BreakBlocks STOPPING");
+        }
+        
         theEntity.IsBreakingBlocks = false;
         theEntity.IsBreakingDoors = false;
 

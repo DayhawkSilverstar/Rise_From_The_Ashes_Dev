@@ -23,6 +23,9 @@ public class EAIWanderIconic : EAIBase
     public float time;
 
     private string TaskName => nameof(EAIWanderIconic);
+    
+    // STATE TRANSITION TRACKING
+    private static bool enableStateTransitionLogging = true;
 
     public override void Init(EntityAlive _theEntity)
     {
@@ -91,6 +94,12 @@ public class EAIWanderIconic : EAIBase
 
     public override void Start()
     {
+        // STATE TRANSITION LOG
+        if (enableStateTransitionLogging && !theEntity.isEntityRemote)
+        {
+            Log.Out($"[EAI-STATE] Entity:{theEntity.entityId} Wander STARTING");
+        }
+        
         time = 0f;
         theEntity.renderFadeMax = fade;
         Log.Out($"[{TaskName}] id={theEntity?.entityId ?? -1} Start: direct move to {position}");
@@ -149,6 +158,12 @@ public class EAIWanderIconic : EAIBase
 
     public override void Reset()
     {
+        // STATE TRANSITION LOG
+        if (enableStateTransitionLogging && !theEntity.isEntityRemote)
+        {
+            Log.Out($"[EAI-STATE] Entity:{theEntity.entityId} Wander STOPPING");
+        }
+        
         manager.lookTime = base.Random.RandomRange(lookMin, lookMax);
         theEntity.moveHelper.Stop();
         theEntity.renderFadeMax = 1f;

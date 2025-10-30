@@ -99,6 +99,16 @@ public class EAIApproachAndAttackIconic : EAIBase
     // ANIMATOR DIAGNOSTIC: Track animator parameter changes for directional movement issue
     private float lastSpeedForward = 0f;
     private float lastSpeedStrafe = 0f;
+    
+    // STATE TRANSITION TRACKING: Detect if jitter correlates with EAI state changes
+    private static bool enableStateTransitionLogging = true;
+    private bool wasExecutingLastFrame = false;
+    
+    // STATE CYCLING PREVENTION: Prevent rapid START/STOP thrashing
+    private float lastStopTime = -999f;
+    private const float MinRestartDelay = 0.5f; // Prevent restart for 0.5s after stopping
+    private int consecutiveStops = 0;
+    private const int MaxConsecutiveStops = 3; // If stopping 3+ times in quick succession, something is wrong
 
     private static readonly List<Entity> TmpEntities = new List<Entity>();
 
@@ -162,6 +172,17 @@ public class EAIApproachAndAttackIconic : EAIBase
         {
             return false;
         }
+        
+        // STATE CYCLING PREVENTION: Prevent rapid restart after stopping
+        float timeSinceStop = Time.time - lastStopTime;
+        if (timeSinceStop < MinRestartDelay)
+        {
+            if (enableStateTransitionLogging && !theEntity.isEntityRemote)
+            {
+                Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Prevented rapid restart (only {timeSinceStop:F2}s since stop, need {MinRestartDelay}s)");
+            }
+            return false;
+        }
 
         entityTarget = theEntity.GetAttackTarget();
         if (entityTarget == null)
@@ -172,6 +193,16 @@ public class EAIApproachAndAttackIconic : EAIBase
                 return false;
             }
             entityTarget = theEntity.GetAttackTarget();
+        }
+        
+        // Additional validation: ensure target is actually valid
+        if (entityTarget == null || entityTarget.IsDead() || entityTarget.IsMarkedForUnload())
+        {
+            if (enableStateTransitionLogging && !theEntity.isEntityRemote)
+            {
+                Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} CanExecute failed: invalid target (null:{entityTarget == null}, dead:{entityTarget?.IsDead()}, unload:{entityTarget?.IsMarkedForUnload()})");
+            }
+            return false;
         }
 
         Type type = entityTarget.GetType();        
@@ -184,6 +215,9 @@ public class EAIApproachAndAttackIconic : EAIBase
                 if (targetClass.type != null && targetClass.type.IsAssignableFrom(type))
                 {
                     chaseTimeMax = targetClass.chaseTimeMax;
+                    
+                    // Reset cycling counter on successful CanExecute
+                    consecutiveStops = 0;
                     return true;
                 }
             }
@@ -191,6 +225,8 @@ public class EAIApproachAndAttackIconic : EAIBase
             return false;
         }
 
+        // Reset cycling counter on successful CanExecute
+        consecutiveStops = 0;
         return true;
     }
 
@@ -233,6 +269,12 @@ public class EAIApproachAndAttackIconic : EAIBase
 
     public override void Start()
     {
+        // STATE TRANSITION LOG: Starting task
+        if (enableStateTransitionLogging && !theEntity.isEntityRemote)
+        {
+            Log.Out($"[EAI-STATE] Entity:{theEntity.entityId} ApproachAndAttack STARTING");
+        }
+        
         entityTargetPos = entityTarget.position;
         entityTargetVel = Vector3.zero;
         isTargetToEat = entityTarget.IsDead();
@@ -269,32 +311,69 @@ public class EAIApproachAndAttackIconic : EAIBase
         // We aim for 60s, but clamp to be <= homeTimeout (if any) and not less than 10s.
         if (hasHome)
         {
-            float desired = 30;
+            float desired = 60f;
+            if (zombiesSpawned == 1)
+                desired = 120f;
             // Leave a small margin before going home so the event can fire
             float maxBeforeHome = Mathf.Max(0f, homeTimeout - 1.5f);
             allyCallThresholdSeconds = Mathf.Max(10f, Mathf.Min(desired, maxBeforeHome));
         }
         else
         {
-            allyCallThresholdSeconds = 30f;
+            allyCallThresholdSeconds = 60f;
+            if (zombiesSpawned == 1)
+                allyCallThresholdSeconds = 120f;
+
         }
         
         // TARGETED: Initialize position tracking
         lastFramePosition = theEntity.position;
+        wasExecutingLastFrame = true;
     }
 
     public override bool Continue()
     {
         if (theEntity.sleepingOrWakingUp || theEntity.bodyDamage.CurrentStun != 0)
         {
+            if (enableStateTransitionLogging && !theEntity.isEntityRemote)
+            {
+                Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Continue=false: sleeping/stunned");
+            }
             return false;
         }
 
         EntityAlive attackTarget = theEntity.GetAttackTarget();
         
-        // Add null check and validation for attack target
+        // First validate our cached target is still valid
+        if (entityTarget != null && (entityTarget.IsDead() || entityTarget.IsMarkedForUnload()))
+        {
+            if (enableStateTransitionLogging && !theEntity.isEntityRemote)
+            {
+                Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Continue=false: cached target {entityTarget.entityId} became invalid (dead:{entityTarget.IsDead()}, unload:{entityTarget.IsMarkedForUnload()})");
+            }
+            entityTarget = null;
+            return false;
+        }
+        
+        // CYCLING FIX: Only restore target if it was cleared externally AND our cached target is still valid
+        if (attackTarget == null && entityTarget != null && !entityTarget.IsDead() && !entityTarget.IsMarkedForUnload())
+        {
+            if (enableStateTransitionLogging && !theEntity.isEntityRemote)
+            {
+                Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Restoring target {entityTarget.entityId} that was cleared externally");
+            }
+            theEntity.SetAttackTarget(entityTarget, 200);
+            attackTarget = entityTarget;
+        }
+        
+        // Validate attack target
         if (attackTarget == null || attackTarget.IsDead() || attackTarget.IsMarkedForUnload())
         {
+            if (enableStateTransitionLogging && !theEntity.isEntityRemote)
+            {
+                string reason = attackTarget == null ? "null" : (attackTarget.IsDead() ? "dead" : "unloading");
+                Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Continue=false: invalid target ({reason})");
+            }
             return false;
         }
         
@@ -303,14 +382,26 @@ public class EAIApproachAndAttackIconic : EAIBase
             if (!attackTarget)
             {
                 bool shouldContinue = theEntity.ChaseReturnLocation != Vector3.zero;
+                if (enableStateTransitionLogging && !theEntity.isEntityRemote && !shouldContinue)
+                {
+                    Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Continue=false: going home but no return location");
+                }
                 return shouldContinue;
             }
             
+            if (enableStateTransitionLogging && !theEntity.isEntityRemote)
+            {
+                Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Continue=false: going home but have target");
+            }
             return false;
         }
 
         if (!attackTarget)
         {
+            if (enableStateTransitionLogging && !theEntity.isEntityRemote)
+            {
+                Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Continue=false: no attack target");
+            }
             return false;
         }
 
@@ -323,12 +414,20 @@ public class EAIApproachAndAttackIconic : EAIBase
             }
             else
             {
+                if (enableStateTransitionLogging && !theEntity.isEntityRemote)
+                {
+                    Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Continue=false: target changed from {entityTarget?.entityId ?? -1} to {attackTarget.entityId}");
+                }
                 return false;
             }
         }
 
         if (attackTarget.IsDead() != isTargetToEat)
         {
+            if (enableStateTransitionLogging && !theEntity.isEntityRemote)
+            {
+                Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Continue=false: target death state changed (isDead:{attackTarget.IsDead()}, isTargetToEat:{isTargetToEat})");
+            }
             return false;
         }
 
@@ -337,6 +436,23 @@ public class EAIApproachAndAttackIconic : EAIBase
 
     public override void Reset()
     {
+        // Track consecutive stops for cycling detection
+        consecutiveStops++;
+        lastStopTime = Time.time;
+        
+        // STATE TRANSITION LOG: Task ending
+        if (enableStateTransitionLogging && !theEntity.isEntityRemote && wasExecutingLastFrame)
+        {
+            if (consecutiveStops >= MaxConsecutiveStops)
+            {
+                Log.Error($"[EAI-CYCLING] Entity:{theEntity.entityId} ApproachAndAttack STOPPING (#{consecutiveStops} consecutive stops - CYCLING DETECTED!)");
+            }
+            else
+            {
+                Log.Out($"[EAI-STATE] Entity:{theEntity.entityId} ApproachAndAttack STOPPING");
+            }
+        }
+        
         theEntity.IsEating = false;
         theEntity.moveHelper.Stop();
         if (blockTargetTask != null)
@@ -350,10 +466,47 @@ public class EAIApproachAndAttackIconic : EAIBase
 
         // Preserve ally timer through brief resets; record last valid time to honor grace window
         allyTimerLastValidTime = Mathf.Max(allyTimerLastValidTime, Time.time);
+        
+        wasExecutingLastFrame = false;
     }
 
     public override void Update()
     {
+        // CRITICAL: Exit immediately if breaking blocks AND in range to prevent movement command conflicts
+        // EAIBreakBlocksIconic handles its own movement via SetMoveTo() when approaching
+        // Only skip movement if we're BOTH breaking blocks AND close enough to attack
+        if (theEntity.IsBreakingBlocks)
+        {
+            // Check if we're actually in range to attack the block
+            // If not, we should still allow movement (EAIBreakBlocksIconic handles it)
+            var moveHelper = theEntity.moveHelper;
+            if (moveHelper != null && moveHelper.HitInfo != null && moveHelper.HitInfo.bHitValid)
+            {
+                Vector3 blockPos = moveHelper.HitInfo.hit.pos;
+                float distToBlock = Vector3.Distance(theEntity.position, blockPos);
+                
+                // Get attack range
+                ItemValue holdingItemItemValue = theEntity.inventory.holdingItemItemValue;
+                int holdingItemIdx = theEntity.inventory.holdingItemIdx;
+                ItemAction itemAction = holdingItemItemValue.ItemClass.Actions[holdingItemIdx];
+                float range = 1.095f;
+                if (itemAction != null)
+                {
+                    range = itemAction.Range;
+                    if (range == 0f)
+                    {
+                        range = EffectManager.GetItemValue(PassiveEffects.MaxRange, holdingItemItemValue);
+                    }
+                }
+                
+                // Only exit if we're in range - otherwise continue to allow movement
+                if (distToBlock <= range)
+                {
+                    return;
+                }
+            }
+        }
+        
         // TARGETED: Track frame changes and movement commands
         int frame = Time.frameCount;
         if (frame != currentFrame)
@@ -376,6 +529,30 @@ public class EAIApproachAndAttackIconic : EAIBase
 
         // Ally call timer tracking
         var currentTarget = theEntity.GetAttackTarget();
+        
+        // First validate our cached target
+        if (entityTarget != null && (entityTarget.IsDead() || entityTarget.IsMarkedForUnload()))
+        {
+            entityTarget = null;
+            
+            // Clear IconicZombie.Target if applicable
+            if (theEntity is IconicZombie iconicZombie)
+            {
+                iconicZombie.Target = null;
+            }
+        }
+        
+        // CYCLING FIX: Only restore target if cached target is still valid
+        if (currentTarget == null && entityTarget != null && !entityTarget.IsDead() && !entityTarget.IsMarkedForUnload())
+        {
+            if (enableStateTransitionLogging && !theEntity.isEntityRemote)
+            {
+                Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Update: Restoring cleared target {entityTarget.entityId}");
+            }
+            theEntity.SetAttackTarget(entityTarget, 200);
+            currentTarget = entityTarget;
+        }
+        
         if (currentTarget != null && !currentTarget.IsDead() && !currentTarget.IsMarkedForUnload())
         {
             allyCallTimer += Time.deltaTime;
@@ -583,7 +760,8 @@ public class EAIApproachAndAttackIconic : EAIBase
                 
                 // JITTER FIX: Rotate to face movement direction BEFORE moving
                 // This ensures zombie always moves "forward" in local space, preventing strafe animation issues
-                if (theEntity.bodyDamage.HasLimbs && !theEntity.Electrocuted)
+                // BUT: Don't rotate if IsBreakingBlocks - let EAIBreakBlocksIconic control rotation
+                if (theEntity.bodyDamage.HasLimbs && !theEntity.Electrocuted && !theEntity.IsBreakingBlocks)
                 {
                     Vector3 targetPos = entityTarget.position;
                     theEntity.RotateTo(targetPos.x, targetPos.y, targetPos.z, 45f, 45f);

@@ -70,7 +70,7 @@ public class MinEventActionSpawnEntityAroundPlayer : MinEventActionRemoveBuff
         if (newEntity == null)
             return;
 
-        newEntity.SetSpawnerSource(EnumSpawnerSource.StaticSpawner);
+        newEntity.SetSpawnerSource(EnumSpawnerSource.Dynamic);
 
         bool isServer = SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer;
         if (isServer)
