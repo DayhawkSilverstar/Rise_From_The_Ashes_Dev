@@ -111,7 +111,7 @@ public class IconicZombie : EntityZombie
         if (GetSpawnerSource() == EnumSpawnerSource.Dynamic)
         {
             // If no players online, allow despawn immediately
-            if (world.GetPlayers().Count == 0)
+            if (world != null && world.GetPlayers().Count == 0)
             {
                 return true;
             }
@@ -128,10 +128,32 @@ public class IconicZombie : EntityZombie
     }
 
     /// <summary>
+    /// Override Update to prevent NullReferenceExceptions during game shutdown or entity removal.
+    /// This ensures clean exit when world is being destroyed or entity is being removed.
+    /// </summary>
+    public override void Update()
+    {
+        // CRITICAL: Check if entity is being removed/destroyed before accessing world
+        // This prevents NullReferenceExceptions during:
+        // 1. Game shutdown (world becomes null)
+        // 2. Entity removal (MarkedForUnload = true)
+        // 3. World cleanup (GameManager is shutting down)
+        if (IsMarkedForUnload() || world == null || GameManager.Instance == null || GameManager.Instance.World == null)
+        {
+            return;
+        }
+        
+        base.Update();
+    }
+
+    /// <summary>
     /// Override GetMoveSpeed to handle bloodmoon speed for walking
     /// </summary>
     public override float GetMoveSpeed()
     {
+        // Safety check for world
+        if (world == null) return 0f;
+        
         if (IsBloodMoon)
         {
             // During bloodmoon, use the night walk speed
@@ -157,6 +179,9 @@ public class IconicZombie : EntityZombie
     /// </summary>
     public override float GetMoveSpeedAggro()
     {
+        // Safety check for world
+        if (world == null) return 0f;
+        
         // Determine which game preference to use based on current state
         EnumGamePrefs eProperty = EnumGamePrefs.ZombieMove;
         
@@ -201,6 +226,12 @@ public class IconicZombie : EntityZombie
     /// </summary>
     public override void OnUpdateLive()
     {
+        // Safety check for world and entity state
+        if (IsMarkedForUnload() || world == null || GameManager.Instance == null || GameManager.Instance.World == null)
+        {
+            return;
+        }
+        
         // Check and clear invalid targets BEFORE base update
         if (Target != null && (Target.IsDead() || Target.IsMarkedForUnload()))
         {
@@ -262,6 +293,9 @@ public class IconicZombie : EntityZombie
 
     public void FindTargetPlayer(float seeDist)
     {
+        // Safety check for world
+        if (world == null) return;
+        
         seeDist *= 2;        
 
         // If it's a blood moon, increase the see distance
@@ -400,6 +434,9 @@ public class IconicZombie : EntityZombie
 
     public void FindTarget()
     {
+        // Safety check for world
+        if (world == null) return;
+        
         // Initialize the closest target distance to the maximum possible value
         closeTargetDist = float.MaxValue;
 
@@ -450,6 +487,9 @@ public class IconicZombie : EntityZombie
 
     protected bool check(EntityAlive entity)
     {
+        // Safety check for world
+        if (world == null) return false;
+        
         // If the entity is null, this entity, not alive, or ignored by AI, return false
         if (entity == null || entity == this || !entity.IsAlive() || entity.IsIgnoredByAI())
         {
@@ -483,6 +523,9 @@ public class IconicZombie : EntityZombie
 
     public void FindTargetLivingAnimal()
     {
+        // Safety check for world
+        if (world == null) return;
+        
         // Initialize the closest target distance to the maximum possible value
         closeTargetDist = float.MaxValue;
 

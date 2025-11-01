@@ -100,8 +100,7 @@ public class EAIApproachAndAttackIconic : EAIBase
     private float lastSpeedForward = 0f;
     private float lastSpeedStrafe = 0f;
     
-    // STATE TRANSITION TRACKING: Detect if jitter correlates with EAI state changes
-    private static bool enableStateTransitionLogging = true;
+    // STATE TRANSITION TRACKING: Track task state without logging
     private bool wasExecutingLastFrame = false;
     
     // STATE CYCLING PREVENTION: Prevent rapid START/STOP thrashing
@@ -177,10 +176,6 @@ public class EAIApproachAndAttackIconic : EAIBase
         float timeSinceStop = Time.time - lastStopTime;
         if (timeSinceStop < MinRestartDelay)
         {
-            if (enableStateTransitionLogging && !theEntity.isEntityRemote)
-            {
-                Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Prevented rapid restart (only {timeSinceStop:F2}s since stop, need {MinRestartDelay}s)");
-            }
             return false;
         }
 
@@ -198,10 +193,6 @@ public class EAIApproachAndAttackIconic : EAIBase
         // Additional validation: ensure target is actually valid
         if (entityTarget == null || entityTarget.IsDead() || entityTarget.IsMarkedForUnload())
         {
-            if (enableStateTransitionLogging && !theEntity.isEntityRemote)
-            {
-                Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} CanExecute failed: invalid target (null:{entityTarget == null}, dead:{entityTarget?.IsDead()}, unload:{entityTarget?.IsMarkedForUnload()})");
-            }
             return false;
         }
 
@@ -269,12 +260,6 @@ public class EAIApproachAndAttackIconic : EAIBase
 
     public override void Start()
     {
-        // STATE TRANSITION LOG: Starting task
-        if (enableStateTransitionLogging && !theEntity.isEntityRemote)
-        {
-            Log.Out($"[EAI-STATE] Entity:{theEntity.entityId} ApproachAndAttack STARTING");
-        }
-        
         entityTargetPos = entityTarget.position;
         entityTargetVel = Vector3.zero;
         isTargetToEat = entityTarget.IsDead();
@@ -335,10 +320,6 @@ public class EAIApproachAndAttackIconic : EAIBase
     {
         if (theEntity.sleepingOrWakingUp || theEntity.bodyDamage.CurrentStun != 0)
         {
-            if (enableStateTransitionLogging && !theEntity.isEntityRemote)
-            {
-                Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Continue=false: sleeping/stunned");
-            }
             return false;
         }
 
@@ -347,10 +328,6 @@ public class EAIApproachAndAttackIconic : EAIBase
         // First validate our cached target is still valid
         if (entityTarget != null && (entityTarget.IsDead() || entityTarget.IsMarkedForUnload()))
         {
-            if (enableStateTransitionLogging && !theEntity.isEntityRemote)
-            {
-                Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Continue=false: cached target {entityTarget.entityId} became invalid (dead:{entityTarget.IsDead()}, unload:{entityTarget.IsMarkedForUnload()})");
-            }
             entityTarget = null;
             return false;
         }
@@ -358,10 +335,6 @@ public class EAIApproachAndAttackIconic : EAIBase
         // CYCLING FIX: Only restore target if it was cleared externally AND our cached target is still valid
         if (attackTarget == null && entityTarget != null && !entityTarget.IsDead() && !entityTarget.IsMarkedForUnload())
         {
-            if (enableStateTransitionLogging && !theEntity.isEntityRemote)
-            {
-                Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Restoring target {entityTarget.entityId} that was cleared externally");
-            }
             theEntity.SetAttackTarget(entityTarget, 200);
             attackTarget = entityTarget;
         }
@@ -369,11 +342,6 @@ public class EAIApproachAndAttackIconic : EAIBase
         // Validate attack target
         if (attackTarget == null || attackTarget.IsDead() || attackTarget.IsMarkedForUnload())
         {
-            if (enableStateTransitionLogging && !theEntity.isEntityRemote)
-            {
-                string reason = attackTarget == null ? "null" : (attackTarget.IsDead() ? "dead" : "unloading");
-                Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Continue=false: invalid target ({reason})");
-            }
             return false;
         }
         
@@ -382,26 +350,14 @@ public class EAIApproachAndAttackIconic : EAIBase
             if (!attackTarget)
             {
                 bool shouldContinue = theEntity.ChaseReturnLocation != Vector3.zero;
-                if (enableStateTransitionLogging && !theEntity.isEntityRemote && !shouldContinue)
-                {
-                    Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Continue=false: going home but no return location");
-                }
                 return shouldContinue;
             }
             
-            if (enableStateTransitionLogging && !theEntity.isEntityRemote)
-            {
-                Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Continue=false: going home but have target");
-            }
             return false;
         }
 
         if (!attackTarget)
         {
-            if (enableStateTransitionLogging && !theEntity.isEntityRemote)
-            {
-                Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Continue=false: no attack target");
-            }
             return false;
         }
 
@@ -414,20 +370,12 @@ public class EAIApproachAndAttackIconic : EAIBase
             }
             else
             {
-                if (enableStateTransitionLogging && !theEntity.isEntityRemote)
-                {
-                    Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Continue=false: target changed from {entityTarget?.entityId ?? -1} to {attackTarget.entityId}");
-                }
                 return false;
             }
         }
 
         if (attackTarget.IsDead() != isTargetToEat)
         {
-            if (enableStateTransitionLogging && !theEntity.isEntityRemote)
-            {
-                Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Continue=false: target death state changed (isDead:{attackTarget.IsDead()}, isTargetToEat:{isTargetToEat})");
-            }
             return false;
         }
 
@@ -439,19 +387,6 @@ public class EAIApproachAndAttackIconic : EAIBase
         // Track consecutive stops for cycling detection
         consecutiveStops++;
         lastStopTime = Time.time;
-        
-        // STATE TRANSITION LOG: Task ending
-        if (enableStateTransitionLogging && !theEntity.isEntityRemote && wasExecutingLastFrame)
-        {
-            if (consecutiveStops >= MaxConsecutiveStops)
-            {
-                Log.Error($"[EAI-CYCLING] Entity:{theEntity.entityId} ApproachAndAttack STOPPING (#{consecutiveStops} consecutive stops - CYCLING DETECTED!)");
-            }
-            else
-            {
-                Log.Out($"[EAI-STATE] Entity:{theEntity.entityId} ApproachAndAttack STOPPING");
-            }
-        }
         
         theEntity.IsEating = false;
         theEntity.moveHelper.Stop();
@@ -545,10 +480,6 @@ public class EAIApproachAndAttackIconic : EAIBase
         // CYCLING FIX: Only restore target if cached target is still valid
         if (currentTarget == null && entityTarget != null && !entityTarget.IsDead() && !entityTarget.IsMarkedForUnload())
         {
-            if (enableStateTransitionLogging && !theEntity.isEntityRemote)
-            {
-                Log.Warning($"[EAI-CYCLING] Entity:{theEntity.entityId} Update: Restoring cleared target {entityTarget.entityId}");
-            }
             theEntity.SetAttackTarget(entityTarget, 200);
             currentTarget = entityTarget;
         }
@@ -1155,33 +1086,9 @@ public class EAIApproachAndAttackIconic : EAIBase
         theEntity.speedStrafe = 0f;
         theEntity.ReplicateSpeeds();
         
-        // ANIMATOR DIAGNOSTIC: Log to verify fix is working
-        if (enableJitterTracking && !theEntity.isEntityRemote)
-        {
-            float speedForwardDelta = Mathf.Abs(theEntity.speedForward - lastSpeedForward);
-            float speedStrafeDelta = Mathf.Abs(theEntity.speedStrafe - lastSpeedStrafe);
-            
-            // Log when there's significant movement to verify strafe is now always zero
-            if (speedForwardDelta > 0.1f || speedStrafeDelta > 0.01f)
-            {
-                Vector3 worldDirection = _direction;
-                if (!_isDirAbsolute)
-                {
-                    worldDirection = theEntity.transform.TransformDirection(_direction);
-                }
-                
-                // Identify which axis is dominant
-                float absX = Mathf.Abs(_direction.x);
-                float absZ = Mathf.Abs(_direction.z);
-                string dominantAxis = absX > absZ ? "X-AXIS" : "Z-AXIS";
-                
-                Log.Out($"[ANIMATOR-FIXED] Entity:{theEntity.entityId} {dominantAxis} Forward:{theEntity.speedForward:F3} Strafe:{theEntity.speedStrafe:F3} " +
-                       $"LocalDir:({_direction.x:F2},{_direction.z:F2}) Magnitude:{movementSpeed:F3}");
-            }
-            
-            lastSpeedForward = theEntity.speedForward;
-            lastSpeedStrafe = theEntity.speedStrafe;
-        }
+        // Store values for diagnostic tracking if needed
+        lastSpeedForward = theEntity.speedForward;
+        lastSpeedStrafe = theEntity.speedStrafe;
     }
 
     public override string ToString()

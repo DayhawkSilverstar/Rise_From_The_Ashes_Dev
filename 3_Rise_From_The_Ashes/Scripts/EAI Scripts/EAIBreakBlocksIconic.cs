@@ -77,12 +77,6 @@ public class EAIBreakBlocksIconic : EAIBase
 
     public override void Start()
     {
-        // STATE TRANSITION LOG: Starting task
-        if (enableStateTransitionLogging && !theEntity.isEntityRemote)
-        {
-            Log.Out($"[EAI-STATE] Entity:{theEntity.entityId} BreakBlocks STARTING");
-        }
-        
         attackDelay = 1;
         EstablishBlockTargetFromHitInfo();
 

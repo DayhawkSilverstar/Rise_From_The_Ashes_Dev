@@ -23,15 +23,11 @@ public class EAIWanderIconic : EAIBase
     public float time;
 
     private string TaskName => nameof(EAIWanderIconic);
-    
-    // STATE TRANSITION TRACKING
-    private static bool enableStateTransitionLogging = true;
 
     public override void Init(EntityAlive _theEntity)
     {
         base.Init(_theEntity);
         MutexBits = 1;
-        Log.Out($"[{TaskName}] id={_theEntity.entityId} Init: mutex={MutexBits}");
     }
 
     public override void SetData(DictionarySave<string, string> data)
@@ -41,7 +37,6 @@ public class EAIWanderIconic : EAIBase
         GetData(data, "fade", ref fade);
         GetData(data, "lookMin", ref lookMin);
         GetData(data, "lookMax", ref lookMax);
-        Log.Out($"[{TaskName}] SetData: exePer={executePercent} fade={fade} lookMin={lookMin} lookMax={lookMax}");
     }
 
     public override bool CanExecute()
@@ -88,21 +83,13 @@ public class EAIWanderIconic : EAIBase
         }
 
         position = vector;
-        Log.Out($"[{TaskName}] id={theEntity?.entityId ?? -1} CanExecute=true: position={position} alert={isAlert}");
         return true;
     }
 
     public override void Start()
     {
-        // STATE TRANSITION LOG
-        if (enableStateTransitionLogging && !theEntity.isEntityRemote)
-        {
-            Log.Out($"[EAI-STATE] Entity:{theEntity.entityId} Wander STARTING");
-        }
-        
         time = 0f;
         theEntity.renderFadeMax = fade;
-        Log.Out($"[{TaskName}] id={theEntity?.entityId ?? -1} Start: direct move to {position}");
     }
 
     public override bool Continue()
@@ -127,11 +114,6 @@ public class EAIWanderIconic : EAIBase
         diff.y = 0f; // Only check horizontal distance
         
         bool shouldContinue = diff.sqrMagnitude > 4f; // 2 blocks squared
-        
-        if (!shouldContinue)
-        {
-            Log.Out($"[{TaskName}] id={theEntity?.entityId ?? -1} Continue=false: reached destination");
-        }
         
         return shouldContinue;
     }
@@ -158,21 +140,8 @@ public class EAIWanderIconic : EAIBase
 
     public override void Reset()
     {
-        // STATE TRANSITION LOG
-        if (enableStateTransitionLogging && !theEntity.isEntityRemote)
-        {
-            Log.Out($"[EAI-STATE] Entity:{theEntity.entityId} Wander STOPPING");
-        }
-        
         manager.lookTime = base.Random.RandomRange(lookMin, lookMax);
         theEntity.moveHelper.Stop();
         theEntity.renderFadeMax = 1f;
-        Log.Out($"[{TaskName}] id={theEntity?.entityId ?? -1} Reset: lookTime={manager.lookTime:0.00}");
-    }
-
-    public override string ToString()
-    {
-        float distance = (theEntity.position - position).magnitude;
-        return string.Format("{0}, (direct) dist {1} time {2:0.0}", base.ToString(), distance.ToCultureInvariantString("0.00"), time);
     }
 }

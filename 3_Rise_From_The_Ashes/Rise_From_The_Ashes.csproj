@@ -94,6 +94,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Harmony\EntityAliveUpdatePatch.cs" />
     <Compile Include="Harmony\GameStagePatch.cs" />
     <Compile Include="Harmony\MainMenuMusic.cs" />
     <Compile Include="Scripts\Blocks\RiseBlockAOEDeco.cs" />
@@ -178,6 +179,17 @@
     <None Include="Docs\EAIApproachAndAttackIconic_Enhanced_Logging.md" />
     <None Include="Docs\Enhanced_Logging_Improvements.md" />
     <None Include="Docs\FINAL_Jitter_Fix_Summary.md" />
+    <None Include="Docs\Hallucination_CRITICAL_EntityID_Bug_Fix.md" />
+    <None Include="Docs\Hallucination_Instant_Death_Diagnostic.md" />
+    <None Include="Docs\Hallucination_NullReference_CRITICAL_FIX.md" />
+    <None Include="Docs\Hallucination_PostInit_Approach.md" />
+    <None Include="Docs\Hallucination_Shutdown_HARMONY_FIX_FINAL.md" />
+    <None Include="Docs\Hallucination_System_Final_Report.md" />
+    <None Include="Docs\Hallucination_Visibility_Issue.md" />
+    <None Include="Docs\Hallucination_Zombie_Code_Analysis.md" />
+    <None Include="Docs\Hallucination_Zombie_Entity_ID_Fix.md" />
+    <None Include="Docs\Hallucination_Zombie_Ground_Physics_Fix.md" />
+    <None Include="Docs\IconicZombie_Clean_Shutdown_Fix.md" />
     <None Include="Docs\IconicZombie_Despawn_Memory_Leak_Fix.md" />
     <None Include="Docs\IconicZombie_Enhanced_Jitter_Logging.md" />
     <None Include="Docs\IconicZombie_Enhanced_Logging.md" />
