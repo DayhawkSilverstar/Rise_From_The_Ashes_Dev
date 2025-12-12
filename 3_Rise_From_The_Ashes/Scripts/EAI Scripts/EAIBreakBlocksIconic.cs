@@ -18,7 +18,7 @@ public class EAIBreakBlocksIconic : EAIBase
     public List<Entity> allies = new List<Entity>();
 
     private const float VerticalDetectionThreshold = 2.5f; // Target must be at least this far above/below
-    private const float HorizontalRangeThreshold = 10f; // Horizontal distance must be within this
+    private const float HorizontalRangeThreshold = 2.5f; // Horizontal distance to be considered "directly under"
 
     private string TaskName => nameof(EAIBreakBlocksIconic);
     
@@ -52,13 +52,6 @@ public class EAIBreakBlocksIconic : EAIBase
         if (IsEntityStunned())
             return false;
 
-        if (EarlyOutIfTargetIsOnSameLevel())
-            return false;
-
-        // Check if we have an attack target
-        if (!MovementPrereqsSatisfied())
-            return false;
-
         // Check if we should break blocks to reach the target
         if (IsJumpingAbort())
             return false;
@@ -66,6 +59,14 @@ public class EAIBreakBlocksIconic : EAIBase
         // Continue if we already have a valid block target
         if (HandleExistingBlockTargetContinuation())
             return true;
+
+        // Check if we have an attack target and prerequisites
+        if (!MovementPrereqsSatisfied())
+            return false;
+
+        // Only skip if on same level AND not stuck (if stuck, we should break through)
+        if (EarlyOutIfTargetIsOnSameLevel() && theEntity.moveHelper.BlockedTime < 1.0f)
+            return false;
 
         SelectNearestBlock();
 
@@ -80,11 +81,11 @@ public class EAIBreakBlocksIconic : EAIBase
         attackDelay = 1;
         EstablishBlockTargetFromHitInfo();
 
-        if (!hasBlockTarget)
-        {
-            Log.Out($"[{TaskName}] id={theEntity.entityId} START - No valid block target in HitInfo");
-            return;
-        }
+        //if (!hasBlockTarget)
+        //{
+        //    Log.Out($"[{TaskName}] id={theEntity.entityId} START - No valid block target in HitInfo");
+        //    return;
+        //}
 
         LogStartBreaking();
     }
@@ -107,7 +108,8 @@ public class EAIBreakBlocksIconic : EAIBase
 
     public override bool Continue()
     {
-        if (EarlyOutIfTargetIsOnSameLevel())
+        // Only skip if on same level AND not stuck (if stuck, we should continue breaking)
+        if (EarlyOutIfTargetIsOnSameLevel() && theEntity.moveHelper.BlockedTime < 1.0f)
             return false;
 
         if (!IsOnGroundOrElevator())
@@ -148,19 +150,32 @@ private bool HandleExistingBlockTargetContinuation()
     {
         var moveHelper = theEntity.moveHelper;
 
-        if (CheckIfUnderThePlayer())
-        {            
-            return true;
-        }    
-
-        
-        // Must have an attack target
-        if (moveHelper.BlockedTime < 0.35f || !moveHelper.CanBreakBlocks)
+        // Must have the ability to break blocks
+        if (!moveHelper.CanBreakBlocks)
         {            
             return false;
         }
 
-        return true;
+        // Break blocks if we're under the player (within 2.5 blocks horizontally)
+        bool isUnderPlayer = CheckIfUnderThePlayer();
+        if (isUnderPlayer)
+        {
+            return true;
+        }
+
+        // NEW: Check if stuck moving forward with player above within close range
+        if (IsStuckMovingForwardWithPlayerAbove())
+        {
+            return true;
+        }
+
+        // OR break blocks if we've been blocked/stuck for 1 second
+        if (moveHelper.BlockedTime >= 1.0f)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     private bool IsJumpingAbort()
@@ -185,11 +200,11 @@ private bool HandleExistingBlockTargetContinuation()
         Vector3 zombiePos = theEntity.position;
         Vector3 playerPos = attackTarget.position;
 
-        // Height does not matter; check horizontal (XZ) within 10 blocks using axis bounds
+        // Check if directly under: horizontal (XZ) within 2.5 blocks
         float dx = Mathf.Abs(zombiePos.x - playerPos.x);
         float dz = Mathf.Abs(zombiePos.z - playerPos.z);
-        bool within10 = (dx <= 10f) && (dz <= 10f);
-        if (!within10)
+        bool directlyUnder = (dx <= 2.5f) && (dz <= 2.5f);
+        if (!directlyUnder)
         {            
             return false;
         }
@@ -198,6 +213,49 @@ private bool HandleExistingBlockTargetContinuation()
         
     }
 
+    /// <summary>
+    /// Checks if the zombie is stuck moving forward with the player above them.
+    /// Returns true if: player is within 3 blocks horizontally (X/Z), 
+    /// player is 2+ blocks above vertically, and zombie is stuck/blocked.
+    /// </summary>
+    private bool IsStuckMovingForwardWithPlayerAbove()
+    {
+        EntityAlive attackTarget = theEntity.GetAttackTarget();
+        if (attackTarget == null || !attackTarget.IsAlive() || !(attackTarget is EntityPlayer))
+        {
+            return false;
+        }
+
+        var moveHelper = theEntity.moveHelper;
+        
+        // Check if zombie is stuck/blocked moving forward (at least 0.5 seconds)
+        if (moveHelper.BlockedTime < 0.5f)
+        {
+            return false;
+        }
+
+        Vector3 zombiePos = theEntity.position;
+        Vector3 playerPos = attackTarget.position;
+
+        // Check horizontal distance (X/Z plane) - within 3 blocks
+        float dx = Mathf.Abs(zombiePos.x - playerPos.x);
+        float dz = Mathf.Abs(zombiePos.z - playerPos.z);
+        if (dx > 3f || dz > 3f)
+        {
+            return false;
+        }
+
+        // Check vertical distance - player must be at least 2 blocks above
+        float verticalDiff = playerPos.y - zombiePos.y;
+        if (verticalDiff < 2f)
+        {
+            return false;
+        }
+
+        // All conditions met: stuck, player nearby horizontally, player above
+        return true;
+    }
+  
     private bool EarlyOutIfTargetIsOnSameLevel()
     {
         EntityAlive attackTarget = theEntity.GetAttackTarget();
@@ -212,16 +270,31 @@ private bool HandleExistingBlockTargetContinuation()
         }
         return false;
     }
-
   
     /// <summary>
     /// Selects the nearest block to attack via a horizontal voxel raycast fan (Voxel.GetNextBlockHit): 20m range, ±45° arc.
+    /// Only selects blocks that are above the entity's feet but below their head when under the player.
+    /// When stuck on same level, allows blocks at any height.
     /// Falls back to previous logic if nothing is found.
     /// </summary>
     private void SelectNearestBlock()
     {
         EntityMoveHelper moveHelper = theEntity.moveHelper;        
         Vector3 entityPos = theEntity.position;
+        
+        // Calculate entity's vertical bounds (feet to head)
+        float feetY = entityPos.y;
+        float headY = entityPos.y + theEntity.GetEyeHeight();
+        
+        // If we're stuck on the same level as the player, allow any height for block selection
+        bool isStuckOnSameLevel = EarlyOutIfTargetIsOnSameLevel() && moveHelper.BlockedTime >= 1.0f;
+        if (isStuckOnSameLevel)
+        {
+            // Expand vertical range to allow breaking blocks at any height in front
+            feetY = entityPos.y - 2f; // Allow blocks below
+            headY = entityPos.y + 3f; // Allow blocks above head
+        }
+        
         int by = Mathf.FloorToInt(entityPos.y);
         // Fix the ray height at center of the entity's block for a horizontal sweep
         Vector3 start = new Vector3(entityPos.x, by + 0.5f, entityPos.z);
@@ -242,7 +315,7 @@ private bool HandleExistingBlockTargetContinuation()
 
         Vector3i bestPos;
         float bestDistSq;
-        TryVoxelArcForBlock(start, fwd3, 20f, 45f, out bestPos, out bestDistSq);      
+        TryVoxelArcForBlock(start, fwd3, 20f, 45f, feetY, headY, out bestPos, out bestDistSq);      
     }  
 
     [PublicizedFrom(EAccessModifier.Private)]
@@ -364,10 +437,10 @@ private bool HandleExistingBlockTargetContinuation()
     public override void Reset()
     {
         // STATE TRANSITION LOG: Task ending
-        if (enableStateTransitionLogging && !theEntity.isEntityRemote)
-        {
-            Log.Out($"[EAI-STATE] Entity:{theEntity.entityId} BreakBlocks STOPPING");
-        }
+        //if (enableStateTransitionLogging && !theEntity.isEntityRemote)
+        //{
+        //    Log.Out($"[EAI-STATE] Entity:{theEntity.entityId} BreakBlocks STOPPING");
+        //}
         
         theEntity.IsBreakingBlocks = false;
         theEntity.IsBreakingDoors = false;
@@ -472,7 +545,7 @@ private bool HandleExistingBlockTargetContinuation()
     }
 
  
-    private bool TryVoxelArcForBlock(Vector3 start, Vector3 fwd3, float maxDist, float halfAngleDeg, out Vector3i bestPos, out float bestDistSq)
+    private bool TryVoxelArcForBlock(Vector3 start, Vector3 fwd3, float maxDist, float halfAngleDeg, float feetY, float headY, out Vector3i bestPos, out float bestDistSq)
     {
         bestPos = default(Vector3i);
         bestDistSq = float.MaxValue;
@@ -501,6 +574,14 @@ private bool HandleExistingBlockTargetContinuation()
                 continue;
 
             Vector3i pos = Voxel.voxelRayHitInfo.hit.blockPos;
+            
+            // IMPORTANT: Only target blocks that are above feet but below head
+            float blockY = pos.y + 0.5f; // center of block
+            if (blockY < feetY || blockY > headY)
+            {
+                continue; // Skip blocks outside vertical range
+            }
+            
             BlockValue bv = theEntity.world.GetBlock(pos);            
             Block block = bv.Block;
             if (bv.isair || block == null)

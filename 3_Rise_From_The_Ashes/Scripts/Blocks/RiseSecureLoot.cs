@@ -212,6 +212,11 @@ public class RiseSecureLoot : BlockSecureLoot
                     tileEntitySecureLootContainer.bWasTouched = tileEntitySecureLootContainer.bTouched;
                     _world.GetGameManager().TELockServer(_cIdx, blockPos, tileEntitySecureLootContainer.entityId, _player.entityId, "lockpick");
                     _player.SetCVar(".pickLockAttempt", 1);
+                    
+                    // CRITICAL FIX: Don't store cluster index in timer data - it becomes stale during long lockpick
+                    // Timer data now: [blockPos, player, item] - removed _cIdx and _blockValue
+                    Log.Out($"RiseSecureLoot - Starting lockpick timer at {blockPos} (duration={lockPickTime}s)");
+                    
                     return true;
                 }
             case "trigger":
@@ -224,50 +229,83 @@ public class RiseSecureLoot : BlockSecureLoot
 
     private void EventData_CloseEvent(TimerEventData timerData)
     {
+        // Server-only block state update after lockpick failure
+        // Only the server should manage tile entity unlock state
+        if (!SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer)
+        {
+            return;
+        }
+        
         object[] array = (object[])timerData.Data;
-        int clrIdx = (int)array[0];
-        Vector3i vector3i = (Vector3i)array[2];
-        EntityPlayerLocal entityPlayerLocal = array[3] as EntityPlayerLocal;
-        ItemValue itemValue = array[4] as ItemValue;
+        // Note: array[0] no longer contains cluster index - removed for safety
+        Vector3i vector3i = (Vector3i)array[1];
+        EntityPlayerLocal entityPlayerLocal = array[2] as EntityPlayerLocal;
+        ItemValue itemValue = array[3] as ItemValue;
         LocalPlayerUI uIForPlayer = LocalPlayerUI.GetUIForPlayer(entityPlayerLocal);
         Manager.BroadcastPlayByLocalPlayer(vector3i.ToVector3() + Vector3.one * 0.5f, "Misc/locked");
         ItemStack itemStack = new ItemStack(itemValue, 1);
         uIForPlayer.xui.PlayerInventory.RemoveItem(itemStack);
         GameManager.ShowTooltip(entityPlayerLocal, Localization.Get("ttLockpickBroken"));
         uIForPlayer.xui.CollectedItemList.RemoveItemStack(itemStack);
-        if (GameManager.Instance.World.GetTileEntity((int)array[0], vector3i) is TileEntitySecureLootContainer tileEntitySecureLootContainer)
+        
+        // Re-query world for tile entity without stale cluster index
+        World world = GameManager.Instance.World;
+        if (world != null)
         {
-            tileEntitySecureLootContainer.PickTimeLeft = Mathf.Max(lockPickTime * 0.25f, timerData.timeLeft);
-            if (lockPickFailedEvent != null)
+            // Let GetTileEntity compute the current cluster index
+            if (world.GetTileEntity(vector3i) is TileEntitySecureLootContainer tileEntitySecureLootContainer)
             {
-                GameEventManager.Current.HandleAction(lockPickFailedEvent, null, entityPlayerLocal, twitchActivated: false, vector3i);
-            }
+                tileEntitySecureLootContainer.PickTimeLeft = Mathf.Max(lockPickTime * 0.25f, timerData.timeLeft);
+                if (lockPickFailedEvent != null)
+                {
+                    GameEventManager.Current.HandleAction(lockPickFailedEvent, null, entityPlayerLocal, twitchActivated: false, vector3i);
+                }
 
-            ResetEventData(timerData);
-            GameManager.Instance.TEUnlockServer(clrIdx, vector3i, tileEntitySecureLootContainer.EntityId, _allowContainerDestroy: false);
+                ResetEventData(timerData);
+                
+                // Use position-only pattern - pass cluster 0, World computes current cluster
+                world.GetGameManager().TEUnlockServer(0, vector3i, tileEntitySecureLootContainer.EntityId, false);
+                
+                Log.Out($"RiseSecureLoot - Lockpick failed at {vector3i}");
+            }
         }
     }
 
     private void EventData_Event(TimerEventData timerData)
     {
+        // Server-only block downgrade after successful lockpick
+        // Only the server should decide the final block state
+        if (!SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer)
+        {
+            return;
+        }
+        
         World world = GameManager.Instance.World;
         object[] obj = (object[])timerData.Data;
-        int clrIdx = (int)obj[0];
-        _ = (BlockValue)obj[1];
-        Vector3i vector3i = (Vector3i)obj[2];
+        // Note: obj[0] no longer contains cluster index - removed for safety
+        Vector3i vector3i = (Vector3i)obj[1];
+        EntityPlayerLocal entityPlayerLocal = obj[2] as EntityPlayerLocal;
+        
+        // Re-query current block state instead of using captured value (may be stale)
         BlockValue block = world.GetBlock(vector3i);
-        EntityPlayerLocal entityPlayerLocal = obj[3] as EntityPlayerLocal;
-        _ = obj[4];
-        if (world.GetTileEntity(clrIdx, vector3i) is TileEntitySecureLootContainer tileEntitySecureLootContainer)
+        
+        // Let GetTileEntity compute the current cluster index
+        if (world.GetTileEntity(vector3i) is TileEntitySecureLootContainer tileEntitySecureLootContainer)
         {
             LocalPlayerUI.GetUIForPlayer(entityPlayerLocal);
             if (!LockpickDowngradeBlock.isair)
             {
+                // Compute the downgraded block
                 BlockValue lockpickDowngradeBlock = LockpickDowngradeBlock;
                 lockpickDowngradeBlock = BlockPlaceholderMap.Instance.Replace(lockpickDowngradeBlock, world.GetGameRandom(), vector3i.x, vector3i.z);
                 lockpickDowngradeBlock.rotation = block.rotation;
                 lockpickDowngradeBlock.meta = block.meta;
-                world.SetBlockRPC(clrIdx, vector3i, lockpickDowngradeBlock, lockpickDowngradeBlock.Block.Density);
+                
+                // Use position-only SetBlockRPC - World computes current cluster index internally
+                // This is critical because the cluster index from timer start is stale after 15+ seconds
+                world.SetBlockRPC(vector3i, lockpickDowngradeBlock, lockpickDowngradeBlock.Block.Density);
+                
+                Log.Out($"RiseSecureLoot - Lockpick success, downgraded to {lockpickDowngradeBlock.Block.GetBlockName()} at {vector3i}");
             }
 
             Manager.BroadcastPlayByLocalPlayer(vector3i.ToVector3() + Vector3.one * 0.5f, "Misc/unlocking");
@@ -277,7 +315,9 @@ public class RiseSecureLoot : BlockSecureLoot
             }
 
             ResetEventData(timerData);
-            GameManager.Instance.TEUnlockServer(clrIdx, vector3i, tileEntitySecureLootContainer.EntityId, _allowContainerDestroy: false);
+            
+            // Use position-only pattern - pass cluster 0, World computes current cluster
+            world.GetGameManager().TEUnlockServer(0, vector3i, tileEntitySecureLootContainer.EntityId, false);
         }
     }
 
@@ -317,14 +357,29 @@ public class RiseSecureLoot : BlockSecureLoot
 
     public override void OnTriggered(EntityPlayer _player, WorldBase _world, int _cIdx, Vector3i _blockPos, BlockValue _blockValue, List<BlockChangeInfo> _blockChanges, BlockTrigger _triggeredBy)
     {
+        // Call base implementation first (vanilla pattern)
         base.OnTriggered(_player, _world, _cIdx, _blockPos, _blockValue, _blockChanges, _triggeredBy);
+        
+        // Server-only block downgrade logic
+        // Only the server should decide the final block state after trigger
+        if (!SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer)
+        {
+            return;
+        }
+        
         if (!LockpickDowngradeBlock.isair)
         {
+            // Compute the downgraded block
             BlockValue lockpickDowngradeBlock = LockpickDowngradeBlock;
             lockpickDowngradeBlock = BlockPlaceholderMap.Instance.Replace(lockpickDowngradeBlock, _world.GetGameRandom(), _blockPos.x, _blockPos.z);
             lockpickDowngradeBlock.rotation = _blockValue.rotation;
             lockpickDowngradeBlock.meta = _blockValue.meta;
-            _world.SetBlockRPC(_cIdx, _blockPos, lockpickDowngradeBlock, lockpickDowngradeBlock.Block.Density);
+            
+            // Use position-only SetBlockRPC - World computes current cluster index internally
+            // This is server-authoritative and safe even if _cIdx becomes stale
+            _world.SetBlockRPC(_blockPos, lockpickDowngradeBlock, lockpickDowngradeBlock.Block.Density);
+            
+            Log.Out($"RiseSecureLoot - Trigger activated, downgraded to {lockpickDowngradeBlock.Block.GetBlockName()} at {_blockPos}");
         }
 
         Manager.BroadcastPlayByLocalPlayer(_blockPos.ToVector3() + Vector3.one * 0.5f, "Misc/unlocking");

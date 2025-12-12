@@ -87,7 +87,8 @@ public class RiseBlockExplosiveLoot : BlockCarExplodeLoot
         playerUI.windowManager.Open("timer", _bModal: true);
         XUiC_Timer childByType = playerUI.xui.GetChildByType<XUiC_Timer>();
         TimerEventData timerEventData = new TimerEventData();
-        timerEventData.Data = new object[4] { _cIdx, _blockValue, _blockPos, _player };
+        // CRITICAL FIX: Don't store cluster index - it becomes stale after delay
+        timerEventData.Data = new object[3] { _blockValue, _blockPos, _player };
         timerEventData.Event += EventData_Event;
         childByType.SetTimer(TakeDelay, timerEventData);
 
@@ -101,18 +102,36 @@ public class RiseBlockExplosiveLoot : BlockCarExplodeLoot
         var world = GameManager.Instance.World;
 
         var array = (object[])timerData.Data;
-        var clrIdx = (int)array[0];
-        var blockValue = (BlockValue)array[1];
-        var vector3i = (Vector3i)array[2];
-        var block = world.GetBlock(vector3i);
-        var entityPlayerLocal = array[3] as EntityPlayerLocal;
+        var originalBlockValue = (BlockValue)array[0];
+        var vector3i = (Vector3i)array[1];
+        var entityPlayerLocal = array[2] as EntityPlayerLocal;
+        
+        // CRITICAL FIX: Validate block hasn't changed during timer delay
+        var currentBlock = world.GetBlock(vector3i);
+        if (currentBlock.type != originalBlockValue.type)
+        {
+            GameManager.ShowTooltip(entityPlayerLocal, "Block was modified during pickup", string.Empty, "ui_denied");
+            Log.Out($"RiseBlockExplosiveLoot - Block type changed during timer at {vector3i} (expected {originalBlockValue.type}, found {currentBlock.type})");
+            return;
+        }
+        
+        if (currentBlock.damage > 0)
+        {
+            GameManager.ShowTooltip(entityPlayerLocal, Localization.Get("ttRepairBeforePickup"), string.Empty, "ui_denied");
+            Log.Out($"RiseBlockExplosiveLoot - Block was damaged during timer at {vector3i}");
+            return;
+        }
 
-        // Pick up the item and put it inyor your inventory.
+        // Pick up the item and put it in your inventory.
         var uiforPlayer = LocalPlayerUI.GetUIForPlayer(entityPlayerLocal);
-        var itemStack = new ItemStack(block.ToItemValue(), 1);
+        var itemStack = new ItemStack(currentBlock.ToItemValue(), 1);
         if (!uiforPlayer.xui.PlayerInventory.AddItem(itemStack, true))
             uiforPlayer.xui.PlayerInventory.DropItem(itemStack);
-        world.SetBlockRPC(clrIdx, vector3i, BlockValue.Air);
+        
+        // CRITICAL FIX: Use position-only SetBlockRPC - lets World compute current cluster index
+        world.SetBlockRPC(vector3i, BlockValue.Air);
+        
+        Log.Out("RiseBlockExplosiveLoot - Block picked up and world updated at " + vector3i.ToString());
 
         #endregion
     }

@@ -446,11 +446,11 @@ public class EAIApproachAndAttackIconic : EAIBase
         int frame = Time.frameCount;
         if (frame != currentFrame)
         {
-            // TARGETED: Log if multiple movement commands in previous frame
-            if (enableJitterTracking && !theEntity.isEntityRemote && moveCommandsThisFrame > 1)
-            {
-                Log.Warning($"[JITTER] Entity:{theEntity.entityId} Frame:{currentFrame} MultipleMoveCmds:{moveCommandsThisFrame}");
-            }
+            //// TARGETED: Log if multiple movement commands in previous frame
+            //if (enableJitterTracking && !theEntity.isEntityRemote && moveCommandsThisFrame > 1)
+            //{
+            //    Log.Warning($"[JITTER] Entity:{theEntity.entityId} Frame:{currentFrame} MultipleMoveCmds:{moveCommandsThisFrame}");
+            //}
             
             currentFrame = frame;
             moveCommandsThisFrame = 0;
@@ -856,10 +856,10 @@ public class EAIApproachAndAttackIconic : EAIBase
             float deltaDistance = positionDelta.magnitude;
             
             // Only log if there's significant unexpected movement (potential jitter)
-            if (deltaDistance > 0.5f && !didMove)
-            {
-                Log.Warning($"[JITTER] Entity:{theEntity.entityId} UnexpectedMove Delta:{positionDelta.ToString("F3")} Dist:{deltaDistance:F3}");
-            }
+            //if (deltaDistance > 0.5f && !didMove)
+            //{
+            //    Log.Warning($"[JITTER] Entity:{theEntity.entityId} UnexpectedMove Delta:{positionDelta.ToString("F3")} Dist:{deltaDistance:F3}");
+            //}
             
             lastFramePosition = theEntity.position;
         }
@@ -974,7 +974,7 @@ public class EAIApproachAndAttackIconic : EAIBase
                 Vector3 motionDelta = theEntity.motion - before;
                 if (motionDelta.magnitude > 0.1f)
                 {
-                    Log.Out($"[JITTER] Entity:{theEntity.entityId} RootMotion Applied:{theEntity.accumulatedRootMotion.ToString("F3")} MotionDelta:{motionDelta.ToString("F3")}");
+                    //Log.Out($"[JITTER] Entity:{theEntity.entityId} RootMotion Applied:{theEntity.accumulatedRootMotion.ToString("F3")} MotionDelta:{motionDelta.ToString("F3")}");
                 }
             }
             else

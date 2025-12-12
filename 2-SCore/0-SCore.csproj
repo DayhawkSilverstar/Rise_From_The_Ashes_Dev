@@ -25,7 +25,8 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DocumentationFile></DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -698,6 +699,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Documentation\BroadcastCraftingSystem.md" />
     <None Include="Features\Farming\Readme.md" />
     <None Include="Features\Fire\Readme.md" />
     <None Include="Licenses\CaveGeneration.md" />
@@ -774,7 +776,7 @@
     <Folder Include="Features\ParticleAttractor\Harmony\" />
     <Folder Include="Features\PlayerMetrics\BloodMoonTracking\Harmony\" />
     <Folder Include="Features\PlayerMetrics\KillTracking\Harmony\" />
-    <Folder Include="Harmony\Recipes" />
+    <Folder Include="Harmony\Recipes\" />
     <Folder Include="Harmony\Weather\" />
     <Folder Include="Scripts\Particles\" />
   </ItemGroup>
@@ -834,7 +836,7 @@
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
-	<!--
+    <!--
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.RemoteControl, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.VisualStudio.RemoteControl.16.3.44\lib\net45\Microsoft.VisualStudio.RemoteControl.dll</HintPath>
@@ -890,16 +892,14 @@
       <HintPath>..\..\7DaysToDie_Data\Managed\System.dll</HintPath>
       <Private>False</Private>
     </Reference>
-	    <Reference Include="mscorlib">
+    <Reference Include="mscorlib">
       <HintPath>..\..\7DaysToDie_Data\Managed\mscorlib.dll</HintPath>
       <Private>False</Private>
     </Reference>
-
     <Reference Include="System.Xml.Linq">
       <HintPath>..\..\7DaysToDie_Data\Managed\System.Xml.Linq.dll</HintPath>
       <Private>False</Private>
     </Reference>
-
     <Reference Include="Unity.Addressables">
       <HintPath>..\..\7DaysToDie_Data\Managed\Unity.Addressables.dll</HintPath>
       <Private>False</Private>

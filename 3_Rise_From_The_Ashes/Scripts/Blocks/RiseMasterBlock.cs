@@ -47,15 +47,6 @@ public class RiseMasterBlock : Block
         base.OnBlockUnloaded(_world, _clrIdx, _blockPos, _blockValue);
     }
 
-    // Display custom messages for turning on and off the music box, based on the block's name.
-    public override string GetActivationText(WorldBase _world, BlockValue _blockValue, int _clrIdx, Vector3i _blockPos,
-        EntityAlive _entityFocusing)
-    {
-        #region GetActivationText
-        return base.GetActivationText(_world, _blockValue, _clrIdx,_blockPos, _entityFocusing);
-        #endregion
-    }
-
     public override int OnBlockDamaged(WorldBase _world, int _clrIdx, Vector3i _blockPos, BlockValue _blockValue, int _damagePoints, int _entityIdThatDamaged, ItemActionAttack.AttackHitInfo _attackHitInfo, bool _bUseHarvestTool, bool _bBypassMaxDamage, int _recDepth = 0)
     {
         // Code for hardness inserted here.      
@@ -74,18 +65,6 @@ public class RiseMasterBlock : Block
             if (player.entityId == _entityIdThatDamaged)
             {
                 BlockValue newBlock = _blockValue;
-
-                /*
-                // Change to the variant if possible
-                switch (_blockValue.Block.blockMaterial.id)
-                {
-                    case "Mwood_shapes":
-                        {
-                            newBlock = new BlockValue((uint)GetBlockByName("woodShapes:VariantHelper").blockID);
-                            break;
-                        }
-                }
-                */
 
                 foreach (SItemNameCount item in newBlock.Block.RepairItems)
                 {
@@ -106,13 +85,10 @@ public class RiseMasterBlock : Block
                         // Add it to the players inventory. 
                         if (player.bag.AddItem(itemStack))
                         {
-                            
-                            //player.AddUIHarvestingItem(itemStack, false);
                             Log.Out("Item added to players bag : " + item.ItemName + " (" + cnt.ToString() + ")");
                         }
                         else if (player.inventory.AddItem(itemStack))
                         {
-                            //player.AddUIHarvestingItem(itemStack,false);
                             Log.Out("Item added to players toolbar : " + item.ItemName + " (" + cnt.ToString() + ")");
                         }
                         else
@@ -129,8 +105,13 @@ public class RiseMasterBlock : Block
                 }
 
                 Log.Out("Player upgrades " + _blockValue.Block.GetBlockName() + " For : " + initialDamage.ToString());
-                return base.OnBlockDamaged(_world, _clrIdx, _blockPos, _blockValue, initialDamage, _entityIdThatDamaged, _attackHitInfo, _bUseHarvestTool, _bBypassMaxDamage, _recDepth);
-
+                
+                // Call base method which handles proper world updates and chunk tracking
+                int result = base.OnBlockDamaged(_world, _clrIdx, _blockPos, _blockValue, initialDamage, _entityIdThatDamaged, _attackHitInfo, _bUseHarvestTool, _bBypassMaxDamage, _recDepth);
+                
+                Log.Out("Upgrade completed - world updated at " + _blockPos.ToString());
+                
+                return result;
             }
         }
         else
@@ -152,7 +133,13 @@ public class RiseMasterBlock : Block
         if (initialDamage < 0)
         {
             Log.Out("Player repairs " + _blockValue.Block.GetBlockName() + " For : " + initialDamage.ToString());
-            return base.OnBlockDamaged(_world, _clrIdx, _blockPos, _blockValue, initialDamage, _entityIdThatDamaged, _attackHitInfo, _bUseHarvestTool, _bBypassMaxDamage, _recDepth);
+            
+            // Let base class handle repairs properly
+            int result = base.OnBlockDamaged(_world, _clrIdx, _blockPos, _blockValue, initialDamage, _entityIdThatDamaged, _attackHitInfo, _bUseHarvestTool, _bBypassMaxDamage, _recDepth);
+            
+            Log.Out("Repair completed - world updated at " + _blockPos.ToString());
+            
+            return result;
         }
 
         EntityAlive ea = GameManager.Instance.World.GetEntity(_entityIdThatDamaged) as EntityAlive;
@@ -162,11 +149,16 @@ public class RiseMasterBlock : Block
             if (itemActionData != null)
             {
                 Log.Out("Weapon = " + ea.inventory.holdingItem.GetItemName());
-                int maxDamage = (int)itemActionData.attackDetails.damage * 3;
+                
+                // FIX: Use initial damage (before resist) instead of base weapon damage for cap calculation
+                // This allows power attacks to do their full damage
+                // Cap at 5x the incoming damage to prevent exploits, but don't use base weapon damage
+                int maxDamage = initialDamage * 5;
+                
                 if (maxDamage < finalDamage)
                 {
                     Log.Out("Final Damage :" + finalDamage.ToString() + " is greater than " + maxDamage.ToString());
-                    finalDamage = maxDamage;                  
+                    finalDamage = maxDamage;                 
                 }
             }
 
@@ -187,9 +179,9 @@ public class RiseMasterBlock : Block
             Log.Out("Entity : " + _entityIdThatDamaged.ToString() + " Damages : " + _blockValue.Block.GetBlockName() + " For : " + finalDamage.ToString() + "(" + initialDamage.ToString() + ") damage after damage resist value of (" + damageResist.ToString() + ")");
         }
 
-        int result = base.OnBlockDamaged(_world, _clrIdx, _blockPos, _blockValue, finalDamage, _entityIdThatDamaged, _attackHitInfo, _bUseHarvestTool, _bBypassMaxDamage, _recDepth);
+        int result2 = base.OnBlockDamaged(_world, _clrIdx, _blockPos, _blockValue, finalDamage, _entityIdThatDamaged, _attackHitInfo, _bUseHarvestTool, _bBypassMaxDamage, _recDepth);
 
-        return result;
+        return result2;
     }
 
     public override BlockActivationCommand[] GetBlockActivationCommands(WorldBase _world, BlockValue _blockValue,
@@ -211,31 +203,32 @@ public class RiseMasterBlock : Block
     public override void OnBlockPlaceBefore(WorldBase _world, ref BlockPlacement.Result _bpResult, EntityAlive _ea, GameRandom _rnd)
     {
         base.OnBlockPlaceBefore(_world, ref _bpResult, _ea, _rnd);
-
-
     }
 
     public override bool OnBlockActivated(string _commandName, WorldBase _world, int _cIdx, Vector3i _blockPos, BlockValue _blockValue, EntityPlayerLocal _player)
     {
-        Log.Out("Command : {0}", _commandName);
-        if (AllowPickup > 0)
+        // CRITICAL FIX: Handle child blocks like base game does
+        if (_blockValue.ischild)
         {
-            if (_commandName == "take")
-            {
-                Log.Out("RiseMasterBlock - Trying to pick up a block.");
-                TakeItemWithTimer(_cIdx, _blockPos, _blockValue, _player);
-                return true;
-            }
-            else if (_commandName == "Search")
-            {
-                Log.Out("RiseMasterBlock - Trying to search.");
-                Log.Out("Trigger Selected");
-                return OnBlockActivated(_world, _cIdx, _blockPos, _blockValue, _player);
-            }
+            Vector3i parentPos = _blockValue.Block.multiBlockPos.GetParentPos(_blockPos, _blockValue);
+            BlockValue block = _world.GetBlock(parentPos);
+            return OnBlockActivated(_commandName, _world, _cIdx, parentPos, block, _player);
         }
 
-        return false;
+        Log.Out("Command : {0}", _commandName);
+        
+        // Handle custom "take" command with timer
+        if (AllowPickup > 0 && _commandName == "take")
+        {
+            Log.Out("RiseMasterBlock - Trying to pick up a block.");
+            TakeItemWithTimer(_cIdx, _blockPos, _blockValue, _player);
+            return true;
+        }
 
+        // Let base handle all other commands (including search)
+        // SIMPLIFIED: Removed useless search wrapper that just called the other overload
+        // Per "Opportunities to Leverage Default 7DTD Code" document section 4.1
+        return base.OnBlockActivated(_commandName, _world, _cIdx, _blockPos, _blockValue, _player);
     }
 
     public override bool HasBlockActivationCommands(WorldBase _world, BlockValue _blockValue, int _clrIdx, Vector3i _blockPos, EntityAlive _entityFocusing)
@@ -258,7 +251,8 @@ public class RiseMasterBlock : Block
         playerUI.windowManager.Open("timer", _bModal: true);
         XUiC_Timer childByType = playerUI.xui.GetChildByType<XUiC_Timer>();
         TimerEventData timerEventData = new TimerEventData();
-        timerEventData.Data = new object[4] { _cIdx, _blockValue, _blockPos, _player };
+        // CRITICAL FIX: Don't store cluster index - it becomes stale after delay
+        timerEventData.Data = new object[3] { _blockValue, _blockPos, _player };
         timerEventData.Event += EventData_Event;
         childByType.SetTimer(TakeDelay, timerEventData);
 
@@ -273,22 +267,38 @@ public class RiseMasterBlock : Block
         var world = GameManager.Instance.World;
 
         var array = (object[])timerData.Data;
-        var clrIdx = (int)array[0];
-        var blockValue = (BlockValue)array[1];
-        var vector3i = (Vector3i)array[2];
-        var block = world.GetBlock(vector3i);
-        var entityPlayerLocal = array[3] as EntityPlayerLocal;
+        var originalBlockValue = (BlockValue)array[0];
+        var vector3i = (Vector3i)array[1];
+        var entityPlayerLocal = array[2] as EntityPlayerLocal;
+        
+        // CRITICAL FIX: Validate block hasn't changed during timer delay
+        var currentBlock = world.GetBlock(vector3i);
+        if (currentBlock.type != originalBlockValue.type)
+        {
+            GameManager.ShowTooltip(entityPlayerLocal, "Block was modified during pickup", string.Empty, "ui_denied");
+            Log.Out($"RiseMasterBlock - Block type changed during timer at {vector3i} (expected {originalBlockValue.type}, found {currentBlock.type})");
+            return;
+        }
+        
+        if (currentBlock.damage > 0)
+        {
+            GameManager.ShowTooltip(entityPlayerLocal, Localization.Get("ttRepairBeforePickup"), string.Empty, "ui_denied");
+            Log.Out($"RiseMasterBlock - Block was damaged during timer at {vector3i}");
+            return;
+        }
 
-        // Pick up the item and put it inyor your inventory.
+        // Pick up the item and put it in your inventory.
         var uiforPlayer = LocalPlayerUI.GetUIForPlayer(entityPlayerLocal);
-        var itemStack = new ItemStack(block.ToItemValue(), 1);
+        var itemStack = new ItemStack(currentBlock.ToItemValue(), 1);
         if (!uiforPlayer.xui.PlayerInventory.AddItem(itemStack, true))
             uiforPlayer.xui.PlayerInventory.DropItem(itemStack);
-        world.SetBlockRPC(clrIdx, vector3i, BlockValue.Air);
+        
+        // CRITICAL FIX: Use position-only SetBlockRPC - lets World compute current cluster index
+        world.SetBlockRPC(vector3i, BlockValue.Air);
+        
+        Log.Out("RiseMasterBlock - Block picked up and world updated at " + vector3i.ToString());
 
         #endregion
     }
-
-
 }
 

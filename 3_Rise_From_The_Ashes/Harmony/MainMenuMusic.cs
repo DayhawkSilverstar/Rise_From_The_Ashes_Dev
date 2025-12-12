@@ -12,7 +12,7 @@ namespace RiseFromTheAshes.Harmony
     public class MainMenuMusicPatch
     {
         // Audio resource path - adjust this to your actual file path in your mod folder
-        private const string CustomMenuMusicPath = "#@modfolder(Rise_From_The_Ashes):Resources/RiseFromTheAshes.unity3d?Rise_from_the_Ashes";
+        private const string CustomMenuMusicPath = "#@modfolder(Rise_From_The_Ashes):Resources/RiseFromTheAshes.unity3d?MenuSong";
         
         // Keep a reference to our loaded audio clip
         public static AudioClip CustomMenuMusic = null;

@@ -1,0 +1,2 @@
+H:\GitHub\Rise_From_The_Ashes_Dev\2-SCore\obj\Debug\0-SCore.csproj.AssemblyReference.cache
+H:\GitHub\Rise_From_The_Ashes_Dev\2-SCore\obj\Debug\0-SCore.csproj.CoreCompileInputs.cache

@@ -173,13 +173,14 @@
 
     <append xpath="/windows/window[@name='windowLooting']//rect[@controller='ContainerStandardControls']">
         <button depth="3" name="btnBroadcast"
-                sprite="ui_game_symbol_bc"
+                sprite="ui_game_symbol_map_treasure"
+                selectedsprite="ui_game_symbol_map_treasure"
                 tooltip_key="xuiPinGrab"
-                pos="154, -22" pivot="center"
+                pos="114, -22" pivot="center"
                 style="icon32px, press, hover"
                 visible="{broadcastManager}"
                 defaultcolor="[white]"
-                selectedcolor="[disabledColor]"
+                selectedcolor="[white]"
                 sound="[paging_click]"
                 controller="BroadcastButton, SCore"/>
     </append>

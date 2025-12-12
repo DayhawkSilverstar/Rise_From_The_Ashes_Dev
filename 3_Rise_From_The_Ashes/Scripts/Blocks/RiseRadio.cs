@@ -529,7 +529,9 @@ public class RiseRadio : RiseMasterBlock
         playerUI.windowManager.Open("timer", _bModal: true);
         XUiC_Timer childByType = playerUI.xui.GetChildByType<XUiC_Timer>();
         TimerEventData timerEventData = new TimerEventData();
-        timerEventData.Data = new object[4] { _cIdx, _blockValue, _blockPos, _player };
+        // FIXED - Don't store cluster index in timer data; only store blockValue, position, player
+        // World will compute correct cluster index when SetBlockRPC is called after timer expires
+        timerEventData.Data = new object[3] { _blockValue, _blockPos, _player };
         timerEventData.Event += EventData_Event;
         childByType.SetTimer(TakeDelay, timerEventData);
     }
@@ -539,20 +541,35 @@ public class RiseRadio : RiseMasterBlock
         var world = GameManager.Instance.World;
 
         var array = (object[])timerData.Data;
-        var clrIdx = (int)array[0];
-        var blockValue = (BlockValue)array[1];
-        var vector3i = (Vector3i)array[2];
-        var block = world.GetBlock(vector3i);
-        var entityPlayerLocal = array[3] as EntityPlayerLocal;
+        // FIXED - Array now has 3 elements (no cluster index), updated indexing accordingly
+        var originalBlockValue = (BlockValue)array[0];
+        var vector3i = (Vector3i)array[1];
+        var entityPlayerLocal = array[2] as EntityPlayerLocal;
+        
+        // CRITICAL FIX: Validate block hasn't changed during timer delay
+        var currentBlock = world.GetBlock(vector3i);
+        if (currentBlock.type != originalBlockValue.type)
+        {
+            GameManager.ShowTooltip(entityPlayerLocal, "Block was modified during pickup", string.Empty, "ui_denied");
+            Log.Out($"RiseRadio - Block type changed during timer at {vector3i} (expected {originalBlockValue.type}, found {currentBlock.type})");
+            return;
+        }
+        
+        if (currentBlock.damage > 0)
+        {
+            GameManager.ShowTooltip(entityPlayerLocal, Localization.Get("ttRepairBeforePickup"), string.Empty, "ui_denied");
+            Log.Out($"RiseRadio - Block was damaged during timer at {vector3i}");
+            return;
+        }
 
         // Store the radio info before cleanup using world position key
         string pickupRadioName = BuildRadioKey(vector3i.ToVector3());
-        Log.Out($"EventData_Event called for radio pickup: {pickupRadioName}");
+        Log.Out($"RiseRadio - EventData_Event called for radio pickup: {pickupRadioName}");
 
         // Stop via RadioManager before destroying the block
         if (radioOn)
         {
-            Log.Out($"Radio is ON during pickup, stopping via RadioManager");
+            Log.Out($"RiseRadio - Radio is ON during pickup, stopping via RadioManager");
             try { radioManager.StopRadio(this); } catch { }
             SetRadioOn(false);
         }
@@ -560,17 +577,20 @@ public class RiseRadio : RiseMasterBlock
         // Remove from RadioManager; treat pickup as destruction so AudioSource is disposed and state cleared
         if (radioManager != null && Vector3.Distance(blockPosition, vector3i.ToVector3()) < 0.1f)
         {
-            Log.Out($"Removing radio from RadioManager during pickup: {pickupRadioName}");
+            Log.Out($"RiseRadio - Removing radio from RadioManager during pickup: {pickupRadioName}");
             radioManager.RemoveRadio(this, destroyed:true);
         }
 
         // Pick up the item and put it in your inventory.
         var uiforPlayer = LocalPlayerUI.GetUIForPlayer(entityPlayerLocal);
-        var itemStack = new ItemStack(block.ToItemValue(), 1);
+        var itemStack = new ItemStack(currentBlock.ToItemValue(), 1);
         if (!uiforPlayer.xui.PlayerInventory.AddItem(itemStack, true))
             uiforPlayer.xui.PlayerInventory.DropItem(itemStack);
-        world.SetBlockRPC(clrIdx, vector3i, BlockValue.Air);
         
-        Log.Out($"Radio pickup completed: {pickupRadioName}");
+        // CRITICAL FIX: Use position-only SetBlockRPC - lets World compute current cluster index
+        // This ensures correct cluster even if chunks reloaded or player moved during timer
+        world.SetBlockRPC(vector3i, BlockValue.Air);
+        
+        Log.Out($"RiseRadio - Radio pickup completed: {pickupRadioName}");
     }
 }

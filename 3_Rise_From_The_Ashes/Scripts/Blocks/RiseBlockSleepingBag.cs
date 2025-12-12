@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class RiseBlockSleepingBag : RiseMasterBlock
+public class RiseBlockSleepingBag : BlockSleepingBag
 {
     private string activeBuff = string.Empty;
     private float buffRadius = 2.5f;
